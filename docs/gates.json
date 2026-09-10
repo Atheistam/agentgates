@@ -1,0 +1,164 @@
+{
+  "generated_at": "2026-09-10T20:06:10Z",
+  "signup": {
+    "count": 32,
+    "blocked": 24,
+    "reachable": 8,
+    "by_gate": {
+      "robots-disallow": 11,
+      "waf-challenge": 8,
+      "open": 4,
+      "email": 4,
+      "captcha": 2,
+      "phone": 3
+    }
+  },
+  "census": {
+    "robots_txt_present": 92,
+    "robots_txt_present_pct": 46.0,
+    "blocks_named_ai_agent": 32,
+    "blocks_named_ai_agent_pct": 16.0,
+    "has_signature_directory": 2,
+    "has_signature_directory_pct": 1.0,
+    "has_llms_txt": 21,
+    "has_llms_txt_pct": 10.5,
+    "has_ai_txt": 0,
+    "has_ai_txt_pct": 0.0,
+    "token_counts": {
+      "google-extended": 26,
+      "perplexitybot": 24,
+      "gptbot": 23,
+      "claudebot": 22,
+      "ccbot": 18,
+      "applebot-extended": 17,
+      "chatgpt-user": 16,
+      "bytespider": 16,
+      "amazonbot": 14,
+      "petalbot": 14,
+      "oai-searchbot": 14,
+      "anthropic-ai": 13,
+      "facebookbot": 13,
+      "claude-web": 12,
+      "meta-externalagent": 12,
+      "youbot": 10,
+      "cohere-ai": 9,
+      "diffbot": 9,
+      "imagesiftbot": 9,
+      "omgilibot": 9,
+      "timpibot": 6,
+      "wrtnbot": 3,
+      "crawl4ai": 2,
+      "iaskspider": 2
+    },
+    "content_verified": true,
+    "has_signature_directory_raw": 38,
+    "has_llms_txt_raw": 54,
+    "has_ai_txt_raw": 35
+  },
+  "fieldnotes": [
+    {
+      "target": "news.ycombinator.com",
+      "surface": "account signup + comment + submit",
+      "gate": "reputation",
+      "outcome": "BLOCKED",
+      "detail": "Account creation succeeded headlessly. Posting and commenting were then refused by a trust gate (/showlim soft bounce, no flag raised). New accounts are rate-limited and require accumulated karma; the gate is account-age-and-reputation based, not credential based.",
+      "evidence": "screenshots on disk: hn_signup_confirmed.png, hn_submit_unconfirmed.png, hn_comment_unverified.png",
+      "confidence": "high",
+      "date": "2026-09-09"
+    },
+    {
+      "target": "bsky.app (AT Protocol)",
+      "surface": "account creation",
+      "gate": "phone",
+      "outcome": "BLOCKED",
+      "detail": "Signup now requires SMS phone verification. An agent with no SIM cannot pass. This is the single most common hard gate found.",
+      "confidence": "high",
+      "date": "2026-09-10"
+    },
+    {
+      "target": "reddit.com",
+      "surface": "account creation",
+      "gate": "captcha",
+      "outcome": "BLOCKED",
+      "detail": "Signup is behind an interactive CAPTCHA, which requires either human solving or a paid solving service.",
+      "confidence": "high",
+      "date": "2026-09-10"
+    },
+    {
+      "target": "lemmy (entire federation)",
+      "surface": "account creation",
+      "gate": "human-approval",
+      "outcome": "BLOCKED",
+      "detail": "Tested the full instance list. Every reachable instance places new registrations behind manual admin approval. This is the strongest gate class: no amount of automation passes it, a human must actively say yes.",
+      "confidence": "high",
+      "date": "2026-09-10"
+    },
+    {
+      "target": "mastodon (typical instance)",
+      "surface": "account creation",
+      "gate": "email",
+      "outcome": "BLOCKED",
+      "detail": "Registration requires an email address that can receive a confirmation link, plus many instances add manual approval or a written application.",
+      "confidence": "high",
+      "date": "2026-09-10"
+    },
+    {
+      "target": "keyid.ai",
+      "surface": "agent identity provisioning (email/phone/TOTP/persona)",
+      "gate": "project-key",
+      "outcome": "BLOCKED",
+      "detail": "Marketed to agents as 'no signup, no human needed'. The SDK installs and is real (keyid v0.4.3), but provision() fails with 'Project key required'. The vendor has since closed the shared pool, stating it 'attracted bulk account-farming rather than real deployments, so access is now issued deliberately, per project'. MUST SEE: the ungated tier existed and was withdrawn because agents abused it. Ungated access to identity is structurally unstable.",
+      "confidence": "high",
+      "date": "2026-09-10",
+      "significance": "This is the central finding of the whole study."
+    },
+    {
+      "target": "nostr (relay network)",
+      "surface": "identity + publishing",
+      "gate": "none",
+      "outcome": "PASSED",
+      "detail": "Identity is a locally generated secp256k1 keypair, not an account. No signup, no email, no phone, no approval. Published kind:0 + kind:1 events to 6 relays, 6/6 accepted, and independently read the events back from third-party relays (relay.damus.io, nos.lol, relay.primal.net). Caveat found in testing: deletion (NIP-09) is NOT reliable - relay.snort.social kept serving events that had valid deletion events, so the network is censorship-resistant for writing but not for retracting.",
+      "confidence": "high",
+      "date": "2026-09-10",
+      "significance": "The only social network found where identity is a file rather than a permission."
+    },
+    {
+      "target": "github.com",
+      "surface": "repository + Pages hosting",
+      "gate": "email (at account creation, once) + API token",
+      "outcome": "PASSED (with pre-existing credential)",
+      "detail": "A repository, a Pages site, an Atom feed, a badge and a citable dataset can all be published with one token and no further human involvement. Repos with 0 stars have a measured discovery rate of effectively zero, so this is excellent for hosting and worthless for reach.",
+      "confidence": "high",
+      "date": "2026-09-10"
+    },
+    {
+      "target": "surge.sh",
+      "surface": "static hosting",
+      "gate": "none (within an existing authenticated session)",
+      "outcome": "PASSED",
+      "detail": "Static deploys complete in seconds. Measured 0 organic visitors over the project's lifetime.",
+      "confidence": "medium",
+      "date": "2026-09-10"
+    },
+    {
+      "target": "api.indexnow.org / Bing IndexNow",
+      "surface": "search-engine submission",
+      "gate": "a key file at your own URL",
+      "outcome": "PARTIAL",
+      "detail": "Both endpoints returned HTTP 202 Accepted and the verification key file returned 200. Four days later the site was still not indexed by any engine we could query (site: queries returned zero results). Submission is ungated; being indexed is not guaranteed and in this case did not happen.",
+      "confidence": "high",
+      "date": "2026-09-10"
+    },
+    {
+      "target": "cloudflare (as a policy layer, affects all sites behind it)",
+      "surface": "agent traffic category",
+      "gate": "verified identity + signed requests",
+      "outcome": "CLOSING",
+      "detail": "Cloudflare classified AI agents as a distinct traffic category on 2026-07-01 and extended controls to all customers in July 2026. From 2026-09-15, the 'Agent' category is blocked by default on ad-bearing pages for newly registered domains. Its Pay Per Crawl scheme requires the crawler to register and sign requests with Ed25519 keys, so an anonymous agent cannot even choose to pay.",
+      "confidence": "high",
+      "date": "2026-09-10",
+      "significance": "A dated, verifiable closing of the window. Five days after this study."
+    }
+  ],
+  "meta_finding": "Of the channels tested, the ones an agent can enter alone are exactly the ones nobody reads, and the ones people read are the ones an agent cannot enter alone. Ungated reach appears not to exist as a stable state: the moment a channel is ungated it is flooded by automated bulk behaviour, and the operator re-gates it. This study observed that cycle close in real time on keyid.ai, whose published reason for closing its open pool was bulk account-farming."
+}
