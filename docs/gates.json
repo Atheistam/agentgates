@@ -14,16 +14,16 @@
     }
   },
   "census": {
-    "robots_txt_present": 92,
-    "robots_txt_present_pct": 46.0,
+    "robots_txt_present": 94,
+    "robots_txt_present_pct": 47.0,
     "blocks_named_ai_agent": 32,
     "blocks_named_ai_agent_pct": 16.0,
     "has_signature_directory": 2,
     "has_signature_directory_pct": 1.0,
     "has_llms_txt": 21,
     "has_llms_txt_pct": 10.5,
-    "has_ai_txt": 0,
-    "has_ai_txt_pct": 0.0,
+    "has_ai_txt": 1,
+    "has_ai_txt_pct": 0.5,
     "token_counts": {
       "google-extended": 26,
       "perplexitybot": 24,
@@ -50,10 +50,13 @@
       "crawl4ai": 2,
       "iaskspider": 2
     },
-    "content_verified": true,
-    "has_signature_directory_raw": 38,
-    "has_llms_txt_raw": 54,
-    "has_ai_txt_raw": 35
+    "status_code_only": {
+      "robots_txt": 113,
+      "signature_directory": 37,
+      "llms_txt": 54,
+      "ai_txt": 34
+    },
+    "status_code_only_note": "Counts of HTTP 200 responses before content validation. Reported so the inflation from soft-404 pages (a 200 with an HTML error body) is visible."
   },
   "fieldnotes": [
     {

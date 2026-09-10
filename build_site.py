@@ -163,6 +163,18 @@ def render_census(cs):
         bar("publishes ai.txt", s["has_ai_txt"], n, "#3fb950"),
         bar("publishes signed-agent key directory", s["has_signature_directory"], n, "#d29922"),
     ])
+    raw = s.get("status_code_only")
+    if raw:
+        rs, rl, ra = raw["signature_directory"], raw["llms_txt"], raw["ai_txt"]
+        bars += (
+            "<p style='margin-top:14px;color:#8b949e;font-size:13px'>"
+            "<strong style='color:#d29922'>A status code is a claim, not a measurement.</strong> "
+            "Counting HTTP&nbsp;200 responses alone would report "
+            "<strong>%d</strong> signed-agent key directories, <strong>%d</strong> llms.txt and "
+            "<strong>%d</strong> ai.txt. Validating the response body gives the numbers above. "
+            "The gap is soft-404 pages: a 200 carrying an HTML error page instead of the file."
+            "</p>" % (rs, rl, ra)
+        )
     toks = s["token_counts"]
     tok_rows = "".join("<tr><td class='mono'>%s</td><td>%d</td><td>%.1f%%</td></tr>"
                        % (esc(k), v, 100.0 * v / n) for k, v in list(toks.items())[:15])
@@ -203,17 +215,60 @@ def render_fieldnotes(fn):
 <h3>First-hand observations</h3>%s""") % (esc(fn["_readme"]), tax, "".join(cards))
 
 
+def render_keydirs(kd):
+    """Deep-dive on the domains that actually answer the signatures directory path."""
+    if not kd or not kd.get("results"):
+        return ""
+    rows = []
+    for r in kd["results"]:
+        shape = r.get("shape", "unknown")
+        label = {"jwks_directory": ("spec-shaped JWKS directory", "ok"),
+                 "bare_jwk": ("a single bare JWK - not a directory", "warn"),
+                 "unparseable": ("unparseable", "bad"),
+                 "other": ("other JSON", "warn"),
+                 "unreachable": ("unreachable", "bad")}.get(shape, (shape, "warn"))
+        d = r.get("detail") if isinstance(r.get("detail"), dict) else {}
+        if d.get("algorithms"):
+            keys = "%d key(s), %s" % (d.get("key_count", 0), ", ".join(d["algorithms"]))
+        elif d.get("kty"):
+            keys = "kty=%s, crv=%s, alg=%s" % (d.get("kty"), d.get("crv"), d.get("alg"))
+        else:
+            keys = esc(str(d)[:80]) if d else "-"
+        rows.append(
+            "<tr><td>%s</td><td class='%s'>%s</td><td>%s</td><td>%s</td></tr>" % (
+                esc(r["domain"]), label[1], esc(label[0]), esc(keys),
+                esc(("&#8594; " + r["final_url"]) if r.get("redirected") else "no redirect")))
+    n = kd.get("probed", len(kd["results"]))
+    jw = kd.get("jwks_directory_count", 0)
+    return """
+<h3>What the two key documents actually are</h3>
+<p>Two of the 200 domains answer <code>/.well-known/http-message-signatures-directory</code> with a
+JSON key document. Fetching and parsing them splits one claim into two, and only the second one is a
+working deployment: <strong>serving a key</strong> is not the same as <strong>publishing a
+directory</strong>.</p>
+<table><thead><tr><th>Domain</th><th>Shape</th><th>Key material</th><th>Redirect</th></tr></thead>
+<tbody>%s</tbody></table>
+<div class="note warnbox"><strong>%d of %d</strong> is a spec-shaped directory - a
+<code>{"keys": [...]}</code> set that a client could actually walk. The other publishes a single bare
+JWK object that has no <code>keys</code> array, and only after a <code>301</code> to a different
+hostname, so the domain attributed in the census is not the domain serving the file.</div>
+<ul><li><a href="data/key_directories.json">key_directories.json</a> - the parsed documents</li></ul>
+""" % ("".join(rows), jw, n)
+
+
 def main():
     sg = load(os.path.join(DATA, "signup_gates.json"))
     cs = load(os.path.join(DATA, "standards_census.json"))
     fn = load(os.path.join(HERE, "fieldnotes.json"))
+    kd = load(os.path.join(DATA, "key_directories.json"))
     if not sg or not fn:
         print("missing signup_gates.json or fieldnotes.json - run the probes first")
         return 1
 
     os.makedirs(os.path.join(WEB, "data"), exist_ok=True)
     web_data = os.path.join(WEB, "data")
-    for name in ("signup_gates.json", "standards_census.json", "signup_gates.csv", "standards_census.csv"):
+    for name in ("signup_gates.json", "standards_census.json", "signup_gates.csv",
+                 "standards_census.csv", "key_directories.json"):
         src = os.path.join(DATA, name)
         if os.path.exists(src):
             shutil.copy2(src, os.path.join(web_data, name))
@@ -308,7 +363,7 @@ Data generated %s. All probes performed with an honestly declared user-agent; me
         census_pct, census_n, sig_pct, llms_pct,
         n_total, len({r["category"] for r in sg["results"]}),
         render_signup(sg, fn["observations"]),
-        render_census(cs),
+        render_census(cs) + render_keydirs(kd),
         render_fieldnotes(fn),
         n_total, census_n,
         esc(time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())),

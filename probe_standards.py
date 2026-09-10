@@ -18,7 +18,8 @@ import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
-from validate_census import is_sig_directory, is_text_standard
+from validate_census import is_sig_directory, is_text_standard, looks_like_html
+from probe_keydirs import classify
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
@@ -95,7 +96,9 @@ def probe(domain):
     rec["robots_status"] = st
     # an HTTP 200 alone is not evidence: many sites answer every path with an HTML
     # error page, so require the body to actually look like a robots.txt
-    rec["robots_present"] = bool(st == 200 and "user-agent" in body.lower())
+    rec["robots_present"] = bool(
+        st == 200 and "user-agent" in body.lower() and not looks_like_html(body)
+    )
     rec["ai_agents_named"] = robots_blocks_ai(body) if rec["robots_present"] else []
     rec["blocks_named_ai_agent"] = bool(rec["ai_agents_named"])
     time.sleep(1.5 + random.random() * 0.5)
@@ -103,6 +106,9 @@ def probe(domain):
     st, body = get_with_fallback(domain, "/.well-known/http-message-signatures-directory")
     rec["sig_directory_status"] = st
     rec["has_sig_directory"] = is_sig_directory(st, "", body)
+    # "a key document exists" and "the document has the shape the draft
+    # describes" are different claims - only the second is a working directory
+    rec["sig_directory_shape"] = classify(body)[0] if rec["has_sig_directory"] else None
     time.sleep(1.5 + random.random() * 0.5)
 
     st, body = get_with_fallback(domain, "/llms.txt")
@@ -169,6 +175,14 @@ def main():
     ai_txt = sum(1 for r in results if r["has_ai_txt"])
     rob = sum(1 for r in results if r["robots_present"])
     blocks = sum(1 for r in results if r["blocks_named_ai_agent"])
+    # what a naive status-code-only census would have reported (kept so the
+    # inflation caused by soft-404 pages is visible, not hidden)
+    raw = {
+        "robots_txt": sum(1 for r in results if r["robots_status"] == 200),
+        "signature_directory": sum(1 for r in results if r["sig_directory_status"] == 200),
+        "llms_txt": sum(1 for r in results if r["llms_txt_status"] == 200),
+        "ai_txt": sum(1 for r in results if r["ai_txt_status"] == 200),
+    }
     token_counts = {}
     for r in results:
         for t in r["ai_agents_named"]:
@@ -188,14 +202,24 @@ def main():
             "has_signature_directory": sig, "has_signature_directory_pct": pct(sig),
             "has_llms_txt": llms, "has_llms_txt_pct": pct(llms),
             "has_ai_txt": ai_txt, "has_ai_txt_pct": pct(ai_txt),
+            "sig_directory_jwks": sum(
+                1 for r in results if r.get("sig_directory_shape") == "jwks_directory"),
+            "sig_directory_jwks_pct": pct(sum(
+                1 for r in results if r.get("sig_directory_shape") == "jwks_directory")),
             "token_counts": dict(sorted(token_counts.items(), key=lambda kv: -kv[1])),
+            "status_code_only": raw,
+            "status_code_only_note": (
+                "Counts of HTTP 200 responses before content validation. Reported so the "
+                "inflation from soft-404 pages (a 200 with an HTML error body) is visible."
+            ),
         },
         "results": results,
     }
     with open(os.path.join(DATA, "standards_census.json"), "w") as f:
         json.dump(out, f, indent=2)
     cols = ["domain", "robots_status", "robots_present", "blocks_named_ai_agent", "ai_agents_named",
-            "sig_directory_status", "has_sig_directory", "llms_txt_status", "has_llms_txt",
+            "sig_directory_status", "has_sig_directory", "sig_directory_shape",
+            "llms_txt_status", "has_llms_txt",
             "ai_txt_status", "has_ai_txt", "checked_at"]
     with open(os.path.join(DATA, "standards_census.csv"), "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")

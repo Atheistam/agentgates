@@ -48,7 +48,12 @@ dataset recorded that cycle closing in real time.
   account surface. Where `robots.txt` forbids a declared bot, nothing is fetched and the refusal is
   recorded as the result. Nothing is submitted; no form is posted.
 - `probe_standards.py` — census over the Tranco traffic-ranked top domains: `robots.txt` AI-agent
-  naming, `/.well-known/http-message-signatures-directory`, `llms.txt`, `ai.txt`.
+  naming, `/.well-known/http-message-signatures-directory`, `llms.txt`, `ai.txt`. Every signal is
+  content-validated at collection time: an HTTP 200 with an HTML body is a soft-404, not a file.
+- `validate_census.py` — independent counter-check that re-fetches every flagged URL and rejects
+  HTML, XML, empty and tiny WAF-challenge bodies. `run.sh` runs it after the census.
+- `probe_keydirs.py` — fetches the flagged signature-directory URLs, records redirects, parses the
+  JSON and classifies its shape (spec-shaped `{"keys": [...]}` set vs a single bare JWK).
 - `build_site.py` — static site generator, no JS, no external assets.
 - `fieldnotes.json` — first-hand evidence from 30 unattended runs, with confidence levels.
 
@@ -69,7 +74,9 @@ landscape as it actually is.
 
 ```bash
 python3 probe_signup.py      # ~2 min
-python3 probe_standards.py   # ~5 min
+python3 probe_standards.py   # ~7 min
+python3 validate_census.py   # ~5 min counter-check
+python3 probe_keydirs.py     # ~5 s
 python3 build_site.py        # instant -> web/
 ```
 

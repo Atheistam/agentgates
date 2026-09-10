@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-09-10T20:17:36Z",
+  "generated_at": "2026-09-10T21:02:21Z",
   "user_agent": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
   "census_size": 200,
   "source": "Tranco top domains (https://tranco-list.eu)",
   "summary": {
-    "robots_txt_present": 92,
-    "robots_txt_present_pct": 46.0,
+    "robots_txt_present": 94,
+    "robots_txt_present_pct": 47.0,
     "blocks_named_ai_agent": 32,
     "blocks_named_ai_agent_pct": 16.0,
     "has_signature_directory": 2,
     "has_signature_directory_pct": 1.0,
     "has_llms_txt": 21,
     "has_llms_txt_pct": 10.5,
-    "has_ai_txt": 0,
-    "has_ai_txt_pct": 0.0,
+    "has_ai_txt": 1,
+    "has_ai_txt_pct": 0.5,
     "token_counts": {
       "google-extended": 26,
       "perplexitybot": 24,
@@ -40,15 +40,18 @@
       "crawl4ai": 2,
       "iaskspider": 2
     },
-    "content_verified": true,
-    "has_signature_directory_raw": 38,
-    "has_llms_txt_raw": 54,
-    "has_ai_txt_raw": 35
+    "status_code_only": {
+      "robots_txt": 113,
+      "signature_directory": 37,
+      "llms_txt": 54,
+      "ai_txt": 34
+    },
+    "status_code_only_note": "Counts of HTTP 200 responses before content validation. Reported so the inflation from soft-404 pages (a 200 with an HTML error body) is visible."
   },
   "results": [
     {
       "domain": "google.com",
-      "checked_at": "2026-09-10T20:06:10Z",
+      "checked_at": "2026-09-10T20:51:35Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -58,15 +61,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "cloudflare.com",
-      "checked_at": "2026-09-10T20:06:10Z",
+      "checked_at": "2026-09-10T20:51:35Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -85,15 +84,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "facebook.com",
-      "checked_at": "2026-09-10T20:06:10Z",
+      "checked_at": "2026-09-10T20:51:35Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -109,17 +104,13 @@
       "sig_directory_status": 404,
       "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "gstatic.com",
-      "checked_at": "2026-09-10T20:06:10Z",
+      "checked_at": "2026-09-10T20:51:35Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -129,15 +120,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "googleapis.com",
-      "checked_at": "2026-09-10T20:06:16Z",
+      "checked_at": "2026-09-10T20:51:41Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -147,14 +134,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "microsoft.com",
-      "checked_at": "2026-09-10T20:06:16Z",
+      "checked_at": "2026-09-10T20:51:41Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -164,15 +148,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "amazonaws.com",
-      "checked_at": "2026-09-10T20:06:17Z",
+      "checked_at": "2026-09-10T20:51:42Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -182,15 +162,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "akamai.net",
-      "checked_at": "2026-09-10T20:06:17Z",
+      "checked_at": "2026-09-10T20:51:42Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -200,14 +176,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "youtube.com",
-      "checked_at": "2026-09-10T20:06:22Z",
+      "checked_at": "2026-09-10T20:51:47Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -217,15 +190,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "apple.com",
-      "checked_at": "2026-09-10T20:06:22Z",
+      "checked_at": "2026-09-10T20:51:48Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -235,15 +204,11 @@
       "llms_txt_status": 403,
       "has_llms_txt": false,
       "ai_txt_status": 403,
-      "has_ai_txt": false,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "instagram.com",
-      "checked_at": "2026-09-10T20:06:23Z",
+      "checked_at": "2026-09-10T20:51:48Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -257,37 +222,29 @@
       ],
       "blocks_named_ai_agent": true,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "mail.ru",
-      "checked_at": "2026-09-10T20:06:25Z",
+      "checked_at": "2026-09-10T20:51:50Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "fbcdn.net",
-      "checked_at": "2026-09-10T20:06:29Z",
+      "checked_at": "2026-09-10T20:51:54Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -301,19 +258,15 @@
       ],
       "blocks_named_ai_agent": true,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "ezviz7.com",
-      "checked_at": "2026-09-10T20:06:31Z",
+      "checked_at": "2026-09-10T20:51:55Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -323,14 +276,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "twitter.com",
-      "checked_at": "2026-09-10T20:06:31Z",
+      "checked_at": "2026-09-10T20:51:55Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -344,51 +294,39 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "dzen.ru",
-      "checked_at": "2026-09-10T20:06:35Z",
+      "checked_at": "2026-09-10T20:52:01Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "linkedin.com",
-      "checked_at": "2026-09-10T20:06:36Z",
+      "checked_at": "2026-09-10T20:52:01Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "googlevideo.com",
-      "checked_at": "2026-09-10T20:06:37Z",
+      "checked_at": "2026-09-10T20:52:02Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -398,14 +336,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "domaincontrol.com",
-      "checked_at": "2026-09-10T20:06:39Z",
+      "checked_at": "2026-09-10T20:52:05Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -415,32 +350,25 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "office.com",
-      "checked_at": "2026-09-10T20:06:42Z",
+      "checked_at": "2026-09-10T20:52:07Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "googletagmanager.com",
-      "checked_at": "2026-09-10T20:06:43Z",
+      "checked_at": "2026-09-10T20:52:08Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -450,14 +378,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "live.com",
-      "checked_at": "2026-09-10T20:06:43Z",
+      "checked_at": "2026-09-10T20:52:09Z",
       "robots_status": 417,
       "robots_present": false,
       "ai_agents_named": [],
@@ -467,14 +392,11 @@
       "llms_txt_status": 417,
       "has_llms_txt": false,
       "ai_txt_status": 417,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "akamaiedge.net",
-      "checked_at": "2026-09-10T20:06:45Z",
+      "checked_at": "2026-09-10T20:52:10Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -484,14 +406,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "hicloudcam.com",
-      "checked_at": "2026-09-10T20:06:49Z",
+      "checked_at": "2026-09-10T20:52:15Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -501,14 +420,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "amazon.com",
-      "checked_at": "2026-09-10T20:06:49Z",
+      "checked_at": "2026-09-10T20:52:15Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -535,18 +451,14 @@
       "blocks_named_ai_agent": true,
       "sig_directory_status": 404,
       "has_sig_directory": false,
-      "llms_txt_status": 503,
+      "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "akadns.net",
-      "checked_at": "2026-09-10T20:06:51Z",
+      "checked_at": "2026-09-10T20:52:16Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -556,14 +468,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "gtld-servers.net",
-      "checked_at": "2026-09-10T20:06:51Z",
+      "checked_at": "2026-09-10T20:52:16Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -573,32 +482,25 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "azure.com",
-      "checked_at": "2026-09-10T20:06:55Z",
+      "checked_at": "2026-09-10T20:52:21Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "github.com",
-      "checked_at": "2026-09-10T20:06:56Z",
+      "checked_at": "2026-09-10T20:52:21Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -608,15 +510,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 406,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "bing.com",
-      "checked_at": "2026-09-10T20:06:57Z",
+      "checked_at": "2026-09-10T20:52:21Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -626,15 +524,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "wikipedia.org",
-      "checked_at": "2026-09-10T20:06:58Z",
+      "checked_at": "2026-09-10T20:52:24Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -644,15 +538,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "whatsapp.net",
-      "checked_at": "2026-09-10T20:07:03Z",
+      "checked_at": "2026-09-10T20:52:29Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -670,15 +560,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "apple-dns.net",
-      "checked_at": "2026-09-10T20:07:04Z",
+      "checked_at": "2026-09-10T20:52:29Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -688,14 +574,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "appsflyersdk.com",
-      "checked_at": "2026-09-10T20:07:06Z",
+      "checked_at": "2026-09-10T20:52:33Z",
       "robots_status": 403,
       "robots_present": false,
       "ai_agents_named": [],
@@ -705,14 +588,11 @@
       "llms_txt_status": 403,
       "has_llms_txt": false,
       "ai_txt_status": 403,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "googleusercontent.com",
-      "checked_at": "2026-09-10T20:07:06Z",
+      "checked_at": "2026-09-10T20:52:33Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -722,14 +602,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "fastly.net",
-      "checked_at": "2026-09-10T20:07:10Z",
+      "checked_at": "2026-09-10T20:52:34Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -739,15 +616,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "doubleclick.net",
-      "checked_at": "2026-09-10T20:07:10Z",
+      "checked_at": "2026-09-10T20:52:35Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -757,15 +630,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "aaplimg.com",
-      "checked_at": "2026-09-10T20:07:12Z",
+      "checked_at": "2026-09-10T20:52:39Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -775,14 +644,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "microsoftonline.com",
-      "checked_at": "2026-09-10T20:07:12Z",
+      "checked_at": "2026-09-10T20:52:40Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -792,14 +658,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "office.net",
-      "checked_at": "2026-09-10T20:07:16Z",
+      "checked_at": "2026-09-10T20:52:42Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -809,14 +672,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "netflix.com",
-      "checked_at": "2026-09-10T20:07:17Z",
+      "checked_at": "2026-09-10T20:52:42Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -829,19 +689,15 @@
       ],
       "blocks_named_ai_agent": true,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "trafficmanager.net",
-      "checked_at": "2026-09-10T20:07:18Z",
+      "checked_at": "2026-09-10T20:52:45Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -851,14 +707,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "sharepoint.com",
-      "checked_at": "2026-09-10T20:07:18Z",
+      "checked_at": "2026-09-10T20:52:46Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -868,14 +721,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "gandi.net",
-      "checked_at": "2026-09-10T20:07:22Z",
+      "checked_at": "2026-09-10T20:52:47Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -885,51 +735,39 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "youtu.be",
-      "checked_at": "2026-09-10T20:07:24Z",
+      "checked_at": "2026-09-10T20:52:50Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "cloud.microsoft",
-      "checked_at": "2026-09-10T20:07:25Z",
+      "checked_at": "2026-09-10T20:52:50Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "digicert.com",
-      "checked_at": "2026-09-10T20:07:29Z",
+      "checked_at": "2026-09-10T20:52:56Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -942,19 +780,15 @@
       ],
       "blocks_named_ai_agent": true,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "wordpress.org",
-      "checked_at": "2026-09-10T20:07:31Z",
+      "checked_at": "2026-09-10T20:52:57Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -973,33 +807,25 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "skype.com",
-      "checked_at": "2026-09-10T20:07:34Z",
+      "checked_at": "2026-09-10T20:53:02Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "x.com",
-      "checked_at": "2026-09-10T20:07:39Z",
+      "checked_at": "2026-09-10T20:53:05Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -1013,15 +839,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "icloud.com",
-      "checked_at": "2026-09-10T20:07:39Z",
+      "checked_at": "2026-09-10T20:53:06Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1031,15 +853,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "cloudfront.net",
-      "checked_at": "2026-09-10T20:07:46Z",
+      "checked_at": "2026-09-10T20:53:09Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1049,14 +867,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "goo.gl",
-      "checked_at": "2026-09-10T20:07:46Z",
+      "checked_at": "2026-09-10T20:53:12Z",
       "robots_status": 400,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1066,14 +881,11 @@
       "llms_txt_status": 400,
       "has_llms_txt": false,
       "ai_txt_status": 400,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "tiktok.com",
-      "checked_at": "2026-09-10T20:07:46Z",
+      "checked_at": "2026-09-10T20:53:13Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -1092,19 +904,15 @@
       ],
       "blocks_named_ai_agent": true,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "whatsapp.com",
-      "checked_at": "2026-09-10T20:07:52Z",
+      "checked_at": "2026-09-10T20:53:15Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -1122,15 +930,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "pinterest.com",
-      "checked_at": "2026-09-10T20:07:52Z",
+      "checked_at": "2026-09-10T20:53:17Z",
       "robots_status": 308,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1140,50 +944,39 @@
       "llms_txt_status": 308,
       "has_llms_txt": false,
       "ai_txt_status": 308,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "googledomains.com",
-      "checked_at": "2026-09-10T20:07:54Z",
+      "checked_at": "2026-09-10T20:53:21Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "cloudflare.net",
-      "checked_at": "2026-09-10T20:07:58Z",
+      "checked_at": "2026-09-10T20:53:22Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "roblox.com",
-      "checked_at": "2026-09-10T20:07:58Z",
+      "checked_at": "2026-09-10T20:53:24Z",
       "robots_status": 308,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1193,14 +986,11 @@
       "llms_txt_status": 308,
       "has_llms_txt": false,
       "ai_txt_status": 308,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "yahoo.com",
-      "checked_at": "2026-09-10T20:08:01Z",
+      "checked_at": "2026-09-10T20:53:28Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -1228,15 +1018,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "googlesyndication.com",
-      "checked_at": "2026-09-10T20:08:05Z",
+      "checked_at": "2026-09-10T20:53:29Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1246,14 +1032,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "gvt1.com",
-      "checked_at": "2026-09-10T20:08:05Z",
+      "checked_at": "2026-09-10T20:53:30Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1263,14 +1046,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "windowsupdate.com",
-      "checked_at": "2026-09-10T20:08:10Z",
+      "checked_at": "2026-09-10T20:53:35Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1280,14 +1060,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "pv-cdn.net",
-      "checked_at": "2026-09-10T20:08:11Z",
+      "checked_at": "2026-09-10T20:53:36Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1297,14 +1074,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "spotify.com",
-      "checked_at": "2026-09-10T20:08:11Z",
+      "checked_at": "2026-09-10T20:53:36Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1312,35 +1086,27 @@
       "sig_directory_status": 404,
       "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "windows.net",
-      "checked_at": "2026-09-10T20:08:16Z",
+      "checked_at": "2026-09-10T20:53:41Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "ntp.org",
-      "checked_at": "2026-09-10T20:08:17Z",
+      "checked_at": "2026-09-10T20:53:42Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1350,15 +1116,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "msn.com",
-      "checked_at": "2026-09-10T20:08:18Z",
+      "checked_at": "2026-09-10T20:53:43Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -1390,15 +1152,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "adobe.com",
-      "checked_at": "2026-09-10T20:08:24Z",
+      "checked_at": "2026-09-10T20:53:49Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1408,15 +1166,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "wa.me",
-      "checked_at": "2026-09-10T20:08:28Z",
+      "checked_at": "2026-09-10T20:53:52Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1426,33 +1180,25 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "myfritz.net",
-      "checked_at": "2026-09-10T20:08:32Z",
+      "checked_at": "2026-09-10T20:53:57Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "nginx.org",
-      "checked_at": "2026-09-10T20:08:32Z",
+      "checked_at": "2026-09-10T20:53:57Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1462,17 +1208,13 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "cloudflare-dns.com",
-      "checked_at": "2026-09-10T20:08:35Z",
+      "checked_at": "2026-09-10T20:53:59Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 404,
@@ -1480,15 +1222,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "chatgpt.com",
-      "checked_at": "2026-09-10T20:08:39Z",
+      "checked_at": "2026-09-10T20:54:03Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -1507,15 +1245,11 @@
       "llms_txt_status": 403,
       "has_llms_txt": false,
       "ai_txt_status": 403,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": true,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "zoom.us",
-      "checked_at": "2026-09-10T20:08:39Z",
+      "checked_at": "2026-09-10T20:54:04Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1525,15 +1259,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "cdninstagram.com",
-      "checked_at": "2026-09-10T20:08:41Z",
+      "checked_at": "2026-09-10T20:54:05Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1543,50 +1273,39 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "workers.dev",
-      "checked_at": "2026-09-10T20:08:46Z",
+      "checked_at": "2026-09-10T20:54:09Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "qq.com",
-      "checked_at": "2026-09-10T20:08:46Z",
+      "checked_at": "2026-09-10T20:54:10Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "akam.net",
-      "checked_at": "2026-09-10T20:08:47Z",
+      "checked_at": "2026-09-10T20:54:10Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1596,14 +1315,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "tiktokcdn.com",
-      "checked_at": "2026-09-10T20:08:53Z",
+      "checked_at": "2026-09-10T20:54:16Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1613,14 +1329,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "tiktokv.com",
-      "checked_at": "2026-09-10T20:08:53Z",
+      "checked_at": "2026-09-10T20:54:16Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1630,14 +1343,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "root-servers.net",
-      "checked_at": "2026-09-10T20:08:58Z",
+      "checked_at": "2026-09-10T20:54:21Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1647,14 +1357,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "edgekey.net",
-      "checked_at": "2026-09-10T20:08:59Z",
+      "checked_at": "2026-09-10T20:54:23Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1664,14 +1371,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "gvt2.com",
-      "checked_at": "2026-09-10T20:09:03Z",
+      "checked_at": "2026-09-10T20:54:24Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1681,14 +1385,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "vimeo.com",
-      "checked_at": "2026-09-10T20:09:03Z",
+      "checked_at": "2026-09-10T20:54:27Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -1710,15 +1411,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "openai.com",
-      "checked_at": "2026-09-10T20:09:04Z",
+      "checked_at": "2026-09-10T20:54:27Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1728,15 +1425,11 @@
       "llms_txt_status": 403,
       "has_llms_txt": false,
       "ai_txt_status": 403,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "baidu.com",
-      "checked_at": "2026-09-10T20:09:05Z",
+      "checked_at": "2026-09-10T20:54:28Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1746,15 +1439,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "yandex.net",
-      "checked_at": "2026-09-10T20:09:08Z",
+      "checked_at": "2026-09-10T20:54:30Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1764,14 +1453,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "ytimg.com",
-      "checked_at": "2026-09-10T20:09:10Z",
+      "checked_at": "2026-09-10T20:54:33Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1781,32 +1467,25 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "windows.com",
-      "checked_at": "2026-09-10T20:09:12Z",
+      "checked_at": "2026-09-10T20:54:34Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "opera.com",
-      "checked_at": "2026-09-10T20:09:15Z",
+      "checked_at": "2026-09-10T20:54:37Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1816,15 +1495,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "gwfb.net",
-      "checked_at": "2026-09-10T20:09:16Z",
+      "checked_at": "2026-09-10T20:54:39Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1834,14 +1509,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "samsung.com",
-      "checked_at": "2026-09-10T20:09:22Z",
+      "checked_at": "2026-09-10T20:54:42Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -1857,15 +1529,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "blogspot.com",
-      "checked_at": "2026-09-10T20:09:23Z",
+      "checked_at": "2026-09-10T20:54:44Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1875,51 +1543,39 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "sentry.io",
-      "checked_at": "2026-09-10T20:09:23Z",
+      "checked_at": "2026-09-10T20:54:45Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "nginx.com",
-      "checked_at": "2026-09-10T20:09:24Z",
+      "checked_at": "2026-09-10T20:54:45Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "yandex.ru",
-      "checked_at": "2026-09-10T20:09:30Z",
+      "checked_at": "2026-09-10T20:54:52Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1929,15 +1585,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "edgesuite.net",
-      "checked_at": "2026-09-10T20:09:31Z",
+      "checked_at": "2026-09-10T20:54:53Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -1947,14 +1599,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "mozilla.org",
-      "checked_at": "2026-09-10T20:09:34Z",
+      "checked_at": "2026-09-10T20:54:55Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1964,15 +1613,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "capgemini.com",
-      "checked_at": "2026-09-10T20:09:34Z",
+      "checked_at": "2026-09-10T20:54:57Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -1980,17 +1625,13 @@
       "sig_directory_status": 404,
       "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "wordpress.com",
-      "checked_at": "2026-09-10T20:09:37Z",
+      "checked_at": "2026-09-10T20:54:59Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2000,15 +1641,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "achmea.nl",
-      "checked_at": "2026-09-10T20:09:37Z",
+      "checked_at": "2026-09-10T20:54:59Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2018,15 +1655,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "actify.nl",
-      "checked_at": "2026-09-10T20:09:43Z",
+      "checked_at": "2026-09-10T20:55:03Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2036,33 +1669,25 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "t.me",
-      "checked_at": "2026-09-10T20:09:43Z",
+      "checked_at": "2026-09-10T20:55:05Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "f5.com",
-      "checked_at": "2026-09-10T20:09:44Z",
+      "checked_at": "2026-09-10T20:55:06Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2072,15 +1697,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "a2z.com",
-      "checked_at": "2026-09-10T20:09:45Z",
+      "checked_at": "2026-09-10T20:55:06Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2090,32 +1711,25 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "b-cdn.net",
-      "checked_at": "2026-09-10T20:09:50Z",
+      "checked_at": "2026-09-10T20:55:12Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "reddit.com",
-      "checked_at": "2026-09-10T20:09:51Z",
+      "checked_at": "2026-09-10T20:55:12Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2123,17 +1737,13 @@
       "sig_directory_status": 404,
       "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "ui.com",
-      "checked_at": "2026-09-10T20:09:55Z",
+      "checked_at": "2026-09-10T20:55:17Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -2153,33 +1763,25 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "nic.ru",
-      "checked_at": "2026-09-10T20:09:55Z",
+      "checked_at": "2026-09-10T20:55:19Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "office365.com",
-      "checked_at": "2026-09-10T20:09:56Z",
+      "checked_at": "2026-09-10T20:55:19Z",
       "robots_status": 403,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2189,14 +1791,11 @@
       "llms_txt_status": 403,
       "has_llms_txt": false,
       "ai_txt_status": 403,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "aws.dev",
-      "checked_at": "2026-09-10T20:09:57Z",
+      "checked_at": "2026-09-10T20:55:25Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2206,14 +1805,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "yccdn.ru",
-      "checked_at": "2026-09-10T20:10:02Z",
+      "checked_at": "2026-09-10T20:55:27Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2223,14 +1819,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "google-analytics.com",
-      "checked_at": "2026-09-10T20:10:03Z",
+      "checked_at": "2026-09-10T20:55:27Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2240,15 +1833,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "europa.eu",
-      "checked_at": "2026-09-10T20:10:03Z",
+      "checked_at": "2026-09-10T20:55:27Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2258,15 +1847,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "bit.ly",
-      "checked_at": "2026-09-10T20:10:04Z",
+      "checked_at": "2026-09-10T20:55:31Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2274,17 +1859,13 @@
       "sig_directory_status": 404,
       "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "outlook.com",
-      "checked_at": "2026-09-10T20:10:09Z",
+      "checked_at": "2026-09-10T20:55:32Z",
       "robots_status": 417,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2294,14 +1875,11 @@
       "llms_txt_status": 417,
       "has_llms_txt": false,
       "ai_txt_status": 417,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "okcdn.ru",
-      "checked_at": "2026-09-10T20:10:10Z",
+      "checked_at": "2026-09-10T20:55:33Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2311,32 +1889,25 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "github.io",
-      "checked_at": "2026-09-10T20:10:10Z",
+      "checked_at": "2026-09-10T20:55:35Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "app-analytics-services.com",
-      "checked_at": "2026-09-10T20:10:11Z",
+      "checked_at": "2026-09-10T20:55:38Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2346,14 +1917,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "amazonvideo.com",
-      "checked_at": "2026-09-10T20:10:16Z",
+      "checked_at": "2026-09-10T20:55:41Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -2378,15 +1946,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "registrar-servers.com",
-      "checked_at": "2026-09-10T20:10:17Z",
+      "checked_at": "2026-09-10T20:55:41Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2396,15 +1960,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "vk.com",
-      "checked_at": "2026-09-10T20:10:18Z",
+      "checked_at": "2026-09-10T20:55:44Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2414,15 +1974,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "app-measurement.com",
-      "checked_at": "2026-09-10T20:10:20Z",
+      "checked_at": "2026-09-10T20:55:44Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2432,14 +1988,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "cdn77.org",
-      "checked_at": "2026-09-10T20:10:23Z",
+      "checked_at": "2026-09-10T20:55:49Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2449,14 +2002,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "afternic.com",
-      "checked_at": "2026-09-10T20:10:24Z",
+      "checked_at": "2026-09-10T20:55:49Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2466,15 +2016,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "criteo.com",
-      "checked_at": "2026-09-10T20:10:26Z",
+      "checked_at": "2026-09-10T20:55:50Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -2486,15 +2032,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "apache.org",
-      "checked_at": "2026-09-10T20:10:26Z",
+      "checked_at": "2026-09-10T20:55:50Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2504,15 +2046,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "unity3d.com",
-      "checked_at": "2026-09-10T20:10:29Z",
+      "checked_at": "2026-09-10T20:55:54Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -2524,15 +2062,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "amazon-adsystem.com",
-      "checked_at": "2026-09-10T20:10:33Z",
+      "checked_at": "2026-09-10T20:55:56Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2542,14 +2076,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "trbcdn.net",
-      "checked_at": "2026-09-10T20:10:34Z",
+      "checked_at": "2026-09-10T20:55:57Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2559,14 +2090,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "snapchat.com",
-      "checked_at": "2026-09-10T20:10:36Z",
+      "checked_at": "2026-09-10T20:56:01Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -2598,15 +2126,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "amazon.dev",
-      "checked_at": "2026-09-10T20:10:40Z",
+      "checked_at": "2026-09-10T20:56:03Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2616,14 +2140,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "dnsowl.com",
-      "checked_at": "2026-09-10T20:10:43Z",
+      "checked_at": "2026-09-10T20:56:07Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2633,14 +2154,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "vkuserphoto.ru",
-      "checked_at": "2026-09-10T20:10:45Z",
+      "checked_at": "2026-09-10T20:56:09Z",
       "robots_status": 418,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2650,14 +2168,11 @@
       "llms_txt_status": 418,
       "has_llms_txt": false,
       "ai_txt_status": 418,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "intuit.com",
-      "checked_at": "2026-09-10T20:10:49Z",
+      "checked_at": "2026-09-10T20:56:13Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2667,15 +2182,11 @@
       "llms_txt_status": 400,
       "has_llms_txt": false,
       "ai_txt_status": 400,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "dns.google",
-      "checked_at": "2026-09-10T20:10:54Z",
+      "checked_at": "2026-09-10T20:56:16Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2685,14 +2196,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "msftncsi.com",
-      "checked_at": "2026-09-10T20:11:01Z",
+      "checked_at": "2026-09-10T20:56:23Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2702,14 +2210,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "kaspersky.com",
-      "checked_at": "2026-09-10T20:11:07Z",
+      "checked_at": "2026-09-10T20:56:29Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -2731,15 +2236,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "nih.gov",
-      "checked_at": "2026-09-10T20:11:09Z",
+      "checked_at": "2026-09-10T20:56:32Z",
       "robots_status": 403,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2749,14 +2250,11 @@
       "llms_txt_status": 403,
       "has_llms_txt": false,
       "ai_txt_status": 403,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "dropbox.com",
-      "checked_at": "2026-09-10T20:11:16Z",
+      "checked_at": "2026-09-10T20:56:35Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2766,15 +2264,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "iiko.it",
-      "checked_at": "2026-09-10T20:11:21Z",
+      "checked_at": "2026-09-10T20:56:36Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2784,14 +2278,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "static.microsoft",
-      "checked_at": "2026-09-10T20:11:23Z",
+      "checked_at": "2026-09-10T20:56:41Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2801,14 +2292,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "miit.gov.cn",
-      "checked_at": "2026-09-10T20:11:27Z",
+      "checked_at": "2026-09-10T20:56:42Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2818,14 +2306,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "epicgames.com",
-      "checked_at": "2026-09-10T20:11:27Z",
+      "checked_at": "2026-09-10T20:56:42Z",
       "robots_status": 403,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2835,32 +2320,25 @@
       "llms_txt_status": 403,
       "has_llms_txt": false,
       "ai_txt_status": 403,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "reg.ru",
-      "checked_at": "2026-09-10T20:11:28Z",
+      "checked_at": "2026-09-10T20:56:47Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "azurefd.net",
-      "checked_at": "2026-09-10T20:11:35Z",
+      "checked_at": "2026-09-10T20:56:48Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2870,14 +2348,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "forms.gle",
-      "checked_at": "2026-09-10T20:11:35Z",
+      "checked_at": "2026-09-10T20:56:50Z",
       "robots_status": 400,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2887,32 +2362,25 @@
       "llms_txt_status": 400,
       "has_llms_txt": false,
       "ai_txt_status": 400,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "discord.gg",
-      "checked_at": "2026-09-10T20:11:36Z",
+      "checked_at": "2026-09-10T20:56:53Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "archive.org",
-      "checked_at": "2026-09-10T20:11:41Z",
+      "checked_at": "2026-09-10T20:56:55Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2922,15 +2390,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "xiaomi.com",
-      "checked_at": "2026-09-10T20:11:42Z",
+      "checked_at": "2026-09-10T20:56:58Z",
       "robots_status": 403,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2940,14 +2404,11 @@
       "llms_txt_status": 403,
       "has_llms_txt": false,
       "ai_txt_status": 403,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "godaddy.com",
-      "checked_at": "2026-09-10T20:11:42Z",
+      "checked_at": "2026-09-10T20:56:59Z",
       "robots_status": 403,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2957,14 +2418,11 @@
       "llms_txt_status": 403,
       "has_llms_txt": false,
       "ai_txt_status": 403,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "steamserver.net",
-      "checked_at": "2026-09-10T20:11:48Z",
+      "checked_at": "2026-09-10T20:57:03Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -2974,14 +2432,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "one.one",
-      "checked_at": "2026-09-10T20:11:49Z",
+      "checked_at": "2026-09-10T20:57:06Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -2991,15 +2446,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "nytimes.com",
-      "checked_at": "2026-09-10T20:11:52Z",
+      "checked_at": "2026-09-10T20:57:08Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -3025,20 +2476,16 @@
         "youbot"
       ],
       "blocks_named_ai_agent": true,
-      "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "sig_directory_status": 404,
+      "has_sig_directory": false,
       "llms_txt_status": 404,
       "has_llms_txt": false,
-      "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "ai_txt_status": 404,
+      "has_ai_txt": false
     },
     {
       "domain": "gravatar.com",
-      "checked_at": "2026-09-10T20:11:54Z",
+      "checked_at": "2026-09-10T20:57:09Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -3056,15 +2503,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "aliyuncs.com",
-      "checked_at": "2026-09-10T20:11:57Z",
+      "checked_at": "2026-09-10T20:57:14Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3074,14 +2517,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "msftconnecttest.com",
-      "checked_at": "2026-09-10T20:12:01Z",
+      "checked_at": "2026-09-10T20:57:16Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3091,14 +2531,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "tumblr.com",
-      "checked_at": "2026-09-10T20:12:02Z",
+      "checked_at": "2026-09-10T20:57:17Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -3116,37 +2553,29 @@
       ],
       "blocks_named_ai_agent": true,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "applovin.com",
-      "checked_at": "2026-09-10T20:12:06Z",
+      "checked_at": "2026-09-10T20:57:21Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "adtrafficquality.google",
-      "checked_at": "2026-09-10T20:12:07Z",
+      "checked_at": "2026-09-10T20:57:23Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3156,14 +2585,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "jomodns.com",
-      "checked_at": "2026-09-10T20:12:11Z",
+      "checked_at": "2026-09-10T20:57:25Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3173,32 +2599,25 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "triplinkintl.com",
-      "checked_at": "2026-09-10T20:12:14Z",
+      "checked_at": "2026-09-10T20:57:30Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "tm-azurefd.net",
-      "checked_at": "2026-09-10T20:12:16Z",
+      "checked_at": "2026-09-10T20:57:31Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3208,14 +2627,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "vedcdnlb.com",
-      "checked_at": "2026-09-10T20:12:17Z",
+      "checked_at": "2026-09-10T20:57:31Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3225,14 +2641,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "discord.com",
-      "checked_at": "2026-09-10T20:12:21Z",
+      "checked_at": "2026-09-10T20:57:37Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -3242,15 +2655,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "webex.com",
-      "checked_at": "2026-09-10T20:12:23Z",
+      "checked_at": "2026-09-10T20:57:37Z",
       "robots_status": 403,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3260,15 +2669,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 403,
-      "has_ai_txt": false,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "dns-parking.com",
-      "checked_at": "2026-09-10T20:12:26Z",
+      "checked_at": "2026-09-10T20:57:42Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3278,14 +2683,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "paypal.com",
-      "checked_at": "2026-09-10T20:12:28Z",
+      "checked_at": "2026-09-10T20:57:43Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -3295,15 +2697,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "3gppnetwork.org",
-      "checked_at": "2026-09-10T20:12:32Z",
+      "checked_at": "2026-09-10T20:57:46Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3313,14 +2711,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "ax-msedge.net",
-      "checked_at": "2026-09-10T20:12:32Z",
+      "checked_at": "2026-09-10T20:57:48Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3330,14 +2725,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "example.com",
-      "checked_at": "2026-09-10T20:12:36Z",
+      "checked_at": "2026-09-10T20:57:51Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3347,32 +2739,25 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "adobe.io",
-      "checked_at": "2026-09-10T20:12:38Z",
+      "checked_at": "2026-09-10T20:57:51Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "ggpht.com",
-      "checked_at": "2026-09-10T20:12:38Z",
+      "checked_at": "2026-09-10T20:57:54Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3382,14 +2767,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "azurewebsites.net",
-      "checked_at": "2026-09-10T20:12:42Z",
+      "checked_at": "2026-09-10T20:57:57Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3399,14 +2781,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "vk.ru",
-      "checked_at": "2026-09-10T20:12:44Z",
+      "checked_at": "2026-09-10T20:57:59Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -3416,15 +2795,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "mts.ru",
-      "checked_at": "2026-09-10T20:12:47Z",
+      "checked_at": "2026-09-10T20:58:00Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -3434,15 +2809,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "shopify.com",
-      "checked_at": "2026-09-10T20:12:48Z",
+      "checked_at": "2026-09-10T20:58:02Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -3452,15 +2823,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": true,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "soundcloud.com",
-      "checked_at": "2026-09-10T20:12:51Z",
+      "checked_at": "2026-09-10T20:58:06Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -3485,15 +2852,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "base.org",
-      "checked_at": "2026-09-10T20:12:54Z",
+      "checked_at": "2026-09-10T20:58:09Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -3503,15 +2866,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "macromedia.com",
-      "checked_at": "2026-09-10T20:12:57Z",
+      "checked_at": "2026-09-10T20:58:13Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3521,14 +2880,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "flickr.com",
-      "checked_at": "2026-09-10T20:13:01Z",
+      "checked_at": "2026-09-10T20:58:15Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -3543,15 +2899,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "namebrightdns.com",
-      "checked_at": "2026-09-10T20:13:08Z",
+      "checked_at": "2026-09-10T20:58:23Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3561,14 +2913,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "googleadservices.com",
-      "checked_at": "2026-09-10T20:13:14Z",
+      "checked_at": "2026-09-10T20:58:28Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3578,32 +2927,25 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "telekom.net",
-      "checked_at": "2026-09-10T20:13:20Z",
+      "checked_at": "2026-09-10T20:58:35Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "cdn-apple.com",
-      "checked_at": "2026-09-10T20:13:27Z",
+      "checked_at": "2026-09-10T20:58:42Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3613,14 +2955,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "w3.org",
-      "checked_at": "2026-09-10T20:13:33Z",
+      "checked_at": "2026-09-10T20:58:48Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -3630,15 +2969,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "bytefcdn-oversea.com",
-      "checked_at": "2026-09-10T20:13:40Z",
+      "checked_at": "2026-09-10T20:58:54Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3648,14 +2983,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "nflxso.net",
-      "checked_at": "2026-09-10T20:13:46Z",
+      "checked_at": "2026-09-10T20:59:00Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3665,14 +2997,11 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "hichina.com",
-      "checked_at": "2026-09-10T20:13:52Z",
+      "checked_at": "2026-09-10T20:59:05Z",
       "robots_status": null,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3682,32 +3011,25 @@
       "llms_txt_status": null,
       "has_llms_txt": false,
       "ai_txt_status": null,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "lencr.org",
-      "checked_at": "2026-09-10T20:13:58Z",
+      "checked_at": "2026-09-10T20:59:12Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
-      "has_llms_txt": true,
+      "has_llms_txt": false,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "rubiconproject.com",
-      "checked_at": "2026-09-10T20:13:59Z",
+      "checked_at": "2026-09-10T20:59:20Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -3717,15 +3039,11 @@
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": true,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "creativecommons.org",
-      "checked_at": "2026-09-10T20:14:07Z",
+      "checked_at": "2026-09-10T20:59:24Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -3735,15 +3053,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "medium.com",
-      "checked_at": "2026-09-10T20:14:08Z",
+      "checked_at": "2026-09-10T20:59:27Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -3761,15 +3075,11 @@
       "llms_txt_status": 403,
       "has_llms_txt": false,
       "ai_txt_status": 403,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "vungle.com",
-      "checked_at": "2026-09-10T20:14:14Z",
+      "checked_at": "2026-09-10T20:59:29Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [],
@@ -3779,15 +3089,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "cnn.com",
-      "checked_at": "2026-09-10T20:14:15Z",
+      "checked_at": "2026-09-10T20:59:34Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -3818,33 +3124,25 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "adsafeprotected.com",
-      "checked_at": "2026-09-10T20:14:21Z",
+      "checked_at": "2026-09-10T20:59:37Z",
       "robots_status": 200,
-      "robots_present": true,
+      "robots_present": false,
       "ai_agents_named": [],
       "blocks_named_ai_agent": false,
       "sig_directory_status": 200,
-      "has_sig_directory": true,
+      "has_sig_directory": false,
       "llms_txt_status": 200,
       "has_llms_txt": true,
       "ai_txt_status": 200,
-      "has_ai_txt": true,
-      "robots_verified": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": true
     },
     {
       "domain": "theguardian.com",
-      "checked_at": "2026-09-10T20:14:22Z",
+      "checked_at": "2026-09-10T20:59:42Z",
       "robots_status": 200,
       "robots_present": true,
       "ai_agents_named": [
@@ -3866,15 +3164,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "robots_verified": true,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "lsrelayaccess.com",
-      "checked_at": "2026-09-10T20:14:28Z",
+      "checked_at": "2026-09-10T20:59:43Z",
       "robots_status": 404,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3884,14 +3178,11 @@
       "llms_txt_status": 404,
       "has_llms_txt": false,
       "ai_txt_status": 404,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     },
     {
       "domain": "oracle.com",
-      "checked_at": "2026-09-10T20:14:29Z",
+      "checked_at": "2026-09-10T20:59:49Z",
       "robots_status": 403,
       "robots_present": false,
       "ai_agents_named": [],
@@ -3901,10 +3192,7 @@
       "llms_txt_status": 403,
       "has_llms_txt": false,
       "ai_txt_status": 403,
-      "has_ai_txt": false,
-      "sig_directory_verified": false,
-      "llms_txt_verified": false,
-      "ai_txt_verified": false
+      "has_ai_txt": false
     }
   ]
 }

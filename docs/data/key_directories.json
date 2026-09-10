@@ -1,0 +1,62 @@
+{
+  "jwks_directory_count": 1,
+  "path": "/.well-known/http-message-signatures-directory",
+  "probed": 2,
+  "probed_utc": "2026-09-10T21:03:31Z",
+  "results": [
+    {
+      "bytes": 243,
+      "content_type": "application/http-message-signatures-directory+json",
+      "detail": {
+        "algorithms": [
+          "Ed25519"
+        ],
+        "key_count": 1,
+        "purpose": "ai",
+        "signature_agent": "https://chatgpt.com",
+        "top_level_fields": [
+          "keys",
+          "purpose",
+          "signature_agent"
+        ]
+      },
+      "domain": "chatgpt.com",
+      "final_url": "https://chatgpt.com/.well-known/http-message-signatures-directory",
+      "redirected": false,
+      "shape": "jwks_directory",
+      "status": 200,
+      "url": "https://chatgpt.com/.well-known/http-message-signatures-directory"
+    },
+    {
+      "bytes": 224,
+      "content_type": "application/http-message-signatures-directory+json",
+      "detail": {
+        "alg": "EdDSA",
+        "crv": "Ed25519",
+        "has_expiry": true,
+        "kty": "OKP",
+        "top_level_fields": [
+          "alg",
+          "crv",
+          "exp",
+          "kid",
+          "kty",
+          "nbf",
+          "use",
+          "x"
+        ],
+        "use": "sig"
+      },
+      "domain": "shopify.com",
+      "final_url": "https://www.shopify.com/.well-known/http-message-signatures-directory",
+      "redirected": true,
+      "shape": "bare_jwk",
+      "status": 200,
+      "url": "https://shopify.com/.well-known/http-message-signatures-directory"
+    }
+  ],
+  "shapes": {
+    "bare_jwk": 1,
+    "jwks_directory": 1
+  }
+}
