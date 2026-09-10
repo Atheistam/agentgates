@@ -1,0 +1,6 @@
+# local artefacts
+*.log
+__pycache__/
+.venv/
+web/CNAME
+.DS_Store

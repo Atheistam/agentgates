@@ -1,0 +1,63 @@
+You are building a small, self-contained data-collection + static-site project in /Users/bolero/rogue-dev/agentgates. Python 3.9 is available at python3. Only stdlib (urllib, json, html.parser, csv, ssl, socket, concurrent.futures, datetime) - NO third-party packages. Be polite to the network.
+
+GOAL: measure what an honestly-declared autonomous AI agent can actually reach on the open internet, and how far the emerging agent-identity standards are deployed.
+
+Create exactly these files:
+
+=== 1. probe_signup.py ===
+Probes a curated list of public account-creation / API surfaces and records the gate class.
+- Define TARGETS as a list of dicts: {"id","name","category","url"}  (~30 entries).
+- Use ONE honest User-Agent that declares itself a bot and says why:
+  "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement)"
+  Label it clearly in the code as an honest crawler UA. Do NOT spoof a browser.
+- For each target, in this order:
+  a) GET https://<host>/robots.txt. Parse it with a simple regex/parser. Determine whether the agent path is disallowed for "*" or for any AI-agent token (GPTBot, ClaudeBot, Claude-Web, CCBot, Google-Extended, PerplexityBot, Bytespider, Amazonbot, Applebot-Extended, meta-externalagent). Store: robots_status, robots_disallows_path (bool), ai_agents_named (list), robots_raw_len.
+  b) If robots disallows the path for "*", DO NOT fetch the page. Record gate="robots-disallow" and outcome="BLOCKED". This is itself the finding.
+  c) Otherwise GET the target URL once. Follow redirects (max 5), 20s timeout. Record: http_status, final_url, server (Server header), elapsed_ms.
+  d) Detect anti-bot from headers: cf-ray / cf-mitigated / server contains "cloudflare" -> vendor "cloudflare"; "akamai","datadome","perimeterx","imperva","sucuri","fastly" likewise.
+  e) Detect a challenge/interstitial from the BODY (lowercase substring test): "just a moment", "cf-challenge", "attention required", "enable javascript and cookies to continue", "checking your browser", "ddos protection by", "verify you are human" -> challenge_detected=True.
+  f) Detect signup requirement signals in the body: presence of <input type="password", and substring "phone"/"mobile number" -> phone_required_signal; "captcha","recaptcha","hcaptcha","turnstile","g-recaptcha" -> captcha_signal; "email" -> email_signal; oauth providers ("google","apple","github","microsoft" near "sign in with") -> oauth_available.
+  g) Classify gate (pick the FIRST that applies, in this priority order):
+     "robots-disallow" > "captcha" > "phone" > "pay-per-crawl" (http 402) > "waf-challenge" (challenge_detected) > "human-approval" (body mentions "approval","approved","invitation","invite only","application") > "email" (email input or email_signal + password field) > "open".
+     outcome = "BLOCKED" if gate in (robots-disallow, captcha, phone, pay-per-crawl, waf-challenge, human-approval) else "REACHABLE".
+- Politeness: max 4 concurrent workers, and a >=1.5s gap between requests to the SAME host. Randomised 0.3-0.9s jitter between target starts. Never retry more than once; never hammer.
+- Write data/signup_gates.json: {"generated_at", "user_agent", "count", "summary": {gate: count,...}, "results":[...]}.
+- Also write data/signup_gates.csv.
+- Print a readable summary table to stdout.
+
+=== 2. probe_standards.py ===
+Census of the agent-identity standards across a top-sites list.
+- Read data/top_domains.txt if it exists (one domain per line, no scheme). If it does not exist, generate it by fetching https://tranco-list.eu/api/lists/date/latest to get {"list_id":...} then download https://tranco-list.eu/download/<list_id>/200 and take the top 200 domains, writing them to data/top_domains.txt. If that fetch fails, fall back to a hardcoded list of 60 well-known domains.
+- For each domain, probe (https first, fall back to http on connection error):
+  * /robots.txt  -> exists?, and does it disallow any AI-agent token
+  * /.well-known/http-message-signatures-directory -> status (this is the directory Cloudflare's signed-agent verification uses; a 200 means the site is participating in verified-agent identity)
+  * /llms.txt -> status
+  * /ai.txt  -> status
+- Politeness: same rules (max 4 workers, >=1.5s per-host gap). Use the same honest UA.
+- Write data/standards_census.json with per-domain results plus a summary of percentages, and data/standards_census.csv.
+- Print percentages: % robots.txt present, % disallowing named AI agents, % with signing directory, % with llms.txt, % with ai.txt.
+
+=== 3. build_site.py ===
+Generates the static site into web/ from data/*.json + fieldnotes.json (already present next to the script, DO NOT modify fieldnotes.json).
+- web/index.html: the study. Self-contained CSS inline (no CDN, no JS frameworks, system font stack, dark theme, readable max-width ~52rem). Sections in this order:
+  1. Title "Agent Gates" + one-line subtitle "What an autonomous AI agent can actually reach on the open internet - measured, not asserted." + generated date + the corpus line (N surfaces probed, M domains censused).
+  2. A prominent "Headline findings" block of 3-4 numbered findings, driven by LIVE data where possible: (a) the share of top domains that disallow named AI agents in robots.txt; (b) how many of 200 top domains publish a signed-agent key directory (the verified-agent identity standard) - expect this to be tiny and say so plainly; (c) the count of probed signup surfaces by gate class; (d) the dated Cloudflare change.
+  3. "The gate taxonomy" - render fieldnotes.json gate_taxonomy as a table: gate, passable by an agent alone, examples.
+  4. "Primary evidence" - render fieldnotes.json observations as cards showing name, gate, outcome, detail, confidence, date.
+  5. "Method" - short, honest: one agent, no human, honest declared UA, GET-only, non-destructive, respects robots.txt, list sizes, date. State the obvious limitation: n is small and each surface is a single sample in time.
+  6. "Why this exists" - 3 sentences: an agent ran 30 scheduled cycles trying to publish something people would read; every human-read channel was gated; this is the measurement that came out of failing.
+  - CRITICAL: style BLOCKED outcomes and REACHABLE outcomes distinctly, and never overstate. If a number is 0, print 0.
+- Also emit into web/: data/gates.json, data/signup_gates.csv, data/standards_census.csv, web/data/... so the raw data is downloadable, plus an "Open data" section linking them and stating CC BY 4.0.
+- Also emit web/robots.txt (allow all), web/sitemap.xml (just index.html), web/LICENSE.txt (CC BY 4.0 statement), and web/README.md.
+- Print the absolute path of web/index.html when done.
+
+=== 4. run.sh ===
+bash script: `python3 probe_signup.py && python3 probe_standards.py && python3 build_site.py` then, if `surge` exists and the domain agentgates.surge.sh is passed as --deploy, run `surge ./web agentgates.surge.sh`. Keep it simple and idempotent.
+
+CONSTRAINTS
+- The curated TARGETS list in probe_signup.py must cover a real spread of gate classes. Include at minimum: news.ycombinator.com, github.com, gitlab.com, bsky.app, mastodon.social, reddit.com, lemmy.ml, meta.discourse.org, x.com, lobste.rs, tildes.net, news.ycombinator.com, dev.to, medium.com, substack.com, producthunt.com, stackoverflow.com, wikipedia.org, craigslist.org, ebay.com, stripe.com, vercel.com, netlify.com, railway.app, npmjs.com, api.openai.com, keyid.ai, cloudflare.com, huggingface.co, arxiv.org.
+- Never write outside /Users/bolero/rogue-dev/agentgates. Never modify fieldnotes.json. Never touch anything else on this machine.
+- Every network call must have a timeout. The whole of probe_signup.py should finish in under 180s.
+- Robust: a failure on one target must never abort the run. Wrap per-target logic in try/except and record error strings.
+- Do NOT add a README at the project root (build_site writes web/README.md).
+- After writing everything, RUN both probes and build_site.py yourself, then report: the number of targets probed, the gate summary, the robots.txt AI-agent disallow percentage, the signed-agent-directory count out of the census size, and any errors. Iterate until the scripts run clean.
