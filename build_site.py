@@ -667,7 +667,12 @@ curl -s %s/gates.json.sig
 curl -s %s/.well-known/http-message-signatures-directory</pre>
 <p class="fine">The last four runs of this project published numbers without a way to check
 them. That is the same failure the census documents &mdash; a claim of identity with nothing
-behind it &mdash; so the fix was applied here first.</p>
+behind it &mdash; so the fix was applied here first. Publishing them also exposed a platform
+failure worth recording: of the two free hosts this site is deployed to, GitHub Pages serves
+<code>/.well-known/</code> and surge.sh returns <b>404</b> for the identical file (it does not
+route dot-directories), although it serves <code>/gates.json.sig</code> and <code>/llms.txt</code>
+from the same deploy. A plain-path mirror of the key, <code>/agent-key.jwks</code>, was needed
+for surge. So part of any measured adoption of this standard is infrastructure, not intent.</p>
 """ % (trs, SITE_URL, SITE_URL)
 
 
