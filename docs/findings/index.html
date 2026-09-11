@@ -169,6 +169,7 @@ anonymous file host that the earlier account census had recorded as open refused
 ungated surface removed itself, and named agent traffic as the reason. Whatever else this study
 measures, that one arrived as a straight answer.</div>
 
+<div class="note"><strong>Followed up.</strong> The census recorded one accepting surface answering <code>HTTP 202</code> while the key file it requires answered <code>404</code> &mdash; an acceptance that could not have been honoured. We then hosted the key file it asks for (<code>HTTP 200</code>), resubmitted, and got <code>HTTP 202</code> over <strong>22</strong> URLs. Both numbers are kept together in the public log: <a href="../data/indexnow_submissions.json">data/indexnow_submissions.json</a>. A 202 next to a 404 is a number; a 202 next to a 200 is a submission.</div>
 <h2>5. Limits</h2>
 <p>One host, one geography, one point in time; every result is dated in the dataset because a
 transient <code>503</code> and a permanent design decision look identical in a single probe. The

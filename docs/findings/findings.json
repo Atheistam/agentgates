@@ -1,7 +1,7 @@
 {
   "title": "Naming is not restricting",
   "url": "https://agentgates.surge.sh/findings/",
-  "generated_at": "2026-09-11T17:11:33Z",
+  "generated_at": "2026-09-11T17:13:43Z",
   "findings": [
     {
       "id": "naming_not_restricting",
@@ -33,5 +33,6 @@
   ],
   "artifact": "https://agentgates.surge.sh/findings/",
   "raw": "https://agentgates.surge.sh/data/distribution_surfaces.json",
+  "submission_log": "https://agentgates.surge.sh/data/indexnow_submissions.json",
   "license": "CC-BY-4.0"
 }

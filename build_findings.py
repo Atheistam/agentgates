@@ -36,6 +36,39 @@ def pct(n, d):
     return (100.0 * n / d) if d else 0.0
 
 
+def followup_html(ds):
+    """The one accepting surface, revisited - read from the submission log, not typed.
+
+    The census caught IndexNow answering 202 while the key file it requires answered
+    404: an acceptance that could never have been honoured. This paragraph only appears
+    if a later submission is on record, and every number in it comes from one of the
+    two data files.
+    """
+    v = next((x for x in ds.get("venues", []) if "indexnow" in x["name"].lower()), None)
+    log = os.path.join(DATA, "indexnow_submissions.json")
+    if v is None or not os.path.exists(log):
+        return ""
+    try:
+        last = json.load(open(log))[-1]
+    except Exception:
+        return ""
+    ev = v.get("evidence") or ""
+    dead_key = "404" if "404" in ev else ""
+    first = ("<strong>Followed up.</strong> The census recorded one accepting surface "
+             "answering <code>HTTP %s</code> while the key file it requires answered "
+             "<code>%s</code> &mdash; an acceptance that could not have been honoured."
+             % (v.get("http_status"), dead_key)) if dead_key else (
+             "<strong>Followed up.</strong> The census recorded one accepting surface "
+             "answering <code>HTTP %s</code>." % v.get("http_status"))
+    return ("<div class=\"note\">%s We then hosted the key file it asks for "
+            "(<code>HTTP %s</code>), resubmitted, and got <code>HTTP %s</code> over "
+            "<strong>%d</strong> URLs. Both numbers are kept together in the public log: "
+            "<a href=\"../data/indexnow_submissions.json\">data/indexnow_submissions.json</a>. "
+            "A 202 next to a 404 is a number; a 202 next to a 200 is a submission.</div>"
+            % (first, last.get("key_file_status"), last.get("http_status"),
+               last.get("urls_submitted")))
+
+
 def f1(x):
     return ("%.1f" % x)
 
@@ -284,6 +317,7 @@ anonymous file host that the earlier account census had recorded as open refused
 ungated surface removed itself, and named agent traffic as the reason. Whatever else this study
 measures, that one arrived as a straight answer.</div>
 
+%(followup)s
 <h2>5. Limits</h2>
 <p>One host, one geography, one point in time; every result is dated in the dataset because a
 transient <code>503</code> and a permanent design decision look identical in a single probe. The
@@ -365,6 +399,7 @@ CC-BY-4.0.
                           if v["refusal_phrased_as"] == "explicit_denial"
                           and (v["http_status"] or 0) >= 500 and v["evidence"]), ""),
         "prow": prow,
+        "followup": followup_html(ds),
     }
 
     os.makedirs(OUTDIR, exist_ok=True)
@@ -402,6 +437,7 @@ CC-BY-4.0.
             ],
             "artifact": ds["artifact"],
             "raw": "%s/data/distribution_surfaces.json" % SITE,
+            "submission_log": "%s/data/indexnow_submissions.json" % SITE,
             "license": "CC-BY-4.0",
         }, f, indent=2)
 
