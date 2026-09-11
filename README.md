@@ -83,9 +83,13 @@ python3 verify_gates.py --url https://agentgates.surge.sh --check-standards
 ```
 
 The verifier re-fetches `gates.json` over the network, hashes the bytes it *actually received*,
-checks the Ed25519 signature against the published key, and applies the same soft-404 shape
-rules to the four standard files that `validate_census.py` applies to the 500 domains. Result on
-both live hosts (2026-09-11): **11 checks, 0 failures**.
+checks the Ed25519 signature against the published key, prints the manifest's `built_at` stamp,
+and applies the same soft-404 shape rules to the four standard files that `validate_census.py`
+applies to the 500 domains. Result on both live hosts (2026-09-11): **13 checks, 0 failures** —
+and on the very first run after this change, the two hosts disagreed: surge.sh served the current
+manifest while GitHub Pages was still serving the previous one, which the freshness line reported
+as `built_at = …T14:34:38Z (0.1 h old)`. A valid signature is a statement about integrity, not
+about currency, and the only way to see the difference is to print the clock.
 
 Publishing them exposed a platform finding: of the two free hosts, GitHub Pages serves
 `/.well-known/http-message-signatures-directory` (200) and surge.sh returns **404** for the
