@@ -95,12 +95,19 @@ surge. Part of any measured adoption of this standard is infrastructure, not int
 
 ## Headline results
 
-| Metric | Value |
-|---|---|
-| Account surfaces closed to a lone agent | **24 of 32 (75%)** |
-| Top domains naming AI agents in `robots.txt` | see `data/standards_census.json` |
-| Domains publishing a signed-agent key directory | ~0–1% |
-| Domains publishing `llms.txt` | a small minority |
+Every census figure below is reported as tranche 1 / tranche 2 — two independent samples
+(n=200 top domains, n=300 at ranks 201–500). The gap between them is the sampling noise, and it
+is small enough that the headline survives it.
+
+| Metric | T1 (n=200) | T2 (n=300) |
+|---|---|---|
+| Account surfaces closed to a lone agent | **24 of 32 (75%)** | — |
+| `robots.txt` served and content-valid | 47.0% | 48.3% |
+| Names an AI agent in `robots.txt` *(token present)* | 16.0% | 18.3% |
+| …of those, actually disallows one *(policy read, not assumed)* | 59.4% | 58.2% |
+| Publishes `llms.txt` | 10.5% | 12.0% |
+| Publishes `ai.txt` | 0.5% | 1.0% |
+| Publishes a signed-agent key directory (`/.well-known/…`) | **1.0%** | **1.0%** |
 | Does declaring yourself an agent change what you get? | `data/declaration_test.json` — the whole response is fetched **four times per URL**, twice with each User-Agent, so ordinary page churn cannot be mistaken for a user-agent effect |
 | Census, second independent sample | `data/standards_census_t2.json` (Tranco ranks 201–500) — a stability band, not an extension: Tranco's ranking regenerates daily, so tranche 1 is frozen and tranche 2 is a separate draw |
 
