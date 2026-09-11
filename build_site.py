@@ -395,6 +395,34 @@ def render_declaration(dt):
     unresolved = s.get("unresolved", cnt("dynamic_unresolved", "inconclusive"))
     median_sim = s.get("similarity_median_declared_vs_generic", "n/a")
     same = cnt("identical", "declared_near_identical")
+
+    # Independent replication of the non-identical results.
+    repl_html = ""
+    rp = load(os.path.join(DATA, "declaration_replication.json"))
+    if rp and rp.get("replicated"):
+        items = rp["replicated"]
+        rep = [r for r in items if str(r.get("verdict", "")).startswith("replicated")]
+        dem = [r for r in items if "NOT" in str(r.get("verdict", "")).upper()]
+        rows = "".join(
+            "<tr><td><strong>%s</strong></td><td>%s</td><td>%s</td>"
+            "<td class=\"meta\">%s</td></tr>"
+            % (esc(str(r.get("name", ""))), esc(str(r.get("run_3", ""))),
+               esc(str(r.get("replication", ""))), esc(str(r.get("detail", ""))))
+            for r in items)
+        repl_html = (
+            "<h3>Did the findings come back the second time?</h3>\n"
+            "<p>Every target that answered differently was re-probed by a separate run of the same\n"
+            "harness, minutes later. A finding that does not return is not a finding. "
+            "<strong>%d of %d</strong> reproduced exactly." % (len(rep), len(items)))
+        if dem:
+            repl_html += (" The exception is <strong>%s</strong>, which flapped: its own browser\n"
+                          "control failed to reproduce itself on the second run, so it is reported\n"
+                          "as unresolved rather than as a finding." % esc(str(dem[0].get("name", ""))))
+        repl_html += "</p>\n<table><thead><tr><th>Target</th><th>First run</th><th>Replication</th>" \
+                     "<th>Detail</th></tr></thead><tbody>%s</tbody></table>\n" % rows
+        if rp.get("interpretation_guard"):
+            repl_html += ("<div class=\"note\"><strong>One thing this does not prove.</strong> %s</div>\n"
+                          % esc(str(rp["interpretation_guard"])))
     unresolved_pct = s.get("unresolved_pct",
                            round(100.0 * unresolved / n, 1) if n else 0.0)
 
@@ -428,6 +456,7 @@ left tail is where the two were actually served different content &mdash; and wh
 candidate finding in this experiment lives.</p>
 %s
 <p class="meta">median visible-text overlap: <strong>%s</strong> across %d URLs.</p>
+%s
 <h3>Every URL that did not answer identically</h3>
 <table><thead><tr><th>Target</th><th>What happened</th><th>Overlap</th>
 <th>Overlap / browser</th><th>Note</th></tr></thead><tbody>%s</tbody></table>
@@ -445,7 +474,7 @@ all three overlap scores</li></ul>
 """ % (npass, esc(str(dt.get("declared_ua", "declared agent"))),
        esc(str(dt.get("generic_ua", "browser"))), bars, n, npass,
        same, punished, esc(str(unresolved_pct)), hist_html,
-       esc(str(median_sim)), n,
+       esc(str(median_sim)), n, repl_html,
        hit_rows, resolved, n, unresolved, n)
 
 

@@ -1,0 +1,45 @@
+{
+  "what": "Independent replication of the declaration experiment's non-identical results.",
+  "why": "A single run of a live-internet measurement is a point estimate. Every target whose two User-Agents produced different content was re-probed by a separate run of the same harness, on a different process, minutes later. A finding that does not come back is not a finding.",
+  "method": "Same 4-pass interleaved design (generic, declared, generic, declared), same visible-text comparison.",
+  "generated_at": "2026-09-11T13:24:00Z",
+  "replicated": [
+    {
+      "name": "Discourse (meta)",
+      "run_3": "declared_downgraded",
+      "replication": "declared_downgraded",
+      "verdict": "replicated",
+      "detail": "declared UA received 781 characters of visible text; the browser UA received 325,272. Reproduced in both runs."
+    },
+    {
+      "name": "X",
+      "run_3": "declared_downgraded",
+      "replication": "declared_downgraded",
+      "verdict": "replicated",
+      "detail": "declared UA received 26 characters of visible text; the browser UA received 173, plus a redirect the declared UA did not get. Reproduced in both runs."
+    },
+    {
+      "name": "Google",
+      "run_3": "declared_downgraded",
+      "replication": "declared_downgraded",
+      "verdict": "replicated",
+      "detail": "declared UA received 230 characters of visible text; the browser UA received 3,217. Reproduced in both runs."
+    },
+    {
+      "name": "Product Hunt",
+      "run_3": "declared_allowed",
+      "replication": "declared_allowed",
+      "verdict": "replicated",
+      "detail": "The inversion is real and reproducible: the declared agent UA received the full page (365,178 characters) while the browser UA received a 16-character stub with HTTP 403."
+    },
+    {
+      "name": "New York Times",
+      "run_3": "declared_differs_consistent",
+      "replication": "dynamic_unresolved",
+      "verdict": "NOT replicated - demoted",
+      "detail": "Scored as a consistent, reproducible 65% visible-text overlap in run 3, but the replication run's own browser-UA control failed to reproduce itself, so the target is unstable and the difference cannot be attributed to the User-Agent. Reported as unresolved, not as a finding."
+    }
+  ],
+  "unchanged_expectation": "The 24 identical results were not re-probed individually; the replication targets the claims, not the null results.",
+  "interpretation_guard": "The User-Agent line is changed as a whole string, so a difference is attributable to the whole string, not specifically to declaring non-humanness. A site that downgrades an unknown non-Mozilla client may be reacting to unfamiliarity rather than to the self-identification."
+}
