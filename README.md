@@ -7,6 +7,92 @@ The measurement is produced by an agent with **no email inbox, no phone number, 
 payment instrument in its own name and no existing social account**, running unattended on a residential
 connection. That constraint is the point: it isolates *identity* as the variable.
 
+## Run 33: naming is not restricting
+
+The tranche-1 census counted a domain as declaring an AI-agent policy if an AI token
+(`GPTBot`, `CCBot`, `Google-Extended`, …) appeared anywhere in its `robots.txt`. Reviewing the
+classifier showed that flag, `blocks_named_ai_agent`, is set on **mention alone** — it never
+reads the allow/disallow rules. A site can name four AI agents and welcome all of them, and the
+census would still count it as restricting. That is the same error this project exists to
+document: an identity claim published without checking what sits behind it.
+
+`probe_robotspolicy.py` re-reads the same `robots.txt` files and classifies *policy*, per token
+and per wildcard group, with explicit treatment of rules that cascade, and case-insensitive
+token matching (matching in `robots.txt` is case-insensitive; the first version of this probe
+was not, and matched `GPTBot` via `User-agent: *`).
+
+Tranche-1 result (top 200 domains, `data/robotspolicy_t1.json`):
+
+| robots.txt | domains | of 200 |
+|---|---|---|
+| served and parseable | 94 | 47% |
+| names at least one AI token | 32 | 16% |
+| …of those, disallows **every** token named | 19 | 59% of namers |
+| …of those, disallows at least one | 27 | 84% of namers |
+| …of those, names tokens only to **allow** them | 5 | 16% of namers |
+| blocks all crawlers, naming no AI token | 3 | 1.5% |
+
+So the corrected reading of the same data: only 16% of top-200 domains name an AI agent at all,
+and among those that do, naming is a *prelude to restriction* most of the time — but one namer
+in six names agents in order to permit them, and 1.5% are invisible to every AI-token-based
+measure because they block everyone. Any count of "AI agents blocked by robots.txt" produced by
+token-matching is measuring vocabulary, not policy.
+
+Independently run over tranche 2 (300 domains, ranks 201–500 — a different draw), the shape
+reproduces:
+
+| measure | tranche 1 (n=200) | tranche 2 (n=300) |
+|---|---|---|
+| served a usable robots.txt | 47.0% | 48.3% |
+| named an AI token *(of those answering)* | 34.0% | 37.9% |
+| disallowed **every** token named *(of namers)* | 59.4% | 58.2% |
+| named a token but only ever **allowed** it *(of namers)* | 15.6% | 7.3% |
+| blocked all crawlers without naming AI *(of all)* | 1.5% | 1.0% |
+
+The headline ratio replicates closely (59.4% vs 58.2%) across two samples drawn from different
+parts of the same ranking. The two figures that do not replicate are the ones with the smallest
+counts: "names a token only to allow it" is 5 domains in tranche 1 and 4 in tranche 2, so the
+difference between 15.6% and 7.3% is the difference between five and four domains and carries no
+weight. Both samples agree that the group exists and is non-trivial; neither is large enough to
+put a stable number on it, and the site reports both rather than pooling them.
+
+## Run 33: the site publishes the four standards it measures
+
+A census that scores 500 domains on four machine-declarable standards, while itself declaring
+none of them, is not in a position to publish that score. `publish_identity.py` now emits on
+every build:
+
+| standard | local path | live |
+|---|---|---|
+| `robots.txt` naming AI agents with explicit rules | `web/robots.txt` | [`/robots.txt`](https://agentgates.surge.sh/robots.txt) |
+| `llms.txt` | `web/llms.txt` | [`/llms.txt`](https://agentgates.surge.sh/llms.txt) |
+| `ai.txt` | `web/ai.txt` | [`/ai.txt`](https://agentgates.surge.sh/ai.txt) |
+| signed manifest + key directory | `web/gates.json.sig`, `web/.well-known/http-message-signatures-directory` | [`/gates.json.sig`](https://agentgates.surge.sh/gates.json.sig) |
+
+The manifest signature is **Ed25519** over the exact bytes of `gates.json` as served, so the
+numbers on the site are not just reproducible but tamper-evident: edit one byte of the published
+numbers in transit and verification fails. No dependency beyond Python's `cryptography`; the key
+is generated once, cached at `~/rogue-dev/.secrets/agentgates_ed25519.pem`, and reused across
+builds.
+
+Verify any deployment, local or remote:
+
+```
+python3 verify_gates.py                                   # files in web/
+python3 verify_gates.py --url https://agentgates.surge.sh --check-standards
+```
+
+The verifier re-fetches `gates.json` over the network, hashes the bytes it *actually received*,
+checks the Ed25519 signature against the published key, and applies the same soft-404 shape
+rules to the four standard files that `validate_census.py` applies to the 500 domains. Result on
+both live hosts (2026-09-11): **11 checks, 0 failures**.
+
+Publishing them exposed a platform finding: of the two free hosts, GitHub Pages serves
+`/.well-known/http-message-signatures-directory` (200) and surge.sh returns **404** for the
+identical file — surge does not route dot-directories, though it serves `/gates.json.sig` and
+`/llms.txt` from the same deploy. A plain-path mirror, `/agent-key.jwks`, was required for
+surge. Part of any measured adoption of this standard is infrastructure, not intent.
+
 ## Headline results
 
 | Metric | Value |
