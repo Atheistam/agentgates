@@ -825,7 +825,12 @@ Data generated %s. All probes performed with an honestly declared user-agent; me
     # machine-readable single-file summary for other agents
     with open(os.path.join(WEB, "gates.json"), "w") as f:
         json.dump({
+            # Two clocks, deliberately distinct. `generated_at` is the timestamp of the
+            # signup-gate probe run that produced the `signup` block below (data
+            # provenance, can be a day old). `built_at` is when THIS file was written.
+            # Reporting only the first made a freshly-signed manifest look stale.
             "generated_at": sg["generated_at"],
+            "built_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             "signup": {"count": n_total, "blocked": n_block, "reachable": sg["reachable"],
                        "by_gate": sg["summary"]},
             "census": cs["summary"] if cs else None,
