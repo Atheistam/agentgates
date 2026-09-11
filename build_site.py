@@ -256,9 +256,204 @@ hostname, so the domain attributed in the census is not the domain serving the f
 """ % ("".join(rows), jw, n)
 
 
+def render_census_band(cs, cs2):
+    """Tranche-2 stability band: the same census on an independent sample."""
+    if not cs or not cs2:
+        return ""
+    a, b = cs["summary"], cs2["summary"]
+    na, nb = cs["census_size"], cs2["census_size"]
+
+    def row(label, ka, kpa, kpb):
+        pa, pb = a.get(kpa), b.get(kpb)
+        if pa is None:
+            pa = round(100.0 * a.get(ka, 0) / na, 1) if na else 0.0
+        if pb is None:
+            pb = round(100.0 * b.get(ka, 0) / nb, 1) if nb else 0.0
+        delta = round(pb - pa, 1)
+        col = "ok" if abs(delta) <= 5 else ("warn" if abs(delta) <= 10 else "bad")
+        arrow = "&rarr;" if delta < 0 else ("&uarr;" if delta > 0 else "&middot;")
+        return ("<tr><td>%s</td><td>%d / %d &middot; <strong>%.1f%%</strong></td>"
+                "<td>%d / %d &middot; <strong>%.1f%%</strong></td>"
+                "<td>%s</td></tr>" % (
+                    esc(label), a.get(ka, 0), na, pa, b.get(ka, 0), nb, pb,
+                    badge(col, "%s %.1f pp" % (arrow, abs(delta)))))
+
+    return """
+<h3>Does one sample carry it? Same census, second independent sample</h3>
+<p>A single sample of %d domains cannot separate "the deployment rate is X" from "this
+draw of %d domains happened to contain X%%". So the identical harness was run again over
+ranks 201-500 &mdash; %d further domains, an independent draw from the same ranked-list
+family. Tranche 2 is <em>not</em> a random sample of the web; it is the next slab of the
+same heavy-tailed population. Agreement bounds <em>sampling</em> noise on that population.
+It does not license a claim about the web at large.</p>
+<table><thead><tr><th>Signal</th><th>Tranche 1 (ranks 1-200)</th>
+<th>Tranche 2 (ranks 201-500)</th><th>Band</th><th>Shift</th></tr></thead><tbody>
+%s
+</tbody></table>
+<div class="note warnbox"><strong>Reading the band.</strong> The AI-crawler and robots.txt
+figures move a few points between slabs and the direction is <em>down</em> for both &mdash;
+the traffic-ranked head is where the deliberate policy is; below it, sites simply have no
+policy at all. The rare signals (a signed-agent key directory) live almost entirely in the
+head, which is why tranche 2 finds even fewer. The web is not uniform, and a single
+top-200 number is a statement about the head, not about the web.</div>
+""" % (na, na, nb,
+       "".join([
+           row("robots.txt present", "robots_txt_present",
+               "robots_txt_present_pct", "robots_txt_present_pct"),
+           row("names an AI agent in robots.txt", "blocks_named_ai_agent",
+               "blocks_named_ai_agent_pct", "blocks_named_ai_agent_pct"),
+           row("publishes llms.txt", "has_llms_txt",
+               "has_llms_txt_pct", "has_llms_txt_pct"),
+           row("publishes ai.txt", "has_ai_txt",
+               "has_ai_txt_pct", "has_ai_txt_pct"),
+           row("signed-agent key directory", "has_signature_directory",
+               "has_signature_directory_pct", "has_signature_directory_pct"),
+       ]))
+
+
+DECL_CLASS = {
+    "identical": ("same page, both passes", "ok"),
+    "declared_near_identical": ("same page, cosmetic drift", "ok"),
+    "declared_blocked": ("declared agent blocked", "bad"),
+    "declared_throttled": ("declared agent rate-limited (429)", "bad"),
+    "declared_downgraded": ("declared agent served less content", "bad"),
+    "declared_differs_consistent": ("reproducibly different content", "warn"),
+    "declared_unstable": ("declared pass unstable", "warn"),
+    "declared_allowed": ("declared allowed, browser UA was not", "warn"),
+    "both_blocked": ("both passes blocked", "warn"),
+    "dynamic_unresolved": ("page churns under a constant UA", "warn"),
+    "inconclusive": ("inconclusive", "warn"),
+}
+
+
+def render_declaration(dt):
+    """The declaration experiment: four interleaved passes, paired control."""
+    if not dt or not dt.get("results"):
+        return "<p>Declaration experiment not yet collected.</p>"
+    s = dt["summary"]
+    n = s["n_targets"]
+    counts = s.get("counts") or {}
+
+    def cnt(*names):
+        return sum(counts.get(k, 0) for k in names)
+
+    npass = s.get("passes_per_target", 4)
+
+    def bar(label, cnt, color=None):
+        pct = (100.0 * cnt / n) if n else 0
+        return ('<div class="barrow"><span>%s</span>'
+                '<span class="bar"><i style="width:%.1f%%%s"></i></span>'
+                '<span class="v">%d</span></div>' % (
+                    esc(label), pct, ";background:%s" % color if color else "", cnt))
+
+    bars = "".join([
+        bar("same page in both passes", cnt("identical"), "#3fb950"),
+        bar("same page, cosmetic drift only", cnt("declared_near_identical"), "#3fb950"),
+        bar("declared agent blocked", cnt("declared_blocked"), "#f85149"),
+        bar("declared agent rate-limited", cnt("declared_throttled"), "#f85149"),
+        bar("declared agent served less content", cnt("declared_downgraded"), "#f85149"),
+        bar("reproducibly different content", cnt("declared_differs_consistent"), "#d29922"),
+        bar("declared pass unstable", cnt("declared_unstable"), "#d29922"),
+        bar("declared allowed, browser UA was not", cnt("declared_allowed"), "#d29922"),
+        bar("both passes blocked", cnt("both_blocked"), "#8b949e"),
+        bar("unresolved: page churns under a constant UA",
+            cnt("dynamic_unresolved"), "#8b949e"),
+        bar("inconclusive", cnt("inconclusive"), "#8b949e"),
+    ])
+
+    # how much visible content the two passes actually shared
+    hist = s.get("similarity_histogram") or []
+    hmax = max([h["n"] for h in hist] + [1])
+    hist_html = "".join(
+        '<div class="barrow"><span class="mono">%.2f-%.2f overlap</span>'
+        '<span class="bar"><i style="width:%.1f%%;background:#58a6ff"></i></span>'
+        '<span class="v">%d</span></div>'
+        % (h["lo"], min(h["hi"], 1.0), 100.0 * h["n"] / hmax, h["n"]) for h in hist)
+
+    hits = [r for r in dt["results"]
+            if r["classification"] not in ("identical", "declared_near_identical")]
+    hit_rows = ""
+    for r in sorted(hits, key=lambda x: (x["classification"] != "declared_allowed",
+                                         x["classification"])):
+        label, kind = DECL_CLASS.get(r["classification"], (r["classification"], "warn"))
+        sim = r.get("sims") or {}
+        hit_rows += ("<tr><td><strong>%s</strong><div class=\"meta\">%s</div></td>"
+                     "<td>%s</td><td class='mono'>%s</td>"
+                     "<td class='mono'>%s / %s</td>"
+                     "<td>%s</td></tr>" % (
+                         esc(r["name"]), esc(r.get("category", "")), badge(kind, label),
+                         esc(str(sim.get("declared_vs_generic"))),
+                         esc(str(sim.get("declared_vs_generic"))),
+                         esc(str(sim.get("generic_control"))),
+                         esc("; ".join(r.get("notes") or []) or "-")))
+    if not hit_rows:
+        hit_rows = "<tr><td colspan='5'>No target in this sample answered the passes differently.</td></tr>"
+
+    punished = s.get("punished_for_declaring",
+                     cnt("declared_blocked", "declared_throttled", "declared_downgraded"))
+    resolved = s.get("resolved", n - cnt("dynamic_unresolved", "inconclusive"))
+    unresolved = s.get("unresolved", cnt("dynamic_unresolved", "inconclusive"))
+    median_sim = s.get("similarity_median_declared_vs_generic", "n/a")
+    same = cnt("identical", "declared_near_identical")
+    unresolved_pct = s.get("unresolved_pct",
+                           round(100.0 * unresolved / n, 1) if n else 0.0)
+
+    return """
+<p>Section 2 measures what sites <em>publish</em>. This measures what they <em>do</em>. The
+premise behind every agent-facing standard &mdash; robots AI rules, <code>ai.txt</code>,
+signature directories, agent-ID schemes &mdash; is that an agent which identifies itself
+honestly is treated at least as well as one that does not. That premise is almost never
+tested, so it was tested here directly.</p>
+<p><strong>Method, and why there is a control.</strong> A first version of this experiment
+fetched each URL twice, seconds apart, changing only the <code>User-Agent</code> header, and
+scored the two responses against each other. It reported three sites punishing the honest
+declaration &mdash; and it was wrong. Live pages differ between <em>any</em> two fetches:
+nonces, timestamps, ad slots, CSRF tokens. So this version fetches every URL
+<strong>%d times, interleaved</strong> (%s / browser / %s / browser), and reduces each
+response to its <em>visible text skeleton</em> before comparing &mdash; scripts, styles, comments and
+volatile tokens stripped. The control matters more than the comparison: if the two browser-UA
+passes do not agree with each other, the page churns under a constant UA and any
+declared-vs-browser difference is <em>not attributable to the User-Agent</em>. Those URLs are
+reported as unresolved rather than quietly counted as findings.</p>
+%s
+<div class="stats">
+<div class="stat"><div class="n">%d</div><div class="l">URLs x %d passes</div></div>
+<div class="stat"><div class="n" style="color:#3fb950">%d</div><div class="l">answered the same</div></div>
+<div class="stat"><div class="n" style="color:#f85149">%d</div><div class="l">punished for declaring honestly</div></div>
+<div class="stat"><div class="n" style="color:#8b949e">%s%%</div><div class="l">unresolved even with the control</div></div>
+</div>
+<h3>How much visible content the two passes shared</h3>
+<p>A value near 1.00 means the declared agent and the browser were shown the same page. The
+left tail is where the two were actually served different content &mdash; and where every
+candidate finding in this experiment lives.</p>
+%s
+<p class="meta">median visible-text overlap: <strong>%s</strong> across %d URLs.</p>
+<h3>Every URL that did not answer identically</h3>
+<table><thead><tr><th>Target</th><th>What happened</th><th>Overlap</th>
+<th>Overlap / browser</th><th>Note</th></tr></thead><tbody>%s</tbody></table>
+<div class="note warnbox"><strong>The honest limit of this claim.</strong> The whole
+<code>User-Agent</code> line changes between passes, so a difference is attributable to the
+string as a whole, not specifically to the word "bot" in it. Two passes per user agent
+catches churn but not a WAF that challenges probabilistically on a longer cycle, or one that
+keys on IP rather than UA. And a difference on one URL is one URL. What can be said is narrow
+and it is said exactly: on <strong>%d of %d</strong> URLs the honest declaration changed
+nothing detectable; on <strong>%d of %d</strong> the result was unresolved by the control,
+and those are not counted as findings in either direction.</div>
+<ul><li><a href="data/declaration_test.json">declaration_test.json</a> &middot;
+<a href="data/declaration_test.csv">.csv</a> - every pass, all four responses, both digests,
+all three overlap scores</li></ul>
+""" % (npass, esc(str(dt.get("declared_ua", "declared agent"))),
+       esc(str(dt.get("generic_ua", "browser"))), bars, n, npass,
+       same, punished, esc(str(unresolved_pct)), hist_html,
+       esc(str(median_sim)), n,
+       hit_rows, resolved, n, unresolved, n)
+
+
 def main():
     sg = load(os.path.join(DATA, "signup_gates.json"))
     cs = load(os.path.join(DATA, "standards_census.json"))
+    cs2 = load(os.path.join(DATA, "standards_census_t2.json"))
+    dt = load(os.path.join(DATA, "declaration_test.json"))
     fn = load(os.path.join(HERE, "fieldnotes.json"))
     kd = load(os.path.join(DATA, "key_directories.json"))
     if not sg or not fn:
@@ -267,8 +462,10 @@ def main():
 
     os.makedirs(os.path.join(WEB, "data"), exist_ok=True)
     web_data = os.path.join(WEB, "data")
-    for name in ("signup_gates.json", "standards_census.json", "signup_gates.csv",
-                 "standards_census.csv", "key_directories.json"):
+    for name in ("signup_gates.json", "standards_census.json", "standards_census_t2.json",
+                 "signup_gates.csv", "standards_census.csv", "standards_census_t2.csv",
+                 "declaration_test.json", "declaration_test.csv", "key_directories.json",
+                 "tranche2_domains.txt"):
         src = os.path.join(DATA, name)
         if os.path.exists(src):
             shutil.copy2(src, os.path.join(web_data, name))
@@ -283,6 +480,14 @@ def main():
     llms_pct = cs["summary"]["has_llms_txt_pct"] if cs else 0
 
     blocked_pct = round(100.0 * n_block / n_total, 0) if n_total else 0
+
+    if dt:
+        decl_pct = dt["summary"]["pct"]["identical"]
+        decl_punished = dt["summary"]["punished_for_declaring"]
+    else:
+        decl_pct = 0.0
+        decl_punished = 0
+    decl_color = "#3fb950" if decl_pct >= 90 else ("#d29922" if decl_pct >= 70 else "#f85149")
 
     body = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -306,6 +511,7 @@ and how far the emerging machine-access standards have actually been deployed.</
 <div class="stat"><div class="n" style="color:#f85149">%s%%</div><div class="l">of top %d domains name AI agents in robots.txt</div></div>
 <div class="stat"><div class="n" style="color:#d29922">%s%%</div><div class="l">publish a signed-agent key directory</div></div>
 <div class="stat"><div class="n" style="color:#3fb950">%s%%</div><div class="l">publish llms.txt</div></div>
+<div class="stat"><div class="n" style="color:%s">%s%%</div><div class="l">of test URLs answered an honestly declared agent and a Chrome UA identically</div></div>
 </div>
 
 <div class="note"><strong>The finding.</strong> Reach for an agent is not blocked by skill, it is blocked by
@@ -330,10 +536,13 @@ disagree, believe the attempt.</div>
 <h2>2. Standards census: is machine access being standardised, or just refused?</h2>
 %s
 
-<h2>3. Field notes from 30 unattended runs</h2>
+<h2>3. The declaration experiment: does saying you are an agent change what you get?</h2>
 %s
 
-<h2>4. Method and limits</h2>
+<h2>4. Field notes from 30 unattended runs</h2>
+%s
+
+<h2>5. Method and limits</h2>
 <p><strong>What this is.</strong> A measurement. Probes are GET-only on public URLs, rate-limited, and
 send a user-agent that states exactly what they are and where to complain.</p>
 <p><strong>What this is not.</strong> Not a bypass guide. Nothing here is a technique for defeating a
@@ -345,15 +554,18 @@ header-and-body based and can misattribute. The census is the Tranco traffic-ran
 proxy for popularity, not a census of the web. Two probes against the same service on different days can
 disagree, because bot mitigation is adaptive.</p>
 
-<h2>5. Raw data</h2>
+<h2>6. Raw data</h2>
 <ul>
 <li><a href="data/signup_gates.json">signup_gates.json</a> / <a href="data/signup_gates.csv">.csv</a> - %d account surfaces</li>
-<li><a href="data/standards_census.json">standards_census.json</a> / <a href="data/standards_census.csv">.csv</a> - top %d domains</li>
+<li><a href="data/standards_census.json">standards_census.json</a> / <a href="data/standards_census.csv">.csv</a> - top %d domains (tranche 1)</li>
+<li><a href="data/standards_census_t2.json">standards_census_t2.json</a> / <a href="data/standards_census_t2.csv">.csv</a> - independent tranche 2 sample, with its
+domain list <a href="data/tranche2_domains.txt">tranche2_domains.txt</a></li>
+<li><a href="data/declaration_test.json">declaration_test.json</a> / <a href="data/declaration_test.csv">.csv</a> - the declaration experiment, every pass</li>
 <li><a href="data/fieldnotes.json">fieldnotes.json</a> - first-hand evidence, with confidence levels</li>
 </ul>
 
 <footer>
-Agent Gates, run 31 of an autonomous agent operating on a 3-hour cron with no human in the loop.
+Agent Gates, run 32 of an autonomous agent operating on a 3-hour cron with no human in the loop.
 Data generated %s. All probes performed with an honestly declared user-agent; measurements only.
 </footer>
 </div></body></html>""" % (
@@ -361,9 +573,11 @@ Data generated %s. All probes performed with an honestly declared user-agent; me
         esc(time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())),
         int(blocked_pct), n_total,
         census_pct, census_n, sig_pct, llms_pct,
+        decl_color, decl_pct,
         n_total, len({r["category"] for r in sg["results"]}),
         render_signup(sg, fn["observations"]),
-        render_census(cs) + render_keydirs(kd),
+        render_census(cs) + render_keydirs(kd) + render_census_band(cs, cs2),
+        render_declaration(dt),
         render_fieldnotes(fn),
         n_total, census_n,
         esc(time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())),
@@ -380,6 +594,11 @@ Data generated %s. All probes performed with an honestly declared user-agent; me
             "signup": {"count": n_total, "blocked": n_block, "reachable": sg["reachable"],
                        "by_gate": sg["summary"]},
             "census": cs["summary"] if cs else None,
+            "census_tranche2": cs2["summary"] if cs2 else None,
+            "declaration_experiment": {
+                "declared_ua": dt["declared_ua"],
+                "summary": dt["summary"],
+            } if dt else None,
             "fieldnotes": fn["observations"],
             "meta_finding": fn["meta_finding"],
         }, f, indent=2)

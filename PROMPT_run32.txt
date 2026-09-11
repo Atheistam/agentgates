@@ -1,0 +1,95 @@
+You are working in /Users/bolero/rogue-dev/agentgates — an existing Python measurement
+project called "Agent Gates". Read README.md, probe_standards.py, probe_signup.py and
+validate_census.py FIRST to match the existing style, naming and conventions.
+
+The project measures, empirically, what an HONESTLY-DECLARED autonomous AI agent can
+actually reach on the open internet. Integrity is the entire point of this project:
+an HTTP 200 is NOT evidence of anything, and every claim must be content-validated.
+Python 3, stdlib only (urllib, ssl, csv, json, hashlib, concurrent.futures). No pip
+installs. Be polite: GET only, public URLs only, small sleeps between requests,
+identify honestly.
+
+Build exactly TWO new scripts. Do not modify any existing file except as noted.
+
+=== SCRIPT 1: probe_declaration.py ===
+THE EXPERIMENT: does honestly declaring yourself as an AI agent change what you get?
+For each target URL, fetch it TWICE, back to back, changing ONLY the User-Agent:
+  - "declared" pass: the honest UA already used by this project,
+    "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability
+    measurement; GET-only, non-destructive)"
+  - "generic" pass: a plain desktop browser UA string (use a current Chrome on macOS UA)
+Everything else identical: same headers otherwise, no cookies, no JS, 20s timeout,
+do not follow a redirect more than 10 hops, and record the FINAL url.
+
+For each pass record: http status, final_url, redirect chain length, body length,
+sha256 of the body, a normalized body hash (collapse all whitespace runs to a single
+space and strip, so pure formatting noise does not count as a difference),
+whether a bot-challenge marker is present (reuse/extend the CHALLENGE_MARKERS
+concept from probe_signup.py), and the value of any WAF-ish response headers
+(server, cf-ray, cf-mitigated, x-datadome, akamai-*, x-amzn-waf*).
+
+Then classify the pair into exactly one of:
+  "identical"           -> same status and same normalized body hash
+  "declared_blocked"    -> generic got a usable 2xx page, declared got 403/429/503
+                           or a bot-challenge page
+  "declared_throttled"  -> generic 2xx, declared got 429 specifically
+  "declared_downgraded" -> both 2xx but the declared pass got materially less content
+                           (normalized body hash differs AND declared body is < 50%
+                           the size of the generic body)
+  "both_blocked"        -> neither pass got a usable 2xx page
+  "declared_allowed"    -> declared 2xx/usable while generic was not (the reverse case)
+  "inconclusive"        -> anything else (e.g. network error, both differ in size but
+                           not enough to call it)
+Run the two passes SEQUENTIALLY per target (declared first, then generic), with a
+1.5-2.5s randomized sleep between the two passes and between targets, and a
+ThreadPoolExecutor of 3 targets at a time. Do not hammer anyone.
+
+TARGETS: import the existing TARGETS list from probe_signup.py if it is importable
+(guard the import with try/except and fall back to a small inline list). ADD these
+additional neutral, non-signup targets so the test is not only about signup pages:
+    https://www.google.com/ , https://en.wikipedia.org/wiki/Main_Page ,
+    https://stackoverflow.com/questions , https://www.reddit.com/ ,
+    https://news.ycombinator.com/ , https://www.nytimes.com/ ,
+    https://www.amazon.com/ , https://github.com/explore ,
+    https://www.cloudflare.com/ , https://www.bbc.com/news
+Deduplicate targets by URL.
+
+OUTPUT: data/declaration_test.json containing
+  generated_at, declared_ua, generic_ua,
+  summary: {n_targets, counts per classification, pct for each,
+            "reachable_undeclared_but_not_declared" = declared_blocked+declared_throttled
+            +declared_downgraded, and its pct,
+            "both_blocked_pct"},
+  results: [ {url, name, category, declared:{...}, generic:{...}, classification, notes} ]
+Also write data/declaration_test.csv with one flat row per target.
+Print a readable summary table to stdout.
+
+=== SCRIPT 2: census_tranche.py ===
+Make the standards census runnable on an arbitrary domain list, WITHOUT changing the
+behaviour of the existing probe_standards.py pipeline.
+- Refactor minimally: add an optional CLI to probe_standards.py using argparse with
+  --domains PATH (default stays data/top_domains.txt) and --out-prefix NAME (default
+  stays "standards_census"). When --out-prefix is given, write NAME.json / NAME.csv.
+  The existing no-argument invocation MUST behave exactly as before (same default
+  output filenames, same console output) so the existing run.sh keeps working.
+- Then census_tranche.py is a thin wrapper that runs the same census against
+  data/tranche2_domains.txt (300 domains, Tranco ranks 201-500) and writes
+  data/standards_census_t2.json / .csv.
+- IMPORTANT: also record in the tranche-2 JSON a "tranche" block with
+  {"tranche": 2, "rank_range": "201-500", "source": "...", "note": "independent
+  sample drawn from the same Tranco list family as tranche 1"}.
+- The census only needs the FULL probe for tranche 2. Keep it honest and content-validated.
+
+=== SHARED ===
+- Both scripts must run from any cwd (resolve paths from __file__).
+- Both must be re-runnable and idempotent in output.
+- Both must print progress lines and a final summary.
+- Handle every network error without crashing: record it as a status of None.
+- Add a short module docstring explaining what the script measures and, crucially,
+  what it does NOT prove (state the limits of the claim plainly).
+
+When you are done, run `python3 -c "import ast,sys; ast.parse(open('probe_declaration.py').read()); ast.parse(open('census_tranche.py').read())"` to confirm
+the files parse, and run `python3 probe_standards.py --help` to confirm the CLI works.
+DO NOT run the full network probes yourself (they take many minutes; the operator will
+run them). Just build, syntax-check, and report. Report exactly which files you created
+or changed, and the exact command lines to run each one.

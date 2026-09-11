@@ -1,0 +1,3853 @@
+{
+  "generated_at": "2026-09-11T11:20:31Z",
+  "declared_ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+  "generic_ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+  "method_note": "FOUR interleaved GETs per URL (generic, declared, generic, declared) differing only in the User-Agent header. The repeat of each UA is a control: if the two browser-UA passes disagree with each other the page churns under a constant UA, and the declared-vs-generic difference is not attributable to the UA (scored `dynamic_unresolved`). Sequential per target so transient conditions hit all four passes alike; 3 targets concurrently with randomised sleeps. Body comparison uses a whitespace-normalised SHA-256 so formatting jitter is not scored.",
+  "passes_per_target": 4,
+  "passes_per_url": 4,
+  "summary": {
+    "n_targets": 42,
+    "counts": {
+      "identical": 24,
+      "declared_near_identical": 0,
+      "declared_differs_consistent": 1,
+      "declared_unstable": 0,
+      "declared_downgraded": 3,
+      "declared_blocked": 0,
+      "declared_throttled": 0,
+      "declared_allowed": 1,
+      "both_blocked": 11,
+      "dynamic_unresolved": 2,
+      "inconclusive": 0
+    },
+    "pct": {
+      "identical": 57.1,
+      "declared_near_identical": 0.0,
+      "declared_differs_consistent": 2.4,
+      "declared_unstable": 0.0,
+      "declared_downgraded": 7.1,
+      "declared_blocked": 0.0,
+      "declared_throttled": 0.0,
+      "declared_allowed": 2.4,
+      "both_blocked": 26.2,
+      "dynamic_unresolved": 4.8,
+      "inconclusive": 0.0
+    },
+    "open_to_generic_ua": 30,
+    "punished_for_declaring": 3,
+    "punished_for_declaring_pct_of_all": 7.1,
+    "punished_for_declaring_pct_of_open": 10.0,
+    "differing_on_declaration": 1,
+    "differing_on_declaration_pct": 2.4,
+    "unresolved": 2,
+    "unresolved_pct": 4.8,
+    "resolved": 40,
+    "resolved_pct": 95.2,
+    "similarity_median_declared_vs_generic": 1.0,
+    "similarity_histogram": [
+      {
+        "lo": 0.0,
+        "hi": 0.5,
+        "n": 9
+      },
+      {
+        "lo": 0.5,
+        "hi": 0.7,
+        "n": 1
+      },
+      {
+        "lo": 0.7,
+        "hi": 0.9,
+        "n": 0
+      },
+      {
+        "lo": 0.9,
+        "hi": 0.97,
+        "n": 0
+      },
+      {
+        "lo": 0.97,
+        "hi": 1.01,
+        "n": 32
+      }
+    ],
+    "both_blocked": 11,
+    "both_blocked_pct": 26.2,
+    "interpretation_guard": "The UA line is changed as a WHOLE, so any difference is attributable to the whole string, not specifically to declaring non-humanness. The control pass bounds churn but does not eliminate it; a WAF that is probabilistic may still read as a stable-looking difference.",
+    "clean_difference_total": 4,
+    "clean_difference_pct": 9.5,
+    "passes_per_target": 4
+  },
+  "results": [
+    {
+      "id": "hn",
+      "name": "Hacker News",
+      "category": "news/community",
+      "url": "https://news.ycombinator.com/login",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://news.ycombinator.com/login",
+        "redirects": 0,
+        "body_len": 1125,
+        "body_sha256": "2f80409fa46f30cfcf9d1f1576a5c2625d9a232ccafc7c7cb6f4b2efa51a2d35",
+        "norm_sha256": "9b8f5de46fa1445c1fdbedbd05efda4dcc0e888b6a1cc00ed8450a7d1ce6c3bf",
+        "text_len": 82,
+        "text_sha256": "57641e2b274dc029c31d4e078653b3632ae32db51ccf7349852493600168c15a",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://news.ycombinator.com/login",
+        "redirects": 0,
+        "body_len": 1125,
+        "body_sha256": "2f80409fa46f30cfcf9d1f1576a5c2625d9a232ccafc7c7cb6f4b2efa51a2d35",
+        "norm_sha256": "9b8f5de46fa1445c1fdbedbd05efda4dcc0e888b6a1cc00ed8450a7d1ce6c3bf",
+        "text_len": 82,
+        "text_sha256": "57641e2b274dc029c31d4e078653b3632ae32db51ccf7349852493600168c15a",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://news.ycombinator.com/login",
+        "redirects": 0,
+        "body_len": 1125,
+        "body_sha256": "2f80409fa46f30cfcf9d1f1576a5c2625d9a232ccafc7c7cb6f4b2efa51a2d35",
+        "norm_sha256": "9b8f5de46fa1445c1fdbedbd05efda4dcc0e888b6a1cc00ed8450a7d1ce6c3bf",
+        "text_len": 82,
+        "text_sha256": "57641e2b274dc029c31d4e078653b3632ae32db51ccf7349852493600168c15a",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://news.ycombinator.com/login",
+        "redirects": 0,
+        "body_len": 1125,
+        "body_sha256": "2f80409fa46f30cfcf9d1f1576a5c2625d9a232ccafc7c7cb6f4b2efa51a2d35",
+        "norm_sha256": "9b8f5de46fa1445c1fdbedbd05efda4dcc0e888b6a1cc00ed8450a7d1ce6c3bf",
+        "text_len": 82,
+        "text_sha256": "57641e2b274dc029c31d4e078653b3632ae32db51ccf7349852493600168c15a",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "category": "code hosting",
+      "url": "https://github.com/signup",
+      "classification": "both_blocked",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://github.com/signup",
+        "redirects": 0,
+        "body_len": 770,
+        "body_sha256": "01d8a040569eb5f725acf42d0c6859ef448b3bda6083cdfd60e81a57f282325c",
+        "norm_sha256": "01d8a040569eb5f725acf42d0c6859ef448b3bda6083cdfd60e81a57f282325c",
+        "text_len": 54,
+        "text_sha256": "fa8c1a9373a29a61c7b74c3486e58083730afb85ef9bbcc02269ef0f13fc5243",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "x-datadome": "protected"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://github.com/signup",
+        "redirects": 0,
+        "body_len": 770,
+        "body_sha256": "087a5c8e57064f98ffa1e8e73da76d6e4a4f0f48157f2215c882959e5f667b5c",
+        "norm_sha256": "087a5c8e57064f98ffa1e8e73da76d6e4a4f0f48157f2215c882959e5f667b5c",
+        "text_len": 54,
+        "text_sha256": "fa8c1a9373a29a61c7b74c3486e58083730afb85ef9bbcc02269ef0f13fc5243",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "x-datadome": "protected"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://github.com/signup",
+        "redirects": 0,
+        "body_len": 770,
+        "body_sha256": "ea6da3ba7575b3748181ee1f6c782fdf7a5197b3a9a1f6687341f81808a7d42e",
+        "norm_sha256": "ea6da3ba7575b3748181ee1f6c782fdf7a5197b3a9a1f6687341f81808a7d42e",
+        "text_len": 54,
+        "text_sha256": "fa8c1a9373a29a61c7b74c3486e58083730afb85ef9bbcc02269ef0f13fc5243",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "x-datadome": "protected"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://github.com/signup",
+        "redirects": 0,
+        "body_len": 770,
+        "body_sha256": "e6bac32d145068df3c35d3004ca042c8e00bff5ddb183ffdff386adc5064ac4d",
+        "norm_sha256": "e6bac32d145068df3c35d3004ca042c8e00bff5ddb183ffdff386adc5064ac4d",
+        "text_len": 54,
+        "text_sha256": "fa8c1a9373a29a61c7b74c3486e58083730afb85ef9bbcc02269ef0f13fc5243",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "x-datadome": "protected"
+        },
+        "marker_anywhere": "captcha"
+      }
+    },
+    {
+      "id": "gitlab",
+      "name": "GitLab",
+      "category": "code hosting",
+      "url": "https://gitlab.com/users/sign_up",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://gitlab.com/users/sign_up",
+        "redirects": 0,
+        "body_len": 33480,
+        "body_sha256": "4fdc8943bf9608ea905d14e7e41ce1c23358adb13e9e2ebb09c641b053392b3c",
+        "norm_sha256": "e02757912bae806194f1674f7b435a53c6db227959c4af4cd54f39f8d2727906",
+        "text_len": 751,
+        "text_sha256": "d251f4c2f894a05cf40880b3b7ecae30a8bfbdbe092b3140f9a5e04ea5f46b43",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39645bd1ab8872d-BCN",
+          "cf-cache-status": "BYPASS"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://gitlab.com/users/sign_up",
+        "redirects": 0,
+        "body_len": 33530,
+        "body_sha256": "7c02cdf56791a5d19a84f26a5f2e74511fe92d48f89c661909e7667dc8ab4eea",
+        "norm_sha256": "8bc1e2bfc0aa0590e0aaff81a05b4d3acda951d1c1d8fb4382053a91c5064062",
+        "text_len": 751,
+        "text_sha256": "d251f4c2f894a05cf40880b3b7ecae30a8bfbdbe092b3140f9a5e04ea5f46b43",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39645b0ae1b98e6-BCN",
+          "cf-cache-status": "BYPASS"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://gitlab.com/users/sign_up",
+        "redirects": 0,
+        "body_len": 33485,
+        "body_sha256": "54a0d6f632289e8eaea4bc81830d7d496ff9dc1d9a5d12e2602852a402e381e2",
+        "norm_sha256": "877588bf6107f90b2c50eba6e38cefca1d642182d6a13c2f0f4e2a26dfbb921c",
+        "text_len": 751,
+        "text_sha256": "d251f4c2f894a05cf40880b3b7ecae30a8bfbdbe092b3140f9a5e04ea5f46b43",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39645dd3e1d6031-BCN",
+          "cf-cache-status": "BYPASS"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://gitlab.com/users/sign_up",
+        "redirects": 0,
+        "body_len": 33530,
+        "body_sha256": "07711978202ee2be871abfdb6a168d735e69ca749bf8dacbaf93cc3a418ca71d",
+        "norm_sha256": "8331b9979feb7ec2850e668c1df0e5028f1944e3c0a238b2b7ff45969d8587dd",
+        "text_len": 751,
+        "text_sha256": "d251f4c2f894a05cf40880b3b7ecae30a8bfbdbe092b3140f9a5e04ea5f46b43",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39645cd0de21d3b-BCN",
+          "cf-cache-status": "BYPASS"
+        },
+        "marker_anywhere": "captcha"
+      }
+    },
+    {
+      "id": "bsky",
+      "name": "Bluesky",
+      "category": "social",
+      "url": "https://bsky.app/",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://bsky.app/",
+        "redirects": 0,
+        "body_len": 6948,
+        "body_sha256": "46da14315173772245ddb6c4ceeb00685fd284eccc8ffd4476506663886dec54",
+        "norm_sha256": "7ef5200d618b3f4bf46d940e376b7cebcaab75897b2d39a6746d862de2db7592",
+        "text_len": 7,
+        "text_sha256": "41a37f5b02ea65328a169b566cb3b46a3e74f5a910b7bd4d7328ff2c4142b3ce",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {},
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://bsky.app/",
+        "redirects": 0,
+        "body_len": 6948,
+        "body_sha256": "46da14315173772245ddb6c4ceeb00685fd284eccc8ffd4476506663886dec54",
+        "norm_sha256": "7ef5200d618b3f4bf46d940e376b7cebcaab75897b2d39a6746d862de2db7592",
+        "text_len": 7,
+        "text_sha256": "41a37f5b02ea65328a169b566cb3b46a3e74f5a910b7bd4d7328ff2c4142b3ce",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {},
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://bsky.app/",
+        "redirects": 0,
+        "body_len": 6948,
+        "body_sha256": "46da14315173772245ddb6c4ceeb00685fd284eccc8ffd4476506663886dec54",
+        "norm_sha256": "7ef5200d618b3f4bf46d940e376b7cebcaab75897b2d39a6746d862de2db7592",
+        "text_len": 7,
+        "text_sha256": "41a37f5b02ea65328a169b566cb3b46a3e74f5a910b7bd4d7328ff2c4142b3ce",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {},
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://bsky.app/",
+        "redirects": 0,
+        "body_len": 6948,
+        "body_sha256": "46da14315173772245ddb6c4ceeb00685fd284eccc8ffd4476506663886dec54",
+        "norm_sha256": "7ef5200d618b3f4bf46d940e376b7cebcaab75897b2d39a6746d862de2db7592",
+        "text_len": 7,
+        "text_sha256": "41a37f5b02ea65328a169b566cb3b46a3e74f5a910b7bd4d7328ff2c4142b3ce",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {},
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "mastodon_social",
+      "name": "Mastodon (mastodon.social)",
+      "category": "social/fediverse",
+      "url": "https://mastodon.social/auth/sign_up",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://mastodon.social/auth/sign_up",
+        "redirects": 0,
+        "body_len": 28133,
+        "body_sha256": "98c9060cecbd90dd59de83e2b11f2ede3f0bc1c54e112fbf6107b6953e1d2d03",
+        "norm_sha256": "f67cf3b8d4eeb194ab02c050b0ea2b83ed8f5cdd7a9398f7a95050b71445ebe5",
+        "text_len": 2012,
+        "text_sha256": "fa529ac3c6a37b001f84b399f3ea4840b55ae81b6f6966e9db8914db0e93bd29",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Mastodon",
+          "via": "1.1 varnish, 1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://mastodon.social/auth/sign_up",
+        "redirects": 0,
+        "body_len": 28133,
+        "body_sha256": "4fcf0d0306ab8e03f82011b9f6b6517843f8ec381606754275ddb76172e91687",
+        "norm_sha256": "039136dc01c07355e4abab8b201dcb3fe473f47911a07ae0ef7d11d6904bf436",
+        "text_len": 2012,
+        "text_sha256": "fa529ac3c6a37b001f84b399f3ea4840b55ae81b6f6966e9db8914db0e93bd29",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Mastodon",
+          "via": "1.1 varnish, 1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://mastodon.social/auth/sign_up",
+        "redirects": 0,
+        "body_len": 28133,
+        "body_sha256": "e4a30f703d1e1a3ea3cc69306a49c6a6fb692694b6ff3bb7959fcb94d88d281c",
+        "norm_sha256": "00a134d76b7fdff7bb0fc35c2628793351ff7ec480ce8dedc4c5ab8fe07e5ab8",
+        "text_len": 2012,
+        "text_sha256": "fa529ac3c6a37b001f84b399f3ea4840b55ae81b6f6966e9db8914db0e93bd29",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Mastodon",
+          "via": "1.1 varnish, 1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://mastodon.social/auth/sign_up",
+        "redirects": 0,
+        "body_len": 28133,
+        "body_sha256": "9d8a1bb83ffa37ec7232f5e8b66592beff82e702e8466fed6a66a77f467da96e",
+        "norm_sha256": "08bb014c0582720fa2bb0473c915792945d5db1fe7d4efc2df18a94069016222",
+        "text_len": 2012,
+        "text_sha256": "fa529ac3c6a37b001f84b399f3ea4840b55ae81b6f6966e9db8914db0e93bd29",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Mastodon",
+          "via": "1.1 varnish, 1.1 varnish"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "reddit",
+      "name": "Reddit",
+      "category": "social",
+      "url": "https://www.reddit.com/register/",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.reddit.com/register/",
+        "redirects": 0,
+        "body_len": 8406,
+        "body_sha256": "bff0dd2f6d0fddb896b3b4a4ca06ab0b5c8fc9021fd1b968c81e0dca4d83918a",
+        "norm_sha256": "ca3de4f036ec8d3ac127e383c5bc55979bfd8b29db731b28d746abc473a5444c",
+        "text_len": 6,
+        "text_sha256": "2e183f2a7a70de1c10044f4e370a221a792736cb074835afcde6a9df457d413b",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "snooserv",
+          "via": "1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.reddit.com/register/",
+        "redirects": 0,
+        "body_len": 8406,
+        "body_sha256": "24d86fe19c942e133e87db0c7f0a29680456bcbd2be04ab3042e7817f34d1361",
+        "norm_sha256": "ca265538df9b92d580752a77f422ee958d4904421a494f66116339360f0047fb",
+        "text_len": 6,
+        "text_sha256": "2e183f2a7a70de1c10044f4e370a221a792736cb074835afcde6a9df457d413b",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "snooserv",
+          "via": "1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.reddit.com/register/",
+        "redirects": 0,
+        "body_len": 8406,
+        "body_sha256": "7b8f8911c3b4d822c956f50521f28abcf1325321e1e09779a0937c8829b60637",
+        "norm_sha256": "be0dfb22c391a6dfb56f838744f4d8fbf08da90a886dca82a27a6707327a1df1",
+        "text_len": 6,
+        "text_sha256": "2e183f2a7a70de1c10044f4e370a221a792736cb074835afcde6a9df457d413b",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "snooserv",
+          "via": "1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.reddit.com/register/",
+        "redirects": 0,
+        "body_len": 8406,
+        "body_sha256": "a3dc11b56c1c8f6802f982a6b45644a5318ef558e761d2c3bbcd9da4b39e0094",
+        "norm_sha256": "065886f48d2559176fe48c0811335b2e0528e293df7b374dc85c0f4abc55884d",
+        "text_len": 6,
+        "text_sha256": "2e183f2a7a70de1c10044f4e370a221a792736cb074835afcde6a9df457d413b",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "snooserv",
+          "via": "1.1 varnish"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "lemmy_ml",
+      "name": "Lemmy (lemmy.ml)",
+      "category": "social/fediverse",
+      "url": "https://lemmy.ml/signup",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://lemmy.ml/signup",
+        "redirects": 0,
+        "body_len": 37574,
+        "body_sha256": "ecfaf476db46640b24239ba3a98f4b5354902137f532d650b9fc70005ac408ee",
+        "norm_sha256": "10ed5bf5b2e3ef033eca0dad8a5f6e42691bae1d5cc3a9b050a2a0936c08f12d",
+        "text_len": 904,
+        "text_sha256": "24b918fc8bedc914f7cad20b04bd504ef97068784f4f0504acff8a6ad51b219e",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://lemmy.ml/signup",
+        "redirects": 0,
+        "body_len": 37574,
+        "body_sha256": "ecfaf476db46640b24239ba3a98f4b5354902137f532d650b9fc70005ac408ee",
+        "norm_sha256": "10ed5bf5b2e3ef033eca0dad8a5f6e42691bae1d5cc3a9b050a2a0936c08f12d",
+        "text_len": 904,
+        "text_sha256": "24b918fc8bedc914f7cad20b04bd504ef97068784f4f0504acff8a6ad51b219e",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://lemmy.ml/signup",
+        "redirects": 0,
+        "body_len": 37574,
+        "body_sha256": "ecfaf476db46640b24239ba3a98f4b5354902137f532d650b9fc70005ac408ee",
+        "norm_sha256": "10ed5bf5b2e3ef033eca0dad8a5f6e42691bae1d5cc3a9b050a2a0936c08f12d",
+        "text_len": 904,
+        "text_sha256": "24b918fc8bedc914f7cad20b04bd504ef97068784f4f0504acff8a6ad51b219e",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://lemmy.ml/signup",
+        "redirects": 0,
+        "body_len": 37574,
+        "body_sha256": "ecfaf476db46640b24239ba3a98f4b5354902137f532d650b9fc70005ac408ee",
+        "norm_sha256": "10ed5bf5b2e3ef033eca0dad8a5f6e42691bae1d5cc3a9b050a2a0936c08f12d",
+        "text_len": 904,
+        "text_sha256": "24b918fc8bedc914f7cad20b04bd504ef97068784f4f0504acff8a6ad51b219e",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": "captcha"
+      }
+    },
+    {
+      "id": "discourse",
+      "name": "Discourse (meta)",
+      "category": "forum",
+      "url": "https://meta.discourse.org/signup",
+      "classification": "declared_downgraded",
+      "notes": [
+        "declared visible text 781 chars vs generic 325272 chars (browser UA reproduced itself at 100%)"
+      ],
+      "sims": {
+        "declared_vs_generic": 0.0173,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 0.0173
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://meta.discourse.org/signup",
+        "redirects": 0,
+        "body_len": 26298,
+        "body_sha256": "7a09054d8475c2c2537cdbf9f41816b4d57d227b0136ce67d7a862d731989abc",
+        "norm_sha256": "09779c66d55c0bb5cf341a6db26a9ff61764a4ed0be365b31e9cb34f409a1545",
+        "text_len": 781,
+        "text_sha256": "76209c434365544576c4ba61bc13ae654e09b2ab6f793d74c6124820f12be11b",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://meta.discourse.org/signup",
+        "redirects": 0,
+        "body_len": 399886,
+        "body_sha256": "a365b6a3c01450250ac39697c0e3045c15b0059769fa6532cd44067331121fc4",
+        "norm_sha256": "bebd985365d3294b3dd3870caca708b7967277349ae744dfa342c967f990c0be",
+        "text_len": 325272,
+        "text_sha256": "1410a639107dd13e6d241829436efff8b48a5be72e30122fbb5ab8c635dcab05",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://meta.discourse.org/signup",
+        "redirects": 0,
+        "body_len": 26298,
+        "body_sha256": "e32b7c6784996b535346499ad37f050bbff96b0bd7ef9892b7ec4cfcf5528b87",
+        "norm_sha256": "ccb1a2dbc5b19dd0c5e44c7ec41a49c5e3a56a45cca504198c9db23494ddaae4",
+        "text_len": 781,
+        "text_sha256": "76209c434365544576c4ba61bc13ae654e09b2ab6f793d74c6124820f12be11b",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://meta.discourse.org/signup",
+        "redirects": 0,
+        "body_len": 399886,
+        "body_sha256": "a8a00f856c1e7bd2c2f7b380b94c634ea3ae24ff54664628b6f659df90fa19cf",
+        "norm_sha256": "2dd54417598014310d03932ea899cbb48c72cbcf2b707ea3de3e570e2904fd8f",
+        "text_len": 325272,
+        "text_sha256": "1410a639107dd13e6d241829436efff8b48a5be72e30122fbb5ab8c635dcab05",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "x",
+      "name": "X",
+      "category": "social",
+      "url": "https://x.com/i/flow/signup",
+      "classification": "declared_downgraded",
+      "notes": [
+        "declared visible text 26 chars vs generic 173 chars (browser UA reproduced itself at 100%)",
+        "redirect count differs: declared=1 generic=0",
+        "final URL differs"
+      ],
+      "sims": {
+        "declared_vs_generic": 0.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 0.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://x.com/i/jf/onboarding/web?mode=signup",
+        "redirects": 1,
+        "body_len": 12930,
+        "body_sha256": "dad623cff222dc5d6d66d2a2ed21f8cfa72d0940c529f3e2a5f0f53e3d9e1c81",
+        "norm_sha256": "32b1e95ac1492d642e8f509322d2c3941d9b1a283c6f702e35ed703d189c56db",
+        "text_len": 26,
+        "text_sha256": "7815e31e4c9bc4c5062417e8c13d5196be97d8084c05aa55204c295eb44d7cbe",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare envoy",
+          "cf-ray": "a3964628f94f3eb3-BCN",
+          "cf-cache-status": "DYNAMIC"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://x.com/i/flow/signup",
+        "redirects": 0,
+        "body_len": 295276,
+        "body_sha256": "b2b86b63ce924b8292f7fe9d2a9ad3cc7a9b93cbb2a02b2360a940f7f93f846f",
+        "norm_sha256": "94d9b82e688048bbbea9ce35ba9f76d0aad42943873f18a338950bc34c9f3227",
+        "text_len": 173,
+        "text_sha256": "523980d371db7cbfbf2a22b2e79d329d50f6b912e625a98edf6a1b2ca2661b1e",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare envoy",
+          "cf-ray": "a396461a1fc9981f-BCN",
+          "cf-cache-status": "DYNAMIC"
+        },
+        "marker_anywhere": "challenge-platform"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://x.com/i/jf/onboarding/web?mode=signup",
+        "redirects": 1,
+        "body_len": 12930,
+        "body_sha256": "cc328ac6575d5341098ae62081aeea1dde7e7fede87a4eae373c4ab08227caac",
+        "norm_sha256": "6b35cd9fc5684587a6830efff31c9c9bf9137ea6471033dd98c517409617b1f9",
+        "text_len": 26,
+        "text_sha256": "7815e31e4c9bc4c5062417e8c13d5196be97d8084c05aa55204c295eb44d7cbe",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare envoy",
+          "cf-ray": "a396465149d89a49-BCN",
+          "cf-cache-status": "DYNAMIC"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://x.com/i/flow/signup",
+        "redirects": 0,
+        "body_len": 295276,
+        "body_sha256": "e1c239a375219c83266440ffd15c140ed45e88169bf913f7c0fdb3a874d78732",
+        "norm_sha256": "18d60e6ee44497d71a1fb2211e5f2d1f6f282d7ae1de3688630736c0c1d079f0",
+        "text_len": 173,
+        "text_sha256": "523980d371db7cbfbf2a22b2e79d329d50f6b912e625a98edf6a1b2ca2661b1e",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare envoy",
+          "cf-ray": "a396463f9919c086-BCN",
+          "cf-cache-status": "DYNAMIC"
+        },
+        "marker_anywhere": "challenge-platform"
+      }
+    },
+    {
+      "id": "lobsters",
+      "name": "Lobsters",
+      "category": "news/community",
+      "url": "https://lobste.rs/login",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://lobste.rs/login",
+        "redirects": 0,
+        "body_len": 4107,
+        "body_sha256": "937f9c385fa997412a1831cd80b59d5402774342a815e2cb1016bf7059969eb5",
+        "norm_sha256": "7a5efd0eb3467624ef950f44712300b449a2cc2871cecfb524f12e92fb48364f",
+        "text_len": 339,
+        "text_sha256": "b3b08277c44b5a69cdae1bc85971f9bb7d89e6b132e0bfdfdbdf67aaf21cafb8",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "via": "1.1 Caddy"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://lobste.rs/login",
+        "redirects": 0,
+        "body_len": 4107,
+        "body_sha256": "230660ace20cff7b2c2c5154f1798c6fa2bad017de4fb659d07dbb315f553269",
+        "norm_sha256": "5740b96f4bcac984ce14a9d9d7285e726078407d8242d9baacf6e34602fa406c",
+        "text_len": 339,
+        "text_sha256": "b3b08277c44b5a69cdae1bc85971f9bb7d89e6b132e0bfdfdbdf67aaf21cafb8",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "via": "1.1 Caddy"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://lobste.rs/login",
+        "redirects": 0,
+        "body_len": 4107,
+        "body_sha256": "baa78ab2c69560ea3f5db5c5f5e02327eb06d54441d7ccf80b690abfa9f2e606",
+        "norm_sha256": "7aba0a66858ee1f1dcab74504d753d0b448f7cf81c76521650efe5edef4e9cd7",
+        "text_len": 339,
+        "text_sha256": "b3b08277c44b5a69cdae1bc85971f9bb7d89e6b132e0bfdfdbdf67aaf21cafb8",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "via": "1.1 Caddy"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://lobste.rs/login",
+        "redirects": 0,
+        "body_len": 4107,
+        "body_sha256": "75106c4d7cb1487118f6bd83b1a44423e8a2bc94de2445c9fb222e05dfbea1da",
+        "norm_sha256": "bf972edc4d94d557bc7aaaa4451292f4daaa70be91b3773a0b2979bd91800f01",
+        "text_len": 339,
+        "text_sha256": "b3b08277c44b5a69cdae1bc85971f9bb7d89e6b132e0bfdfdbdf67aaf21cafb8",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "via": "1.1 Caddy"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "tildes",
+      "name": "Tildes",
+      "category": "news/community",
+      "url": "https://tildes.net/register",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://tildes.net/register",
+        "redirects": 0,
+        "body_len": 7639,
+        "body_sha256": "29752aecdd906d19813d332b545eb419efaeec5f6956a0de88d1c8494dcb72c2",
+        "norm_sha256": "a8ac439928ad2a0f29424b27ede4a3b22e156bb5e1d7dce81a70a49e59d8d49e",
+        "text_len": 1270,
+        "text_sha256": "3a7060d11d962b973deadc89cf20a8c99497be7d32a282d6080cabe0b3da305a",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://tildes.net/register",
+        "redirects": 0,
+        "body_len": 7639,
+        "body_sha256": "811379a10c65e91862211f40369e7ed0b4befcdf9b3e2f30faaf1fa67931da60",
+        "norm_sha256": "13ca841084734fcb9afccdad428d20591735011df8ee52f5c53fd1e40b2cceb9",
+        "text_len": 1270,
+        "text_sha256": "3a7060d11d962b973deadc89cf20a8c99497be7d32a282d6080cabe0b3da305a",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://tildes.net/register",
+        "redirects": 0,
+        "body_len": 7639,
+        "body_sha256": "0331d120282c400940917e94f76ce7ffc77cec63d654947bc3794355484fd63e",
+        "norm_sha256": "7a1afafd8c41af03d273d7f1e7e2fdef70f611b3311d16c3b92e43a7be1587c7",
+        "text_len": 1270,
+        "text_sha256": "3a7060d11d962b973deadc89cf20a8c99497be7d32a282d6080cabe0b3da305a",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://tildes.net/register",
+        "redirects": 0,
+        "body_len": 7639,
+        "body_sha256": "9eecc93802088811ed1ae250dd893af3bb089566b873da689fd04a5e1659068f",
+        "norm_sha256": "f29f87aafc642c8763d1dce4ed47c3d1a91368e422fd5e02339bd25e123592c2",
+        "text_len": 1270,
+        "text_sha256": "3a7060d11d962b973deadc89cf20a8c99497be7d32a282d6080cabe0b3da305a",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "devto",
+      "name": "dev.to",
+      "category": "publishing",
+      "url": "https://dev.to/enter",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://dev.to/enter",
+        "redirects": 0,
+        "body_len": 54514,
+        "body_sha256": "ba9aa5f517986eb4fa400b1c48bc038bf12d7291154cebc10b99b00f8057dce2",
+        "norm_sha256": "8b464387342d8e6a7da741d726866473cd8a72aa6d3ce09155829e10c6ef1edf",
+        "text_len": 1045,
+        "text_sha256": "6f244e46a762e62e02b0d10d0880c46e4a6d8ba24e8f4861c54af33c122c69b9",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Heroku",
+          "via": "1.1 heroku-router, 1.1 varnish, 1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://dev.to/enter",
+        "redirects": 0,
+        "body_len": 54514,
+        "body_sha256": "c6a548b40816644f5989d9f78d8489400ee1d2336ee49de80c87433c214d3de8",
+        "norm_sha256": "d7e23aa77f38d99a73567e61d7cbebb32ab27379d8b1252b487537af4b6c09b7",
+        "text_len": 1045,
+        "text_sha256": "6f244e46a762e62e02b0d10d0880c46e4a6d8ba24e8f4861c54af33c122c69b9",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Heroku",
+          "via": "1.1 heroku-router, 1.1 varnish, 1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://dev.to/enter",
+        "redirects": 0,
+        "body_len": 54512,
+        "body_sha256": "2847c2d72eab24aba937b6decac653f5f23cce29c617dc657efb37281e50c9d6",
+        "norm_sha256": "9429fc88cf17559213ee9f8d56fae2684db387b0bd56108afb4c96b6e1d4e082",
+        "text_len": 1045,
+        "text_sha256": "6f244e46a762e62e02b0d10d0880c46e4a6d8ba24e8f4861c54af33c122c69b9",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Heroku",
+          "via": "1.1 heroku-router, 1.1 varnish, 1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://dev.to/enter",
+        "redirects": 0,
+        "body_len": 54514,
+        "body_sha256": "a7c73c727ce2a870d0f80568d5c3191afe479355fb6a8c3f1a4778084068b16b",
+        "norm_sha256": "c17debdf86dcaf35115bc906d6dc83b3fc8fc6130cf4d9835cb7e108e7934487",
+        "text_len": 1045,
+        "text_sha256": "6f244e46a762e62e02b0d10d0880c46e4a6d8ba24e8f4861c54af33c122c69b9",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Heroku",
+          "via": "1.1 heroku-router, 1.1 varnish, 1.1 varnish"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "medium",
+      "name": "Medium",
+      "category": "publishing",
+      "url": "https://medium.com/m/signin",
+      "classification": "both_blocked",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://medium.com/m/signin",
+        "redirects": 0,
+        "body_len": 5405,
+        "body_sha256": "fe206d1af52477f9f2a629a81c6cd3de22e289248f1cec4a2bcc5c147e0b57b3",
+        "norm_sha256": "2a32dd516c9b3293ae94a14e057281ff9ceee29ff3dc5dd1ddee77423312cf5e",
+        "text_len": 762,
+        "text_sha256": "f3c2ab94001dacfe65f29530b902f1bd4d2ed67c672b18db58fa777625941741",
+        "challenge": true,
+        "challenge_marker": "attention required",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a3964683ca621644-BCN"
+        },
+        "marker_anywhere": "attention required"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://medium.com/m/signin",
+        "redirects": 0,
+        "body_len": 5405,
+        "body_sha256": "537ca858c8ff8064d9270bc610842fa30fccd97f8502b71149d4987bf5649408",
+        "norm_sha256": "2de3fe3bdd30aba8577ee27f7ebcab540941a912a7ff5ca06b92fa42921cf77d",
+        "text_len": 762,
+        "text_sha256": "f3c2ab94001dacfe65f29530b902f1bd4d2ed67c672b18db58fa777625941741",
+        "challenge": true,
+        "challenge_marker": "attention required",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39646750b60d8be-BCN"
+        },
+        "marker_anywhere": "attention required"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://medium.com/m/signin",
+        "redirects": 0,
+        "body_len": 5405,
+        "body_sha256": "5c87004ef0e5a5ef4857f74aa9febda17ae99d4cb47573a251465c7ce4b8eca3",
+        "norm_sha256": "eadac39b3ea7a3bce3373731ccbeb6f13c7c6b04027ee3bceb3cccdcd69e6354",
+        "text_len": 762,
+        "text_sha256": "f3c2ab94001dacfe65f29530b902f1bd4d2ed67c672b18db58fa777625941741",
+        "challenge": true,
+        "challenge_marker": "attention required",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39646a04f1f0c21-BCN"
+        },
+        "marker_anywhere": "attention required"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://medium.com/m/signin",
+        "redirects": 0,
+        "body_len": 5405,
+        "body_sha256": "e17f126a64e6f2f18dd1d1eaa411df0f49953791a3c20b5ff248bf615e90ec22",
+        "norm_sha256": "1ff350861f1d29bf664b0077250800d981de85b6f94f11e5097e6737b89e8f1e",
+        "text_len": 762,
+        "text_sha256": "f3c2ab94001dacfe65f29530b902f1bd4d2ed67c672b18db58fa777625941741",
+        "challenge": true,
+        "challenge_marker": "attention required",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396469069dc872d-BCN"
+        },
+        "marker_anywhere": "attention required"
+      }
+    },
+    {
+      "id": "substack",
+      "name": "Substack",
+      "category": "publishing",
+      "url": "https://substack.com/signup",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 0.0,
+        "generic_control": 0.0,
+        "declared_control": 0.0,
+        "cross_control": 0.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://substack.com/onboarding?flow=creator_signup",
+        "redirects": 1,
+        "body_len": 46708,
+        "body_sha256": "6a6bd11af5cc7b8bfe942ab1691234a1720192fd5fc014b6067aefd01714b247",
+        "norm_sha256": "554c355ef3eb732af633e43c7d1eec3c3e7bb4e69ebc2bdef6c07d7f09bedbc7",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396469d9842589a-BCN",
+          "cf-cache-status": "DYNAMIC"
+        },
+        "marker_anywhere": "challenge-platform"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://substack.com/onboarding?flow=creator_signup",
+        "redirects": 1,
+        "body_len": 46771,
+        "body_sha256": "214d5637c64744a46a810e4e31d3fe48d4c7d0990875056666139d2d0a65bfd6",
+        "norm_sha256": "3838c226d3c43cf352d4e82bda363df485c06498978598755194ead3798924ac",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396468b9cd51025-BCN",
+          "cf-cache-status": "DYNAMIC"
+        },
+        "marker_anywhere": "challenge-platform"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://substack.com/onboarding?flow=creator_signup",
+        "redirects": 1,
+        "body_len": 46708,
+        "body_sha256": "a545dc587d3c1009ccdcccf0f42f98e63c105348ec001bbed0b9d47ef865579a",
+        "norm_sha256": "1d3fd0bc39c91c42e817bd88937779ca3f9405f3d352f62dbff305d60890c4e4",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39646b70c631644-BCN",
+          "cf-cache-status": "DYNAMIC"
+        },
+        "marker_anywhere": "challenge-platform"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://substack.com/onboarding?flow=creator_signup",
+        "redirects": 1,
+        "body_len": 46771,
+        "body_sha256": "a3941f03819f142d1316b3bd65307267f17fd822248f7b41829974fdbde70f2f",
+        "norm_sha256": "5433538666c0795d3efad1da9591518d3b27d99d4c7ed8d99bc2e8794826c4c5",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39646aaab03a6eb-BCN",
+          "cf-cache-status": "DYNAMIC"
+        },
+        "marker_anywhere": "challenge-platform"
+      }
+    },
+    {
+      "id": "producthunt",
+      "name": "Product Hunt",
+      "category": "launch platform",
+      "url": "https://www.producthunt.com/",
+      "classification": "declared_allowed",
+      "notes": [
+        "declared got 200 where the browser UA got 403"
+      ],
+      "sims": {
+        "declared_vs_generic": 0.0013,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 0.0013
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.producthunt.com/",
+        "redirects": 0,
+        "body_len": 399979,
+        "body_sha256": "d63aa4ba9b33cffbd2d04b8820fedf7587ba7598ed1f62eec64db5da146ec89f",
+        "norm_sha256": "4e4e37d8382bc24d55bd06e0405f5fd7a9992818b8bf4d55cfa43b9b7d8b204a",
+        "text_len": 364894,
+        "text_sha256": "bce429e18474ace5e7b3f9a55faead9fe6444389218ed760cd317bbf15a0966d",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39646acfb20817a-BCN",
+          "cf-cache-status": "HIT"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://www.producthunt.com/",
+        "redirects": 0,
+        "body_len": 5793,
+        "body_sha256": "7484dd0aea332de96015fa6a7a37ec0a4380cef2b27060fb7a25c1a735596386",
+        "norm_sha256": "7484dd0aea332de96015fa6a7a37ec0a4380cef2b27060fb7a25c1a735596386",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396469cee0bd781-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.producthunt.com/",
+        "redirects": 0,
+        "body_len": 399979,
+        "body_sha256": "d63aa4ba9b33cffbd2d04b8820fedf7587ba7598ed1f62eec64db5da146ec89f",
+        "norm_sha256": "4e4e37d8382bc24d55bd06e0405f5fd7a9992818b8bf4d55cfa43b9b7d8b204a",
+        "text_len": 364894,
+        "text_sha256": "bce429e18474ace5e7b3f9a55faead9fe6444389218ed760cd317bbf15a0966d",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39646c9de8af488-BCN",
+          "cf-cache-status": "HIT"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://www.producthunt.com/",
+        "redirects": 0,
+        "body_len": 5793,
+        "body_sha256": "7c674157ab5b58bde30b37f196525937dcaa7928b4b060133ed99e5eba607449",
+        "norm_sha256": "7c674157ab5b58bde30b37f196525937dcaa7928b4b060133ed99e5eba607449",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39646bb1ac944e9-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      }
+    },
+    {
+      "id": "stackoverflow",
+      "name": "Stack Overflow",
+      "category": "Q&A",
+      "url": "https://stackoverflow.com/users/signup",
+      "classification": "both_blocked",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://stackoverflow.com/users/signup",
+        "redirects": 0,
+        "body_len": 5764,
+        "body_sha256": "9b428402f688528ebeb9ef6c20833e6d4d5bd95092f4571aaa1ec85e74c0544a",
+        "norm_sha256": "9b428402f688528ebeb9ef6c20833e6d4d5bd95092f4571aaa1ec85e74c0544a",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39646b13e2d9a49-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://stackoverflow.com/users/signup",
+        "redirects": 0,
+        "body_len": 5785,
+        "body_sha256": "875eb2b366d27fdc953ae2dd696c3a9c34254b7151c2d8c91aa1b7374b99c2d8",
+        "norm_sha256": "875eb2b366d27fdc953ae2dd696c3a9c34254b7151c2d8c91aa1b7374b99c2d8",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39646a0cc5b981f-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://stackoverflow.com/users/signup",
+        "redirects": 0,
+        "body_len": 5764,
+        "body_sha256": "a85dd4e1cbe40ef6bdce642735e8a749572804d0417dcac83241a2f4f5836ac0",
+        "norm_sha256": "a85dd4e1cbe40ef6bdce642735e8a749572804d0417dcac83241a2f4f5836ac0",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39646cecd091644-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://stackoverflow.com/users/signup",
+        "redirects": 0,
+        "body_len": 5785,
+        "body_sha256": "8a905f5435c89946e6193710cbf5dd4240e147d875870f412c0f2c43f8e51f91",
+        "norm_sha256": "8a905f5435c89946e6193710cbf5dd4240e147d875870f412c0f2c43f8e51f91",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39646c1bb4858cb-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      }
+    },
+    {
+      "id": "wikipedia",
+      "name": "Wikipedia",
+      "category": "reference",
+      "url": "https://en.wikipedia.org/w/index.php?title=Special:CreateAccount&returnto=Main+Page",
+      "classification": "identical",
+      "notes": [
+        "final URL differs"
+      ],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://auth.wikimedia.org/enwiki/wiki/Special:CreateAccount?useformat=desktop&usesul3=1&returnto=Main+Page&centralauthLoginToken=6677489662fb020816ad4657448fbae6",
+        "redirects": 4,
+        "body_len": 42538,
+        "body_sha256": "c42e0b7765ed5ebad95c7a88e06fceaf8040b2553fde866bf0a5b508d9e3ef46",
+        "norm_sha256": "0520563645c8a5ab575fbb2c49fa607e0843316fdbf0b63784393f9f79255d67",
+        "text_len": 969,
+        "text_sha256": "b2f2b9af5c83de59673b52a3caf48a76c6279dd88c23a88715245191112a48e9",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "mw-web.eqiad.main-864d949c75-4dsnj"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://auth.wikimedia.org/enwiki/wiki/Special:CreateAccount?useformat=desktop&usesul3=1&returnto=Main+Page&centralauthLoginToken=2415c003419a3baf57c2bf72750de996",
+        "redirects": 4,
+        "body_len": 42537,
+        "body_sha256": "4ca65c43d0258bb35275ad213961b1002d5fe3010ea6fcd4a481b8905347589a",
+        "norm_sha256": "9d14003eac185f92ccc9f9e27ad09d7959883bc31387bb2ab35706438dc55db5",
+        "text_len": 969,
+        "text_sha256": "b2f2b9af5c83de59673b52a3caf48a76c6279dd88c23a88715245191112a48e9",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "mw-web.eqiad.main-864d949c75-8tvm2"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://auth.wikimedia.org/enwiki/wiki/Special:CreateAccount?useformat=desktop&usesul3=1&returnto=Main+Page&centralauthLoginToken=1f171fddea1d5234a8b9c61b7830cdec",
+        "redirects": 4,
+        "body_len": 42537,
+        "body_sha256": "34b038f7aaf2c8d02a96adf5c625555fb5b44f04fb53beae760948d0af33cc3c",
+        "norm_sha256": "499000401393d9cd311304768ac397269e5336bb7053861cd20b721c9ca50e56",
+        "text_len": 969,
+        "text_sha256": "b2f2b9af5c83de59673b52a3caf48a76c6279dd88c23a88715245191112a48e9",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "mw-web.eqiad.main-864d949c75-zgf9t"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://auth.wikimedia.org/enwiki/wiki/Special:CreateAccount?useformat=desktop&usesul3=1&returnto=Main+Page&centralauthLoginToken=21ff5732e83755ae52f02f1851267563",
+        "redirects": 4,
+        "body_len": 42537,
+        "body_sha256": "c7604aa9a561f2c4d3961a06352108bbe9185b62d3aacde830ace06f00954d5b",
+        "norm_sha256": "329e6e80d9e912057844a327bae1cb1a36e41fb55cc2680ff9da866dabcc2f59",
+        "text_len": 969,
+        "text_sha256": "b2f2b9af5c83de59673b52a3caf48a76c6279dd88c23a88715245191112a48e9",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "mw-web.eqiad.main-864d949c75-cfhx2"
+        },
+        "marker_anywhere": "captcha"
+      }
+    },
+    {
+      "id": "craigslist",
+      "name": "Craigslist",
+      "category": "classifieds",
+      "url": "https://accounts.craigslist.org/signup",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://accounts.craigslist.org/signup",
+        "redirects": 0,
+        "body_len": 4718,
+        "body_sha256": "29f6fff423f624f589edfcbcdb2bb62f271276ec612ddfdc9f7dddaff2057f5c",
+        "norm_sha256": "3e5770b5ffb5fabdc94f660a672b0bf4786f3251cfcd60db8c6000bd7692b9c5",
+        "text_len": 154,
+        "text_sha256": "ac7a318c0259918f66467c83af4286fa6fe92840376c4c2464088ab53e9b6aec",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {},
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://accounts.craigslist.org/signup",
+        "redirects": 0,
+        "body_len": 4718,
+        "body_sha256": "e2917239295906bab0e5778ac3f180c0ac6a386e38d9f5223630bfde08015097",
+        "norm_sha256": "0f871b642e3228b360634636db2382dccf3b770296de8e8f4feb67be445da4bc",
+        "text_len": 154,
+        "text_sha256": "ac7a318c0259918f66467c83af4286fa6fe92840376c4c2464088ab53e9b6aec",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {},
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://accounts.craigslist.org/signup",
+        "redirects": 0,
+        "body_len": 4718,
+        "body_sha256": "c2eddb359bc0f458dbaa6a19d05a1bcea8bc1a08ce21678ec4f7d52f0feb15b4",
+        "norm_sha256": "eee2f7417faa6c056223ee26fe6eed89e9338eab7cfbc8cfcd166810a873c854",
+        "text_len": 154,
+        "text_sha256": "ac7a318c0259918f66467c83af4286fa6fe92840376c4c2464088ab53e9b6aec",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {},
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://accounts.craigslist.org/signup",
+        "redirects": 0,
+        "body_len": 4718,
+        "body_sha256": "a5250e7b0d32be65975c46ec4f44cc60cafae0773146da536f92c915736693e6",
+        "norm_sha256": "4eba4269a2c9aeff2af135edf45632c18ec90cbf06a213bdbf59c7c716ded0a5",
+        "text_len": 154,
+        "text_sha256": "ac7a318c0259918f66467c83af4286fa6fe92840376c4c2464088ab53e9b6aec",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {},
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "ebay",
+      "name": "eBay",
+      "category": "commerce",
+      "url": "https://signup.ebay.com/pa/crte",
+      "classification": "dynamic_unresolved",
+      "notes": [
+        "control: the two browser-UA passes overlap only 33%, so this page churns under a constant UA",
+        "redirect count differs: declared=1 generic=0",
+        "final URL differs"
+      ],
+      "sims": {
+        "declared_vs_generic": 0.3333,
+        "generic_control": 0.3333,
+        "declared_control": 0.3333,
+        "cross_control": 0.3333
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.ebay.com/splashui/captcha?ap=1&appName=orch&ru=https%3A%2F%2Fsignup.ebay.com%2Fpa%2Fcrte&iid=69de4409-0998-4ff3-b24d-036eeb0b3c8b&iim=OODYuMTG&iia=ZDI3LjIzfp&iiz=CZeMS40OA**CTB",
+        "redirects": 1,
+        "body_len": 39290,
+        "body_sha256": "ae709e516e8bb00151d0b9d05567cf54eeb085efc479ddb78799ecfb4319caae",
+        "norm_sha256": "f01e27e881b987cf91de33de00d78803d45c078fb1e16adcf7ba22aff93fb08d",
+        "text_len": 734,
+        "text_sha256": "cb8837fa8191a77faffdeaf0cbb77203fdafc6e8fd44455e84d562c673042c18",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "ebay-proxy-server",
+          "x-akamai-transformed": "0 - 0 -",
+          "x-cdn": "Akamai"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://signup.ebay.com/pa/crte",
+        "redirects": 0,
+        "body_len": 181477,
+        "body_sha256": "f994cec00fdbd375f0557c04cfc142763d0469d1c37188457b5a8312224f4cc3",
+        "norm_sha256": "b55abd72eb19f98c41626bd9b619845f90584edc49af0abb5bd4b73aa7f673fd",
+        "text_len": 779,
+        "text_sha256": "0c7017696f8687a0eb9c4efffc2a7bff51d690b594ca78174b381e60fe774d30",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "ebay-proxy-server",
+          "x-akamai-transformed": "0 - 0 -",
+          "x-cdn": "Akamai"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://signup.ebay.com/pa/crte",
+        "redirects": 0,
+        "body_len": 180870,
+        "body_sha256": "ea8f3ad4892661382757b2fd59c3050dbe5a30a32933a4c9ed203e98cd43ec51",
+        "norm_sha256": "426642345b3a94aa3bfcc7b0c20ac02f954843c17996b31c38c03266d8570321",
+        "text_len": 779,
+        "text_sha256": "0c7017696f8687a0eb9c4efffc2a7bff51d690b594ca78174b381e60fe774d30",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "ebay-proxy-server",
+          "x-akamai-transformed": "0 - 0 -",
+          "x-cdn": "Akamai"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.ebay.com/splashui/captcha?ap=1&appName=orch&ru=https%3A%2F%2Fsignup.ebay.com%2Fpa%2Fcrte&iid=fca27f0a-a5fa-45d5-b4cf-518380048756&iim=nODYuMTo&iia=DoI3LjIztl&iiz=tDqMS40OA**GQq",
+        "redirects": 1,
+        "body_len": 39421,
+        "body_sha256": "e69cca88ed02707e4febb893c0d04510c7eaf49be859125b8a1e682a54d24887",
+        "norm_sha256": "afdb51d8d5be37eeb47d06779e448ddb4a08b2cdf71958adab510a4535fbfb22",
+        "text_len": 734,
+        "text_sha256": "cb8837fa8191a77faffdeaf0cbb77203fdafc6e8fd44455e84d562c673042c18",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "ebay-proxy-server",
+          "x-akamai-transformed": "0 - 0 -",
+          "x-cdn": "Akamai"
+        },
+        "marker_anywhere": "captcha"
+      }
+    },
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "category": "payments",
+      "url": "https://dashboard.stripe.com/register",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://dashboard.stripe.com/register",
+        "redirects": 0,
+        "body_len": 152315,
+        "body_sha256": "a1f4aa4439bba7c14cc4c006260befca6525a7f5b9d2ddcc0a5f6effdda48c48",
+        "norm_sha256": "0f3da2b8136a3ae1cb95cb4951d885d92e9efd929bdfa1abac5c29bdde62f9d3",
+        "text_len": 215,
+        "text_sha256": "f85cef440eef64d453358464a05d48dcad0e4e3c5fe2a3df113757e3f9ae238d",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://dashboard.stripe.com/register",
+        "redirects": 0,
+        "body_len": 152315,
+        "body_sha256": "97737b26bd65ab3e1e1411c0012bd38c702cce8dfd6db4e74f404b3484531bde",
+        "norm_sha256": "737ad5d481578085e8537ea1be5b9565406351001ec67a4e9f9e8fddce44b5e0",
+        "text_len": 215,
+        "text_sha256": "f85cef440eef64d453358464a05d48dcad0e4e3c5fe2a3df113757e3f9ae238d",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://dashboard.stripe.com/register",
+        "redirects": 0,
+        "body_len": 152315,
+        "body_sha256": "14edbe21a4ca5918dc19be460fffc5cdf56a033fecc2d985dac670c543fd89f3",
+        "norm_sha256": "2372ff5408afd4fd68f8ad7a1e540faeddd1a044b7e9279f11ede3a5ff837901",
+        "text_len": 215,
+        "text_sha256": "f85cef440eef64d453358464a05d48dcad0e4e3c5fe2a3df113757e3f9ae238d",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://dashboard.stripe.com/register",
+        "redirects": 0,
+        "body_len": 152315,
+        "body_sha256": "e1127bc5cb9b7a5d0d3676eac646576b4d4ea2de1cae14084d042216c426afe1",
+        "norm_sha256": "5f3ab2f530d2fb742f183ef6783d0f0e79e2d507580b3395fa6fa09b3be2331f",
+        "text_len": 215,
+        "text_sha256": "f85cef440eef64d453358464a05d48dcad0e4e3c5fe2a3df113757e3f9ae238d",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": "captcha"
+      }
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "category": "hosting",
+      "url": "https://vercel.com/signup",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://vercel.com/signup",
+        "redirects": 0,
+        "body_len": 335761,
+        "body_sha256": "5c3c69afca72c82ed37622d31116618e50f10b26f804c3b9bf77504ee05842a3",
+        "norm_sha256": "6848be3d68c18403ddeaf10a731c8d2988d6d88d343860d3a62eaa7770683fe2",
+        "text_len": 524,
+        "text_sha256": "23b422837f339f8ea7da89fc64252224cc45a5a7f8a0a1db113e3cb1153a8185",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Vercel"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://vercel.com/signup",
+        "redirects": 0,
+        "body_len": 335761,
+        "body_sha256": "72258653f85e20b743824bf8cb63a077bed09638b4c8b84225b4867ed5415967",
+        "norm_sha256": "9f8fcfc6ff5950ff84cbe5879e25dde2c132dcc269b856da669b37a728d3cd82",
+        "text_len": 524,
+        "text_sha256": "23b422837f339f8ea7da89fc64252224cc45a5a7f8a0a1db113e3cb1153a8185",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Vercel"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://vercel.com/signup",
+        "redirects": 0,
+        "body_len": 335765,
+        "body_sha256": "0b8da7edd366c3abc64db2f1be1095f97a67b2c130cbd9acaabbb6c48d5ecdb0",
+        "norm_sha256": "66b5bc3cdba9bc54a199011d4775a3fc56caafca8694cbe98e53fadd16976a8c",
+        "text_len": 524,
+        "text_sha256": "23b422837f339f8ea7da89fc64252224cc45a5a7f8a0a1db113e3cb1153a8185",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Vercel"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://vercel.com/signup",
+        "redirects": 0,
+        "body_len": 335765,
+        "body_sha256": "dddcb14d4a4594dc41abc6c84c7245d6eba7a4bfd491bff91fdcf2f7216809ba",
+        "norm_sha256": "6f60b06d2e6f89f4a418043bff69b65716636fc1ae40b2edaf274a40b9ef4047",
+        "text_len": 524,
+        "text_sha256": "23b422837f339f8ea7da89fc64252224cc45a5a7f8a0a1db113e3cb1153a8185",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Vercel"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "netlify",
+      "name": "Netlify",
+      "category": "hosting",
+      "url": "https://app.netlify.com/signup",
+      "classification": "both_blocked",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://app.netlify.com/signup",
+        "redirects": 0,
+        "body_len": 16499,
+        "body_sha256": "2aea81dd68994572d770e6c361e9ee958dddd3fae098ba03e1c11f1041cd800e",
+        "norm_sha256": "fe07f2f51b6080d58d45d250779c5da0030ad5e57a14055cb74a7d015e89431c",
+        "text_len": 26,
+        "text_sha256": "27de0b42f83ebce856fa60d65fda8ba464ed9e03f496bf3b9836612b5af03edb",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "server": "Netlify"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://app.netlify.com/signup",
+        "redirects": 0,
+        "body_len": 16499,
+        "body_sha256": "8f28f22c99615f8b6ba20a51462595a02fbaaed8d2eebb325ae28658b81ef4a7",
+        "norm_sha256": "e03a5b34f79fc0ae55955fa65f6c2816e2ab6b5744756891200ce0165465962b",
+        "text_len": 26,
+        "text_sha256": "27de0b42f83ebce856fa60d65fda8ba464ed9e03f496bf3b9836612b5af03edb",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "server": "Netlify"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://app.netlify.com/signup",
+        "redirects": 0,
+        "body_len": 16499,
+        "body_sha256": "81c8ecc0d771ca6fd3277abd1f62eaf4e6da65c38534c1535ee1c80d2578bd27",
+        "norm_sha256": "5836182dd3d372fcc35efc9560c89b728be0c592cec0c6a90834f48f887912d5",
+        "text_len": 26,
+        "text_sha256": "27de0b42f83ebce856fa60d65fda8ba464ed9e03f496bf3b9836612b5af03edb",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "server": "Netlify"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://app.netlify.com/signup",
+        "redirects": 0,
+        "body_len": 16499,
+        "body_sha256": "bf2f33a1a27a41cd8ce83db01ec21780a824061f619dd4201e7bf9ae67f60724",
+        "norm_sha256": "024254dc78231eaf393c458b136226e1994f475aba43319134f99448689a71d3",
+        "text_len": 26,
+        "text_sha256": "27de0b42f83ebce856fa60d65fda8ba464ed9e03f496bf3b9836612b5af03edb",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "server": "Netlify"
+        },
+        "marker_anywhere": "captcha"
+      }
+    },
+    {
+      "id": "railway",
+      "name": "Railway",
+      "category": "hosting",
+      "url": "https://railway.app/login",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://railway.com/login",
+        "redirects": 1,
+        "body_len": 199413,
+        "body_sha256": "71610e6eb3a5d538d7e12b6b13c1a9be7ba8cceaa1dc2456c9ddb47fd29eea90",
+        "norm_sha256": "d92386a5b161f117cbc05560477571d0ffdeb932dcaebec2f1aef24711cb3298",
+        "text_len": 532,
+        "text_sha256": "340057b6cb526e94c9b15589c7d93acc5cf767ce7b2de09fd75bfd76313700c5",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "railway-hikari"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://railway.com/login",
+        "redirects": 1,
+        "body_len": 199413,
+        "body_sha256": "e8eb90d6571bbff8c2b9f17c92c1fad0fa887e32a4e24737fe5fc98d9bd3b1d1",
+        "norm_sha256": "0a2f7bec48449a99e11411f967a64b1d9a649aca261f528958e1c8cd1204e57c",
+        "text_len": 532,
+        "text_sha256": "340057b6cb526e94c9b15589c7d93acc5cf767ce7b2de09fd75bfd76313700c5",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "railway-hikari"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://railway.com/login",
+        "redirects": 1,
+        "body_len": 199413,
+        "body_sha256": "3b3f2ad3c0fa7287dfbe7999b444075ef4f26b004fff21ea40d7f27ff01b2108",
+        "norm_sha256": "c5dc0a8b877bbf61c853c32eebf45607ba467374d991a6e4b95f9147f1ea4d6d",
+        "text_len": 532,
+        "text_sha256": "340057b6cb526e94c9b15589c7d93acc5cf767ce7b2de09fd75bfd76313700c5",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "railway-hikari"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://railway.com/login",
+        "redirects": 1,
+        "body_len": 199413,
+        "body_sha256": "425b747192937a5eb6f64924654bcd54ae2fa9de8428083039bb62a19ab2e9c9",
+        "norm_sha256": "c6742018f3d8275f10dfb9436b9477a43f8bf382c79e4a5ac6a18ce760a703c1",
+        "text_len": 532,
+        "text_sha256": "340057b6cb526e94c9b15589c7d93acc5cf767ce7b2de09fd75bfd76313700c5",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "railway-hikari"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "npm",
+      "name": "npm",
+      "category": "package registry",
+      "url": "https://www.npmjs.com/signup",
+      "classification": "both_blocked",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://www.npmjs.com/signup",
+        "redirects": 0,
+        "body_len": 5827,
+        "body_sha256": "17cde7de56d315ce0e65157cef793f6a09916bd5f61a9ccff160173e4e4b0c88",
+        "norm_sha256": "17cde7de56d315ce0e65157cef793f6a09916bd5f61a9ccff160173e4e4b0c88",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396474b8e413eb3-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://www.npmjs.com/signup",
+        "redirects": 0,
+        "body_len": 5848,
+        "body_sha256": "beaff2b3aaa0d90d4d7a55fd98a3c1054a2bbcc7aeb89dcf308ae25be7bac1d7",
+        "norm_sha256": "beaff2b3aaa0d90d4d7a55fd98a3c1054a2bbcc7aeb89dcf308ae25be7bac1d7",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396473e5df43eb3-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://www.npmjs.com/signup",
+        "redirects": 0,
+        "body_len": 5827,
+        "body_sha256": "9b60e7e64f7cb81bc81348c7dea4a0ad28bd1b14b6fada7b7d203e932a0eb9d7",
+        "norm_sha256": "9b60e7e64f7cb81bc81348c7dea4a0ad28bd1b14b6fada7b7d203e932a0eb9d7",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39647695d11fe6a-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://www.npmjs.com/signup",
+        "redirects": 0,
+        "body_len": 5848,
+        "body_sha256": "75bb54da74143b0f025bbb7f9043c13b66b957b51925c4e6084dcf629b484f94",
+        "norm_sha256": "75bb54da74143b0f025bbb7f9043c13b66b957b51925c4e6084dcf629b484f94",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a3964759bfe9aa4b-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      }
+    },
+    {
+      "id": "openai_platform",
+      "name": "OpenAI Platform",
+      "category": "AI API",
+      "url": "https://platform.openai.com/signup",
+      "classification": "both_blocked",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 0.0,
+        "generic_control": 0.0,
+        "declared_control": 0.0,
+        "cross_control": 0.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://platform.openai.com/signup",
+        "redirects": 0,
+        "body_len": 10091,
+        "body_sha256": "855d8a2d91bb54d499c76db80a1c6b5b3b93b9acf64f2e92d1c071b0d7fb505d",
+        "norm_sha256": "00a8c6af99f0bda1d5ccab44d9a9c6138e9e60a21368cebda9566b0aa0874e1f",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": true,
+        "challenge_marker": "enable javascript and cookies to continue",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396474aafb8b8e3-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "enable javascript and cookies to continue"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://platform.openai.com/signup",
+        "redirects": 0,
+        "body_len": 10112,
+        "body_sha256": "8ba14bdb7a5fde05cf689124d314cfdd26b5b674a350681637e8503ac44eb36e",
+        "norm_sha256": "e47a89f9481728cffca8ce7b2e8aa62f9935d441aae0375c3d374176ca5fcb97",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": true,
+        "challenge_marker": "enable javascript and cookies to continue",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396473eaf880c21-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "enable javascript and cookies to continue"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://platform.openai.com/signup",
+        "redirects": 0,
+        "body_len": 10091,
+        "body_sha256": "9d0314457603a90343eb43a174f7bed218f26e21cbfcb9f831d5e2761f313ec9",
+        "norm_sha256": "073746365fbd6dc3ae9539bfeac7d31de2a5ed35c68913c2bd40304f6b620e8e",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": true,
+        "challenge_marker": "enable javascript and cookies to continue",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a3964766bafe6e11-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "enable javascript and cookies to continue"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://platform.openai.com/signup",
+        "redirects": 0,
+        "body_len": 10091,
+        "body_sha256": "35e6a97946b700abe5f6add3ece0292c453ad9ea30f36a0023e5cb8bdb448d32",
+        "norm_sha256": "6b42e7002fceac664fa2a9902bcd10bdd509e179c3a4454a9124d273bcf4f338",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": true,
+        "challenge_marker": "enable javascript and cookies to continue",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396475b2c34307e-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "enable javascript and cookies to continue"
+      }
+    },
+    {
+      "id": "keyid",
+      "name": "KeyID.ai",
+      "category": "agent identity",
+      "url": "https://keyid.ai/",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://keyid.ai/",
+        "redirects": 0,
+        "body_len": 48106,
+        "body_sha256": "34c9613edf4fdf90b4f432ff5f5862a9334c5f3f2f6be84ea204dcf87b56950f",
+        "norm_sha256": "bbe078cbe68a1dd5736f5d05c66b1c0035c3554b19debe6a06989d427449a907",
+        "text_len": 10936,
+        "text_sha256": "2c2f63baf64a57f6cb3b086db2873513f3e4b4794892e6c5304d238ea54dbd5f",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Heroku",
+          "via": "1.1 heroku-router"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://keyid.ai/",
+        "redirects": 0,
+        "body_len": 48106,
+        "body_sha256": "34c9613edf4fdf90b4f432ff5f5862a9334c5f3f2f6be84ea204dcf87b56950f",
+        "norm_sha256": "bbe078cbe68a1dd5736f5d05c66b1c0035c3554b19debe6a06989d427449a907",
+        "text_len": 10936,
+        "text_sha256": "2c2f63baf64a57f6cb3b086db2873513f3e4b4794892e6c5304d238ea54dbd5f",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Heroku",
+          "via": "1.1 heroku-router"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://keyid.ai/",
+        "redirects": 0,
+        "body_len": 48106,
+        "body_sha256": "34c9613edf4fdf90b4f432ff5f5862a9334c5f3f2f6be84ea204dcf87b56950f",
+        "norm_sha256": "bbe078cbe68a1dd5736f5d05c66b1c0035c3554b19debe6a06989d427449a907",
+        "text_len": 10936,
+        "text_sha256": "2c2f63baf64a57f6cb3b086db2873513f3e4b4794892e6c5304d238ea54dbd5f",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Heroku",
+          "via": "1.1 heroku-router"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://keyid.ai/",
+        "redirects": 0,
+        "body_len": 48106,
+        "body_sha256": "34c9613edf4fdf90b4f432ff5f5862a9334c5f3f2f6be84ea204dcf87b56950f",
+        "norm_sha256": "bbe078cbe68a1dd5736f5d05c66b1c0035c3554b19debe6a06989d427449a907",
+        "text_len": 10936,
+        "text_sha256": "2c2f63baf64a57f6cb3b086db2873513f3e4b4794892e6c5304d238ea54dbd5f",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Heroku",
+          "via": "1.1 heroku-router"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare",
+      "category": "infrastructure",
+      "url": "https://dash.cloudflare.com/sign-up",
+      "classification": "both_blocked",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://dash.cloudflare.com/sign-up",
+        "redirects": 0,
+        "body_len": 5814,
+        "body_sha256": "d28d987d24076afaf0651d8d5d8ee8f3127005457cb0e31ab294bd799febe57f",
+        "norm_sha256": "d28d987d24076afaf0651d8d5d8ee8f3127005457cb0e31ab294bd799febe57f",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a3964775df104ffb-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://dash.cloudflare.com/sign-up",
+        "redirects": 0,
+        "body_len": 5814,
+        "body_sha256": "8454c8d053a0c9f1ba2d440b0395741e69e44fe3958b2162bafcb1275f6aae91",
+        "norm_sha256": "8454c8d053a0c9f1ba2d440b0395741e69e44fe3958b2162bafcb1275f6aae91",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a3964769ac7244e9-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://dash.cloudflare.com/sign-up",
+        "redirects": 0,
+        "body_len": 5814,
+        "body_sha256": "d691e5a8350a943fe00b4e92721cee26eb3e7d1df3a63cfe341faedf926350bb",
+        "norm_sha256": "d691e5a8350a943fe00b4e92721cee26eb3e7d1df3a63cfe341faedf926350bb",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39647958fce13d0-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://dash.cloudflare.com/sign-up",
+        "redirects": 0,
+        "body_len": 5814,
+        "body_sha256": "e41d286770bd6514f418d0adbee4c31e21a0380392ea69262508f636eb8d8d8d",
+        "norm_sha256": "e41d286770bd6514f418d0adbee4c31e21a0380392ea69262508f636eb8d8d8d",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39647865c11e712-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      }
+    },
+    {
+      "id": "huggingface",
+      "name": "Hugging Face",
+      "category": "AI platform",
+      "url": "https://huggingface.co/join",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 0.0,
+        "generic_control": 0.0,
+        "declared_control": 0.0,
+        "cross_control": 0.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 202,
+        "final_url": "https://huggingface.co/join",
+        "redirects": 0,
+        "body_len": 2343,
+        "body_sha256": "e02e2353e72122e0971fb4928364872464080e4e47ef1c2d3cdecf12fb6271f3",
+        "norm_sha256": "65dc3fdc44aee93fccbb90e8353971b36fcd9529b3d8ca2a146baa3e8408f489",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "CloudFront",
+          "x-amzn-waf-action": "challenge",
+          "via": "1.1 531e6b7b78c97c87664ac28289038c9a.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 202,
+        "final_url": "https://huggingface.co/join",
+        "redirects": 0,
+        "body_len": 2343,
+        "body_sha256": "67bf9087dfc3ba8f60ee2a082cf1b2ee3b5538b58c4c809e55a6fa00003d360f",
+        "norm_sha256": "111bb34138cf640ff16f5c7c19300cfb3a2b41793e51fe0b9e87e4c65794ea94",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "CloudFront",
+          "x-amzn-waf-action": "challenge",
+          "via": "1.1 82fa0ad2b8dc70386d3b3ffa35c3e26a.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 202,
+        "final_url": "https://huggingface.co/join",
+        "redirects": 0,
+        "body_len": 2343,
+        "body_sha256": "82cce7b4cfa74eb960170ea7610a5c50539c22934b062f0fb9b66bdc59935685",
+        "norm_sha256": "6b32c751a6a04bdafc7d465f9cdf4d7f5a45e8a04bf98cb0f7e2637e2adee7f2",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "CloudFront",
+          "x-amzn-waf-action": "challenge",
+          "via": "1.1 5d5704a42e51cafd107137919e8b851a.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 202,
+        "final_url": "https://huggingface.co/join",
+        "redirects": 0,
+        "body_len": 2343,
+        "body_sha256": "f0edfad167b89d70184774aeb9f2419c9e88b5c528b36e9701cf5b791b68963a",
+        "norm_sha256": "f3f96cca54c0e291105508cf419f81adf31652defa0773744c3dfd3bae528a90",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "CloudFront",
+          "x-amzn-waf-action": "challenge",
+          "via": "1.1 85a7ba3d92177b6e79eedc30f175e0c0.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "arxiv",
+      "name": "arXiv",
+      "category": "preprints",
+      "url": "https://arxiv.org/user/register",
+      "classification": "both_blocked",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://arxiv.org/user/register",
+        "redirects": 0,
+        "body_len": 10311,
+        "body_sha256": "07fdad361ed5d81a6378e93dd054c5e938129765bcf26ce624d1e9b45a54cb47",
+        "norm_sha256": "0a6a1ffbb421e0e532cd75dbe3eab73c7397df5bdf1dccb534f308c858f86e22",
+        "text_len": 1137,
+        "text_sha256": "c0ab5c3d957b135f0a26a8496818228da53764d9a5bce63b68dc6c2509bb0b00",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "server": "Apache",
+          "via": "1.1 varnish, 1.1 varnish"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://arxiv.org/user/register",
+        "redirects": 0,
+        "body_len": 10311,
+        "body_sha256": "07fdad361ed5d81a6378e93dd054c5e938129765bcf26ce624d1e9b45a54cb47",
+        "norm_sha256": "0a6a1ffbb421e0e532cd75dbe3eab73c7397df5bdf1dccb534f308c858f86e22",
+        "text_len": 1137,
+        "text_sha256": "c0ab5c3d957b135f0a26a8496818228da53764d9a5bce63b68dc6c2509bb0b00",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "server": "Apache",
+          "via": "1.1 varnish, 1.1 varnish"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://arxiv.org/user/register",
+        "redirects": 0,
+        "body_len": 10311,
+        "body_sha256": "07fdad361ed5d81a6378e93dd054c5e938129765bcf26ce624d1e9b45a54cb47",
+        "norm_sha256": "0a6a1ffbb421e0e532cd75dbe3eab73c7397df5bdf1dccb534f308c858f86e22",
+        "text_len": 1137,
+        "text_sha256": "c0ab5c3d957b135f0a26a8496818228da53764d9a5bce63b68dc6c2509bb0b00",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "server": "Apache",
+          "via": "1.1 varnish, 1.1 varnish"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://arxiv.org/user/register",
+        "redirects": 0,
+        "body_len": 10311,
+        "body_sha256": "07fdad361ed5d81a6378e93dd054c5e938129765bcf26ce624d1e9b45a54cb47",
+        "norm_sha256": "0a6a1ffbb421e0e532cd75dbe3eab73c7397df5bdf1dccb534f308c858f86e22",
+        "text_len": 1137,
+        "text_sha256": "c0ab5c3d957b135f0a26a8496818228da53764d9a5bce63b68dc6c2509bb0b00",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "server": "Apache",
+          "via": "1.1 varnish, 1.1 varnish"
+        },
+        "marker_anywhere": "captcha"
+      }
+    },
+    {
+      "id": "wallapop",
+      "name": "Wallapop",
+      "category": "classifieds",
+      "url": "https://es.wallapop.com/register",
+      "classification": "both_blocked",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 404,
+        "final_url": "https://es.wallapop.com/register",
+        "redirects": 0,
+        "body_len": 58667,
+        "body_sha256": "35b60cc90de4d2cc35bcd3f8f15352a61fee8e9bd576b9365ab60191772158e7",
+        "norm_sha256": "35b60cc90de4d2cc35bcd3f8f15352a61fee8e9bd576b9365ab60191772158e7",
+        "text_len": 605,
+        "text_sha256": "e65839ef6f57dcd529ee53536afeec52ba1475fe61a5cf7ed2ee62d08dd70948",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "via": "1.1 e1e4a0af92f95ceabc1156c63208dc70.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 404,
+        "final_url": "https://es.wallapop.com/register",
+        "redirects": 0,
+        "body_len": 58667,
+        "body_sha256": "35b60cc90de4d2cc35bcd3f8f15352a61fee8e9bd576b9365ab60191772158e7",
+        "norm_sha256": "35b60cc90de4d2cc35bcd3f8f15352a61fee8e9bd576b9365ab60191772158e7",
+        "text_len": 605,
+        "text_sha256": "e65839ef6f57dcd529ee53536afeec52ba1475fe61a5cf7ed2ee62d08dd70948",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "via": "1.1 7b5cba7d6487c11ff67fb1f1c1d7a244.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 404,
+        "final_url": "https://es.wallapop.com/register",
+        "redirects": 0,
+        "body_len": 58667,
+        "body_sha256": "35b60cc90de4d2cc35bcd3f8f15352a61fee8e9bd576b9365ab60191772158e7",
+        "norm_sha256": "35b60cc90de4d2cc35bcd3f8f15352a61fee8e9bd576b9365ab60191772158e7",
+        "text_len": 605,
+        "text_sha256": "e65839ef6f57dcd529ee53536afeec52ba1475fe61a5cf7ed2ee62d08dd70948",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "via": "1.1 612be83e679232ed64096d53fcfc9d16.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 404,
+        "final_url": "https://es.wallapop.com/register",
+        "redirects": 0,
+        "body_len": 58667,
+        "body_sha256": "35b60cc90de4d2cc35bcd3f8f15352a61fee8e9bd576b9365ab60191772158e7",
+        "norm_sha256": "35b60cc90de4d2cc35bcd3f8f15352a61fee8e9bd576b9365ab60191772158e7",
+        "text_len": 605,
+        "text_sha256": "e65839ef6f57dcd529ee53536afeec52ba1475fe61a5cf7ed2ee62d08dd70948",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "via": "1.1 4067875c6ee5c42255570f304745b430.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "leboncoin",
+      "name": "Leboncoin",
+      "category": "classifieds",
+      "url": "https://www.leboncoin.fr/compte/creation",
+      "classification": "both_blocked",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://www.leboncoin.fr/compte/creation",
+        "redirects": 0,
+        "body_len": 771,
+        "body_sha256": "8c22550023102dadcd5859e21b4db845fab8607cf66a2a15b32ce4c5054d8909",
+        "norm_sha256": "8c22550023102dadcd5859e21b4db845fab8607cf66a2a15b32ce4c5054d8909",
+        "text_len": 56,
+        "text_sha256": "23ee48f173b7c2e97c07fd3d5eb25ee8393964e3fede15c1036b2bdb61ada5cc",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "x-datadome": "protected",
+          "via": "1.1 b33e450e1cd477843a111c167611fc90.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://www.leboncoin.fr/compte/creation",
+        "redirects": 0,
+        "body_len": 771,
+        "body_sha256": "55e9fa4e5580b23ab7951f7473f1e50971516fc11d9fdbd48125c44a3adeb93f",
+        "norm_sha256": "55e9fa4e5580b23ab7951f7473f1e50971516fc11d9fdbd48125c44a3adeb93f",
+        "text_len": 56,
+        "text_sha256": "23ee48f173b7c2e97c07fd3d5eb25ee8393964e3fede15c1036b2bdb61ada5cc",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "x-datadome": "protected",
+          "via": "1.1 40605ba3b22cd59a113b9b36c705b306.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://www.leboncoin.fr/compte/creation",
+        "redirects": 0,
+        "body_len": 771,
+        "body_sha256": "952fd71fa86f4db2bbcb92382148b8992bc5e9d959eab361e9c0480c727f700c",
+        "norm_sha256": "952fd71fa86f4db2bbcb92382148b8992bc5e9d959eab361e9c0480c727f700c",
+        "text_len": 56,
+        "text_sha256": "23ee48f173b7c2e97c07fd3d5eb25ee8393964e3fede15c1036b2bdb61ada5cc",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "x-datadome": "protected",
+          "via": "1.1 bc05735148d76549abe57f2fc185c1f4.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://www.leboncoin.fr/compte/creation",
+        "redirects": 0,
+        "body_len": 771,
+        "body_sha256": "aeafdc62cb5e9627fb5bbb7e9a4c251ffdf3dfc23eca8a2b79678f2a9cf728c5",
+        "norm_sha256": "aeafdc62cb5e9627fb5bbb7e9a4c251ffdf3dfc23eca8a2b79678f2a9cf728c5",
+        "text_len": 56,
+        "text_sha256": "23ee48f173b7c2e97c07fd3d5eb25ee8393964e3fede15c1036b2bdb61ada5cc",
+        "challenge": true,
+        "challenge_marker": "captcha",
+        "waf_headers": {
+          "x-datadome": "protected",
+          "via": "1.1 65efe8ee2d33c55cbd211682cb533286.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": "captcha"
+      }
+    },
+    {
+      "id": "nostr_njump",
+      "name": "Nostr (njump gateway)",
+      "category": "social/decentralised",
+      "url": "https://njump.me/",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://njump.me/",
+        "redirects": 0,
+        "body_len": 28230,
+        "body_sha256": "799b946d4ee6e4a59956969ef2a58937bb1f00fdad48b31e3c70ec065edac7fa",
+        "norm_sha256": "63eee579d422b2967e7b3124a66bd4b8815a270a3e187f1a8a753bddb5f6ba3a",
+        "text_len": 8517,
+        "text_sha256": "d8efdc0ed6a6e5e2a73fcad8d465c6cc957168ec5a3d8d337f3750ce7d26a511",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39647d4cb0eb177-MAD",
+          "cf-cache-status": "HIT",
+          "via": "1.1 Caddy"
+        },
+        "marker_anywhere": "challenge-platform"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://njump.me/",
+        "redirects": 0,
+        "body_len": 28230,
+        "body_sha256": "9977044fe4eaddec074fdb5eb28341dc8d43c71acabef0451006de62e0816d00",
+        "norm_sha256": "7ba64c2f387322c2b4ea16b4708145ef6e0ccf37f099c762d15d1dc1684f90ee",
+        "text_len": 8517,
+        "text_sha256": "d8efdc0ed6a6e5e2a73fcad8d465c6cc957168ec5a3d8d337f3750ce7d26a511",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39647c4bcc6785d-MAD",
+          "cf-cache-status": "HIT",
+          "via": "1.1 Caddy"
+        },
+        "marker_anywhere": "challenge-platform"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://njump.me/",
+        "redirects": 0,
+        "body_len": 28230,
+        "body_sha256": "ced841fccfb5fb117a9cdf85018ae7de24e02681d53e86d6733121d470e1a815",
+        "norm_sha256": "11290e0352ad1585cbec4ec9f34ce758224a68bb76808e5c2d8b1f6cda3ba788",
+        "text_len": 8517,
+        "text_sha256": "d8efdc0ed6a6e5e2a73fcad8d465c6cc957168ec5a3d8d337f3750ce7d26a511",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39647f1aef6013d-MAD",
+          "cf-cache-status": "HIT",
+          "via": "1.1 Caddy"
+        },
+        "marker_anywhere": "challenge-platform"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://njump.me/",
+        "redirects": 0,
+        "body_len": 28229,
+        "body_sha256": "7c5c7ad0713f21551c46cda7dce5fb3e9008e5f2970ce4aa714f34534cc1af0a",
+        "norm_sha256": "eb1d3903a1882d138ab1ee545fa709f3ec6368633b365782b40cdf2ee7806394",
+        "text_len": 8517,
+        "text_sha256": "d8efdc0ed6a6e5e2a73fcad8d465c6cc957168ec5a3d8d337f3750ce7d26a511",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39647e45ffe0376-MAD",
+          "cf-cache-status": "HIT",
+          "via": "1.1 Caddy"
+        },
+        "marker_anywhere": "challenge-platform"
+      }
+    },
+    {
+      "id": "google_home",
+      "name": "Google",
+      "category": "search",
+      "url": "https://www.google.com/",
+      "classification": "declared_downgraded",
+      "notes": [
+        "declared visible text 230 chars vs generic 3217 chars (browser UA reproduced itself at 100%)"
+      ],
+      "sims": {
+        "declared_vs_generic": 0.0995,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 0.0995
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.google.com/",
+        "redirects": 0,
+        "body_len": 84743,
+        "body_sha256": "614a779c1df53411de067346a6ca66dbe5b88730b45594f622b422ecc89cfaf5",
+        "norm_sha256": "74047c9feddf8dd6d98e68e8f3c6db2af123b3ff6c1b531aebe17a2b5be54e3d",
+        "text_len": 230,
+        "text_sha256": "2e4163bfe15f351fc3d5362461dedbe7be1ead7b349d10118b76ccdb2c8b9eec",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "gws"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.google.com/",
+        "redirects": 0,
+        "body_len": 279926,
+        "body_sha256": "a776780717aaef4d03601a2e8542c1e2bc18722276bbecae4b029a19ba112c55",
+        "norm_sha256": "e02bcd1e270dad91c6b1bac71273919b57c515af3f9902863bce5d9455a57b71",
+        "text_len": 3217,
+        "text_sha256": "ca6cbd13bc6bbe73595e7350f6d94d4f2ea60fa7e49ba9d044f81f32a29b7016",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "gws"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.google.com/",
+        "redirects": 0,
+        "body_len": 84911,
+        "body_sha256": "69f0782f8c81fbc41a92ac664382223a57bc9b54a45324f130d3cdfaa2172056",
+        "norm_sha256": "d90e6aeff9aac22811af3aa4dfdf85f24c71c4ff09be7d29cb82524dcdef486f",
+        "text_len": 230,
+        "text_sha256": "2e4163bfe15f351fc3d5362461dedbe7be1ead7b349d10118b76ccdb2c8b9eec",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "gws"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.google.com/",
+        "redirects": 0,
+        "body_len": 279817,
+        "body_sha256": "725d3f2b99e7e4621ddf7b282dcd1e804543a8ddbdf094da00b782e8632cdae5",
+        "norm_sha256": "0ae8b513d3befd70255fd2ada0fd460cfce10e45663b8f0694fafa1d433a0790",
+        "text_len": 3217,
+        "text_sha256": "ca6cbd13bc6bbe73595e7350f6d94d4f2ea60fa7e49ba9d044f81f32a29b7016",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "gws"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "wiki_main",
+      "name": "Wikipedia (Main Page)",
+      "category": "reference",
+      "url": "https://en.wikipedia.org/wiki/Main_Page",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://en.wikipedia.org/wiki/Main_Page",
+        "redirects": 0,
+        "body_len": 253350,
+        "body_sha256": "bfa6d21696f4b32aaa507c379d3278b6a484c2429eccb9d6a7ce99c325c37a44",
+        "norm_sha256": "f11defeea30a8ea9fbbfe64c7d13e13a8ee0ccb35d39609f25dc2c1e6901ca5f",
+        "text_len": 14433,
+        "text_sha256": "2341833e6d9e691feaf9c000c3009d176d5aa1e1a1c9bee04086d101e508eb5a",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "mw-web.eqiad.main-864d949c75-tcsqt"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://en.wikipedia.org/wiki/Main_Page",
+        "redirects": 0,
+        "body_len": 253350,
+        "body_sha256": "bfa6d21696f4b32aaa507c379d3278b6a484c2429eccb9d6a7ce99c325c37a44",
+        "norm_sha256": "f11defeea30a8ea9fbbfe64c7d13e13a8ee0ccb35d39609f25dc2c1e6901ca5f",
+        "text_len": 14433,
+        "text_sha256": "2341833e6d9e691feaf9c000c3009d176d5aa1e1a1c9bee04086d101e508eb5a",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "mw-web.eqiad.main-864d949c75-tcsqt"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://en.wikipedia.org/wiki/Main_Page",
+        "redirects": 0,
+        "body_len": 253326,
+        "body_sha256": "31af1caad81083d93d8d4011239008ee33fd83e685eeae94e9dd78f28fdf76a6",
+        "norm_sha256": "e02a90e7bab074602d5559127563b2dc6dead30e773ec6d2b117b46cba4f44d8",
+        "text_len": 14433,
+        "text_sha256": "2341833e6d9e691feaf9c000c3009d176d5aa1e1a1c9bee04086d101e508eb5a",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "mw-web.eqiad.main-864d949c75-7rb9x"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://en.wikipedia.org/wiki/Main_Page",
+        "redirects": 0,
+        "body_len": 253350,
+        "body_sha256": "bfa6d21696f4b32aaa507c379d3278b6a484c2429eccb9d6a7ce99c325c37a44",
+        "norm_sha256": "f11defeea30a8ea9fbbfe64c7d13e13a8ee0ccb35d39609f25dc2c1e6901ca5f",
+        "text_len": 14433,
+        "text_sha256": "2341833e6d9e691feaf9c000c3009d176d5aa1e1a1c9bee04086d101e508eb5a",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "mw-web.eqiad.main-864d949c75-tcsqt"
+        },
+        "marker_anywhere": "captcha"
+      }
+    },
+    {
+      "id": "so_questions",
+      "name": "Stack Overflow (questions)",
+      "category": "Q&A",
+      "url": "https://stackoverflow.com/questions",
+      "classification": "both_blocked",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://stackoverflow.com/questions",
+        "redirects": 0,
+        "body_len": 5252,
+        "body_sha256": "ba5f740f83b8a4310479b0abfddcab44bb581ba3c5d945b495af638a9b14c1f2",
+        "norm_sha256": "ba5f740f83b8a4310479b0abfddcab44bb581ba3c5d945b495af638a9b14c1f2",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39647ff995aa6eb-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://stackoverflow.com/questions",
+        "redirects": 0,
+        "body_len": 5252,
+        "body_sha256": "25f2943704e40a225587409bd36e01f87232355b869f1f4a305b4afdda526203",
+        "norm_sha256": "25f2943704e40a225587409bd36e01f87232355b869f1f4a305b4afdda526203",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39647f22d111025-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 403,
+        "final_url": "https://stackoverflow.com/questions",
+        "redirects": 0,
+        "body_len": 5252,
+        "body_sha256": "faed198a9516cdd697ce7a387f99bc019e11283e53160facca1295a34eb060a6",
+        "norm_sha256": "faed198a9516cdd697ce7a387f99bc019e11283e53160facca1295a34eb060a6",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396481dbf333ed8-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 403,
+        "final_url": "https://stackoverflow.com/questions",
+        "redirects": 0,
+        "body_len": 5252,
+        "body_sha256": "37193bcdcb283469f99d3d188de14dd721a65fa43a9719c8035d186164154710",
+        "norm_sha256": "37193bcdcb283469f99d3d188de14dd721a65fa43a9719c8035d186164154710",
+        "text_len": 16,
+        "text_sha256": "6a0825976dfcfc0b4c60faf4c8b53b35f470565fafd2e5a89375815386a1c15c",
+        "challenge": true,
+        "challenge_marker": "just a moment",
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a39648106ad31d3b-BCN",
+          "cf-mitigated": "challenge"
+        },
+        "marker_anywhere": "just a moment"
+      }
+    },
+    {
+      "id": "reddit_home",
+      "name": "Reddit (front)",
+      "category": "social",
+      "url": "https://www.reddit.com/",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.reddit.com/",
+        "redirects": 0,
+        "body_len": 8397,
+        "body_sha256": "751adb1a8ab2a279a26aa51341401fafeef106608a19ca9e1f31901c9d9679b9",
+        "norm_sha256": "8dd1dffb4a9917cf6314c55ec8a18e1c2d06c553217c370e96e2f9131be40c29",
+        "text_len": 6,
+        "text_sha256": "2e183f2a7a70de1c10044f4e370a221a792736cb074835afcde6a9df457d413b",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "snooserv",
+          "via": "1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.reddit.com/",
+        "redirects": 0,
+        "body_len": 8397,
+        "body_sha256": "3661f40aa3b864cc315c26f0a688716b7db2ed5689d90e98a7b1932e1ac82e86",
+        "norm_sha256": "614d6a54f0df17d04c564d988f49a7f59e617979fdcc91000b76cf097d0b2c8f",
+        "text_len": 6,
+        "text_sha256": "2e183f2a7a70de1c10044f4e370a221a792736cb074835afcde6a9df457d413b",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "snooserv",
+          "via": "1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.reddit.com/",
+        "redirects": 0,
+        "body_len": 8397,
+        "body_sha256": "4cbf2fff8bde2990bb0502038c7eb108dee413b7d0b2cc96e82c6528d08398d5",
+        "norm_sha256": "6cc36b3fb2c9e73215de008141c96986670b2e47ccb225e3afc8c50c2608ed22",
+        "text_len": 6,
+        "text_sha256": "2e183f2a7a70de1c10044f4e370a221a792736cb074835afcde6a9df457d413b",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "snooserv",
+          "via": "1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.reddit.com/",
+        "redirects": 0,
+        "body_len": 8397,
+        "body_sha256": "d267d45ada07aa040875e93885c514e8ae46ee1a0e8b53e435da8ffd8f915e71",
+        "norm_sha256": "3c50feca56dd32ddbe8711c7aa85ca428430542665afbf5fc2ff617c89e3cd2f",
+        "text_len": 6,
+        "text_sha256": "2e183f2a7a70de1c10044f4e370a221a792736cb074835afcde6a9df457d413b",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "snooserv",
+          "via": "1.1 varnish"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "hn_front",
+      "name": "Hacker News (front)",
+      "category": "news/community",
+      "url": "https://news.ycombinator.com/",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://news.ycombinator.com/",
+        "redirects": 0,
+        "body_len": 34787,
+        "body_sha256": "60c4a52e5431d9bbdf1262cce196b79052f03a38a5de0493ff076bd15f827ee2",
+        "norm_sha256": "0d10e066c5cd5f101b787630d7100648560818da95175b34a74155dcb9692397",
+        "text_len": 3938,
+        "text_sha256": "bf46ca287cf0c9ea4febad5124e8de463ed50a08aa311b05d907d9b6caaa10cd",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://news.ycombinator.com/",
+        "redirects": 0,
+        "body_len": 34787,
+        "body_sha256": "60c4a52e5431d9bbdf1262cce196b79052f03a38a5de0493ff076bd15f827ee2",
+        "norm_sha256": "0d10e066c5cd5f101b787630d7100648560818da95175b34a74155dcb9692397",
+        "text_len": 3938,
+        "text_sha256": "bf46ca287cf0c9ea4febad5124e8de463ed50a08aa311b05d907d9b6caaa10cd",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://news.ycombinator.com/",
+        "redirects": 0,
+        "body_len": 34787,
+        "body_sha256": "60c4a52e5431d9bbdf1262cce196b79052f03a38a5de0493ff076bd15f827ee2",
+        "norm_sha256": "0d10e066c5cd5f101b787630d7100648560818da95175b34a74155dcb9692397",
+        "text_len": 3938,
+        "text_sha256": "bf46ca287cf0c9ea4febad5124e8de463ed50a08aa311b05d907d9b6caaa10cd",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://news.ycombinator.com/",
+        "redirects": 0,
+        "body_len": 34787,
+        "body_sha256": "60c4a52e5431d9bbdf1262cce196b79052f03a38a5de0493ff076bd15f827ee2",
+        "norm_sha256": "0d10e066c5cd5f101b787630d7100648560818da95175b34a74155dcb9692397",
+        "text_len": 3938,
+        "text_sha256": "bf46ca287cf0c9ea4febad5124e8de463ed50a08aa311b05d907d9b6caaa10cd",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "nginx"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "nyt",
+      "name": "New York Times",
+      "category": "news",
+      "url": "https://www.nytimes.com/",
+      "classification": "declared_differs_consistent",
+      "notes": [
+        "declared shares only 65% of visible content with generic, each UA reproducible across its own two passes"
+      ],
+      "sims": {
+        "declared_vs_generic": 0.6472,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 0.6472
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.nytimes.com/",
+        "redirects": 0,
+        "body_len": 399904,
+        "body_sha256": "b6d2f986ea8889f6864ffb7941b1f048e674361f5d8277950803ec1d7af8cd4e",
+        "norm_sha256": "617d3819740cbb5995076d887e72d537eff9de836cc31932ba80088cf7d17e47",
+        "text_len": 18017,
+        "text_sha256": "36ac35aff4c7984b41d9046deac5b9c947c7b03fd5434731955582276e4d4957",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "envoy",
+          "x-datadome": "protected"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.nytimes.com/",
+        "redirects": 0,
+        "body_len": 399819,
+        "body_sha256": "169aead762fbd2d5904e88278cc8742b8698e8fe13bfde3998c597803194b721",
+        "norm_sha256": "11682e1edaea9d20e8ae025539866f25ac4c74cdd4ab30cd8468d87f35e6e8ef",
+        "text_len": 7184,
+        "text_sha256": "019838f4423606c0b91194c1c0c1307c310e367cf0af9af734459500abbf5b16",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "envoy",
+          "x-datadome": "protected"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.nytimes.com/",
+        "redirects": 0,
+        "body_len": 399904,
+        "body_sha256": "b6d2f986ea8889f6864ffb7941b1f048e674361f5d8277950803ec1d7af8cd4e",
+        "norm_sha256": "617d3819740cbb5995076d887e72d537eff9de836cc31932ba80088cf7d17e47",
+        "text_len": 18017,
+        "text_sha256": "36ac35aff4c7984b41d9046deac5b9c947c7b03fd5434731955582276e4d4957",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "envoy",
+          "x-datadome": "protected"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.nytimes.com/",
+        "redirects": 0,
+        "body_len": 399819,
+        "body_sha256": "169aead762fbd2d5904e88278cc8742b8698e8fe13bfde3998c597803194b721",
+        "norm_sha256": "11682e1edaea9d20e8ae025539866f25ac4c74cdd4ab30cd8468d87f35e6e8ef",
+        "text_len": 7184,
+        "text_sha256": "019838f4423606c0b91194c1c0c1307c310e367cf0af9af734459500abbf5b16",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "envoy",
+          "x-datadome": "protected"
+        },
+        "marker_anywhere": "captcha"
+      }
+    },
+    {
+      "id": "amazon_home",
+      "name": "Amazon",
+      "category": "commerce",
+      "url": "https://www.amazon.com/",
+      "classification": "dynamic_unresolved",
+      "notes": [
+        "control: the two browser-UA passes overlap only 0%, so this page churns under a constant UA"
+      ],
+      "sims": {
+        "declared_vs_generic": 0.0,
+        "generic_control": 0.0,
+        "declared_control": 0.4524,
+        "cross_control": 0.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.amazon.com/",
+        "redirects": 0,
+        "body_len": 399980,
+        "body_sha256": "995ddfb36dc9937ec02255b57fda6a849aef58241ed6ad100d8dc0946961cc50",
+        "norm_sha256": "10e1b4f297b132c2caa903cd92d4ac87d7e159c61931272bb119c7c7b1d37190",
+        "text_len": 21879,
+        "text_sha256": "fa3eb41a5c87ff955515295fe76aa0d3ee7170089cd536c80dd4cf70f9a1f933",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Server",
+          "via": "1.1 22214b2d84a1a2c8cf162a6d561eabae.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 202,
+        "final_url": "https://www.amazon.com/",
+        "redirects": 0,
+        "body_len": 2007,
+        "body_sha256": "1b53c9beba906b4e42bf97e52a62f80d74bb7adc7bb47fa2107cc0c7eb6c80b5",
+        "norm_sha256": "8ac6492091296e3258c3bbcd7bde8abca1cc1c512b8c7239182d87b8a5f73878",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "CloudFront",
+          "x-amzn-waf-action": "challenge",
+          "via": "1.1 aff3e77afcd71b70f6f1abc3b26a2e72.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.amazon.com/",
+        "redirects": 0,
+        "body_len": 399986,
+        "body_sha256": "020c217dc910c29417d78ce8db578760c45c223e989c064592054a168632230e",
+        "norm_sha256": "aeaa155ab166b89ce3309ac39cd4d5a1534327f87becccf2406cc7bda6ba529e",
+        "text_len": 6158,
+        "text_sha256": "74bbfdd9c34ee3f0baed8b898fbbaa91390b22f85d0085ea132a3a8ea354a624",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "Server",
+          "via": "1.1 0186e4d04f2f5ef6fc706e58ed61f7ea.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 202,
+        "final_url": "https://www.amazon.com/",
+        "redirects": 0,
+        "body_len": 2007,
+        "body_sha256": "7e0652d321202a9020af17cfe5457dc86f1b63922ac18ab2f78de6f7b912b794",
+        "norm_sha256": "727ca8af855ac9df30f024c8b59b208c9ac6866644c94bbeec83625c1619e045",
+        "text_len": 0,
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "CloudFront",
+          "x-amzn-waf-action": "challenge",
+          "via": "1.1 1652137283b709ffa1fc2cc7946baf64.cloudfront.net (CloudFront)"
+        },
+        "marker_anywhere": null
+      }
+    },
+    {
+      "id": "github_explore",
+      "name": "GitHub (explore)",
+      "category": "code hosting",
+      "url": "https://github.com/explore",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://github.com/explore",
+        "redirects": 0,
+        "body_len": 399906,
+        "body_sha256": "4014ba9ab3d601d8a58655cebbdc153ca743f4946775e9975b218cd2c3867927",
+        "norm_sha256": "86f862889d3d8ae4ba710e24bc276ae793bee64ec102463f174002faf0817fa6",
+        "text_len": 7569,
+        "text_sha256": "a8feb9afb5aaa3aa602006a22148fd89f4aa3045bf1daf9499e855c800e53a30",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "github.com"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://github.com/explore",
+        "redirects": 0,
+        "body_len": 399906,
+        "body_sha256": "bcc404bc68ce3dd7f25a06793ea99d30818f3c46b32199a818fb129cfa552eae",
+        "norm_sha256": "31146328f8080335e840de4896b38b253cfe19f37b8577d2d58d779a777ff054",
+        "text_len": 7571,
+        "text_sha256": "40486fa67fd243c786e72b76d0114135161918d12af604adab162239988242db",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "github.com"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://github.com/explore",
+        "redirects": 0,
+        "body_len": 399906,
+        "body_sha256": "ea96f6d500e87655784cb856b4a3f1aea7df5355aea761bb4f5bedd098545188",
+        "norm_sha256": "a44658255831aa352362866a52f69013496fe10e8c17f3bf499f9601b6a68df1",
+        "text_len": 7569,
+        "text_sha256": "a8feb9afb5aaa3aa602006a22148fd89f4aa3045bf1daf9499e855c800e53a30",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "github.com"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://github.com/explore",
+        "redirects": 0,
+        "body_len": 399906,
+        "body_sha256": "53b05c45ff55a3d8a19e016af4074b96b2f039bfd54b9811242517ecf731171f",
+        "norm_sha256": "ee9447f9bee50c1d52b574157548717ad23896fc5010806a96804690f7121e09",
+        "text_len": 7569,
+        "text_sha256": "a8feb9afb5aaa3aa602006a22148fd89f4aa3045bf1daf9499e855c800e53a30",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "github.com"
+        },
+        "marker_anywhere": "captcha"
+      }
+    },
+    {
+      "id": "cloudflare_home",
+      "name": "Cloudflare",
+      "category": "infrastructure",
+      "url": "https://www.cloudflare.com/",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 1.0,
+        "generic_control": 1.0,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.cloudflare.com/",
+        "redirects": 0,
+        "body_len": 399652,
+        "body_sha256": "722576a529a74fddbef23c8336a4cb8d813ca032cd5541a9801079fd28206e9d",
+        "norm_sha256": "42349a11ee9932766b1958384e907f47ac7663e2afea883d277db8f45b98d58b",
+        "text_len": 39957,
+        "text_sha256": "964fc78bad31f1ecb9f5ccd18d3a43e677e821cb7e673d5cd6c5e0c250b8ec27",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396485cbd631644-BCN",
+          "cf-cache-status": "HIT"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.cloudflare.com/",
+        "redirects": 0,
+        "body_len": 399652,
+        "body_sha256": "722576a529a74fddbef23c8336a4cb8d813ca032cd5541a9801079fd28206e9d",
+        "norm_sha256": "42349a11ee9932766b1958384e907f47ac7663e2afea883d277db8f45b98d58b",
+        "text_len": 39957,
+        "text_sha256": "964fc78bad31f1ecb9f5ccd18d3a43e677e821cb7e673d5cd6c5e0c250b8ec27",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396484dd88ccc4a-BCN",
+          "cf-cache-status": "HIT"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.cloudflare.com/",
+        "redirects": 0,
+        "body_len": 399652,
+        "body_sha256": "722576a529a74fddbef23c8336a4cb8d813ca032cd5541a9801079fd28206e9d",
+        "norm_sha256": "42349a11ee9932766b1958384e907f47ac7663e2afea883d277db8f45b98d58b",
+        "text_len": 39957,
+        "text_sha256": "964fc78bad31f1ecb9f5ccd18d3a43e677e821cb7e673d5cd6c5e0c250b8ec27",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396487c68726031-BCN",
+          "cf-cache-status": "HIT"
+        },
+        "marker_anywhere": "captcha"
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.cloudflare.com/",
+        "redirects": 0,
+        "body_len": 399652,
+        "body_sha256": "722576a529a74fddbef23c8336a4cb8d813ca032cd5541a9801079fd28206e9d",
+        "norm_sha256": "42349a11ee9932766b1958384e907f47ac7663e2afea883d277db8f45b98d58b",
+        "text_len": 39957,
+        "text_sha256": "964fc78bad31f1ecb9f5ccd18d3a43e677e821cb7e673d5cd6c5e0c250b8ec27",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "cloudflare",
+          "cf-ray": "a396486c39b11644-BCN",
+          "cf-cache-status": "HIT"
+        },
+        "marker_anywhere": "captcha"
+      }
+    },
+    {
+      "id": "bbc_news",
+      "name": "BBC News",
+      "category": "news",
+      "url": "https://www.bbc.com/news",
+      "classification": "identical",
+      "notes": [],
+      "sims": {
+        "declared_vs_generic": 0.9791,
+        "generic_control": 0.9791,
+        "declared_control": 1.0,
+        "cross_control": 1.0
+      },
+      "declared": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.bbc.com/news",
+        "redirects": 0,
+        "body_len": 399544,
+        "body_sha256": "d765fd735d47c158eb9677c7c93096c6e1990ac03881340414ed7cbfd0786083",
+        "norm_sha256": "9caf0fba6dc08ec60ad3ddfdd89da4460475617fc53116d1ee64822ed81d17ba",
+        "text_len": 91788,
+        "text_sha256": "d25c0890355ebc64bd8a9a0b329cec84854eb2e1e2df82219ca60db21926267e",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "BBC-GTM",
+          "via": "1.1 BBC-GTM, 1.1 Belfrage, 1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "generic": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.bbc.com/news",
+        "redirects": 0,
+        "body_len": 399544,
+        "body_sha256": "6091cfc0204f3654e853f61080e004d19ec0fac1cc399bd2118912953181bf19",
+        "norm_sha256": "f2dd84582625c7a30cfbb59e9082b1f58fd9525bb45ea9613529c3fd7f294d14",
+        "text_len": 91764,
+        "text_sha256": "a5c66299d44a29d82d5f320a636102f8ebefb540d77ff14bf166750c8325a6a1",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "BBC-GTM",
+          "via": "1.1 BBC-GTM, 1.1 Belfrage, 1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "declared_control": {
+        "ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.bbc.com/news",
+        "redirects": 0,
+        "body_len": 399544,
+        "body_sha256": "d765fd735d47c158eb9677c7c93096c6e1990ac03881340414ed7cbfd0786083",
+        "norm_sha256": "9caf0fba6dc08ec60ad3ddfdd89da4460475617fc53116d1ee64822ed81d17ba",
+        "text_len": 91788,
+        "text_sha256": "d25c0890355ebc64bd8a9a0b329cec84854eb2e1e2df82219ca60db21926267e",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "BBC-GTM",
+          "via": "1.1 BBC-GTM, 1.1 Belfrage, 1.1 varnish"
+        },
+        "marker_anywhere": null
+      },
+      "generic_control": {
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "error": null,
+        "status": 200,
+        "final_url": "https://www.bbc.com/news",
+        "redirects": 0,
+        "body_len": 399544,
+        "body_sha256": "d765fd735d47c158eb9677c7c93096c6e1990ac03881340414ed7cbfd0786083",
+        "norm_sha256": "9caf0fba6dc08ec60ad3ddfdd89da4460475617fc53116d1ee64822ed81d17ba",
+        "text_len": 91788,
+        "text_sha256": "d25c0890355ebc64bd8a9a0b329cec84854eb2e1e2df82219ca60db21926267e",
+        "challenge": false,
+        "challenge_marker": null,
+        "waf_headers": {
+          "server": "BBC-GTM",
+          "via": "1.1 BBC-GTM, 1.1 Belfrage, 1.1 varnish"
+        },
+        "marker_anywhere": null
+      }
+    }
+  ]
+}

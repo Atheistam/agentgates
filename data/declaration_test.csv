@@ -1,0 +1,43 @@
+id,name,category,url,classification,d_status,d_redirects,d_body_len,d_challenge,g_status,g_redirects,g_body_len,g_challenge,similarity_declared_vs_generic,similarity_generic_control,similarity_declared_control,notes
+hn,Hacker News,news/community,https://news.ycombinator.com/login,identical,200,0,1125,False,200,0,1125,False,1.0,1.0,1.0,
+github,GitHub,code hosting,https://github.com/signup,both_blocked,403,0,770,True,403,0,770,True,1.0,1.0,1.0,
+gitlab,GitLab,code hosting,https://gitlab.com/users/sign_up,identical,200,0,33480,False,200,0,33530,False,1.0,1.0,1.0,
+bsky,Bluesky,social,https://bsky.app/,identical,200,0,6948,False,200,0,6948,False,1.0,1.0,1.0,
+mastodon_social,Mastodon (mastodon.social),social/fediverse,https://mastodon.social/auth/sign_up,identical,200,0,28133,False,200,0,28133,False,1.0,1.0,1.0,
+reddit,Reddit,social,https://www.reddit.com/register/,identical,200,0,8406,False,200,0,8406,False,1.0,1.0,1.0,
+lemmy_ml,Lemmy (lemmy.ml),social/fediverse,https://lemmy.ml/signup,identical,200,0,37574,False,200,0,37574,False,1.0,1.0,1.0,
+discourse,Discourse (meta),forum,https://meta.discourse.org/signup,declared_downgraded,200,0,26298,False,200,0,399886,False,0.0173,1.0,1.0,declared visible text 781 chars vs generic 325272 chars (browser UA reproduced itself at 100%)
+x,X,social,https://x.com/i/flow/signup,declared_downgraded,200,1,12930,False,200,0,295276,False,0.0,1.0,1.0,declared visible text 26 chars vs generic 173 chars (browser UA reproduced itself at 100%); redirect count differs: declared=1 generic=0; final URL differs
+lobsters,Lobsters,news/community,https://lobste.rs/login,identical,200,0,4107,False,200,0,4107,False,1.0,1.0,1.0,
+tildes,Tildes,news/community,https://tildes.net/register,identical,200,0,7639,False,200,0,7639,False,1.0,1.0,1.0,
+devto,dev.to,publishing,https://dev.to/enter,identical,200,0,54514,False,200,0,54514,False,1.0,1.0,1.0,
+medium,Medium,publishing,https://medium.com/m/signin,both_blocked,403,0,5405,True,403,0,5405,True,1.0,1.0,1.0,
+substack,Substack,publishing,https://substack.com/signup,identical,200,1,46708,False,200,1,46771,False,0.0,0.0,0.0,
+producthunt,Product Hunt,launch platform,https://www.producthunt.com/,declared_allowed,200,0,399979,False,403,0,5793,True,0.0013,1.0,1.0,declared got 200 where the browser UA got 403
+stackoverflow,Stack Overflow,Q&A,https://stackoverflow.com/users/signup,both_blocked,403,0,5764,True,403,0,5785,True,1.0,1.0,1.0,
+wikipedia,Wikipedia,reference,https://en.wikipedia.org/w/index.php?title=Special:CreateAccount&returnto=Main+Page,identical,200,4,42538,False,200,4,42537,False,1.0,1.0,1.0,final URL differs
+craigslist,Craigslist,classifieds,https://accounts.craigslist.org/signup,identical,200,0,4718,False,200,0,4718,False,1.0,1.0,1.0,
+ebay,eBay,commerce,https://signup.ebay.com/pa/crte,dynamic_unresolved,200,1,39290,False,200,0,181477,False,0.3333,0.3333,0.3333,"control: the two browser-UA passes overlap only 33%, so this page churns under a constant UA; redirect count differs: declared=1 generic=0; final URL differs"
+stripe,Stripe,payments,https://dashboard.stripe.com/register,identical,200,0,152315,False,200,0,152315,False,1.0,1.0,1.0,
+vercel,Vercel,hosting,https://vercel.com/signup,identical,200,0,335761,False,200,0,335761,False,1.0,1.0,1.0,
+netlify,Netlify,hosting,https://app.netlify.com/signup,both_blocked,200,0,16499,True,200,0,16499,True,1.0,1.0,1.0,
+railway,Railway,hosting,https://railway.app/login,identical,200,1,199413,False,200,1,199413,False,1.0,1.0,1.0,
+npm,npm,package registry,https://www.npmjs.com/signup,both_blocked,403,0,5827,True,403,0,5848,True,1.0,1.0,1.0,
+openai_platform,OpenAI Platform,AI API,https://platform.openai.com/signup,both_blocked,403,0,10091,True,403,0,10112,True,0.0,0.0,0.0,
+keyid,KeyID.ai,agent identity,https://keyid.ai/,identical,200,0,48106,False,200,0,48106,False,1.0,1.0,1.0,
+cloudflare,Cloudflare,infrastructure,https://dash.cloudflare.com/sign-up,both_blocked,403,0,5814,True,403,0,5814,True,1.0,1.0,1.0,
+huggingface,Hugging Face,AI platform,https://huggingface.co/join,identical,202,0,2343,False,202,0,2343,False,0.0,0.0,0.0,
+arxiv,arXiv,preprints,https://arxiv.org/user/register,both_blocked,200,0,10311,True,200,0,10311,True,1.0,1.0,1.0,
+wallapop,Wallapop,classifieds,https://es.wallapop.com/register,both_blocked,404,0,58667,False,404,0,58667,False,1.0,1.0,1.0,
+leboncoin,Leboncoin,classifieds,https://www.leboncoin.fr/compte/creation,both_blocked,403,0,771,True,403,0,771,True,1.0,1.0,1.0,
+nostr_njump,Nostr (njump gateway),social/decentralised,https://njump.me/,identical,200,0,28230,False,200,0,28230,False,1.0,1.0,1.0,
+google_home,Google,search,https://www.google.com/,declared_downgraded,200,0,84743,False,200,0,279926,False,0.0995,1.0,1.0,declared visible text 230 chars vs generic 3217 chars (browser UA reproduced itself at 100%)
+wiki_main,Wikipedia (Main Page),reference,https://en.wikipedia.org/wiki/Main_Page,identical,200,0,253350,False,200,0,253350,False,1.0,1.0,1.0,
+so_questions,Stack Overflow (questions),Q&A,https://stackoverflow.com/questions,both_blocked,403,0,5252,True,403,0,5252,True,1.0,1.0,1.0,
+reddit_home,Reddit (front),social,https://www.reddit.com/,identical,200,0,8397,False,200,0,8397,False,1.0,1.0,1.0,
+hn_front,Hacker News (front),news/community,https://news.ycombinator.com/,identical,200,0,34787,False,200,0,34787,False,1.0,1.0,1.0,
+nyt,New York Times,news,https://www.nytimes.com/,declared_differs_consistent,200,0,399904,False,200,0,399819,False,0.6472,1.0,1.0,"declared shares only 65% of visible content with generic, each UA reproducible across its own two passes"
+amazon_home,Amazon,commerce,https://www.amazon.com/,dynamic_unresolved,200,0,399980,False,202,0,2007,False,0.0,0.0,0.4524,"control: the two browser-UA passes overlap only 0%, so this page churns under a constant UA"
+github_explore,GitHub (explore),code hosting,https://github.com/explore,identical,200,0,399906,False,200,0,399906,False,1.0,1.0,1.0,
+cloudflare_home,Cloudflare,infrastructure,https://www.cloudflare.com/,identical,200,0,399652,False,200,0,399652,False,1.0,1.0,1.0,
+bbc_news,BBC News,news,https://www.bbc.com/news,identical,200,0,399544,False,200,0,399544,False,0.9791,0.9791,1.0,

@@ -58,6 +58,83 @@
     },
     "status_code_only_note": "Counts of HTTP 200 responses before content validation. Reported so the inflation from soft-404 pages (a 200 with an HTML error body) is visible."
   },
+  "census_tranche2": null,
+  "declaration_experiment": {
+    "declared_ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
+    "summary": {
+      "n_targets": 42,
+      "counts": {
+        "identical": 24,
+        "declared_near_identical": 0,
+        "declared_differs_consistent": 1,
+        "declared_unstable": 0,
+        "declared_downgraded": 3,
+        "declared_blocked": 0,
+        "declared_throttled": 0,
+        "declared_allowed": 1,
+        "both_blocked": 11,
+        "dynamic_unresolved": 2,
+        "inconclusive": 0
+      },
+      "pct": {
+        "identical": 57.1,
+        "declared_near_identical": 0.0,
+        "declared_differs_consistent": 2.4,
+        "declared_unstable": 0.0,
+        "declared_downgraded": 7.1,
+        "declared_blocked": 0.0,
+        "declared_throttled": 0.0,
+        "declared_allowed": 2.4,
+        "both_blocked": 26.2,
+        "dynamic_unresolved": 4.8,
+        "inconclusive": 0.0
+      },
+      "open_to_generic_ua": 30,
+      "punished_for_declaring": 3,
+      "punished_for_declaring_pct_of_all": 7.1,
+      "punished_for_declaring_pct_of_open": 10.0,
+      "differing_on_declaration": 1,
+      "differing_on_declaration_pct": 2.4,
+      "unresolved": 2,
+      "unresolved_pct": 4.8,
+      "resolved": 40,
+      "resolved_pct": 95.2,
+      "similarity_median_declared_vs_generic": 1.0,
+      "similarity_histogram": [
+        {
+          "lo": 0.0,
+          "hi": 0.5,
+          "n": 9
+        },
+        {
+          "lo": 0.5,
+          "hi": 0.7,
+          "n": 1
+        },
+        {
+          "lo": 0.7,
+          "hi": 0.9,
+          "n": 0
+        },
+        {
+          "lo": 0.9,
+          "hi": 0.97,
+          "n": 0
+        },
+        {
+          "lo": 0.97,
+          "hi": 1.01,
+          "n": 32
+        }
+      ],
+      "both_blocked": 11,
+      "both_blocked_pct": 26.2,
+      "interpretation_guard": "The UA line is changed as a WHOLE, so any difference is attributable to the whole string, not specifically to declaring non-humanness. The control pass bounds churn but does not eliminate it; a WAF that is probabilistic may still read as a stable-looking difference.",
+      "clean_difference_total": 4,
+      "clean_difference_pct": 9.5,
+      "passes_per_target": 4
+    }
+  },
   "fieldnotes": [
     {
       "target": "news.ycombinator.com",

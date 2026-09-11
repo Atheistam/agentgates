@@ -154,7 +154,12 @@ def apply_validation(census, max_workers=4):
 
 
 def main():
-    path = os.path.join(DATA, "standards_census.json")
+    import argparse
+    ap = argparse.ArgumentParser(description="Independent counter-check of a census file.")
+    ap.add_argument("--file", default="standards_census.json",
+                    help="file inside data/ to re-validate (default: standards_census.json)")
+    args = ap.parse_args()
+    path = os.path.join(DATA, args.file)
     with open(path) as f:
         c = json.load(f)
     before = dict(c["summary"])

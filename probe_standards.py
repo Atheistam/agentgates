@@ -7,6 +7,7 @@ Cloudflare's verified-agent scheme relies on, llms.txt, and ai.txt.
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import os
@@ -122,14 +123,14 @@ def probe(domain):
     return rec
 
 
-def load_domains():
-    path = os.path.join(DATA, "top_domains.txt")
+def load_domains(path=None):
+    path = path or os.path.join(DATA, "top_domains.txt")
     if os.path.exists(path):
         with open(path) as f:
             doms = [l.strip() for l in f if l.strip() and not l.startswith("#")]
         if doms:
-            print("loaded %d domains from data/top_domains.txt" % len(doms))
-            return doms[:CENSUS_SIZE]
+            print("loaded %d domains from %s" % (len(doms), path))
+            return doms[:CENSUS_SIZE] if path.endswith("top_domains.txt") else doms
     # try Tranco directly
     try:
         st, body = http("https://tranco-list.eu/api/lists/date/latest")
@@ -155,8 +156,17 @@ def load_domains():
     return FALLBACK_DOMAINS
 
 
-def main():
-    domains = load_domains()
+def main(argv=None):
+    ap = argparse.ArgumentParser(description="Agent Gates standards census")
+    ap.add_argument("--domains", default=None,
+                    help="path to a newline-separated domain list (default data/top_domains.txt)")
+    ap.add_argument("--out-prefix", default="standards_census",
+                    help="output basename written to data/ (default standards_census)")
+    ap.add_argument("--tranche-note", default=None,
+                    help="free-text note recorded in the JSON under tranche.note")
+    args = ap.parse_args(argv)
+
+    domains = load_domains(args.domains)
     print("Agent Gates standards census - %d domains" % len(domains))
     results = []
     with ThreadPoolExecutor(max_workers=4) as ex:
@@ -215,13 +225,20 @@ def main():
         },
         "results": results,
     }
-    with open(os.path.join(DATA, "standards_census.json"), "w") as f:
+    if args.tranche_note:
+        out["tranche"] = {
+            "tranche": 2 if "t2" in args.out_prefix else None,
+            "domains_file": args.domains,
+            "note": args.tranche_note,
+        }
+    jpath = os.path.join(DATA, args.out_prefix + ".json")
+    with open(jpath, "w") as f:
         json.dump(out, f, indent=2)
     cols = ["domain", "robots_status", "robots_present", "blocks_named_ai_agent", "ai_agents_named",
             "sig_directory_status", "has_sig_directory", "sig_directory_shape",
             "llms_txt_status", "has_llms_txt",
             "ai_txt_status", "has_ai_txt", "checked_at"]
-    with open(os.path.join(DATA, "standards_census.csv"), "w", newline="") as f:
+    with open(os.path.join(DATA, args.out_prefix + ".csv"), "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
         w.writeheader()
         for r in results:

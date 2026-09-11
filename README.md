@@ -15,6 +15,8 @@ connection. That constraint is the point: it isolates *identity* as the variable
 | Top domains naming AI agents in `robots.txt` | see `data/standards_census.json` |
 | Domains publishing a signed-agent key directory | ~0–1% |
 | Domains publishing `llms.txt` | a small minority |
+| Does declaring yourself an agent change what you get? | `data/declaration_test.json` — the whole response is fetched **four times per URL**, twice with each User-Agent, so ordinary page churn cannot be mistaken for a user-agent effect |
+| Census, second independent sample | `data/standards_census_t2.json` (Tranco ranks 201–500) — a stability band, not an extension: Tranco's ranking regenerates daily, so tranche 1 is frozen and tranche 2 is a separate draw |
 
 Run `python3 build_site.py` after the probes to regenerate the exact figures for the current date.
 
@@ -54,6 +56,14 @@ dataset recorded that cycle closing in real time.
   HTML, XML, empty and tiny WAF-challenge bodies. `run.sh` runs it after the census.
 - `probe_keydirs.py` — fetches the flagged signature-directory URLs, records redirects, parses the
   JSON and classifies its shape (spec-shaped `{"keys": [...]}` set vs a single bare JWK).
+- `probe_declaration.py` — the declaration experiment, on 32 account surfaces. Each URL is fetched
+  **four times in one interleaved pass** (generic, declared, generic, declared) with only the
+  `User-Agent` line differing. The repeat of each UA is a control: if the two generic passes disagree
+  with each other, the page churns under a constant UA and the declared-vs-generic difference is
+  **not** attributable to the header — that target is scored `dynamic_unresolved` rather than forced
+  into a finding. Bodies are compared on whitespace-normalised, entity-decoded visible text and
+  token-set overlap, so nonces, timestamps and formatting jitter do not read as an effect.
+- `census_tranche.py` — the same content-validated census over the second sample (`data/tranche2_domains.txt`).
 - `build_site.py` — static site generator, no JS, no external assets.
 - `fieldnotes.json` — first-hand evidence from 30 unattended runs, with confidence levels.
 
@@ -73,11 +83,14 @@ landscape as it actually is.
 ## Reproduce
 
 ```bash
-python3 probe_signup.py      # ~2 min
-python3 probe_standards.py   # ~7 min
-python3 validate_census.py   # ~5 min counter-check
-python3 probe_keydirs.py     # ~5 s
-python3 build_site.py        # instant -> web/
+python3 probe_signup.py        # ~2 min
+python3 probe_standards.py     # ~7 min  (tranche 1: data/top_domains.txt, frozen)
+python3 census_tranche.py      # ~40 min (tranche 2: Tranco ranks 201-500)
+python3 validate_census.py     # ~5 min counter-check
+python3 validate_census.py --file standards_census_t2.json
+python3 probe_keydirs.py       # ~5 s
+python3 probe_declaration.py   # ~10 min, 4 passes x 32 URLs
+python3 build_site.py          # instant -> web/
 ```
 
 Python 3.9+, standard library only. No API keys.
@@ -91,7 +104,10 @@ evidence than the first-hand attempts in `fieldnotes.json`; where the two disagr
 ## Data
 
 - `data/signup_gates.json` / `.csv`
-- `data/standards_census.json` / `.csv`
+- `data/standards_census.json` / `.csv` — tranche 1 (Tranco top 200, frozen)
+- `data/standards_census_t2.json` / `.csv` — tranche 2 (Tranco ranks 201–500, independent draw)
+- `data/tranche2_domains.txt` — the tranche-2 domain list, kept so the sample is auditable
+- `data/declaration_test.json` / `.csv` — the four-pass declaration experiment
 - `data/fieldnotes.json`
 
 ## License
