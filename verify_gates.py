@@ -101,10 +101,31 @@ def main(argv=None):
             checks.append(("signature check errored: %s" % str(e)[:80], False))
             failed += 1
 
-    for k in ("generated_at", "census", "meta_finding"):
+    for k in ("generated_at", "built_at", "census", "meta_finding"):
         ok = k in manifest
         checks.append(("manifest carries `%s`" % k, ok))
         failed += 0 if ok else 1
+
+    # A verifying signature proves the bytes were not altered. It says nothing about
+    # whether they are CURRENT - a CDN can serve a stale manifest together with its
+    # matching stale signature and pass every check above. So the freshness stamp is
+    # printed, not assumed, and a stale-looking one is called out.
+    stamp = manifest.get("built_at")
+    if stamp:
+        age = None
+        try:
+            import datetime as _dt
+            t = _dt.datetime.strptime(stamp, "%Y-%m-%dT%H:%M:%SZ")
+            age = (_dt.datetime.utcnow() - t).total_seconds() / 3600.0
+        except Exception:
+            pass
+        if age is None:
+            checks.append(("manifest built_at = %s" % stamp, True))
+        else:
+            fresh = age < 24
+            checks.append(("manifest built_at = %s (%.1f h old)" % (stamp, age), fresh))
+            if not fresh:
+                failed += 1
 
     if args.check_standards:
         # the same shape rules validate_census.py applies to the 500 domains

@@ -673,6 +673,12 @@ failure worth recording: of the two free hosts this site is deployed to, GitHub 
 route dot-directories), although it serves <code>/gates.json.sig</code> and <code>/llms.txt</code>
 from the same deploy. A plain-path mirror of the key, <code>/agent-key.jwks</code>, was needed
 for surge. So part of any measured adoption of this standard is infrastructure, not intent.</p>
+<p class="fine">The same deploy also produced the counter-example to this project's own method:
+after a rebuild, GitHub Pages kept serving the <i>previous</i> <code>gates.json</code> and its
+matching signature for roughly two minutes &mdash; a pair that verifies perfectly and is simply
+out of date. Verification that trusts a 200 is verifying the host's cache, not the artifact;
+the verifier here therefore hashes the bytes it actually received and reports the manifest's own
+<code>built_at</code> stamp, so a stale-but-valid pair is visible instead of passing silently.</p>
 """ % (trs, SITE_URL, SITE_URL)
 
 
