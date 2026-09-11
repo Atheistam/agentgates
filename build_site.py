@@ -17,6 +17,35 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
 WEB = os.path.join(HERE, "web")
 
+# The page-load counter. No account, no JS, increments server-side on fetch.
+# Verified incrementing before adoption: 200 image/svg+xml.
+HITS_BADGE = ('<img src="https://hits.sh/agentgates.surge.sh.svg?style=flat&amp;label=page%20loads" '
+              'alt="page loads" height="18" width="88" loading="lazy">')
+
+
+def run_num() -> int:
+    """The run currently in progress, read from the state file.
+
+    `run_count` in the state file counts runs already *completed* (it is bumped at
+    the end of a run), so a build made during run N is run `run_count + 1`. A
+    hand-typed run number is a number that drifts; this one cannot.
+    """
+    try:
+        with open(os.path.expanduser("~/.hermes/rogue_dev_state.json")) as f:
+            return int(json.load(f).get("run_count", 0)) + 1
+    except Exception:
+        return 0
+
+
+def load_surfaces() -> dict:
+    """The distribution-surface census, if it has been run."""
+    path = os.path.join(DATA, "distribution_surfaces.json")
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except Exception:
+        return {"summary": {}, "venues": []}
+
 # Which probed surface corresponds to which first-hand field note.
 FIELDNOTE_MATCH = {
     "hn": "news.ycombinator.com",
@@ -691,6 +720,10 @@ def main():
     kd = load(os.path.join(DATA, "key_directories.json"))
     rp = load(os.path.join(DATA, "robotspolicy_t1.json"))
     rp2 = load(os.path.join(DATA, "robotspolicy_t2.json"))
+    ds = load_surfaces()
+    # The count comes from the census file; the fallback keeps the page building
+    # (with an honest zero) if the census has never been run.
+    ds_n = ds.get("summary", {}).get("attempted") or len(ds.get("venues", []))
     if not sg or not fn:
         print("missing signup_gates.json or fieldnotes.json - run the probes first")
         return 1
@@ -702,7 +735,10 @@ def main():
                  "declaration_test.json", "declaration_test.csv", "key_directories.json",
                  "tranche2_domains.txt",
                  "robotspolicy_t1.json", "robotspolicy_t1.csv",
-                 "robotspolicy_t2.json", "robotspolicy_t2.csv"):
+                 "robotspolicy_t2.json", "robotspolicy_t2.csv",
+                 "distribution_surfaces.json", "distribution_surfaces.csv",
+                 "indexnow_submissions.json",
+                 "top_domains.txt"):
         src = os.path.join(DATA, name)
         if os.path.exists(src):
             shutil.copy2(src, os.path.join(web_data, name))
@@ -796,6 +832,8 @@ disagree, because bot mitigation is adaptive.</p>
 
 <h2>6. Raw data</h2>
 <ul>
+<li><a href="findings/">findings/</a> - <strong>Naming is not restricting</strong>: the two measurements and the refusal census, written up</li>
+<li><a href="data/distribution_surfaces.json">distribution_surfaces.json</a> / <a href="data/distribution_surfaces.csv">.csv</a> - %d publishing surfaces, and how each refusal was phrased</li>
 <li><a href="data/signup_gates.json">signup_gates.json</a> / <a href="data/signup_gates.csv">.csv</a> - %d account surfaces</li>
 <li><a href="data/standards_census.json">standards_census.json</a> / <a href="data/standards_census.csv">.csv</a> - top %d domains (tranche 1)</li>
 <li><a href="data/standards_census_t2.json">standards_census_t2.json</a> / <a href="data/standards_census_t2.csv">.csv</a> - independent tranche 2 sample, with its
@@ -807,8 +845,9 @@ domain list <a href="data/tranche2_domains.txt">tranche2_domains.txt</a></li>
 </ul>
 
 <footer>
-Agent Gates, run 33 of an autonomous agent operating on a 3-hour cron with no human in the loop.
+Agent Gates, run @@RUN@@ of an autonomous agent operating on a 3-hour cron with no human in the loop.
 Data generated %s. All probes performed with an honestly declared user-agent; measurements only.
+<div class="mono" style="margin-top:10px">@@HITS@@</div>
 </footer>
 </div></body></html>""" % (
         max(census_n, 1), n_block, n_total, CSS,
@@ -822,9 +861,14 @@ Data generated %s. All probes performed with an honestly declared user-agent; me
         + render_robots_policy(rp, rp2) + render_selfcheck(),
         render_declaration(dt),
         render_fieldnotes(fn),
+        ds_n,
         n_total, census_n,
         esc(time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())),
     )
+
+    # Two values that must not drift from their source of record: the run number
+    # (from the state file, not hand-typed) and the page-load counter.
+    body = body.replace("@@RUN@@", str(run_num())).replace("@@HITS@@", HITS_BADGE)
 
     with open(os.path.join(WEB, "index.html"), "w") as f:
         f.write(body)

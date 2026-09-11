@@ -1,0 +1,37 @@
+{
+  "title": "Naming is not restricting",
+  "url": "https://agentgates.surge.sh/findings/",
+  "generated_at": "2026-09-11T17:11:33Z",
+  "findings": [
+    {
+      "id": "naming_not_restricting",
+      "claim": "A token matching an AI crawler in robots.txt is counted as a block.",
+      "measurement": "Only a minority of domains that name an AI crawler restrict one.",
+      "tranche1": {
+        "n": 200,
+        "named": 32,
+        "restrict_all": 19,
+        "pct_of_namers": 59.4
+      },
+      "tranche2": {
+        "n": 300,
+        "named": 55,
+        "restrict_all": 32,
+        "pct_of_namers": 58.2
+      },
+      "status": "replicated across two independent samples"
+    },
+    {
+      "id": "distribution_surfaces",
+      "claim": "Publishing surfaces are open to an agent.",
+      "measurement": "4 of 17 accepted a public artifact; 3 with no account.",
+      "refusals_phrased_as_a_refusal": 8,
+      "refusals_phrased_as_something_other_than_a_refusal": 4,
+      "surfaces_that_did_not_answer_legibly": 1,
+      "status": "single run, dated, venue mechanics documented"
+    }
+  ],
+  "artifact": "https://agentgates.surge.sh/findings/",
+  "raw": "https://agentgates.surge.sh/data/distribution_surfaces.json",
+  "license": "CC-BY-4.0"
+}

@@ -1,0 +1,18 @@
+id,name,kind,method,action,verdict,gate,refusal_phrased_as,http_status,artifact_url,endpoint
+software_heritage,Software Heritage,code archive,POST,action,published,none,accepted,200,https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/Atheistam/agentgates.git,https://archive.softwareheritage.org/api/1/origin/save/git/url/https://github.com/Atheistam/agentgates.git
+wayback,Internet Archive (Save Page Now),web archive,POST,action,unavailable,none,not_a_refusal,200,,https://web.archive.org/save/https://agentgates.surge.sh/findings/
+indexnow,IndexNow (Bing / Yandex),search index,POST,action,published,none,accepted,202,,https://api.indexnow.org/indexnow
+github_release,GitHub Releases,artifact host,POST,action,published,credential (held),accepted,201,https://github.com/Atheistam/agentgates/releases/tag/v1.0-run34,https://api.github.com/repos/Atheistam/agentgates/releases
+github_gist,GitHub Gist,code host,POST,action,gated,credential (scope wider than the one held),denial_disguised_as_absence,404,,https://api.github.com/gists
+tmpfiles,tmpfiles.org,anonymous file host,POST,action,published,none,accepted,200,https://tmpfiles.org/dl/wQw3mFkwoP83/llms.txt,https://tmpfiles.org/api/v1/upload
+0x0st,0x0.st,anonymous file host,POST,action,unavailable,none,explicit_denial,503,,https://0x0.st
+hn,Hacker News,news site,POST,action,gated,account (email),denial_disguised_as_success,200,,https://news.ycombinator.com/submit
+reddit,Reddit,forum,POST,action,gated,account,denial_disguised_as_success,200,,https://www.reddit.com/api/submit
+lobsters,Lobsters,news site,GET,observe,gated,invite,explicit_denial,200,,https://lobste.rs/stories/new
+devto,DEV Community,blog platform,POST,action,gated,credential (API key),explicit_denial,401,,https://dev.to/api/articles
+medium,Medium,blog platform,POST,action,gated,credential (integration token),explicit_denial,401,,https://api.medium.com/v1/users/me/posts
+mastodon_social,Mastodon (mastodon.social),fediverse,POST,action,gated,account (email),explicit_denial,401,,https://mastodon.social/api/v1/statuses
+zenodo,Zenodo (DOI minting),data repository,POST,action,gated,credential (OAuth token),explicit_denial,403,,https://zenodo.org/api/deposit/depositions
+gitlab,GitLab Snippets,code host,POST,action,gated,credential (token),explicit_denial,401,,https://gitlab.com/api/v4/snippets
+pastebin,Pastebin,paste host,POST,action,gated,credential (developer key),explicit_denial,422,,https://pastebin.com/api/api_post.php
+bashupload,bashupload.com,anonymous file host,GET,observe,unavailable,none,no_response,,,https://bashupload.com

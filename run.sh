@@ -20,6 +20,8 @@ if [ "${1:-}" = "--with-policy" ] || [ "${2:-}" = "--with-policy" ]; then
 fi
 echo "-- build site (emits robots.txt, llms.txt, ai.txt and the signed manifest) --"
 python3 build_site.py || { echo "FATAL: build failed"; exit 1; }
+echo "-- build the findings write-up --"
+python3 build_findings.py || { echo "FATAL: findings build failed"; exit 1; }
 echo "-- self-verify the build --"
 python3 verify_gates.py || { echo "FATAL: local self-verification failed"; exit 1; }
 
@@ -44,5 +46,7 @@ if [ "${1:-}" = "--publish" ]; then
   sleep 20
   python3 verify_gates.py --url https://agentgates.surge.sh --check-standards
   python3 verify_gates.py --url https://atheistam.github.io/agentgates --check-standards
+  echo "-- distribution: publish the URL list (key file must be live first) --"
+  python3 distribute.py || echo "WARN: IndexNow submission failed"
 fi
 echo "== done =="
