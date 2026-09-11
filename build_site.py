@@ -711,6 +711,55 @@ the verifier here therefore hashes the bytes it actually received and reports th
 """ % (trs, SITE_URL, SITE_URL)
 
 
+def _pid():
+    """Persistent identifiers produced by probe_persistent_id.py, or {}."""
+    p = os.path.join(DATA, "persistent_identifiers.json")
+    return (load(p) or {}) if os.path.exists(p) else {}
+
+
+def reach_block():
+    """What this project can and cannot find out about its own reach.
+
+    Kept out of the scoreboard's own numbers on purpose: these are measurements of
+    the instrument, not of the web, and mixing them would imply the page counter
+    is a readership figure. It is not, and the probe records why.
+    """
+    rp_p = os.path.join(DATA, "readership_probe.json")
+    ix_p = os.path.join(DATA, "index_presence.json")
+    out = {}
+    if os.path.exists(rp_p):
+        rp = load(rp_p) or {}
+        api = rp.get("api") or {}
+        refs = api.get("referrers") or {}
+        pub = (rp.get("public") or {}).get("repo") or {}
+        out["readership"] = {
+            "views_14d": (api.get("views") or {}).get("count"),
+            "clones_14d": (api.get("clones") or {}).get("count"),
+            "clone_uniques": (api.get("clones") or {}).get("uniques"),
+            "referrers": refs.get("count") if refs.get("count") is not None
+                         else len(refs.get("detail") or []),
+            "stars": pub.get("stargazers"),
+            "gate": "credential (held)",
+            "counter_reads": (rp.get("counter") or {}).get("values"),
+            "counter_increment_per_read": (rp.get("counter") or {}).get("increment_per_read"),
+            "verdict": "measurable only with the credential the project holds; zero over 14 days",
+        }
+    if os.path.exists(ix_p):
+        ix = load(ix_p) or {}
+        eng = ix.get("engines") or {}
+        out["index_presence"] = {
+            "endpoints_tried": len(eng),
+            "result_links_returned": sum(e["target"].get("result_links", 0) or 0
+                                         for e in eng.values()),
+            "links_to_this_project": sum(e["target"].get("links_to_query_domain", 0) or 0
+                                         for e in eng.values()),
+            "control_links_on_control_query": sum(e["control"].get("links_to_query_domain", 0) or 0
+                                                  for e in eng.values()),
+            "verdict": "undeterminable from here: every endpoint failed its own positive control",
+        }
+    return out or None
+
+
 def main():
     sg = load(os.path.join(DATA, "signup_gates.json"))
     cs = load(os.path.join(DATA, "standards_census.json"))
@@ -895,6 +944,25 @@ Data generated %s. All probes performed with an honestly declared user-agent; me
             } if dt else None,
             "fieldnotes": fn["observations"],
             "meta_finding": fn["meta_finding"],
+            # Reach: what this project can and cannot find out about itself. The
+            # identifiers block is here so an agent can name the artifact without
+            # parsing the HTML page, and so the archive's distance from HEAD travels
+            # with the archive's own name for it.
+            "reach": reach_block(),
+            "persistent_identifier": {
+                "origin_swhid": _pid().get("origin_swhid"),
+                "snapshot_swhid": _pid().get("snapshot_swhid"),
+                "keyed_as": _pid().get("origin_keyed_as"),
+                "archive_lag_commits": _pid().get("archive_lag_commits"),
+                # Publishing an identifier is not the same as publishing an address.
+                # The snapshot SWHID above 404s on the API path that resolves the same
+                # object by hash; both are given so neither has to be guessed.
+                "snapshot_resolves_at": _pid().get("snapshot_api_address"),
+                "snapshot_swhid_on_api_path": _pid().get("snapshot_prefixed_http_status"),
+                "origin_swhid_confirmed_by_archive": _pid().get(
+                    "origin_swhid_matches_authority"),
+                "integrity_is_not_currency": _pid().get("origin_keying_note"),
+            },
         }, f, indent=2)
 
     # robots.txt, llms.txt, ai.txt, the signature directory and the Ed25519 signature

@@ -1,0 +1,209 @@
+{
+  "probed_at": "2026-09-11T20:06:57Z",
+  "repo": "Atheistam/agentgates",
+  "credential_fill": {
+    "rc": 0,
+    "fields": [
+      "host",
+      "password",
+      "protocol",
+      "username"
+    ],
+    "stderr_tail": "",
+    "outcome": "obtained"
+  },
+  "api": {
+    "views": {
+      "http_status": 200,
+      "count": 0,
+      "uniques": 0,
+      "detail": [
+        {
+          "timestamp": "2026-08-28T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-08-29T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-08-30T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-08-31T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-01T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-02T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-03T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-04T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-05T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-06T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-07T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-08T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-09T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-10T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        }
+      ]
+    },
+    "clones": {
+      "http_status": 200,
+      "count": 12,
+      "uniques": 8,
+      "detail": [
+        {
+          "timestamp": "2026-08-28T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-08-29T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-08-30T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-08-31T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-01T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-02T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-03T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-04T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-05T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-06T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-07T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-08T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-09T00:00:00Z",
+          "count": 0,
+          "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-10T00:00:00Z",
+          "count": 12,
+          "uniques": 8
+        }
+      ]
+    },
+    "referrers": {
+      "http_status": 200,
+      "count": null,
+      "uniques": null,
+      "detail": []
+    },
+    "paths": {
+      "http_status": 200,
+      "count": null,
+      "uniques": null,
+      "detail": []
+    }
+  },
+  "public": {
+    "repo": {
+      "http_status": 200,
+      "stargazers": 0,
+      "forks": 0,
+      "watchers": 0,
+      "error": null
+    }
+  },
+  "counter": {
+    "endpoint": "https://hits.sh/agentgates.surge.sh.svg?style=flat&label=page%20loads",
+    "readable": true,
+    "values": [
+      11,
+      12,
+      13
+    ],
+    "previous_probe_last_value": null,
+    "delta_since_previous_probe": null,
+    "delta_note": "The delta cannot be read as readers. Every fetch of this badge - including this probe's own three reads and any verification fetch of the page - is a page load by the counter's definition.",
+    "increment_per_read": [
+      1,
+      1
+    ],
+    "self_defeating": true
+  }
+}

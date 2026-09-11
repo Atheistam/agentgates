@@ -1,0 +1,51 @@
+{
+  "probed_at": "2026-09-11T20:11:07Z",
+  "archive": "Software Heritage",
+  "gate": "none",
+  "origin_keying_note": "Software Heritage keys this project by the clone URL, not the browser URL. https://github.com/Atheistam/agentgates (no .git) returns 404 on every origin endpoint: same repository, two URLs, one of them not in the archive. Query the wrong one and the archive tells you the project does not exist.",
+  "keying_check": {
+    "without_.git": {
+      "url": "https://github.com/Atheistam/agentgates",
+      "http_status": 404,
+      "found": false
+    },
+    "with_.git": {
+      "url": "https://github.com/Atheistam/agentgates.git",
+      "http_status": 200,
+      "found": true
+    }
+  },
+  "origin_http_status": 200,
+  "origin_keyed_as": "https://github.com/Atheistam/agentgates.git",
+  "origin_swhid": "swh:1:ori:d0b9ab3d64de634affab017e32b973a57ea713d2",
+  "origin_swhid_derived_from": "https://github.com/Atheistam/agentgates.git",
+  "origin_swhid_echoed_in": "https://archive.softwareheritage.org/api/1/raw-extrinsic-metadata/swhid/swh:1:ori:d0b9ab3d64de634affab017e32b973a57ea713d2/authorities/",
+  "origin_authority_status": 200,
+  "origin_authority_body": [],
+  "origin_swhid_matches_authority": true,
+  "visit_latest_http_status": 200,
+  "visit": {
+    "number": 2,
+    "date": "2026-09-11T17:04:55.753000+00:00",
+    "status": "full",
+    "type": "git"
+  },
+  "snapshot_swhid": "swh:1:snp:a412eb31c09832ea1228a7a7a0caa012181abee6",
+  "snapshot_api_address": "https://archive.softwareheritage.org/api/1/snapshot/a412eb31c09832ea1228a7a7a0caa012181abee6/",
+  "snapshot_address_is_bare_hash": true,
+  "snapshot_http_status": 200,
+  "snapshot_prefixed_http_status": 404,
+  "snapshot_branches": 3,
+  "archived_revision": {
+    "sha": "f495b5503c770481d2e591306fff6068680cb632",
+    "date": "2026-09-11T16:38:02+02:00",
+    "message": "remove stale web/CNAME (surge domain set by deploy command, not the file)"
+  },
+  "archived_revision_http_status": 200,
+  "current_head_at_probe": {
+    "sha": "58882b4e006e2406f3999023d0cc24f8d1e6ff6e",
+    "date": "2026-09-11T19:13:49+02:00"
+  },
+  "archive_lag_commits": 2,
+  "archived_revision_is_ancestor_of_head": true
+}

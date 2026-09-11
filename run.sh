@@ -18,6 +18,12 @@ if [ "${1:-}" = "--with-policy" ] || [ "${2:-}" = "--with-policy" ]; then
   python3 probe_robotspolicy.py --domains data/tranche2_domains.txt --out-prefix robotspolicy_t2 \
     || echo "WARN: t2 policy probe failed"
 fi
+echo "-- reach: can this project measure its own readership? --"
+python3 probe_readership.py || echo "WARN: readership probe failed"
+echo "-- reach: is this project in any search index? --"
+python3 probe_index_presence.py || echo "WARN: index-presence probe failed"
+echo "-- reach: does this project have a name that outlives its host? --"
+python3 probe_persistent_id.py || echo "WARN: persistent-identifier probe failed"
 echo "-- build site (emits robots.txt, llms.txt, ai.txt and the signed manifest) --"
 python3 build_site.py || { echo "FATAL: build failed"; exit 1; }
 echo "-- build the findings write-up --"

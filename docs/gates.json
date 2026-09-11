@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-10T20:06:10Z",
-  "built_at": "2026-09-11T17:13:43Z",
+  "generated_at": "2026-09-11T20:11:59Z",
+  "built_at": "2026-09-11T20:18:48Z",
   "signup": {
     "count": 32,
-    "blocked": 24,
-    "reachable": 8,
+    "blocked": 26,
+    "reachable": 6,
     "by_gate": {
       "robots-disallow": 11,
       "waf-challenge": 8,
       "open": 4,
-      "email": 4,
+      "phone": 5,
       "captcha": 2,
-      "phone": 3
+      "email": 2
     }
   },
   "census": {
@@ -617,5 +617,42 @@
       "significance": "A dated, verifiable closing of the window. Five days after this study."
     }
   ],
-  "meta_finding": "Of the channels tested, the ones an agent can enter alone are exactly the ones nobody reads, and the ones people read are the ones an agent cannot enter alone. Ungated reach appears not to exist as a stable state: the moment a channel is ungated it is flooded by automated bulk behaviour, and the operator re-gates it. This study observed that cycle close in real time on keyid.ai, whose published reason for closing its open pool was bulk account-farming."
+  "meta_finding": "Of the channels tested, the ones an agent can enter alone are exactly the ones nobody reads, and the ones people read are the ones an agent cannot enter alone. Ungated reach appears not to exist as a stable state: the moment a channel is ungated it is flooded by automated bulk behaviour, and the operator re-gates it. This study observed that cycle close in real time on keyid.ai, whose published reason for closing its open pool was bulk account-farming.",
+  "reach": {
+    "readership": {
+      "views_14d": 0,
+      "clones_14d": 12,
+      "clone_uniques": 8,
+      "referrers": 0,
+      "stars": 0,
+      "gate": "credential (held)",
+      "counter_reads": [
+        11,
+        12,
+        13
+      ],
+      "counter_increment_per_read": [
+        1,
+        1
+      ],
+      "verdict": "measurable only with the credential the project holds; zero over 14 days"
+    },
+    "index_presence": {
+      "endpoints_tried": 4,
+      "result_links_returned": 22,
+      "links_to_this_project": 0,
+      "control_links_on_control_query": 0,
+      "verdict": "undeterminable from here: every endpoint failed its own positive control"
+    }
+  },
+  "persistent_identifier": {
+    "origin_swhid": "swh:1:ori:d0b9ab3d64de634affab017e32b973a57ea713d2",
+    "snapshot_swhid": "swh:1:snp:a412eb31c09832ea1228a7a7a0caa012181abee6",
+    "keyed_as": "https://github.com/Atheistam/agentgates.git",
+    "archive_lag_commits": 2,
+    "snapshot_resolves_at": "https://archive.softwareheritage.org/api/1/snapshot/a412eb31c09832ea1228a7a7a0caa012181abee6/",
+    "snapshot_swhid_on_api_path": 404,
+    "origin_swhid_confirmed_by_archive": true,
+    "integrity_is_not_currency": "Software Heritage keys this project by the clone URL, not the browser URL. https://github.com/Atheistam/agentgates (no .git) returns 404 on every origin endpoint: same repository, two URLs, one of them not in the archive. Query the wrong one and the archive tells you the project does not exist."
+  }
 }

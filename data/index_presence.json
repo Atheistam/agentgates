@@ -1,0 +1,150 @@
+{
+  "probe": "index presence after IndexNow submission (100% of URLs queued, 0 verified)",
+  "question": "does an unattended agent have any way to confirm that a search engine received and stored the pages it asked it to index?",
+  "target": "agentgates.surge.sh",
+  "positive_control": "archive.softwareheritage.org",
+  "ran_at": "2026-09-11T20:05:25Z",
+  "engines": {
+    "bing_html": {
+      "target": {
+        "query": "site:agentgates.surge.sh",
+        "url": "https://www.bing.com/search?q=site%3Aagentgates.surge.sh",
+        "http_status": 200,
+        "result_blocks": 10,
+        "result_links": 10,
+        "links_to_query_domain": 0,
+        "sample_result_domains": [
+          "smart-support.smartpension.co.uk \u203a en \u203a articles",
+          "smartpension.co.uk",
+          "smartpension.co.uk \u203a contact-us",
+          "smartpension.co.uk \u203a governance \u203a scheme-information",
+          "smartpension.co.uk \u203a member",
+          "smartpension.co.uk \u203a members \u203a add-money",
+          "smartpension.co.uk \u203a support \u203a en \u203a articles",
+          "support.smartpension.co.uk"
+        ],
+        "challenge_page": false,
+        "bytes": 121406
+      },
+      "control": {
+        "query": "site:archive.softwareheritage.org",
+        "url": "https://www.bing.com/search?q=site%3Aarchive.softwareheritage.org",
+        "http_status": 200,
+        "result_blocks": 10,
+        "result_links": 10,
+        "links_to_query_domain": 0,
+        "sample_result_domains": [
+          "maps.google.fr \u203a help \u203a maps \u203a businessphotos \u203a index.html",
+          "maps.google.fr \u203a help \u203a maps \u203a indoormaps",
+          "maps.google.fr \u203a help \u203a maps \u203a indoormaps \u203a casestudies.html",
+          "maps.google.fr \u203a help \u203a maps \u203a indoormaps \u203a faqs.html",
+          "maps.google.fr \u203a help \u203a terms_maps-earth",
+          "maps.google.fr \u203a intl \u203a en \u203a maps \u203a about \u203a behind-the-scenes \u203a streetvi\u2026",
+          "maps.google.fr \u203a intl \u203a fr \u203a landing \u203a transit",
+          "maps.google.fr \u203a intl \u203a fr \u203a streetview \u203a explore"
+        ],
+        "challenge_page": false,
+        "bytes": 120899
+      },
+      "verdict": "query ignored - 10 result links returned, none for the target (junk results)",
+      "control_reads": "control absent too - this engine's output is NOT readable"
+    },
+    "bing_rss": {
+      "target": {
+        "query": "site:agentgates.surge.sh",
+        "url": "https://www.bing.com/search?format=rss&q=site%3Aagentgates.surge.sh",
+        "http_status": 200,
+        "result_blocks": 10,
+        "result_links": 10,
+        "links_to_query_domain": 0,
+        "sample_result_domains": [
+          "apkpure.com",
+          "app.getpoppy.ai",
+          "appbrain.com",
+          "appsumo.com",
+          "getpoppy.ai",
+          "play.google.com",
+          "poppy-ai-roleplay-chat.en.softonic.com",
+          "poppyaii.com"
+        ],
+        "challenge_page": false,
+        "bytes": 4866
+      },
+      "control": {
+        "query": "site:archive.softwareheritage.org",
+        "url": "https://www.bing.com/search?format=rss&q=site%3Aarchive.softwareheritage.org",
+        "http_status": 200,
+        "result_blocks": 10,
+        "result_links": 10,
+        "links_to_query_domain": 0,
+        "sample_result_domains": [
+          "reddit.com",
+          "stackoverflow.com",
+          "support.google.com"
+        ],
+        "challenge_page": false,
+        "bytes": 5535
+      },
+      "verdict": "query ignored - 10 result links returned, none for the target (junk results)",
+      "control_reads": "control absent too - this engine's output is NOT readable"
+    },
+    "duckduckgo_lite": {
+      "target": {
+        "query": "site:agentgates.surge.sh",
+        "url": "https://lite.duckduckgo.com/lite/?q=site%3Aagentgates.surge.sh",
+        "http_status": 202,
+        "result_blocks": 0,
+        "result_links": 0,
+        "links_to_query_domain": 0,
+        "sample_result_domains": [],
+        "challenge_page": true,
+        "bytes": 14216
+      },
+      "control": {
+        "query": "site:archive.softwareheritage.org",
+        "url": "https://lite.duckduckgo.com/lite/?q=site%3Aarchive.softwareheritage.org",
+        "http_status": 202,
+        "result_blocks": 0,
+        "result_links": 0,
+        "links_to_query_domain": 0,
+        "sample_result_domains": [],
+        "challenge_page": true,
+        "bytes": 14258
+      },
+      "verdict": "refused_to_answer (challenge page despite 200-class status)",
+      "control_reads": "control absent too - this engine's output is NOT readable"
+    },
+    "mojeek": {
+      "target": {
+        "query": "site:agentgates.surge.sh",
+        "url": "https://www.mojeek.com/search?q=site%3Aagentgates.surge.sh",
+        "http_status": 200,
+        "result_blocks": 0,
+        "result_links": 2,
+        "links_to_query_domain": 0,
+        "sample_result_domains": [
+          "buttondown.email",
+          "mastodon.social"
+        ],
+        "challenge_page": true,
+        "bytes": 5515
+      },
+      "control": {
+        "query": "site:archive.softwareheritage.org",
+        "url": "https://www.mojeek.com/search?q=site%3Aarchive.softwareheritage.org",
+        "http_status": 200,
+        "result_blocks": 0,
+        "result_links": 2,
+        "links_to_query_domain": 0,
+        "sample_result_domains": [
+          "buttondown.email",
+          "mastodon.social"
+        ],
+        "challenge_page": true,
+        "bytes": 5524
+      },
+      "verdict": "refused_to_answer (challenge page despite 200-class status)",
+      "control_reads": "control absent too - this engine's output is NOT readable"
+    }
+  }
+}

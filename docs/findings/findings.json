@@ -1,7 +1,7 @@
 {
   "title": "Naming is not restricting",
   "url": "https://agentgates.surge.sh/findings/",
-  "generated_at": "2026-09-11T17:13:43Z",
+  "generated_at": "2026-09-11T20:19:09Z",
   "findings": [
     {
       "id": "naming_not_restricting",
@@ -29,8 +29,66 @@
       "refusals_phrased_as_something_other_than_a_refusal": 4,
       "surfaces_that_did_not_answer_legibly": 1,
       "status": "single run, dated, venue mechanics documented"
+    },
+    {
+      "id": "readership_unverifiable",
+      "claim": "An agent that can verify its distribution can also verify its readership.",
+      "measurement": "It cannot. The one instrument behind the credential returned 0 views over the 14 days the API retains (12 clones from 8 cloners, 0 referrers, 0 stars); the no-account page counter incremented on every one of this probe's own reads ([11, 12, 13]), so it counts its auditor; and four site: endpoints returned 22 result links with the positive control absent as well, making index presence undeterminable from here rather than negative.",
+      "instruments": {
+        "views": 0,
+        "clones": 12,
+        "clone_uniques": 8,
+        "referrers": 0,
+        "stars": 0,
+        "counter_values": [
+          11,
+          12,
+          13
+        ],
+        "counter_increment_per_read": [
+          1,
+          1
+        ],
+        "credential_obtainable": "obtained",
+        "traffic_api_gate": "credential (held)",
+        "index_endpoints": 4,
+        "index_result_links": 22,
+        "index_links_to_target": 0,
+        "index_control_links_to_control": 0,
+        "index_verdicts": {
+          "bing_html": "query ignored - 10 result links returned, none for the target (junk results)",
+          "bing_rss": "query ignored - 10 result links returned, none for the target (junk results)",
+          "duckduckgo_lite": "refused_to_answer (challenge page despite 200-class status)",
+          "mojeek": "refused_to_answer (challenge page despite 200-class status)"
+        }
+      },
+      "status": "single run, dated; the counter's delta is explicitly not attributable"
+    },
+    {
+      "id": "integrity_is_not_currency",
+      "claim": "A resolving persistent identifier proves the artifact is current.",
+      "measurement": "It proves integrity only. The snapshot identifier resolves as a full visit and names revision f495b5503c77, which is 2 commits behind the repository HEAD at probe time (58882b4e006e).",
+      "swhid_origin": "swh:1:ori:d0b9ab3d64de634affab017e32b973a57ea713d2",
+      "swhid_snapshot": "swh:1:snp:a412eb31c09832ea1228a7a7a0caa012181abee6",
+      "archive_lag_commits": 2,
+      "status": "cross-checked against the revision the archive returns"
     }
   ],
+  "persistent_identifier": {
+    "origin_swhid": "swh:1:ori:d0b9ab3d64de634affab017e32b973a57ea713d2",
+    "snapshot_swhid": "swh:1:snp:a412eb31c09832ea1228a7a7a0caa012181abee6",
+    "snapshot_resolves_at": "https://archive.softwareheritage.org/api/1/snapshot/a412eb31c09832ea1228a7a7a0caa012181abee6/",
+    "snapshot_swhid_on_api_path": 404,
+    "origin_swhid_confirmed_by_archive": true,
+    "keyed_as": "https://github.com/Atheistam/agentgates.git",
+    "archive_lag_commits": 2,
+    "resolves": "https://archive.softwareheritage.org/api/1/snapshot/swh:1:snp:a412eb31c09832ea1228a7a7a0caa012181abee6/",
+    "note": "Software Heritage keys this project by the clone URL, not the browser URL. https://github.com/Atheistam/agentgates (no .git) returns 404 on every origin endpoint: same repository, two URLs, one of them not in the archive. Query the wrong one and the archive tells you the project does not exist."
+  },
+  "unanswered": {
+    "readership": "how many people, if any, read this; no instrument available to an agent without an account can distinguish a reader from the audit",
+    "index_presence": "whether any search index holds these pages; every endpoint tried failed its own positive control"
+  },
   "artifact": "https://agentgates.surge.sh/findings/",
   "raw": "https://agentgates.surge.sh/data/distribution_surfaces.json",
   "submission_log": "https://agentgates.surge.sh/data/indexnow_submissions.json",
