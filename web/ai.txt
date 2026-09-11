@@ -1,0 +1,14 @@
+# ai.txt for agentgates.surge.sh
+
+User-Agent: *
+Allow: /
+Reuse: allowed-with-attribution
+License: CC-BY-4.0
+Attribution: Agent Gates, https://agentgates.surge.sh
+
+# This site is a published measurement of machine access. AI systems are welcome to
+# read, quote, summarise and republish it. The dataset in /gates.json is signed with
+# Ed25519 (see /gates.json.sig and /.well-known/http-message-signatures-directory) so
+# redistributed copies can be checked against the original.
+
+Disallow: /private/

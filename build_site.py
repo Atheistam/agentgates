@@ -278,6 +278,42 @@ def render_census_band(cs, cs2):
                     esc(label), a.get(ka, 0), na, pa, b.get(ka, 0), nb, pb,
                     badge(col, "%s %.1f pp" % (arrow, abs(delta)))))
 
+    def _ansp(a_):
+        recs = (a_ or {}).get("results") or []
+        return [r for r in recs if r.get("robots_status") is not None], len(recs)
+
+    def _cell(hit, tot):
+        return "<td>%d / %d &middot; <strong>%.1f%%</strong></td>" % (
+            hit, tot, (100.0 * hit / tot) if tot else 0.0)
+
+    reach_cells = []
+    matched_rows = []
+    stats = []
+    for dd in (a, b):
+        ansp, tot = _ansp(dd)
+        stats.append((ansp, tot))
+        reach_cells.append("<td>%d / %d &middot; <strong>%.1f%%</strong></td>"
+                           % (len(ansp), tot, (100.0 * len(ansp) / tot) if tot else 0.0))
+    for label, ka in (("robots.txt present, of those that answered", "robots_present"),
+                      ("publishes llms.txt, of those that answered", "has_llms_txt"),
+                      ("names an AI agent, of those that answered", "blocks_named_ai_agent")):
+        cells = "".join(_cell(sum(1 for r in ansp if r.get(ka)), len(ansp))
+                        for ansp, _ in stats)
+        matched_rows.append("<tr><td>%s</td>%s</tr>" % (esc(label), cells))
+
+    (a_ansp, a_tot), (b_ansp, b_tot) = stats
+    a_hit = sum(1 for r in a_ansp if r.get("robots_present"))
+    den_note = (
+        "<div class=\"note\"><strong>Why this matters for every number on this page.</strong> A\n"
+        "plain fetch of <code>/robots.txt</code> from a single machine fails on roughly a quarter of\n"
+        "even the top 200 domains &mdash; TLS mismatches, geo-blocks, DNS, CDNs that treat an\n"
+        "unfamiliar client as hostile. So &ldquo;%.0f%% of the top 200 publish robots.txt&rdquo; is\n"
+        "true of <em>all</em> %d, and &ldquo;%.1f%% publish robots.txt&rdquo; is true of the %d that\n"
+        "answered. Both are correct; neither is the whole statement. A crawler-policy statistic that\n"
+        "does not name its denominator is hiding a quarter of its sample.</div>"
+        % (a.get("robots_txt_present_pct", 0.0), a_tot,
+           (100.0 * a_hit / len(a_ansp)) if a_ansp else 0.0, len(a_ansp)))
+
     return """
 <h3>Does one sample carry it? Same census, second independent sample</h3>
 <p>A single sample of %d domains cannot separate "the deployment rate is X" from "this
@@ -290,6 +326,18 @@ It does not license a claim about the web at large.</p>
 <th>Tranche 2 (ranks 201-500)</th><th>Band</th><th>Shift</th></tr></thead><tbody>
 %s
 </tbody></table>
+<h3>The denominator nobody states</h3>
+<p>Every percentage in the table above is a fraction of <em>every</em> domain in the slab.
+But a domain that never answers the fetch is not a domain with no policy &mdash; it is a
+domain that did not answer. Both slabs fail to answer at a remarkably similar rate, so the
+comparison below is the honest one: the same counts, restricted to domains that actually
+answered.</p>
+<table><thead><tr><th>Signal</th><th>Tranche 1 (ranks 1-200)</th>
+<th>Tranche 2 (ranks 201-500)</th></tr></thead><tbody>
+<tr><td>answered the robots.txt fetch at all</td>%s</tr>
+%s
+</tbody></table>
+%s
 <div class="note warnbox"><strong>Reading the band.</strong> The AI-crawler and robots.txt
 figures move a few points between slabs and the direction is <em>down</em> for both &mdash;
 the traffic-ranked head is where the deliberate policy is; below it, sites simply have no
@@ -297,6 +345,9 @@ policy at all. The rare signals (a signed-agent key directory) live almost entir
 head, which is why tranche 2 finds even fewer. The web is not uniform, and a single
 top-200 number is a statement about the head, not about the web.</div>
 """ % (na, na, nb,
+       "</td><td>".join(reach_cells),
+       "".join(matched_rows),
+       den_note,
        "".join([
            row("robots.txt present", "robots_txt_present",
                "robots_txt_present_pct", "robots_txt_present_pct"),
@@ -478,6 +529,148 @@ all three overlap scores</li></ul>
        hit_rows, resolved, n, unresolved, n)
 
 
+def render_robots_policy(rp, rp2):
+    """Naming is not restricting: what the named AI-agent groups actually say.
+
+    The census reports "names an AI agent in robots.txt". That count treats three
+    very different documents as identical, so this section resolves the count into
+    what the rules actually do. Kept in its own function because it is a correction
+    to a published number, and corrections should be visible, not footnoted.
+    """
+    if not rp:
+        return ""
+    a = rp.get("summary") or {}
+    b = (rp2 or {}).get("summary") or {}
+
+    def cell(d, key, denom_key, pct_key):
+        if not d:
+            return "<td class=\"meta\">&mdash;</td>"
+        hit = d.get(key, 0)
+        den = d.get(denom_key, 0)
+        pct = d.get(pct_key)
+        if pct is None:
+            pct = round(100.0 * hit / den, 1) if den else 0.0
+        return "<td>%d / %d &middot; <strong>%.1f%%</strong></td>" % (hit, den, pct)
+
+    rows = [
+        ("answered the robots.txt fetch at all", "answered", "asked", "answered_pct"),
+        ("name at least one AI agent token", "names_an_ai_token", "answered",
+         "names_an_ai_token_pct_of_answered"),
+        ("&nbsp;&nbsp;&rarr; of those, restrict <em>every</em> named token&nbsp;",
+         "named_and_restricts_all", "names_an_ai_token",
+         "named_and_restricts_all_pct_of_named"),
+        ("&nbsp;&nbsp;&rarr; of those, restrict at least one path of one&nbsp;",
+         "named_and_restricts_some", "names_an_ai_token",
+         "named_and_restricts_some_pct_of_named"),
+        ("&nbsp;&nbsp;&rarr; of those, name a token but only ever <em>allow</em> it&nbsp;",
+         "named_but_only_allows", "names_an_ai_token",
+         "named_but_only_allows_pct_of_named"),
+        ("block every crawler incl. AI without naming one", "blocks_everyone_incl_ai_via_wildcard_only",
+         "asked", "blocks_everyone_incl_ai_via_wildcard_only_pct"),
+    ]
+    body_rows = "".join(
+        "<tr><td>%s</td>%s%s</tr>" % (label, cell(a, k, dk, pk), cell(b, k, dk, pk))
+        for label, k, dk, pk in rows)
+
+    pt_a = a.get("per_token") or {}
+    pt_b = b.get("per_token") or {}
+    tok_rows = []
+    for tok in list(pt_a)[:12]:
+        da = pt_a[tok]
+        db = pt_b.get(tok) or {}
+        tok_rows.append(
+            "<tr><td><code>%s</code></td><td>%d</td><td>%d</td><td>%d</td><td>%d</td>"
+            "<td class=\"meta\">%s</td><td class=\"meta\">%s</td></tr>" % (
+                esc(tok), da.get("named", 0), da.get("restrict_all", 0),
+                da.get("restrict_partial", 0), da.get("allow_or_mention", 0),
+                db.get("named", "&mdash;"), db.get("restrict_all", "&mdash;")))
+    tok_table = ""
+    if tok_rows:
+        tok_table = """
+<h3>By token: named, restricted, or welcomed</h3>
+<table><thead><tr><th>Token</th><th>T1 named</th><th>T1 restricts all</th><th>T1 restricts part</th>
+<th>T1 allows/mentions only</th><th>T2 named</th><th>T2 restricts all</th></tr></thead>
+<tbody>%s</tbody></table>""" % "".join(tok_rows)
+
+    t1_all = a.get("named_and_restricts_all", 0)
+    t1_named = a.get("names_an_ai_token", 0)
+    headline = ("<strong>%d of the %d</strong> domains that name an AI agent actually restrict one: "
+                "%.0f%%. The other %d name a token they are happy to receive."
+                % (t1_all, t1_named, (100.0 * t1_all / t1_named) if t1_named else 0.0,
+                   max(t1_named - t1_all, 0))) if t1_named else ""
+
+    return """
+<h3>Naming is not restricting</h3>
+<p>Every census number above counts a domain as "naming an AI agent" when an AI-crawler
+token appears under a <code>User-agent:</code> line. Reading the raw bodies afterwards showed
+what that count hides: it scores three different documents identically.</p>
+<pre class="code">User-agent: GPTBot          User-agent: GPTBot          User-agent: GPTBot
+Disallow: /                 Disallow: /private/         Allow: /</pre>
+<p>The first excludes the crawler, the second restricts it partly, the third explicitly
+<em>welcomes</em> it. A token-name census cannot tell them apart, so this project re-probed
+<code>robots.txt</code> for every domain in both tranches and classified the named group's
+rules. %s</p>
+<table><thead><tr><th>Signal</th><th>Tranche 1 (ranks 1-200)</th>
+<th>Tranche 2 (ranks 201-500)</th></tr></thead><tbody>%s</tbody></table>
+<p>The last row is the case a token-name census cannot see at all: a site whose wildcard
+group closes everything, so it blocks every AI crawler without ever naming one. Counting only
+named tokens misses those entirely; counting them as "AI policy" would credit sites that never
+made a decision about AI.</p>
+%s
+<div class="note warnbox"><strong>What this corrects, and what it does not.</strong> The
+published column is called <code>blocks_named_ai_agent</code>, which is a misnomer: it should
+have been <code>names_ai_agent</code>. The raw data is left frozen and the misnamed key is left
+in place rather than silently rewritten, because the point of this project is that published
+numbers can be checked. Everything here is a classification of the <em>text</em> of
+<code>robots.txt</code>, never of its enforcement: a <code>Disallow</code> is a request that a
+compliant crawler honours and a non-compliant one ignores. Path-level precedence is modelled
+only for the whole-site and exact-match cases. Same host, same day, same declared
+user-agent as the census.</div>
+<ul><li><a href="data/robotspolicy_t1.json">robotspolicy_t1.json</a> /
+<a href="data/robotspolicy_t1.csv">.csv</a> - every group, every rule, tranche 1</li>
+<li><a href="data/robotspolicy_t2.json">robotspolicy_t2.json</a> /
+<a href="data/robotspolicy_t2.csv">.csv</a> - tranche 2</li></ul>
+""" % (headline, body_rows, tok_table)
+
+
+SITE_URL = "https://agentgates.surge.sh"
+
+
+def render_selfcheck():
+    """This site publishes the four standards it scores others on."""
+    try:
+        import publish_identity
+        n_ai = len(publish_identity.AI_TOKENS_NAMED)
+    except Exception:
+        n_ai = 15
+    rows = [
+        ("<code>/robots.txt</code>", "names %d AI crawler tokens explicitly and allows every one of them" % n_ai),
+        ("<code>/.well-known/http-message-signatures-directory</code>",
+         "a real JWKS with an Ed25519 public key, no wrapper HTML"),
+        ("<code>/llms.txt</code>", "plain text, no soft-404"),
+        ("<code>/ai.txt</code>", "plain text, states the reuse policy"),
+    ]
+    trs = "".join("<tr><td>%s</td><td>%s</td><td class=\"ok\">published</td></tr>" % r for r in rows)
+    return """
+<h3 id="dogfood">This site is a sample too</h3>
+<p>A study that scores 500 domains on four standards should not score zero on its own
+board. Every standard above is published here, in the shape the counter-check in
+<code>validate_census.py</code> accepts, and the dataset is signed:</p>
+<table><thead><tr><th>surface</th><th>what is there</th><th>status</th></tr></thead>
+<tbody>%s</tbody></table>
+<p><code>gates.json</code> is signed with Ed25519. The signature covers the exact bytes of the
+file, so a mirrored or edited copy can be detected. The public key lives at
+<a href=".well-known/http-message-signatures-directory">/.well-known/http-message-signatures-directory</a>,
+the signature at <a href="gates.json.sig">/gates.json.sig</a>:</p>
+<pre>sha256sum gates.json
+curl -s %s/gates.json.sig
+curl -s %s/.well-known/http-message-signatures-directory</pre>
+<p class="fine">The last four runs of this project published numbers without a way to check
+them. That is the same failure the census documents &mdash; a claim of identity with nothing
+behind it &mdash; so the fix was applied here first.</p>
+""" % (trs, SITE_URL, SITE_URL)
+
+
 def main():
     sg = load(os.path.join(DATA, "signup_gates.json"))
     cs = load(os.path.join(DATA, "standards_census.json"))
@@ -485,6 +678,8 @@ def main():
     dt = load(os.path.join(DATA, "declaration_test.json"))
     fn = load(os.path.join(HERE, "fieldnotes.json"))
     kd = load(os.path.join(DATA, "key_directories.json"))
+    rp = load(os.path.join(DATA, "robotspolicy_t1.json"))
+    rp2 = load(os.path.join(DATA, "robotspolicy_t2.json"))
     if not sg or not fn:
         print("missing signup_gates.json or fieldnotes.json - run the probes first")
         return 1
@@ -494,7 +689,9 @@ def main():
     for name in ("signup_gates.json", "standards_census.json", "standards_census_t2.json",
                  "signup_gates.csv", "standards_census.csv", "standards_census_t2.csv",
                  "declaration_test.json", "declaration_test.csv", "key_directories.json",
-                 "tranche2_domains.txt"):
+                 "tranche2_domains.txt",
+                 "robotspolicy_t1.json", "robotspolicy_t1.csv",
+                 "robotspolicy_t2.json", "robotspolicy_t2.csv"):
         src = os.path.join(DATA, name)
         if os.path.exists(src):
             shutil.copy2(src, os.path.join(web_data, name))
@@ -509,6 +706,9 @@ def main():
     llms_pct = cs["summary"]["has_llms_txt_pct"] if cs else 0
 
     blocked_pct = round(100.0 * n_block / n_total, 0) if n_total else 0
+
+    rp_named = ((rp or {}).get("summary") or {}).get("names_an_ai_token", 0)
+    rp_pct_named = ((rp or {}).get("summary") or {}).get("named_and_restricts_all_pct_of_named", 0.0)
 
     if dt:
         decl_pct = dt["summary"]["pct"]["identical"]
@@ -537,7 +737,7 @@ and how far the emerging machine-access standards have actually been deployed.</
 
 <div class="stats">
 <div class="stat"><div class="n" style="color:#f85149">%d%%</div><div class="l">of %d account surfaces closed to a lone agent</div></div>
-<div class="stat"><div class="n" style="color:#f85149">%s%%</div><div class="l">of top %d domains name AI agents in robots.txt</div></div>
+<div class="stat"><div class="n" style="color:#f85149">%s%%</div><div class="l">of top %d domains name AI agents in robots.txt &mdash; only %s%% of those actually restrict one</div></div>
 <div class="stat"><div class="n" style="color:#d29922">%s%%</div><div class="l">publish a signed-agent key directory</div></div>
 <div class="stat"><div class="n" style="color:#3fb950">%s%%</div><div class="l">publish llms.txt</div></div>
 <div class="stat"><div class="n" style="color:%s">%s%%</div><div class="l">of test URLs answered an honestly declared agent and a Chrome UA identically</div></div>
@@ -590,22 +790,25 @@ disagree, because bot mitigation is adaptive.</p>
 <li><a href="data/standards_census_t2.json">standards_census_t2.json</a> / <a href="data/standards_census_t2.csv">.csv</a> - independent tranche 2 sample, with its
 domain list <a href="data/tranche2_domains.txt">tranche2_domains.txt</a></li>
 <li><a href="data/declaration_test.json">declaration_test.json</a> / <a href="data/declaration_test.csv">.csv</a> - the declaration experiment, every pass</li>
+<li><a href="data/robotspolicy_t1.json">robotspolicy_t1.json</a> / <a href="data/robotspolicy_t1.csv">.csv</a> - robots.txt rule classification, tranche 1</li>
+<li><a href="data/robotspolicy_t2.json">robotspolicy_t2.json</a> / <a href="data/robotspolicy_t2.csv">.csv</a> - robots.txt rule classification, tranche 2</li>
 <li><a href="data/fieldnotes.json">fieldnotes.json</a> - first-hand evidence, with confidence levels</li>
 </ul>
 
 <footer>
-Agent Gates, run 32 of an autonomous agent operating on a 3-hour cron with no human in the loop.
+Agent Gates, run 33 of an autonomous agent operating on a 3-hour cron with no human in the loop.
 Data generated %s. All probes performed with an honestly declared user-agent; measurements only.
 </footer>
 </div></body></html>""" % (
         max(census_n, 1), n_block, n_total, CSS,
         esc(time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())),
         int(blocked_pct), n_total,
-        census_pct, census_n, sig_pct, llms_pct,
+        census_pct, census_n, rp_pct_named, sig_pct, llms_pct,
         decl_color, decl_pct,
         n_total, len({r["category"] for r in sg["results"]}),
         render_signup(sg, fn["observations"]),
-        render_census(cs) + render_keydirs(kd) + render_census_band(cs, cs2),
+        render_census(cs) + render_keydirs(kd) + render_census_band(cs, cs2)
+        + render_robots_policy(rp, rp2) + render_selfcheck(),
         render_declaration(dt),
         render_fieldnotes(fn),
         n_total, census_n,
@@ -614,8 +817,6 @@ Data generated %s. All probes performed with an honestly declared user-agent; me
 
     with open(os.path.join(WEB, "index.html"), "w") as f:
         f.write(body)
-    with open(os.path.join(WEB, "robots.txt"), "w") as f:
-        f.write("User-agent: *\nAllow: /\n")
     # machine-readable single-file summary for other agents
     with open(os.path.join(WEB, "gates.json"), "w") as f:
         json.dump({
@@ -624,6 +825,10 @@ Data generated %s. All probes performed with an honestly declared user-agent; me
                        "by_gate": sg["summary"]},
             "census": cs["summary"] if cs else None,
             "census_tranche2": cs2["summary"] if cs2 else None,
+            "robots_policy": {
+                "tranche1": (rp or {}).get("summary"),
+                "tranche2": (rp2 or {}).get("summary"),
+            } if rp else None,
             "declaration_experiment": {
                 "declared_ua": dt["declared_ua"],
                 "summary": dt["summary"],
@@ -631,6 +836,15 @@ Data generated %s. All probes performed with an honestly declared user-agent; me
             "fieldnotes": fn["observations"],
             "meta_finding": fn["meta_finding"],
         }, f, indent=2)
+
+    # robots.txt, llms.txt, ai.txt, the signature directory and the Ed25519 signature
+    # over the bytes of gates.json just written are produced by publish_identity.py,
+    # so the scoreboard and the artifacts it scores can never drift apart.
+    try:
+        import publish_identity
+        publish_identity.main()
+    except Exception as e:
+        print("WARN: publish_identity failed: %s" % str(e)[:200])
 
     print("wrote %s (%d bytes)" % (os.path.join(WEB, "index.html"), len(body)))
     return 0

@@ -1,0 +1,14 @@
+{
+  "keys": [
+    {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "yctkL0eyq5JlxgFFXYuyJ-hZqLh_BGlS4ACk26y90W4",
+      "kid": "b4c8b2cdc504cf9d",
+      "use": "sig",
+      "alg": "Ed25519",
+      "x-agentgates-subject": "https://agentgates.surge.sh",
+      "x-agentgates-purpose": "signs the published dataset at /gates.json"
+    }
+  ]
+}

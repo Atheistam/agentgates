@@ -59,6 +59,173 @@
     "status_code_only_note": "Counts of HTTP 200 responses before content validation. Reported so the inflation from soft-404 pages (a 200 with an HTML error body) is visible."
   },
   "census_tranche2": null,
+  "robots_policy": {
+    "tranche1": {
+      "answered": 94,
+      "asked": 200,
+      "answered_pct": 47.0,
+      "names_an_ai_token": 32,
+      "names_an_ai_token_pct": 16.0,
+      "names_an_ai_token_pct_of_answered": 34.0,
+      "named_and_restricts_all": 19,
+      "named_and_restricts_all_pct": 9.5,
+      "named_and_restricts_all_pct_of_named": 59.4,
+      "named_and_restricts_some": 27,
+      "named_and_restricts_some_pct_of_named": 84.4,
+      "named_but_only_allows": 5,
+      "named_but_only_allows_pct_of_named": 15.6,
+      "blocks_everyone_incl_ai_via_wildcard_only": 3,
+      "blocks_everyone_incl_ai_via_wildcard_only_pct": 1.5,
+      "per_token": {
+        "google-extended": {
+          "named": 26,
+          "restrict_all": 13,
+          "restrict_partial": 8,
+          "allow_or_mention": 5
+        },
+        "perplexitybot": {
+          "named": 24,
+          "restrict_all": 13,
+          "restrict_partial": 6,
+          "allow_or_mention": 5
+        },
+        "gptbot": {
+          "named": 23,
+          "restrict_all": 11,
+          "restrict_partial": 7,
+          "allow_or_mention": 5
+        },
+        "claudebot": {
+          "named": 22,
+          "restrict_all": 13,
+          "restrict_partial": 5,
+          "allow_or_mention": 4
+        },
+        "ccbot": {
+          "named": 18,
+          "restrict_all": 12,
+          "restrict_partial": 2,
+          "allow_or_mention": 4
+        },
+        "applebot-extended": {
+          "named": 17,
+          "restrict_all": 11,
+          "restrict_partial": 3,
+          "allow_or_mention": 3
+        },
+        "chatgpt-user": {
+          "named": 16,
+          "restrict_all": 7,
+          "restrict_partial": 5,
+          "allow_or_mention": 4
+        },
+        "bytespider": {
+          "named": 16,
+          "restrict_all": 12,
+          "restrict_partial": 3,
+          "allow_or_mention": 1
+        },
+        "amazonbot": {
+          "named": 14,
+          "restrict_all": 9,
+          "restrict_partial": 5,
+          "allow_or_mention": 0
+        },
+        "petalbot": {
+          "named": 14,
+          "restrict_all": 13,
+          "restrict_partial": 1,
+          "allow_or_mention": 0
+        },
+        "oai-searchbot": {
+          "named": 14,
+          "restrict_all": 5,
+          "restrict_partial": 6,
+          "allow_or_mention": 3
+        },
+        "anthropic-ai": {
+          "named": 13,
+          "restrict_all": 9,
+          "restrict_partial": 2,
+          "allow_or_mention": 2
+        },
+        "facebookbot": {
+          "named": 13,
+          "restrict_all": 9,
+          "restrict_partial": 4,
+          "allow_or_mention": 0
+        },
+        "claude-web": {
+          "named": 12,
+          "restrict_all": 7,
+          "restrict_partial": 2,
+          "allow_or_mention": 3
+        },
+        "meta-externalagent": {
+          "named": 12,
+          "restrict_all": 8,
+          "restrict_partial": 4,
+          "allow_or_mention": 0
+        },
+        "youbot": {
+          "named": 10,
+          "restrict_all": 9,
+          "restrict_partial": 0,
+          "allow_or_mention": 1
+        },
+        "cohere-ai": {
+          "named": 9,
+          "restrict_all": 7,
+          "restrict_partial": 1,
+          "allow_or_mention": 1
+        },
+        "diffbot": {
+          "named": 9,
+          "restrict_all": 8,
+          "restrict_partial": 0,
+          "allow_or_mention": 1
+        },
+        "imagesiftbot": {
+          "named": 9,
+          "restrict_all": 9,
+          "restrict_partial": 0,
+          "allow_or_mention": 0
+        },
+        "omgilibot": {
+          "named": 9,
+          "restrict_all": 8,
+          "restrict_partial": 1,
+          "allow_or_mention": 0
+        },
+        "timpibot": {
+          "named": 6,
+          "restrict_all": 6,
+          "restrict_partial": 0,
+          "allow_or_mention": 0
+        },
+        "wrtnbot": {
+          "named": 3,
+          "restrict_all": 3,
+          "restrict_partial": 0,
+          "allow_or_mention": 0
+        },
+        "iaskspider": {
+          "named": 2,
+          "restrict_all": 2,
+          "restrict_partial": 0,
+          "allow_or_mention": 0
+        },
+        "crawl4ai": {
+          "named": 2,
+          "restrict_all": 2,
+          "restrict_partial": 0,
+          "allow_or_mention": 0
+        }
+      },
+      "naming_is_not_restricting_note": "Of the domains that name an AI agent, only a subset actually restricts it. The token-name census reports the naming figure; that figure must not be restated as a blocking figure."
+    },
+    "tranche2": null
+  },
   "declaration_experiment": {
     "declared_ua": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; autonomous-agent reachability measurement; GET-only, non-destructive)",
     "summary": {
