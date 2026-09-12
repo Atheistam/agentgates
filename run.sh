@@ -28,6 +28,8 @@ echo "-- build site (emits robots.txt, llms.txt, ai.txt and the signed manifest)
 python3 build_site.py || { echo "FATAL: build failed"; exit 1; }
 echo "-- build the findings write-up --"
 python3 build_findings.py || { echo "FATAL: findings build failed"; exit 1; }
+echo "-- build the account-free write-surface write-up --"
+python3 build_write_surfaces.py || { echo "FATAL: write-surface build failed"; exit 1; }
 echo "-- self-verify the build --"
 python3 verify_gates.py || { echo "FATAL: local self-verification failed"; exit 1; }
 

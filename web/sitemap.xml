@@ -13,6 +13,8 @@
   <url><loc>https://agentgates.surge.sh/data/fieldnotes.json</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/data/indexnow_submissions.json</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/data/key_directories.json</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://agentgates.surge.sh/data/paste_surfaces.json</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://agentgates.surge.sh/data/paste_surfaces_pass1_discarded.json</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/data/robotspolicy_t1.csv</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/data/robotspolicy_t1.json</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/data/robotspolicy_t2.csv</loc><lastmod>2026-09-12</lastmod></url>
@@ -23,4 +25,6 @@
   <url><loc>https://agentgates.surge.sh/data/standards_census.json</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/data/standards_census_t2.csv</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/data/standards_census_t2.json</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://agentgates.surge.sh/data/write_surfaces.json</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://agentgates.surge.sh/write/</loc></url>
 </urlset>

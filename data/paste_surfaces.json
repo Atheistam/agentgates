@@ -1,0 +1,1272 @@
+{
+  "control": {
+    "0x0.st": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "uploads disabled because it\u2019s been almost nothing but AI botnet spam for the past few months. will be back with a few changes at some point. no ETA.",
+        "returned": "",
+        "status": 503
+      },
+      "curl_relaxed": null,
+      "curl_strict": null,
+      "target_swap": null,
+      "verdict": "refused everything tried (no agent-specific cause isolated)"
+    },
+    "bashupload.com": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "[Errno 8] nodename nor servname provided, or not known",
+        "returned": "",
+        "status": null
+      },
+      "curl_relaxed": {
+        "body": "\n[000]",
+        "status": 0
+      },
+      "curl_strict": {
+        "body": "\n[000]",
+        "status": 0
+      },
+      "target_swap": null,
+      "verdict": "dead or unreachable for every client tried"
+    },
+    "catbox.moe": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "Invalid uploader",
+        "returned": "",
+        "status": 412
+      },
+      "curl_relaxed": null,
+      "curl_strict": null,
+      "target_swap": null,
+      "verdict": "refused everything tried (no agent-specific cause isolated)"
+    },
+    "dpaste.org": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "",
+        "returned": "",
+        "status": 405
+      },
+      "curl_relaxed": null,
+      "curl_strict": null,
+      "target_swap": null,
+      "verdict": "refused everything tried (no agent-specific cause isolated)"
+    },
+    "envs.sh": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "<html> <head> <title>envs.sh</title> <script type=\"text/javascript\" src=\"/js/fingerprint/iife.min.js\"></script> <script type=\"text/javascript\"> var redirect_link = 'http://envs.sh/?tr_uuid=20260913-00",
+        "returned": "",
+        "status": 200
+      },
+      "curl_relaxed": null,
+      "curl_strict": null,
+      "target_swap": null,
+      "verdict": "refused everything tried (no agent-specific cause isolated)"
+    },
+    "file.io": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "<html> <head> <meta charset=\"utf-8\"> <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <meta name=\"generator\" content=\"Gatsby 4",
+        "returned": "",
+        "status": 200
+      },
+      "curl_relaxed": null,
+      "curl_strict": null,
+      "target_swap": null,
+      "verdict": "refused everything tried (no agent-specific cause isolated)"
+    },
+    "is.gd": {
+      "browser_ua": {
+        "accepted": true,
+        "detail": "https://is.gd/jGamH3",
+        "returned": "https://is.gd/jGamH3",
+        "status": 200
+      },
+      "curl_relaxed": null,
+      "curl_strict": null,
+      "target_swap": {
+        "accepted": true,
+        "detail": "https://is.gd/jGamH3",
+        "returned": "https://is.gd/jGamH3",
+        "status": 200,
+        "target": "https://example.com"
+      },
+      "verdict": "target-specific: the same endpoint accepts a neutral target with the same agent UA, so the refusal is about WHAT was offered, not WHO offered it"
+    },
+    "ix.io": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "<!doctype html> <html lang=en> <head>     <meta charset=utf-8>     <title>&nbsp;</title> </head> <style>     body {         font-family: monospace; \tmargin: 2em;     } </style> <body>     <p>ix.io is ",
+        "returned": "",
+        "status": 200
+      },
+      "curl_relaxed": null,
+      "curl_strict": null,
+      "target_swap": null,
+      "verdict": "refused everything tried (no agent-specific cause isolated)"
+    },
+    "litterbox": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "<!doctype html><html lang=\"en\"><meta charset=\"UTF-8\"><meta content=\"nofollow,noarchive,noindex\" name=\"robots\"><title>500 | Internal Server Error</title><meta content=\"width=device-width,initial-scale=",
+        "returned": "",
+        "status": 500
+      },
+      "curl_relaxed": null,
+      "curl_strict": null,
+      "target_swap": null,
+      "verdict": "refused everything tried (no agent-specific cause isolated)"
+    },
+    "oshi.at": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate (_ssl.c:1129)",
+        "returned": "",
+        "status": null
+      },
+      "curl_relaxed": {
+        "body": "<html>\r\n<head><title>302 Found</title></head>\r\n<body>\r\n<center><h1>302 Found</h1></center>\r\n\r\n</body>\r\n</html>\r\n\n[302]",
+        "status": 302
+      },
+      "curl_strict": {
+        "body": "\n[000]",
+        "status": 0
+      },
+      "target_swap": null,
+      "verdict": "dead or unreachable for every client tried"
+    },
+    "pastebin.com": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "Bad API request, invalid api_dev_key",
+        "returned": "",
+        "status": 422
+      },
+      "curl_relaxed": null,
+      "curl_strict": null,
+      "target_swap": null,
+      "verdict": "refused everything tried (no agent-specific cause isolated)"
+    },
+    "privatebin.net": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1129)",
+        "returned": "",
+        "status": null
+      },
+      "curl_relaxed": {
+        "body": "<!DOCTYPE html>\n<html lang=\"en\" class=\"h-100\">\n\t<head>\n\t\t<meta charset=\"utf-8\" />\n\t\t<meta http-equiv=\"Content-Security-Policy\" content=\"default-src &apos;none&apos;; base-uri &apos;self&apos;; form-ac",
+        "status": 200
+      },
+      "curl_strict": {
+        "body": "<!DOCTYPE html>\n<html lang=\"en\" class=\"h-100\">\n\t<head>\n\t\t<meta charset=\"utf-8\" />\n\t\t<meta http-equiv=\"Content-Security-Policy\" content=\"default-src &apos;none&apos;; base-uri &apos;self&apos;; form-ac",
+        "status": 200
+      },
+      "target_swap": null,
+      "verdict": "client-stack-specific: refused python-urllib at the TLS handshake, curl reaches it"
+    },
+    "sprunge.us": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "<html><head> <meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\"> <title>404 Page not found</title> </head> <body text=#000000 bgcolor=#ffffff> <h1>Error: Page not found</h1> <h2>The req",
+        "returned": "",
+        "status": 404
+      },
+      "curl_relaxed": null,
+      "curl_strict": null,
+      "target_swap": null,
+      "verdict": "refused everything tried (no agent-specific cause isolated)"
+    },
+    "termbin.com": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "https://termbin.com/o16m\n\u0000",
+        "returned": "",
+        "status": 200
+      },
+      "curl_relaxed": null,
+      "curl_strict": null,
+      "target_swap": null,
+      "verdict": "refused everything tried (no agent-specific cause isolated)"
+    },
+    "transfer.sh": {
+      "browser_ua": {
+        "accepted": false,
+        "detail": "[Errno 61] Connection refused",
+        "returned": "",
+        "status": null
+      },
+      "curl_relaxed": {
+        "body": "\n[000]",
+        "status": 0
+      },
+      "curl_strict": {
+        "body": "\n[000]",
+        "status": 0
+      },
+      "target_swap": null,
+      "verdict": "dead or unreachable for every client tried"
+    },
+    "v.gd": {
+      "browser_ua": {
+        "accepted": true,
+        "detail": "https://v.gd/8vTZB9",
+        "returned": "https://v.gd/8vTZB9",
+        "status": 200
+      },
+      "curl_relaxed": null,
+      "curl_strict": null,
+      "target_swap": {
+        "accepted": true,
+        "detail": "https://v.gd/8vTZB9",
+        "returned": "https://v.gd/8vTZB9",
+        "status": 200,
+        "target": "https://example.com"
+      },
+      "verdict": "target-specific: the same endpoint accepts a neutral target with the same agent UA, so the refusal is about WHAT was offered, not WHO offered it"
+    }
+  },
+  "controlled_at": "2026-09-12T14:10:18Z",
+  "listed_at": "2026-09-12T14:10:09Z",
+  "listing": {
+    "0x0.st": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "bashupload.com": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "catbox.moe": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "clck.ru": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "cleanuri.com": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "da.gd": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "dpaste.com": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "dpaste.org": {
+      "advertised": true,
+      "bytes_seen": 3436,
+      "error": "",
+      "found": false,
+      "found_id": false,
+      "listing_url": "https://dpaste.org/recent/",
+      "status": 200,
+      "verdict": "listing is live but my item is not in it"
+    },
+    "envs.sh": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "file.io": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "is.gd": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "ix.io": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "litterbox": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "oshi.at": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "paste.debian.net": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "paste.rs": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "pastebin.com": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "privatebin.net": {
+      "advertised": true,
+      "bytes_seen": 0,
+      "error": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1129)",
+      "found": false,
+      "found_id": false,
+      "listing_url": "https://privatebin.net/?page=recent",
+      "status": null,
+      "verdict": "listing unreachable ([SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol ver)"
+    },
+    "rentry.co": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "spoo.me": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "sprunge.us": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "temp.sh": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "termbin.com": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "tinyurl.com": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "transfer.sh": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "uguu.se": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "v.gd": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "vocaroo.com": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    },
+    "x0.at": {
+      "advertised": false,
+      "found": null,
+      "listing_url": null,
+      "verdict": "no public recent-list advertised by the service"
+    }
+  },
+  "pass": "pass2 (pass1 discarded, see data/paste_surfaces_pass1_discarded.json)",
+  "run": 37,
+  "services": {
+    "0x0.st": {
+      "accepted": false,
+      "detail": "uploads disabled because it\u2019s been almost nothing but AI botnet spam for the past few months. will be back with a few changes at some point. no ETA.",
+      "documented_note": "explicitly asks for an identifying User-Agent - tests UA honesty",
+      "endpoint": "https://0x0.st/",
+      "family": "file",
+      "final_url": "https://0x0.st/",
+      "listing": null,
+      "name": "0x0.st",
+      "offered": "no",
+      "payload_bytes": 156,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "readable? (503)",
+      "refusal_text": "uploads disabled because it\u2019s been almost nothing but AI botnet spam for the past few months. will be back with a few changes at some point. no ETA.",
+      "returned": "",
+      "seconds": 0.2,
+      "status": 503,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "bashupload.com": {
+      "accepted": false,
+      "detail": "[Errno 8] nodename nor servname provided, or not known",
+      "documented_note": "curl bashupload.com -T file",
+      "endpoint": "https://bashupload.com/",
+      "family": "file",
+      "final_url": "https://bashupload.com/",
+      "listing": null,
+      "name": "bashupload.com",
+      "offered": "no (transport)",
+      "payload_bytes": 156,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "network / TLS handshake refused",
+      "refusal_text": "[Errno 8] nodename nor servname provided, or not known",
+      "returned": "",
+      "seconds": 0.01,
+      "status": null,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "catbox.moe": {
+      "accepted": false,
+      "detail": "Invalid uploader",
+      "documented_note": "permanent by policy, anonymous",
+      "endpoint": "https://catbox.moe/user/api.php",
+      "family": "file",
+      "final_url": "https://catbox.moe/user/api.php",
+      "listing": null,
+      "name": "catbox.moe",
+      "offered": "no",
+      "payload_bytes": 156,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "readable (412)",
+      "refusal_text": "Invalid uploader",
+      "returned": "",
+      "seconds": 0.83,
+      "status": 412,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "clck.ru": {
+      "accepted": true,
+      "detail": "https://clck.ru/3VnV5R",
+      "documented_note": "network reachability is itself a result",
+      "endpoint": "https://clck.ru/--",
+      "family": "shortener",
+      "final_url": "https://clck.ru/--?url=https%3A%2F%2Fagentgates.surge.sh",
+      "listing": null,
+      "name": "clck.ru",
+      "offered": "yes",
+      "payload_bytes": 0,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "",
+      "refusal_text": "",
+      "returned": "https://clck.ru/3VnV5R",
+      "seconds": 1.34,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "cleanuri.com": {
+      "accepted": true,
+      "detail": "{\"result_url\":\"https:\\/\\/cleanuri.com\\/4JXvyO\"}",
+      "documented_note": "JSON POST contract",
+      "endpoint": "https://cleanuri.com/api/v1/shorten",
+      "family": "shortener",
+      "final_url": "https://cleanuri.com/api/v1/shorten",
+      "listing": null,
+      "name": "cleanuri.com",
+      "offered": "yes",
+      "payload_bytes": 37,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "",
+      "refusal_text": "",
+      "returned": "https://cleanuri.com/4JXvyO",
+      "seconds": 0.26,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "da.gd": {
+      "accepted": true,
+      "detail": "https://da.gd/YP64",
+      "documented_note": "GET contract",
+      "endpoint": "https://da.gd/shorten",
+      "family": "shortener",
+      "final_url": "https://da.gd/shorten?url=https%3A%2F%2Fagentgates.surge.sh",
+      "listing": null,
+      "name": "da.gd",
+      "offered": "yes",
+      "payload_bytes": 0,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "",
+      "refusal_text": "",
+      "returned": "https://da.gd/YP64",
+      "seconds": 0.18,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "dpaste.com": {
+      "accepted": true,
+      "detail": "https://dpaste.com/FAN6HWJQN",
+      "documented_note": "documented anonymous API, returns URL as text",
+      "endpoint": "https://dpaste.com/api/v2/",
+      "family": "paste",
+      "final_url": "https://dpaste.com/api/v2/",
+      "listing": null,
+      "name": "dpaste.com",
+      "offered": "yes",
+      "payload_bytes": 218,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "",
+      "refusal_text": "",
+      "returned": "https://dpaste.com/FAN6HWJQN",
+      "seconds": 0.52,
+      "status": 201,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "dpaste.org": {
+      "accepted": false,
+      "detail": "",
+      "documented_note": "documented anonymous JSON API (/api/) - found halted mid-run, see shutdown_notice",
+      "endpoint": "https://dpaste.org/api/",
+      "family": "paste",
+      "final_url": "https://dpaste.org/api/",
+      "listing": "https://dpaste.org/recent/",
+      "name": "dpaste.org",
+      "offered": "no",
+      "payload_bytes": 221,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "readable (405)",
+      "refusal_text": "",
+      "returned": "",
+      "seconds": 0.1,
+      "status": 405,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "envs.sh": {
+      "accepted": false,
+      "detail": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <title>envs.sh</title> <meta name=\"description\" content=\"Find inform",
+      "documented_note": "0x0 clone",
+      "endpoint": "https://envs.sh/",
+      "family": "file",
+      "final_url": "https://envs.sh/",
+      "listing": null,
+      "name": "envs.sh",
+      "offered": "no",
+      "payload_bytes": 156,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "no machine-readable contract (200 HTML, no service URL)",
+      "refusal_text": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <title>envs.sh</title> <meta name=\"description\" content=\"Find information, resources and relevant links for envs.sh. This domain may be for sale.\"> <script async src=\"h",
+      "returned": "",
+      "seconds": 0.85,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "file.io": {
+      "accepted": false,
+      "detail": "<html> <head> <meta charset=\"utf-8\"> <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <meta name=\"generator\" content=\"Gatsby 4",
+      "documented_note": "single-download by design - a read consumes it",
+      "endpoint": "https://file.io/",
+      "family": "file",
+      "final_url": "https://www.file.io/",
+      "listing": null,
+      "name": "file.io",
+      "offered": "no",
+      "payload_bytes": 156,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "no machine-readable contract (200 HTML, no service URL)",
+      "refusal_text": "<html> <head> <meta charset=\"utf-8\"> <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <meta name=\"generator\" content=\"Gatsby 4.25.5\"> <meta data-react-helmet=\"true\" name=\"msapplication-TileColor\" content=\"#886ff4\"> <meta data-",
+      "requested_url": "https://file.io/",
+      "returned": "",
+      "seconds": 0.32,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "is.gd": {
+      "accepted": false,
+      "detail": "Error, database insert failed",
+      "documented_note": "GET contract, no key - the cleanest of the class",
+      "endpoint": "https://is.gd/create.php",
+      "family": "shortener",
+      "final_url": "https://is.gd/create.php?format=simple&url=https%3A%2F%2Fagentgates.surge.sh",
+      "listing": null,
+      "name": "is.gd",
+      "offered": "no",
+      "payload_bytes": 0,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "readable? (200 with a service-side error body)",
+      "refusal_text": "Error, database insert failed",
+      "requested_url": "https://is.gd/create.php?format=simple&url=https%3A%2F%2Fagentgates.surge.sh",
+      "returned": "",
+      "seconds": 0.2,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "ix.io": {
+      "accepted": false,
+      "detail": "<!doctype html> <html lang=en> <head>     <meta charset=utf-8>     <title>&nbsp;</title> </head> <style>     body {         font-family: monospace; \tmargin: 2em;     } </style> <body>     <p>ix.io is ",
+      "documented_note": "curl -F 'f:1=<-' ix.io",
+      "endpoint": "http://ix.io",
+      "family": "paste",
+      "final_url": "http://ix.io",
+      "listing": null,
+      "name": "ix.io",
+      "offered": "no",
+      "payload_bytes": 190,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "no machine-readable contract (200 HTML, no service URL)",
+      "refusal_text": "<!doctype html> <html lang=en> <head>     <meta charset=utf-8>     <title>&nbsp;</title> </head> <style>     body {         font-family: monospace; \tmargin: 2em;     } </style> <body>     <p>ix.io is taking a break &#127867;</p>     <img src=\"/underconstruction.gif\" width=\"200px\"> </body> </html>",
+      "returned": "",
+      "seconds": 0.21,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "litterbox": {
+      "accepted": false,
+      "detail": "<!doctype html><html lang=\"en\"><meta charset=\"UTF-8\"><meta content=\"nofollow,noarchive,noindex\" name=\"robots\"><title>500 | Internal Server Error</title><meta content=\"width=device-width,initial-scale=",
+      "documented_note": "catbox' temporary sibling, 1h",
+      "endpoint": "https://litterbox.catbox.moe/resources/internals/api.php",
+      "family": "file",
+      "final_url": "https://litterbox.catbox.moe/resources/internals/api.php",
+      "listing": null,
+      "name": "litterbox",
+      "offered": "no",
+      "payload_bytes": 156,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "readable? (500)",
+      "refusal_text": "<!doctype html><html lang=\"en\"><meta charset=\"UTF-8\"><meta content=\"nofollow,noarchive,noindex\" name=\"robots\"><title>500 | Internal Server Error</title><meta content=\"width=device-width,initial-scale=1\" name=\"viewport\"><meta content=\"IE=edge\" http-equiv=\"X-UA-Compatible\"><meta content=\"500 | Interna",
+      "returned": "",
+      "seconds": 1.09,
+      "status": 500,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "oshi.at": {
+      "accepted": false,
+      "detail": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate (_ssl.c:1129)",
+      "documented_note": "upload form with an expiry field; TLS certificate fails verification",
+      "endpoint": "https://oshi.at",
+      "family": "file",
+      "final_url": "https://oshi.at",
+      "listing": null,
+      "name": "oshi.at",
+      "offered": "no (transport)",
+      "payload_bytes": 156,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "network / TLS handshake refused",
+      "refusal_text": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate (_ssl.c:1129)",
+      "returned": "",
+      "seconds": 0.24,
+      "status": null,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "paste.debian.net": {
+      "accepted": true,
+      "detail": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>  <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> <html xmlns=\"http://www.w3.org/1999/xh",
+      "documented_note": "HTML form; is there a machine contract behind it?",
+      "endpoint": "https://paste.debian.net/",
+      "family": "paste",
+      "final_url": "https://paste.debian.net/",
+      "listing": null,
+      "name": "paste.debian.net",
+      "offered": "yes",
+      "payload_bytes": 231,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "",
+      "refusal_text": "",
+      "returned": "https://paste.debian.net",
+      "seconds": 0.26,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "paste.rs": {
+      "accepted": true,
+      "detail": "https://paste.rs/tuTMf",
+      "documented_note": "documented 'curl --data-binary @file' contract, no key",
+      "endpoint": "https://paste.rs/",
+      "family": "paste",
+      "final_url": "https://paste.rs/",
+      "listing": null,
+      "name": "paste.rs",
+      "offered": "yes",
+      "payload_bytes": 156,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "",
+      "refusal_text": "",
+      "returned": "https://paste.rs/tuTMf",
+      "seconds": 0.66,
+      "status": 201,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "pastebin.com": {
+      "accepted": false,
+      "detail": "Bad API request, invalid api_dev_key",
+      "documented_note": "the most famous of the class - control: known to require api_dev_key",
+      "endpoint": "https://pastebin.com/api/api_post.php",
+      "family": "paste",
+      "final_url": "",
+      "listing": null,
+      "name": "pastebin.com",
+      "offered": "no",
+      "payload_bytes": 249,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "readable (422)",
+      "refusal_text": "Bad API request, invalid api_dev_key",
+      "returned": "",
+      "seconds": 0.22,
+      "status": 422,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "privatebin.net": {
+      "accepted": false,
+      "detail": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1129)",
+      "documented_note": "self-hosted family; the browser builds the payload client-side",
+      "endpoint": "https://privatebin.net/",
+      "family": "paste",
+      "final_url": "https://privatebin.net/",
+      "listing": "https://privatebin.net/?page=recent",
+      "name": "privatebin.net",
+      "offered": "no (transport)",
+      "payload_bytes": 189,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "network / TLS handshake refused",
+      "refusal_text": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1129)",
+      "returned": "",
+      "seconds": 0.1,
+      "status": null,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "rentry.co": {
+      "accepted": true,
+      "csrf_from": "body+cookie",
+      "detail": "step 1 (csrf from the form, not /api/new) 200 | step 2: 200 {\"status\": \"200\", \"content\": \"OK\", \"url\": \"https://rentry.co/df7obyiv\", \"url_short\": \"df7obyiv\", \"edit_code\": \"ag37b-a1\"}",
+      "documented_note": "anonymous API but needs a CSRF token harvested in a first call",
+      "endpoint": "https://rentry.co/api/new",
+      "family": "paste",
+      "final_url": "https://rentry.co/api/new",
+      "listing": null,
+      "name": "rentry.co",
+      "offered": "yes",
+      "payload_bytes": 0,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "",
+      "refusal_text": "",
+      "returned": "https://rentry.co/df7obyiv",
+      "seconds": 0.74,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "spoo.me": {
+      "accepted": true,
+      "detail": "{\"short_url\":\"http://spoo.me/3iTmAe\",\"domain\":\"spoo.me\",\"original_url\":\"https://agentgates.surge.sh\"}",
+      "documented_note": "anonymous JSON API, and it publishes per-link stats",
+      "endpoint": "https://spoo.me/",
+      "family": "shortener",
+      "final_url": "https://spoo.me/",
+      "listing": null,
+      "name": "spoo.me",
+      "offered": "yes",
+      "payload_bytes": 37,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "",
+      "refusal_text": "",
+      "returned": "http://spoo.me/3iTmAe",
+      "seconds": 0.26,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "sprunge.us": {
+      "accepted": false,
+      "detail": "<html><head> <meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\"> <title>404 Page not found</title> </head> <body text=#000000 bgcolor=#ffffff> <h1>Error: Page not found</h1> <h2>The req",
+      "documented_note": "the classic 'curl -F sprunge=<-' endpoint",
+      "endpoint": "https://sprunge.us",
+      "family": "paste",
+      "final_url": "https://sprunge.us",
+      "listing": null,
+      "name": "sprunge.us",
+      "offered": "no",
+      "payload_bytes": 192,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "readable (404)",
+      "refusal_text": "<html><head> <meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\"> <title>404 Page not found</title> </head> <body text=#000000 bgcolor=#ffffff> <h1>Error: Page not found</h1> <h2>The requested URL was not found on this server.</h2> <h2></h2> </body></html>",
+      "returned": "",
+      "seconds": 0.13,
+      "status": 404,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "temp.sh": {
+      "accepted": true,
+      "detail": "https://temp.sh/cfJST/agentgates.txt",
+      "documented_note": "POST /upload multipart (the PUT form 404s)",
+      "endpoint": "https://temp.sh/upload",
+      "family": "file",
+      "final_url": "https://temp.sh/upload",
+      "listing": null,
+      "name": "temp.sh",
+      "offered": "yes",
+      "payload_bytes": 156,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "",
+      "refusal_text": "",
+      "returned": "https://temp.sh/cfJST/agentgates.txt",
+      "seconds": 0.27,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "termbin.com": {
+      "accepted": false,
+      "detail": "https://termbin.com/74mie\n\u0000",
+      "documented_note": "netcat contract: nc termbin.com 9999",
+      "endpoint": "termbin.com:9999",
+      "family": "paste",
+      "final_url": "",
+      "listing": null,
+      "name": "termbin.com",
+      "offered": "no",
+      "payload_bytes": 156,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "readable (connection ok, no URL)",
+      "refusal_text": "https://termbin.com/74mie\n\u0000",
+      "returned": "",
+      "seconds": 0.23,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "tinyurl.com": {
+      "accepted": true,
+      "detail": "https://tinyurl.com/2yu6xvat",
+      "documented_note": "the one a human would name first",
+      "endpoint": "https://tinyurl.com/api-create.php",
+      "family": "shortener",
+      "final_url": "https://tinyurl.com/api-create.php?url=https%3A%2F%2Fagentgates.surge.sh",
+      "listing": null,
+      "name": "tinyurl.com",
+      "offered": "yes",
+      "payload_bytes": 0,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "",
+      "refusal_text": "",
+      "returned": "https://tinyurl.com/2yu6xvat",
+      "seconds": 0.07,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "transfer.sh": {
+      "accepted": false,
+      "detail": "[Errno 61] Connection refused",
+      "documented_note": "status uncertain in 2026 - recorded either way",
+      "endpoint": "https://transfer.sh/agentgates.txt",
+      "family": "file",
+      "final_url": "https://transfer.sh/agentgates.txt",
+      "listing": null,
+      "name": "transfer.sh",
+      "offered": "no (transport)",
+      "payload_bytes": 156,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "network / TLS handshake refused",
+      "refusal_text": "[Errno 61] Connection refused",
+      "returned": "",
+      "seconds": 0.09,
+      "status": null,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "uguu.se": {
+      "accepted": true,
+      "detail": "{     \"success\": true,     \"files\": [         {             \"hash\": \"4604c6a893ed0482\",             \"filename\": \"uyhXbHNQ.txt\",             \"url\": \"https:\\/\\/d.uguu.se\\/uyhXbHNQ.txt\",             \"siz",
+      "documented_note": "temporary host, 3h; answers in JSON with escaped slashes",
+      "endpoint": "https://uguu.se/upload",
+      "family": "file",
+      "final_url": "https://uguu.se/upload",
+      "listing": null,
+      "name": "uguu.se",
+      "offered": "yes",
+      "payload_bytes": 156,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "",
+      "refusal_text": "",
+      "returned": "https://d.uguu.se/uyhXbHNQ.txt",
+      "seconds": 0.25,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "v.gd": {
+      "accepted": false,
+      "detail": "Error, database insert failed",
+      "documented_note": "is.gd twin, same contract",
+      "endpoint": "https://v.gd/create.php",
+      "family": "shortener",
+      "final_url": "https://v.gd/create.php?format=simple&url=https%3A%2F%2Fagentgates.surge.sh",
+      "listing": null,
+      "name": "v.gd",
+      "offered": "no",
+      "payload_bytes": 0,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "readable? (200 with a service-side error body)",
+      "refusal_text": "Error, database insert failed",
+      "requested_url": "https://v.gd/create.php?format=simple&url=https%3A%2F%2Fagentgates.surge.sh",
+      "returned": "",
+      "seconds": 0.15,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "vocaroo.com": {
+      "accepted": true,
+      "detail": "mediaId 1fzdUctScckh | status poll [1, 0]",
+      "documented_note": "audio class. The homepage advertises UPLOAD_URLS in plain HTML but every advertised route 404s to a from-scratch client; the working contract (chunk POST -> finalize -> status poll) was read out of their minified bundle. Also the audio leg of the 'one upload' rule: a real pcm wav, ~11kB, so a human opening the link hears something.",
+      "endpoint": "https://upload1.vocaroo.com/apps/main-api/upload",
+      "family": "audio",
+      "final_url": "",
+      "finalize_raw": "{\"status\":0,\"mediaId\":\"1fzdUctScckh\",\"ownerToken\":\"16b3a7560df78a6453a7fe62dd1b5e2a\"}",
+      "listing": null,
+      "media_id": "1fzdUctScckh",
+      "name": "vocaroo.com",
+      "offered": "yes",
+      "owner_token_present": true,
+      "payload_bytes": 11244,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "",
+      "refusal_text": "",
+      "returned": "https://voca.ro/1fzdUctScckh",
+      "seconds": 5.64,
+      "status": 200,
+      "status_polls": [
+        1,
+        0
+      ],
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    },
+    "x0.at": {
+      "accepted": true,
+      "detail": "https://x0.at/7gGm.txt",
+      "documented_note": "0x0-family",
+      "endpoint": "https://x0.at/",
+      "family": "file",
+      "final_url": "https://x0.at/",
+      "listing": null,
+      "name": "x0.at",
+      "offered": "yes",
+      "payload_bytes": 156,
+      "payload_token": "ag37b-a141e143",
+      "refusal_shape": "",
+      "refusal_text": "",
+      "returned": "https://x0.at/7gGm.txt",
+      "seconds": 0.32,
+      "status": 200,
+      "token_in_response": false,
+      "ua_used": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+      "url_rejected": ""
+    }
+  },
+  "token": "ag37b-a141e143",
+  "uploaded_at": "2026-09-12T14:10:05Z",
+  "user_agent": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+  "verified_at": "2026-09-12T14:09:33Z",
+  "verify": {
+    "clck.ru": {
+      "at": "2026-09-12T14:09:03Z",
+      "bytes_seen": 59967,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": false
+      },
+      "seconds": 1.25,
+      "status": 200,
+      "token_present": false,
+      "verdict": "served something else (HTTP 200, token absent)"
+    },
+    "cleanuri.com": {
+      "at": "2026-09-12T14:09:05Z",
+      "bytes_seen": 59967,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": false
+      },
+      "seconds": 0.46,
+      "status": 200,
+      "token_present": false,
+      "verdict": "served something else (HTTP 200, token absent)"
+    },
+    "da.gd": {
+      "at": "2026-09-12T14:09:07Z",
+      "bytes_seen": 59967,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": false
+      },
+      "seconds": 0.45,
+      "status": 200,
+      "token_present": false,
+      "verdict": "served something else (HTTP 200, token absent)"
+    },
+    "dpaste.com": {
+      "at": "2026-09-12T14:09:09Z",
+      "bytes_seen": 12587,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": true
+      },
+      "seconds": 0.5,
+      "status": 200,
+      "token_present": true,
+      "verdict": "persisted (exact token read back)"
+    },
+    "file.io": {
+      "at": "2026-09-12T14:09:12Z",
+      "bytes_seen": 200000,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": false
+      },
+      "seconds": 0.69,
+      "status": 200,
+      "token_present": false,
+      "verdict": "served something else (HTTP 200, token absent)"
+    },
+    "is.gd": {
+      "at": "2026-09-12T14:09:13Z",
+      "bytes_seen": 29,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": false
+      },
+      "seconds": 0.3,
+      "status": 200,
+      "token_present": false,
+      "verdict": "served something else (HTTP 200, token absent)"
+    },
+    "paste.debian.net": {
+      "at": "2026-09-12T14:09:15Z",
+      "bytes_seen": 30238,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": false
+      },
+      "seconds": 0.27,
+      "status": 200,
+      "token_present": false,
+      "verdict": "served something else (HTTP 200, token absent)"
+    },
+    "paste.rs": {
+      "at": "2026-09-12T14:09:17Z",
+      "bytes_seen": 156,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": true
+      },
+      "seconds": 0.67,
+      "status": 200,
+      "token_present": true,
+      "verdict": "persisted (exact token read back)"
+    },
+    "rentry.co": {
+      "at": "2026-09-12T14:09:19Z",
+      "bytes_seen": 11373,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": true
+      },
+      "seconds": 0.17,
+      "status": 200,
+      "token_present": true,
+      "verdict": "persisted (exact token read back)"
+    },
+    "spoo.me": {
+      "at": "2026-09-12T14:09:21Z",
+      "bytes_seen": 59967,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": false
+      },
+      "seconds": 0.59,
+      "status": 200,
+      "token_present": false,
+      "verdict": "served something else (HTTP 200, token absent)"
+    },
+    "temp.sh": {
+      "at": "2026-09-12T14:09:23Z",
+      "bytes_seen": 2729,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": false
+      },
+      "seconds": 0.22,
+      "status": 200,
+      "token_present": false,
+      "verdict": "served something else (HTTP 200, token absent)"
+    },
+    "tinyurl.com": {
+      "at": "2026-09-12T14:09:25Z",
+      "bytes_seen": 59967,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": false
+      },
+      "seconds": 0.5,
+      "status": 200,
+      "token_present": false,
+      "verdict": "served something else (HTTP 200, token absent)"
+    },
+    "uguu.se": {
+      "at": "2026-09-12T14:09:26Z",
+      "bytes_seen": 156,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": true
+      },
+      "seconds": 0.25,
+      "status": 200,
+      "token_present": true,
+      "verdict": "persisted (exact token read back)"
+    },
+    "v.gd": {
+      "at": "2026-09-12T14:09:28Z",
+      "bytes_seen": 29,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": false
+      },
+      "seconds": 0.27,
+      "status": 200,
+      "token_present": false,
+      "verdict": "served something else (HTTP 200, token absent)"
+    },
+    "vocaroo.com": {
+      "at": "2026-09-12T14:09:30Z",
+      "bytes_seen": 1778,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": false
+      },
+      "seconds": 0.39,
+      "status": 200,
+      "token_present": false,
+      "verdict": "served something else (HTTP 200, token absent)"
+    },
+    "x0.at": {
+      "at": "2026-09-12T14:09:31Z",
+      "bytes_seen": 156,
+      "error": "",
+      "second_read": {
+        "error": "",
+        "status": 200,
+        "token_present": true
+      },
+      "seconds": 0.25,
+      "status": 200,
+      "token_present": true,
+      "verdict": "persisted (exact token read back)"
+    }
+  }
+}

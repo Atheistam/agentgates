@@ -1,0 +1,370 @@
+{
+ "title": "The write class is closing",
+ "url": "https://agentgates.surge.sh/write/",
+ "generated_at": "2026-09-12T14:12:19Z",
+ "class": "account-free write",
+ "method": [
+  "offered",
+  "accepted",
+  "persisted",
+  "surfaced"
+ ],
+ "token_prefix": "ag37b-****",
+ "user_agent": "agentgates-probe/1.0 (+https://agentgates.surge.sh; one upload per service, no account)",
+ "counts": {
+  "tried": 29,
+  "accepted": 13,
+  "refused": 16,
+  "dead": 4,
+  "persisted": 5,
+  "surfaced": 0
+ },
+ "services": [
+  {
+   "service": "0x0.st",
+   "family": "file",
+   "http_status": 503,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (readable? (503))",
+   "persisted": null,
+   "refusal_text": "uploads disabled because it\u2019s been almost nothing but AI botnet spam for the past few months. will be back with a few changes at some point. no ETA.",
+   "control": "refused everything tried (no agent-specific cause isolated)"
+  },
+  {
+   "service": "bashupload.com",
+   "family": "file",
+   "http_status": null,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (network / TLS handshake refused)",
+   "persisted": null,
+   "refusal_text": "[Errno 8] nodename nor servname provided, or not known",
+   "control": "dead or unreachable for every client tried"
+  },
+  {
+   "service": "catbox.moe",
+   "family": "file",
+   "http_status": 412,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (readable (412))",
+   "persisted": null,
+   "refusal_text": "Invalid uploader",
+   "control": "refused everything tried (no agent-specific cause isolated)"
+  },
+  {
+   "service": "clck.ru",
+   "family": "shortener",
+   "http_status": 200,
+   "accepted": true,
+   "artifact": "https://clck.ru/3VnV5R",
+   "verdict": "accepted - served something else (HTTP 200, token absent)",
+   "persisted": "served something else (HTTP 200, token absent)",
+   "refusal_text": "https://clck.ru/3VnV5R",
+   "control": null
+  },
+  {
+   "service": "cleanuri.com",
+   "family": "shortener",
+   "http_status": 200,
+   "accepted": true,
+   "artifact": "https://cleanuri.com/4JXvyO",
+   "verdict": "accepted - served something else (HTTP 200, token absent)",
+   "persisted": "served something else (HTTP 200, token absent)",
+   "refusal_text": "{\"result_url\":\"https:\\/\\/cleanuri.com\\/4JXvyO\"}",
+   "control": null
+  },
+  {
+   "service": "da.gd",
+   "family": "shortener",
+   "http_status": 200,
+   "accepted": true,
+   "artifact": "https://da.gd/YP64",
+   "verdict": "accepted - served something else (HTTP 200, token absent)",
+   "persisted": "served something else (HTTP 200, token absent)",
+   "refusal_text": "https://da.gd/YP64",
+   "control": null
+  },
+  {
+   "service": "dpaste.com",
+   "family": "paste",
+   "http_status": 201,
+   "accepted": true,
+   "artifact": "https://dpaste.com/FAN6HWJQN",
+   "verdict": "accepted - persisted (exact token read back)",
+   "persisted": "persisted (exact token read back)",
+   "refusal_text": "https://dpaste.com/FAN6HWJQN",
+   "control": null
+  },
+  {
+   "service": "dpaste.org",
+   "family": "paste",
+   "http_status": 405,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (readable (405))",
+   "persisted": null,
+   "refusal_text": "",
+   "control": "refused everything tried (no agent-specific cause isolated)"
+  },
+  {
+   "service": "envs.sh",
+   "family": "file",
+   "http_status": 200,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (no machine-readable contract (200 HTML, no service URL))",
+   "persisted": null,
+   "refusal_text": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <title>envs.sh</title> <meta name=\"description\" content=\"Find information, resources and relevant links for envs.sh. This domain may be for sale.\"> <script async src=\"h",
+   "control": "refused everything tried (no agent-specific cause isolated)"
+  },
+  {
+   "service": "file.io",
+   "family": "file",
+   "http_status": 200,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (no machine-readable contract (200 HTML, no service URL))",
+   "persisted": "served something else (HTTP 200, token absent)",
+   "refusal_text": "<html> <head> <meta charset=\"utf-8\"> <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <meta name=\"generator\" content=\"Gatsby 4.25.5\"> <meta data-react-helmet=\"true\" name=\"msapplication-TileColor\" content=\"#886ff4\"> <meta data-",
+   "control": "refused everything tried (no agent-specific cause isolated)"
+  },
+  {
+   "service": "is.gd",
+   "family": "shortener",
+   "http_status": 200,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (readable? (200 with a service-side error body))",
+   "persisted": "served something else (HTTP 200, token absent)",
+   "refusal_text": "Error, database insert failed",
+   "control": "target-specific: the same endpoint accepts a neutral target with the same agent UA, so the refusal is about WHAT was offered, not WHO offered it"
+  },
+  {
+   "service": "ix.io",
+   "family": "paste",
+   "http_status": 200,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (no machine-readable contract (200 HTML, no service URL))",
+   "persisted": null,
+   "refusal_text": "<!doctype html> <html lang=en> <head>     <meta charset=utf-8>     <title>&nbsp;</title> </head> <style>     body {         font-family: monospace; \tmargin: 2em;     } </style> <body>     <p>ix.io is taking a break &#127867;</p>     <img src=\"/underconstruction.gif\" width=\"200px\"> </body> </html>",
+   "control": "refused everything tried (no agent-specific cause isolated)"
+  },
+  {
+   "service": "litterbox",
+   "family": "file",
+   "http_status": 500,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (readable? (500))",
+   "persisted": null,
+   "refusal_text": "<!doctype html><html lang=\"en\"><meta charset=\"UTF-8\"><meta content=\"nofollow,noarchive,noindex\" name=\"robots\"><title>500 | Internal Server Error</title><meta content=\"width=device-width,initial-scale=1\" name=\"viewport\"><meta content=\"IE=edge\" http-equiv=\"X-UA-Compatible\"><meta content=\"500 | Interna",
+   "control": "refused everything tried (no agent-specific cause isolated)"
+  },
+  {
+   "service": "oshi.at",
+   "family": "file",
+   "http_status": null,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (network / TLS handshake refused)",
+   "persisted": null,
+   "refusal_text": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate (_ssl.c:1129)",
+   "control": "dead or unreachable for every client tried"
+  },
+  {
+   "service": "paste.debian.net",
+   "family": "paste",
+   "http_status": 200,
+   "accepted": true,
+   "artifact": "https://paste.debian.net",
+   "verdict": "accepted - served something else (HTTP 200, token absent)",
+   "persisted": "served something else (HTTP 200, token absent)",
+   "refusal_text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>  <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"> <html xmlns=\"http://www.w3.org/1999/xh",
+   "control": null
+  },
+  {
+   "service": "paste.rs",
+   "family": "paste",
+   "http_status": 201,
+   "accepted": true,
+   "artifact": "https://paste.rs/tuTMf",
+   "verdict": "accepted - persisted (exact token read back)",
+   "persisted": "persisted (exact token read back)",
+   "refusal_text": "https://paste.rs/tuTMf",
+   "control": null
+  },
+  {
+   "service": "pastebin.com",
+   "family": "paste",
+   "http_status": 422,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (readable (422))",
+   "persisted": null,
+   "refusal_text": "Bad API request, invalid api_dev_key",
+   "control": "refused everything tried (no agent-specific cause isolated)"
+  },
+  {
+   "service": "privatebin.net",
+   "family": "paste",
+   "http_status": null,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (network / TLS handshake refused)",
+   "persisted": null,
+   "refusal_text": "[SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1129)",
+   "control": "client-stack-specific: refused python-urllib at the TLS handshake, curl reaches it"
+  },
+  {
+   "service": "rentry.co",
+   "family": "paste",
+   "http_status": 200,
+   "accepted": true,
+   "artifact": "https://rentry.co/df7obyiv",
+   "verdict": "accepted - persisted (exact token read back)",
+   "persisted": "persisted (exact token read back)",
+   "refusal_text": "step 1 (csrf from the form, not /api/new) 200 | step 2: 200 {\"status\": \"200\", \"content\": \"OK\", \"url\": \"https://rentry.co/df7obyiv\", \"url_short\": \"df7obyiv\", \"edit_code\": \"ag37b-a1\"}",
+   "control": null
+  },
+  {
+   "service": "spoo.me",
+   "family": "shortener",
+   "http_status": 200,
+   "accepted": true,
+   "artifact": "http://spoo.me/3iTmAe",
+   "verdict": "accepted - served something else (HTTP 200, token absent)",
+   "persisted": "served something else (HTTP 200, token absent)",
+   "refusal_text": "{\"short_url\":\"http://spoo.me/3iTmAe\",\"domain\":\"spoo.me\",\"original_url\":\"https://agentgates.surge.sh\"}",
+   "control": null
+  },
+  {
+   "service": "sprunge.us",
+   "family": "paste",
+   "http_status": 404,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (readable (404))",
+   "persisted": null,
+   "refusal_text": "<html><head> <meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\"> <title>404 Page not found</title> </head> <body text=#000000 bgcolor=#ffffff> <h1>Error: Page not found</h1> <h2>The requested URL was not found on this server.</h2> <h2></h2> </body></html>",
+   "control": "refused everything tried (no agent-specific cause isolated)"
+  },
+  {
+   "service": "temp.sh",
+   "family": "file",
+   "http_status": 200,
+   "accepted": true,
+   "artifact": "https://temp.sh/cfJST/agentgates.txt",
+   "verdict": "accepted - served something else (HTTP 200, token absent)",
+   "persisted": "served something else (HTTP 200, token absent)",
+   "refusal_text": "https://temp.sh/cfJST/agentgates.txt",
+   "control": null
+  },
+  {
+   "service": "termbin.com",
+   "family": "paste",
+   "http_status": 200,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (readable (connection ok, no URL))",
+   "persisted": null,
+   "refusal_text": "https://termbin.com/74mie\n\u0000",
+   "control": "refused everything tried (no agent-specific cause isolated)"
+  },
+  {
+   "service": "tinyurl.com",
+   "family": "shortener",
+   "http_status": 200,
+   "accepted": true,
+   "artifact": "https://tinyurl.com/2yu6xvat",
+   "verdict": "accepted - served something else (HTTP 200, token absent)",
+   "persisted": "served something else (HTTP 200, token absent)",
+   "refusal_text": "https://tinyurl.com/2yu6xvat",
+   "control": null
+  },
+  {
+   "service": "transfer.sh",
+   "family": "file",
+   "http_status": null,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (network / TLS handshake refused)",
+   "persisted": null,
+   "refusal_text": "[Errno 61] Connection refused",
+   "control": "dead or unreachable for every client tried"
+  },
+  {
+   "service": "uguu.se",
+   "family": "file",
+   "http_status": 200,
+   "accepted": true,
+   "artifact": "https://d.uguu.se/uyhXbHNQ.txt",
+   "verdict": "accepted - persisted (exact token read back)",
+   "persisted": "persisted (exact token read back)",
+   "refusal_text": "{     \"success\": true,     \"files\": [         {             \"hash\": \"4604c6a893ed0482\",             \"filename\": \"uyhXbHNQ.txt\",             \"url\": \"https:\\/\\/d.uguu.se\\/uyhXbHNQ.txt\",             \"siz",
+   "control": null
+  },
+  {
+   "service": "v.gd",
+   "family": "shortener",
+   "http_status": 200,
+   "accepted": false,
+   "artifact": null,
+   "verdict": "refused (readable? (200 with a service-side error body))",
+   "persisted": "served something else (HTTP 200, token absent)",
+   "refusal_text": "Error, database insert failed",
+   "control": "target-specific: the same endpoint accepts a neutral target with the same agent UA, so the refusal is about WHAT was offered, not WHO offered it"
+  },
+  {
+   "service": "vocaroo.com",
+   "family": "audio",
+   "http_status": 200,
+   "accepted": true,
+   "artifact": "https://voca.ro/1fzdUctScckh",
+   "verdict": "accepted - served something else (HTTP 200, token absent)",
+   "persisted": "served something else (HTTP 200, token absent)",
+   "refusal_text": "mediaId 1fzdUctScckh | status poll [1, 0]",
+   "control": null
+  },
+  {
+   "service": "x0.at",
+   "family": "file",
+   "http_status": 200,
+   "accepted": true,
+   "artifact": "https://x0.at/7gGm.txt",
+   "verdict": "accepted - persisted (exact token read back)",
+   "persisted": "persisted (exact token read back)",
+   "refusal_text": "https://x0.at/7gGm.txt",
+   "control": null
+  }
+ ],
+ "corrections": [
+  {
+   "service": "is.gd",
+   "was": "accepted",
+   "is": "refused",
+   "why": "200 with body 'Error, database insert failed' counted as a write"
+  },
+  {
+   "service": "v.gd",
+   "was": "accepted",
+   "is": "refused",
+   "why": "200 with body 'Error, database insert failed' counted as a write"
+  },
+  {
+   "service": "file.io",
+   "was": "accepted",
+   "is": "refused",
+   "why": "artifact extracted was an og:image asset, not a file"
+  },
+  {
+   "service": "pass 1 (29 services)",
+   "was": "published",
+   "is": "discarded",
+   "why": "four harness bugs; preserved at /data/paste_surfaces_pass1_discarded.json"
+  }
+ ],
+ "license": "CC-BY-4.0"
+}
