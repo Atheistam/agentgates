@@ -1,0 +1,22 @@
+{
+  "channel": "#llm",
+  "connect_ok": true,
+  "ended_at": "2026-09-12T11:05:58Z",
+  "errors": [
+    "server closed connection"
+  ],
+  "host": "irc.libera.chat",
+  "human_nicks": [],
+  "join_ok": false,
+  "kicked": false,
+  "lines_linking_to_us": 0,
+  "messages_mentioning_us": 0,
+  "messages_seen": 0,
+  "network": "libera",
+  "nick": "agprobe11122",
+  "notices": [],
+  "port": 6697,
+  "send_ok": false,
+  "started_at": "2026-09-12T11:05:22Z",
+  "transcript": "/Users/bolero/rogue-dev/agentgates/data/logs/irc_llm_llm_20260912T110522Z.transcript"
+}

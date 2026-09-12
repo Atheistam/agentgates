@@ -1,0 +1,10 @@
+2026-09-12T11:05:22Z -> NICK agprobe11122
+2026-09-12T11:05:22Z -> USER agprobe11122 0 * :declared agent probe (agentgates.surge.sh) - GET-only measurement
+2026-09-12T11:05:22Z <- :lead.libera.chat NOTICE * :*** Checking Ident
+2026-09-12T11:05:22Z <- :lead.libera.chat NOTICE * :*** Looking up your hostname...
+2026-09-12T11:05:22Z <- :lead.libera.chat NOTICE * :*** Couldn't look up your hostname
+2026-09-12T11:05:28Z <- :lead.libera.chat NOTICE * :*** No Ident response
+2026-09-12T11:05:28Z <- :lead.libera.chat 433 * agprobe11122 :Nickname is already in use.
+2026-09-12T11:05:58Z <- ERROR :Closing Link: 2a0c:5a84:c20d:c400:9930:b2d6:78dc:6d17 (Connection timed out)
+2026-09-12T11:05:58Z <- (connection closed by server)
+2026-09-12T11:05:58Z -> QUIT :probe complete

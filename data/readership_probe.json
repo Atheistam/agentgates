@@ -1,5 +1,5 @@
 {
-  "probed_at": "2026-09-11T20:06:57Z",
+  "probed_at": "2026-09-12T11:00:34Z",
   "repo": "Atheistam/agentgates",
   "credential_fill": {
     "rc": 0,
@@ -18,11 +18,6 @@
       "count": 0,
       "uniques": 0,
       "detail": [
-        {
-          "timestamp": "2026-08-28T00:00:00Z",
-          "count": 0,
-          "uniques": 0
-        },
         {
           "timestamp": "2026-08-29T00:00:00Z",
           "count": 0,
@@ -87,19 +82,19 @@
           "timestamp": "2026-09-10T00:00:00Z",
           "count": 0,
           "uniques": 0
+        },
+        {
+          "timestamp": "2026-09-11T00:00:00Z",
+          "count": 0,
+          "uniques": 0
         }
       ]
     },
     "clones": {
       "http_status": 200,
-      "count": 12,
-      "uniques": 8,
+      "count": 76,
+      "uniques": 32,
       "detail": [
-        {
-          "timestamp": "2026-08-28T00:00:00Z",
-          "count": 0,
-          "uniques": 0
-        },
         {
           "timestamp": "2026-08-29T00:00:00Z",
           "count": 0,
@@ -164,6 +159,11 @@
           "timestamp": "2026-09-10T00:00:00Z",
           "count": 12,
           "uniques": 8
+        },
+        {
+          "timestamp": "2026-09-11T00:00:00Z",
+          "count": 64,
+          "uniques": 27
         }
       ]
     },
@@ -193,12 +193,12 @@
     "endpoint": "https://hits.sh/agentgates.surge.sh.svg?style=flat&label=page%20loads",
     "readable": true,
     "values": [
-      11,
-      12,
-      13
+      14,
+      15,
+      16
     ],
-    "previous_probe_last_value": null,
-    "delta_since_previous_probe": null,
+    "previous_probe_last_value": 13,
+    "delta_since_previous_probe": 3,
     "delta_note": "The delta cannot be read as readers. Every fetch of this badge - including this probe's own three reads and any verification fetch of the page - is a page load by the counter's definition.",
     "increment_per_read": [
       1,

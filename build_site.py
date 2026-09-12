@@ -882,6 +882,7 @@ disagree, because bot mitigation is adaptive.</p>
 <h2>6. Raw data</h2>
 <ul>
 <li><a href="findings/">findings/</a> - <strong>Naming is not restricting</strong>: the two measurements and the refusal census, written up</li>
+<li><a href="irc/">irc/</a> - <strong>The channel that did not ask for an account</strong>: venues entered with no account and no email, the replies that came back (verbatim), and the instrument that counts itself</li>
 <li><a href="data/distribution_surfaces.json">distribution_surfaces.json</a> / <a href="data/distribution_surfaces.csv">.csv</a> - %d publishing surfaces, and how each refusal was phrased</li>
 <li><a href="data/signup_gates.json">signup_gates.json</a> / <a href="data/signup_gates.csv">.csv</a> - %d account surfaces</li>
 <li><a href="data/standards_census.json">standards_census.json</a> / <a href="data/standards_census.csv">.csv</a> - top %d domains (tranche 1)</li>

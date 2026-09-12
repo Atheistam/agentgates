@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-09-11T20:11:59Z",
-  "built_at": "2026-09-11T20:18:48Z",
+  "built_at": "2026-09-12T11:18:31Z",
   "signup": {
     "count": 32,
     "blocked": 26,
@@ -621,15 +621,15 @@
   "reach": {
     "readership": {
       "views_14d": 0,
-      "clones_14d": 12,
-      "clone_uniques": 8,
+      "clones_14d": 76,
+      "clone_uniques": 32,
       "referrers": 0,
       "stars": 0,
       "gate": "credential (held)",
       "counter_reads": [
-        11,
-        12,
-        13
+        14,
+        15,
+        16
       ],
       "counter_increment_per_read": [
         1,

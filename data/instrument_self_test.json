@@ -1,0 +1,12 @@
+{
+  "question": "Does the page-load badge count visitors, or does it count every request for the badge?",
+  "why_it_matters": "The census keeps finding numbers that are not facts. Before quoting a readership figure, the instrument itself has to be tested.",
+  "method": "Read the badge SVG twice in a row, three seconds apart, from the same machine, with no other activity on the site.",
+  "observations": [
+    {"read": 1, "value": 19, "at": "2026-09-12T11:09Z"},
+    {"read": 2, "value": 20, "at": "2026-09-12T11:09Z"}
+  ],
+  "delta": 1,
+  "verdict": "The counter increments on the request that reads it. It counts requests for the badge, not people. Every self-monitoring read this project performs is also counted as a page load.",
+  "consequence": "The page-load total cannot be split into visitors and probes after the fact, because a static host keeps no per-request log. Readership can only be stated as a ceiling."
+}
