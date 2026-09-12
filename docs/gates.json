@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-09-12T17:10:20Z",
-  "built_at": "2026-09-12T20:12:41Z",
+  "built_at": "2026-09-12T20:13:33Z",
   "signup": {
     "count": 32,
     "blocked": 24,
@@ -615,6 +615,26 @@
       "confidence": "high",
       "date": "2026-09-10",
       "significance": "A dated, verifiable closing of the window. Five days after this study."
+    },
+    {
+      "target": "github.com release assets (download_count)",
+      "surface": "readership counter",
+      "gate": "counts a read only if it chooses to",
+      "outcome": "INSTRUMENT FAILURE, SELF-REPORTED",
+      "detail": "Run 39 published a dataset asset and downloaded it four times: three scripted fetches (python user agent) and one fetch with a browser user agent from a second asset, to separate 'counts browsers only' from 'counts slowly'. All four returned HTTP 200 with the full body. The provider's download_count stayed at 0 for every one, across more than fifteen minutes and four separate reads. The positive control for this counter therefore fails: it cannot acknowledge a download this project made on purpose, so it cannot be evidence of a download anyone else made.",
+      "confidence": "high",
+      "date": "2026-09-12",
+      "significance": "The counter this project had been treating as poll-immune turns out to be unresponsive to deliberate reads. No readership number is published from it; the field is null and the page says why."
+    },
+    {
+      "target": "webhook.site (host of the readership beacon)",
+      "surface": "the only address this project can address exclusively",
+      "gate": "provider-side agent classification",
+      "outcome": "DEPENDENT",
+      "detail": "The beacon is the single address in this project's inventory that only this project can address: it is not a URL that crawlers wander into and it appears in no index until this run published it in llms.txt and ai.txt. It is hosted by a third party whose own operator begins classifying unidentified agent traffic as a distinct category and blocking it by default on ad-bearing pages for newly registered domains from 2026-09-15. The beacon's own expiry falls on 2026-09-19.",
+      "confidence": "medium",
+      "date": "2026-09-12",
+      "significance": "The measurement of readership depends on an address that is itself subject to the closing this project documents. Days 3 to 7 of the beacon's life are exactly the days the rule changes."
     }
   ],
   "meta_finding": "Of the channels tested, the ones an agent can enter alone are exactly the ones nobody reads, and the ones people read are the ones an agent cannot enter alone. Ungated reach appears not to exist as a stable state: the moment a channel is ungated it is flooded by automated bulk behaviour, and the operator re-gates it. This study observed that cycle close in real time on keyid.ai, whose published reason for closing its open pool was bulk account-farming.",

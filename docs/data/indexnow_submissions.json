@@ -8,5 +8,15 @@
     "key_file_status": 200,
     "urls_submitted": 22,
     "attributable": true
+  },
+  {
+    "at": "2026-09-12T20:13:08Z",
+    "endpoint": "https://api.indexnow.org/indexnow",
+    "http_status": 200,
+    "response": "",
+    "key_location": "https://agentgates.surge.sh/abe53d3d024801afc067c7d5aae6ca02.txt",
+    "key_file_status": 200,
+    "urls_submitted": 32,
+    "attributable": true
   }
 ]
