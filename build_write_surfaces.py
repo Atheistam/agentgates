@@ -310,19 +310,8 @@ the probe is <a href="https://github.com/Atheistam/agentgates/blob/main/probe_pa
             "license": "CC-BY-4.0",
         }, f, indent=1)
 
-    # the sitemap is emitted by build_site.py from a fixed list, so add this page after it
-    sm = os.path.join(WEB, "sitemap.xml")
-    if os.path.exists(sm):
-        try:
-            txt = open(sm).read()
-            loc = "%s/write/" % SITE
-            if loc not in txt:
-                add = "  <url><loc>%s</loc></url>\n</urlset>" % loc
-                open(sm, "w").write(txt.replace("</urlset>", add))
-                print("sitemap: added %s" % loc)
-        except Exception as e:  # noqa: BLE001
-            print("sitemap update skipped: %s" % e)
-
+    # /write/ is added to the sitemap by publish_identity.py, which is the only
+    # writer of sitemap.xml - duplicating that here is how two builds start to disagree.
     print("wrote %s (%d bytes)" % (os.path.join(OUTDIR, "index.html"), len(body)))
     print("counts: tried=%d accepted=%d refused=%d dead=%d persisted=%d surfaced=%d"
           % (n, len(acc), len(ref), len(dead), len(persisted), len(surfaced)))
