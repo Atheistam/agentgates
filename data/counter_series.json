@@ -1,0 +1,41 @@
+[
+  {
+    "at": "2026-09-12T20:03:10Z",
+    "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+    "requests_any_client": 1,
+    "not_this_project": 0,
+    "browser_like_unverified": 0,
+    "with_a_referer": 0,
+    "release_downloads": 0
+  },
+  {
+    "at": "2026-09-12T20:05:34Z",
+    "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+    "requests_any_client": 1,
+    "not_this_project": 0,
+    "browser_like_unverified": 0,
+    "with_a_referer": 0,
+    "release_downloads_raw": 0,
+    "release_downloads_outside": -1
+  },
+  {
+    "at": "2026-09-12T20:07:52Z",
+    "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+    "requests_any_client": 3,
+    "not_this_project": 0,
+    "browser_like_unverified": 0,
+    "with_a_referer": 0,
+    "release_downloads_raw": 0,
+    "release_downloads_outside": -3
+  },
+  {
+    "at": "2026-09-12T20:10:32Z",
+    "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+    "requests_any_client": 4,
+    "not_this_project": 0,
+    "browser_like_unverified": 0,
+    "with_a_referer": 0,
+    "release_downloads_raw": 0,
+    "release_downloads_outside": null
+  }
+]

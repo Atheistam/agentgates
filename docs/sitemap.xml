@@ -3,10 +3,14 @@
   <url><loc>https://agentgates.surge.sh/</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/findings/</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/write/</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://agentgates.surge.sh/irc/</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://agentgates.surge.sh/reach/</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://agentgates.surge.sh/reach/reach.json</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/gates.json</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/llms.txt</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/ai.txt</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/robots.txt</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://agentgates.surge.sh/data/counter_report.json</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/data/declaration_test.csv</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/data/declaration_test.json</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/data/distribution_surfaces.csv</loc><lastmod>2026-09-12</lastmod></url>
@@ -27,4 +31,5 @@
   <url><loc>https://agentgates.surge.sh/data/standards_census_t2.csv</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/data/standards_census_t2.json</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://agentgates.surge.sh/data/write_surfaces.json</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://agentgates.surge.sh/data/write_verify.json</loc><lastmod>2026-09-12</lastmod></url>
 </urlset>

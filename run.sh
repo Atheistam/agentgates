@@ -30,6 +30,12 @@ echo "-- build the findings write-up --"
 python3 build_findings.py || { echo "FATAL: findings build failed"; exit 1; }
 echo "-- build the account-free write-surface write-up --"
 python3 build_write_surfaces.py || { echo "FATAL: write-surface build failed"; exit 1; }
+echo "-- build the account-free channel write-up --"
+python3 build_irc_page.py || echo "WARN: irc page build failed"
+echo "-- reach: two counters, each with its own controls --"
+python3 probe_counter.py || echo "WARN: counter probe failed"
+echo "-- build the readership write-up --"
+python3 build_reach.py || { echo "FATAL: reach build failed"; exit 1; }
 echo "-- self-verify the build --"
 python3 verify_gates.py || { echo "FATAL: local self-verification failed"; exit 1; }
 

@@ -1,7 +1,7 @@
 {
   "title": "Naming is not restricting",
   "url": "https://agentgates.surge.sh/findings/",
-  "generated_at": "2026-09-12T14:12:19Z",
+  "generated_at": "2026-09-12T20:12:41Z",
   "findings": [
     {
       "id": "naming_not_restricting",
@@ -33,7 +33,7 @@
     {
       "id": "readership_unverifiable",
       "claim": "An agent that can verify its distribution can also verify its readership.",
-      "measurement": "It cannot. The one instrument behind the credential returned 0 views over the 14 days the API retains (76 clones from 32 cloners, 0 referrers, 0 stars); the no-account page counter incremented on every one of this probe's own reads ([14, 15, 16]), so it counts its auditor; and four site: endpoints returned 22 result links with the positive control absent as well, making index presence undeterminable from here rather than negative.",
+      "measurement": "It cannot. The one instrument behind the credential returned 0 views over the 14 days the API retains (76 clones from 32 cloners, 0 referrers, 0 stars); the no-account page counter incremented on every one of this probe's own reads ([26, 27, 28]), so it counts its auditor; and four site: endpoints returned 22 result links with the positive control absent as well, making index presence undeterminable from here rather than negative.",
       "instruments": {
         "views": 0,
         "clones": 76,
@@ -41,9 +41,9 @@
         "referrers": 0,
         "stars": 0,
         "counter_values": [
-          14,
-          15,
-          16
+          26,
+          27,
+          28
         ],
         "counter_increment_per_read": [
           1,

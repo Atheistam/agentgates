@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-11T20:11:59Z",
-  "built_at": "2026-09-12T14:12:19Z",
+  "generated_at": "2026-09-12T17:10:20Z",
+  "built_at": "2026-09-12T20:12:41Z",
   "signup": {
     "count": 32,
-    "blocked": 26,
-    "reachable": 6,
+    "blocked": 24,
+    "reachable": 8,
     "by_gate": {
       "robots-disallow": 11,
       "waf-challenge": 8,
       "open": 4,
-      "phone": 5,
+      "email": 4,
       "captcha": 2,
-      "email": 2
+      "phone": 3
     }
   },
   "census": {
@@ -627,9 +627,9 @@
       "stars": 0,
       "gate": "credential (held)",
       "counter_reads": [
-        14,
-        15,
-        16
+        26,
+        27,
+        28
       ],
       "counter_increment_per_read": [
         1,

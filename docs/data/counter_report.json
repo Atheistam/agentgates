@@ -1,0 +1,273 @@
+{
+  "run": 39,
+  "instrument": "probe_counter.py",
+  "probed_at": "2026-09-12T20:10:32Z",
+  "question": "Has any client other than this project ever fetched this project?",
+  "instruments": {
+    "I1_request_log": {
+      "status": "live",
+      "provider": "webhook.site",
+      "url": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+      "created_at": "2026-09-12 20:03:11",
+      "expires_at": "2026-09-19 20:03:11",
+      "hours_left": 166.88,
+      "reused_from_previous_run": true,
+      "account_required": false,
+      "name_it_honestly": "an address this project exclusively addresses on infrastructure it does not own, with a fuse the provider sets",
+      "endpoints_retired": [],
+      "requests_rows_retrieved": 4,
+      "requests_provider_total": 4,
+      "requests_total": 4,
+      "new_since_previous_run": 1,
+      "which_number_is_the_total": "requests_provider_total is the provider's own count; requests_rows_retrieved is what its cached list endpoint handed back within the poll window. When they disagree the smaller one is a cache artefact, not fewer requests.",
+      "by_class": {
+        "self": 4
+      },
+      "distinct_clients": 1,
+      "country_counts": {
+        "Spain": 4
+      },
+      "vendor_counts": {}
+    },
+    "I2_download_count": {
+      "status": "live",
+      "status_of_the_counter": "instrument not demonstrated within the polling window: a download returned HTTP 200 and the count did not move",
+      "positive_control_failed": true,
+      "asset": "agentgates-dataset.json",
+      "download_url": "https://github.com/Atheistam/agentgates/releases/download/readership-bundle/agentgates-dataset.json",
+      "download_count_raw": 0,
+      "downloads_made_by_this_project": 4,
+      "downloads_by_anyone_else": null,
+      "why_null": "unmeasurable: the counter reads 0, which is below the 4 downloads this project made deliberately, so the difference is not a reader count - it is the counter failing to count its own positive control. Published as null, not as a number.",
+      "interpretation": "download_count_raw minus the project's own control downloads. Only the second number is a reader.",
+      "ua_split_experiment": {
+        "asset_scripted": "agentgates-dataset.json",
+        "asset_browser": "agentgates-probe-browser.json",
+        "scripted_ua": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
+        "browser_ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chr",
+        "downloaded_at": "2026-09-12T20:08:34Z",
+        "download_http": 200,
+        "counts_at_download": {
+          "agentgates-dataset.json": 0,
+          "agentgates-probe-browser.json": 0
+        },
+        "question": "one deliberate download per asset, different User-Agent: if the counts diverge the counter reads the client, if they move together it is latency, if neither moves it is broken",
+        "counts_now": {
+          "agentgates-dataset.json": 0,
+          "agentgates-probe-browser.json": 0
+        },
+        "status": "unacknowledged"
+      },
+      "tag": "readership-bundle",
+      "release_url": "https://github.com/Atheistam/agentgates/releases/tag/readership-bundle",
+      "created_at": "2026-09-12T20:03:16Z",
+      "no_fuse": "no expiry is set on a release asset",
+      "independently_checkable": "anyone can read this number themselves at https://api.github.com/repos/Atheistam/agentgates/releases/tags/readership-bundle",
+      "why_poll_immune": "download_count is incremented by downloads; this script proves that reading it does not move it (negative control) and that downloading does (positive control)."
+    }
+  },
+  "controls": {
+    "I1_positive": {
+      "fired": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe?src=positive-control&self=1&n=7ea40ab02284&t=1789243832",
+      "nonce": "7ea40ab02284",
+      "looked": 1,
+      "seen": true,
+      "latency_polls": 1,
+      "verdict": "instrument live: this run's own nonce is in the log"
+    },
+    "I2_delayed_settlement": {
+      "settled": [],
+      "still_unacknowledged": [
+        {
+          "download_attempted_at": "2026-09-12T20:06:11Z",
+          "count_before": 0,
+          "count_after_window": 0,
+          "poll_window_s": 30,
+          "http": 200
+        },
+        {
+          "download_attempted_at": "2026-09-12T20:08:33Z",
+          "count_before": 0,
+          "count_after_window": 0,
+          "poll_window_s": 30,
+          "http": 200
+        },
+        {
+          "download_attempted_at": "2026-09-12T20:11:11Z",
+          "count_before": 0,
+          "count_after_window": 0,
+          "poll_window_s": 30,
+          "http": 200
+        }
+      ],
+      "why": "a download that the counter has not acknowledged is either latency or loss. Recording the timestamp makes the difference measurable later instead of guessed now."
+    },
+    "I2_negative": {
+      "reads": [
+        0,
+        0,
+        0
+      ],
+      "reads_unauthenticated": [
+        0,
+        0
+      ],
+      "verdict": "poll-immune: 5 reads, one value",
+      "why_it_matters": "a counter that moves when the project looks at it cannot measure anything but the project"
+    },
+    "I2_positive": {
+      "before": 0,
+      "attempted": true,
+      "download_http": 200,
+      "after": 0,
+      "polls": 6,
+      "moved": false,
+      "verdict": "instrument not demonstrated within the polling window: a download returned HTTP 200 and the count did not move",
+      "open_question": "the download is real (HTTP 200) and the count has not acknowledged it. Registered for a delayed settlement: the next run re-reads the count and reports the latency, or reports the instrument as lossy."
+    },
+    "I2_ua_split": {
+      "asset_scripted": "agentgates-dataset.json",
+      "asset_browser": "agentgates-probe-browser.json",
+      "scripted_ua": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
+      "browser_ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chr",
+      "downloaded_at": "2026-09-12T20:08:34Z",
+      "download_http": 200,
+      "counts_at_download": {
+        "agentgates-dataset.json": 0,
+        "agentgates-probe-browser.json": 0
+      },
+      "question": "one deliberate download per asset, different User-Agent: if the counts diverge the counter reads the client, if they move together it is latency, if neither moves it is broken",
+      "counts_now": {
+        "agentgates-dataset.json": 0,
+        "agentgates-probe-browser.json": 0
+      },
+      "status": "unacknowledged"
+    }
+  },
+  "log": [
+    {
+      "at": "2026-09-12 20:10:33",
+      "class": "self",
+      "matched": null,
+      "vendor": null,
+      "via": null,
+      "generic_beacon": null,
+      "user_agent": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
+      "referer": null,
+      "country": "Spain",
+      "client": "3aae1ec1d657",
+      "bytes_query": {
+        "src": "positive-control",
+        "self": "1",
+        "n": "7ea40ab02284"
+      }
+    },
+    {
+      "at": "2026-09-12 20:07:52",
+      "class": "self",
+      "matched": null,
+      "vendor": null,
+      "via": null,
+      "generic_beacon": null,
+      "user_agent": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
+      "referer": null,
+      "country": "Spain",
+      "client": "3aae1ec1d657",
+      "bytes_query": {
+        "src": "positive-control",
+        "self": "1",
+        "n": "d287d900f59b"
+      }
+    },
+    {
+      "at": "2026-09-12 20:05:34",
+      "class": "self",
+      "matched": null,
+      "vendor": null,
+      "via": null,
+      "generic_beacon": null,
+      "user_agent": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
+      "referer": null,
+      "country": "Spain",
+      "client": "3aae1ec1d657",
+      "bytes_query": {
+        "src": "positive-control",
+        "self": "1"
+      }
+    },
+    {
+      "at": "2026-09-12 20:03:11",
+      "class": "self",
+      "matched": null,
+      "vendor": null,
+      "via": null,
+      "generic_beacon": null,
+      "user_agent": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
+      "referer": null,
+      "country": "Spain",
+      "client": "3aae1ec1d657",
+      "bytes_query": {
+        "src": "positive-control",
+        "self": "1"
+      }
+    }
+  ],
+  "privacy": "Third-party IP addresses are used to de-duplicate and are not published. Published rows carry a salted digest and a country. Aggregate country counts only.",
+  "limitations": [
+    "A log establishes that something fetched. It never establishes who, or that anything was read: an HTTP fetch with no render is not a reader.",
+    "browser_like is the only class that could be a person. It also covers link previews, click-tracking proxies and headless audits, so it is reported as unverified rather than counted as a reader.",
+    "The project's own fetches carry a marker. An unmarked fetch from this machine would be indistinguishable from a stranger's; the rule is that none is made.",
+    "I1 has a provider-set fuse. I2 has no fuse but only moves on a deliberate download, so it is silent by default."
+  ],
+  "salt_published": false,
+  "reach": {
+    "requests_any_client": 4,
+    "self_inflicted": 4,
+    "not_this_project": 0,
+    "of_those_with_a_referer": 0,
+    "could_be_a_person_unverified": 0,
+    "statement": "Every request not originated by this project, by class. The last number is the only one that could be a person and is not evidence that it was one."
+  },
+  "series": [
+    {
+      "at": "2026-09-12T20:03:10Z",
+      "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+      "requests_any_client": 1,
+      "not_this_project": 0,
+      "browser_like_unverified": 0,
+      "with_a_referer": 0,
+      "release_downloads": 0
+    },
+    {
+      "at": "2026-09-12T20:05:34Z",
+      "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+      "requests_any_client": 1,
+      "not_this_project": 0,
+      "browser_like_unverified": 0,
+      "with_a_referer": 0,
+      "release_downloads_raw": 0,
+      "release_downloads_outside": -1
+    },
+    {
+      "at": "2026-09-12T20:07:52Z",
+      "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+      "requests_any_client": 3,
+      "not_this_project": 0,
+      "browser_like_unverified": 0,
+      "with_a_referer": 0,
+      "release_downloads_raw": 0,
+      "release_downloads_outside": -3
+    },
+    {
+      "at": "2026-09-12T20:10:32Z",
+      "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+      "requests_any_client": 4,
+      "not_this_project": 0,
+      "browser_like_unverified": 0,
+      "with_a_referer": 0,
+      "release_downloads_raw": 0,
+      "release_downloads_outside": null
+    }
+  ],
+  "reading_the_curve": "One row per run, appended and never rewritten. A row is evidence that the instrument was alive at that time, because the positive control has to pass before the reach numbers are written. Two instruments with opposite failure modes: I1 sees every fetch and dies on a date; I2 never dies and sees only deliberate downloads."
+}

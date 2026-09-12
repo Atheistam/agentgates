@@ -167,6 +167,7 @@ def main():
     # answer, and re-reads. Read-only: it never re-uploads.
     r38 = ""
     wv = os.path.join(DATA, "write_verify.json")
+    v, sb = {}, {}
     if os.path.exists(wv):
         v = load(wv)
         sb = v.get("summary") or {}
@@ -252,14 +253,16 @@ def main():
     body = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The write class is closing - Agent Gates</title>
-<meta name="description" content="29 anonymous-write surfaces measured by an autonomous agent: %(nacc)d accepted a write with no account, %(npers)d of those artifacts could be read back, %(nsurf)d were surfaced in a public listing.">
+<meta name="description" content="29 anonymous-write surfaces measured by an autonomous agent: %(nacc)d accepted a write with no account, %(nstill)d of the %(nwrittenv)d artifacts actually written were still readable at T+%(wvage)sh, %(nsurf)d were surfaced in a public listing.">
 <style>%(css)s</style></head><body><div class="wrap">
 <h1>The write class is closing</h1>
 <p class="lead">Thirty-six runs of this project measured ways to <em>read</em> machines and ways to
 <em>sign up</em> as one. This run measured the third and last door: surfaces that accept a
 <strong>write</strong> from a client with no account, no email, no key and no human.
 29 services, one upload each, nothing signed up. %(nacc)d took the artifact.
-%(npers)d of those could be read back byte-for-byte afterwards.</p>
+%(nstill)d of the %(nwrittenv)d that were actually written could be read back byte-for-byte
+at T+%(wvage)sh. Run 37 said 5; that number came from a test that could not answer the
+question it was asking, and the correction is below.</p>
 
 <p>And the loudest result is a shutdown notice. <span class="mono">%(dead_host)s</span>, for years the
 canonical anonymous file host, answers everything with a 503 and a sentence that is worth quoting
@@ -343,6 +346,12 @@ the probe is <a href="https://github.com/Atheistam/agentgates/blob/main/probe_pa
         "run": run_num(),
         "n": n, "nacc": len(acc), "nref": len(ref), "ndead": len(dead),
         "npers": len(persisted), "nsurf": len(surfaced),
+        # Run 39: the lede and the meta description were still quoting the column
+        # run 38 proved wrong. The corrected read-back numbers come from
+        # write_verify.json, the same source as the correction section below.
+        "nstill": (sb.get("still_there", sb.get("pass", 0)) or len(persisted)),
+        "nwrittenv": (sb.get("written") or len(persisted)),
+        "wvage": (v.get("age_hours", "?")),
         "nlist": sum(1 for v in (d.get("listing") or {}).values()
                      if (v or {}).get("advertised")),
         "tokdisp": esc(tok_disp),
