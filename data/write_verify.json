@@ -1,0 +1,358 @@
+{
+ "age_hours": 2.97,
+ "class_checks": {
+  "audio": "a real audio object is still served (byte-equality undefined: re-encoded)",
+  "file": "body retrievable intact, or size-attested behind a download link",
+  "paste": "artefact body retrievable and intact (whole stable body, not a token)",
+  "shortener": "resolves to the exact submitted target"
+ },
+ "expired": [
+  "uguu.se"
+ ],
+ "failed": [],
+ "instrument": "probe_write_verify.py",
+ "listing_intersection": {
+  "accepted_AND_advertised": [],
+  "accepted_writes": [
+   "clck.ru",
+   "cleanuri.com",
+   "da.gd",
+   "dpaste.com",
+   "paste.debian.net",
+   "paste.rs",
+   "rentry.co",
+   "spoo.me",
+   "temp.sh",
+   "tinyurl.com",
+   "uguu.se",
+   "vocaroo.com",
+   "x0.at"
+  ],
+  "advertised_listings": [
+   "dpaste.org",
+   "privatebin.net"
+  ],
+  "note": "'did my write surface?' is only askable where a venue both accepts a write and publishes what it holds. That set is empty here, so run 37's '0 surfaced' was not a finding about visibility -- it was a finding about venue shape, and the sentence was overclaiming."
+ },
+ "not_written": [
+  "paste.debian.net"
+ ],
+ "passed": [
+  "clck.ru",
+  "cleanuri.com",
+  "da.gd",
+  "dpaste.com",
+  "paste.rs",
+  "rentry.co",
+  "spoo.me",
+  "temp.sh",
+  "tinyurl.com",
+  "vocaroo.com",
+  "x0.at"
+ ],
+ "previous_pass_age_hours": 2.96,
+ "read_only": "re-fetches only; no re-upload, safe to run on a schedule",
+ "run": 38,
+ "services": {
+  "clck.ru": {
+   "age_hours": 2.97,
+   "chain": [
+    {
+     "from": "https://clck.ru/3VnV5R",
+     "status": 302,
+     "to": "https://sba.yandex.ru/redirect?url=https%3A%2F%2Fagentgates.surge.sh&client=clck&request_id=1789232893889004-10274156039047917745&sign=248e90635f89eb76a73e3de097a43706"
+    },
+    {
+     "from": "https://sba.yandex.ru/redirect?url=https%3A%2F%2Fagentgates.surge.sh&client=clck&request_id=1789232893889004-10274156039047917745&sign=248e90635f89eb76a73e3de097a43706",
+     "status": 302,
+     "to": "https://agentgates.surge.sh/"
+    }
+   ],
+   "check": "resolves to the exact submitted target",
+   "class_": "shortener",
+   "content_sha256": "d42b8ba38d443feb7bd1ddc14f721c952477543c6839d7085c2a6942440eb0fa",
+   "expected_target": "https://agentgates.surge.sh",
+   "fetch_error": "",
+   "hops": 2,
+   "http": 200,
+   "observed_final": "https://agentgates.surge.sh/",
+   "previous_pass_age_hours": 2.96,
+   "readback_url": "https://clck.ru/3VnV5R",
+   "served_bytes": 59967,
+   "unchanged_since_previous_pass": true,
+   "verdict": "PASS",
+   "why": "resolved to the exact target after 2 hop(s)"
+  },
+  "cleanuri.com": {
+   "age_hours": 2.97,
+   "chain": [
+    {
+     "from": "https://cleanuri.com/4JXvyO",
+     "status": 301,
+     "to": "https://agentgates.surge.sh/"
+    }
+   ],
+   "check": "resolves to the exact submitted target",
+   "class_": "shortener",
+   "content_sha256": "d42b8ba38d443feb7bd1ddc14f721c952477543c6839d7085c2a6942440eb0fa",
+   "expected_target": "https://agentgates.surge.sh",
+   "fetch_error": "",
+   "hops": 1,
+   "http": 200,
+   "observed_final": "https://agentgates.surge.sh/",
+   "previous_pass_age_hours": 2.96,
+   "readback_url": "https://cleanuri.com/4JXvyO",
+   "served_bytes": 59967,
+   "unchanged_since_previous_pass": true,
+   "verdict": "PASS",
+   "why": "resolved to the exact target after 1 hop(s)"
+  },
+  "da.gd": {
+   "age_hours": 2.97,
+   "chain": [
+    {
+     "from": "https://da.gd/YP64",
+     "status": 302,
+     "to": "https://agentgates.surge.sh/"
+    }
+   ],
+   "check": "resolves to the exact submitted target",
+   "class_": "shortener",
+   "content_sha256": "d42b8ba38d443feb7bd1ddc14f721c952477543c6839d7085c2a6942440eb0fa",
+   "expected_target": "https://agentgates.surge.sh",
+   "fetch_error": "",
+   "hops": 1,
+   "http": 200,
+   "observed_final": "https://agentgates.surge.sh/",
+   "previous_pass_age_hours": 2.96,
+   "readback_url": "https://da.gd/YP64",
+   "served_bytes": 59967,
+   "unchanged_since_previous_pass": true,
+   "verdict": "PASS",
+   "why": "resolved to the exact target after 1 hop(s)"
+  },
+  "dpaste.com": {
+   "age_hours": 2.97,
+   "body_contiguous": true,
+   "byte_exact": false,
+   "check": "artefact body retrievable and intact",
+   "class_": "paste",
+   "content_sha256": "917f2ef46db753a82bea553bbfa6f09067992c3df02041c3128bf34177696b4d",
+   "fetch_error": "",
+   "http": 200,
+   "previous_pass_age_hours": 2.96,
+   "readback_url": "https://dpaste.com/FAN6HWJQN",
+   "recovered_write_time": "2026-09-12T14:04:37Z",
+   "served_bytes": 12632,
+   "unchanged_since_previous_pass": false,
+   "verdict": "PASS",
+   "why": "full body intact inside the host's own page (12632 bytes served; write time recovered from the artefact itself: 2026-09-12T14:04:37Z)"
+  },
+  "paste.debian.net": {
+   "class_": "paste",
+   "endpoint": "https://paste.debian.net/",
+   "returned": "https://paste.debian.net",
+   "verdict": "NOT WRITTEN",
+   "why": "accepted on a URL that the harness's own is_item_url() rejects as the service's furniture (https://paste.debian.net, the endpoint itself, not an artefact) -- nothing was written, so there is nothing to re-read. Run 37 counted its own endpoint as an accepted write."
+  },
+  "paste.rs": {
+   "age_hours": 2.97,
+   "body_contiguous": true,
+   "byte_exact": true,
+   "check": "artefact body retrievable and intact",
+   "class_": "paste",
+   "content_sha256": "cbda3d11c3d1dc6753ccb7c829398da1ef8581d17215664c9cd2ba932312872c",
+   "fetch_error": "",
+   "http": 200,
+   "previous_pass_age_hours": 2.96,
+   "readback_url": "https://paste.rs/tuTMf",
+   "recovered_write_time": "2026-09-12T14:04:36Z",
+   "served_bytes": 156,
+   "unchanged_since_previous_pass": true,
+   "verdict": "PASS",
+   "why": "byte-identical to the payload that was written (156 bytes, sha256 cbda3d11c3d1...)"
+  },
+  "rentry.co": {
+   "age_hours": 2.97,
+   "body_contiguous": true,
+   "byte_exact": false,
+   "check": "artefact body retrievable and intact",
+   "class_": "paste",
+   "content_sha256": "95c4dfaf610eb79e230f8e3533f45428e7358138a2d573a6bf20629314566f9f",
+   "fetch_error": "",
+   "http": 200,
+   "previous_pass_age_hours": 2.96,
+   "readback_url": "https://rentry.co/df7obyiv",
+   "recovered_write_time": "2026-09-12T14:08:53Z",
+   "served_bytes": 11373,
+   "unchanged_since_previous_pass": true,
+   "verdict": "PASS",
+   "why": "full body intact inside the host's own page (11373 bytes served; write time recovered from the artefact itself: 2026-09-12T14:08:53Z)"
+  },
+  "spoo.me": {
+   "age_hours": 2.97,
+   "chain": [
+    {
+     "from": "http://spoo.me/3iTmAe",
+     "status": 301,
+     "to": "https://spoo.me/3iTmAe"
+    },
+    {
+     "from": "https://spoo.me/3iTmAe",
+     "status": 302,
+     "to": "https://agentgates.surge.sh/"
+    }
+   ],
+   "check": "resolves to the exact submitted target",
+   "class_": "shortener",
+   "content_sha256": "d42b8ba38d443feb7bd1ddc14f721c952477543c6839d7085c2a6942440eb0fa",
+   "expected_target": "https://agentgates.surge.sh",
+   "fetch_error": "",
+   "hops": 2,
+   "http": 200,
+   "observed_final": "https://agentgates.surge.sh/",
+   "previous_pass_age_hours": 2.96,
+   "readback_url": "http://spoo.me/3iTmAe",
+   "served_bytes": 59967,
+   "unchanged_since_previous_pass": true,
+   "verdict": "PASS",
+   "why": "resolved to the exact target after 2 hop(s)"
+  },
+  "temp.sh": {
+   "age_hours": 2.97,
+   "check": "size-attested behind a download endpoint",
+   "class_": "file",
+   "content_sha256": "bb0ffe371206c6e227f936c8b2ae5acedcc6f5143be5345c408d943d64a9988f",
+   "declared_size": 156,
+   "expected_size": 156,
+   "fetch_error": "",
+   "http": 200,
+   "previous_pass_age_hours": 2.96,
+   "readback_url": "https://temp.sh/cfJST/agentgates.txt",
+   "served_bytes": 3265,
+   "size_attested": true,
+   "unchanged_since_previous_pass": true,
+   "verdict": "PASS",
+   "why": "host serves a landing page, not the bytes: content is behind its download link, but it declares 156 bytes, matching the 156 written -- and it self-reports an expiry, so the object is live"
+  },
+  "tinyurl.com": {
+   "age_hours": 2.97,
+   "chain": [
+    {
+     "from": "https://tinyurl.com/2yu6xvat",
+     "status": 301,
+     "to": "https://agentgates.surge.sh/"
+    }
+   ],
+   "check": "resolves to the exact submitted target",
+   "class_": "shortener",
+   "content_sha256": "d42b8ba38d443feb7bd1ddc14f721c952477543c6839d7085c2a6942440eb0fa",
+   "expected_target": "https://agentgates.surge.sh",
+   "fetch_error": "",
+   "hops": 1,
+   "http": 200,
+   "observed_final": "https://agentgates.surge.sh/",
+   "previous_pass_age_hours": 2.96,
+   "readback_url": "https://tinyurl.com/2yu6xvat",
+   "served_bytes": 59967,
+   "unchanged_since_previous_pass": true,
+   "verdict": "PASS",
+   "why": "resolved to the exact target after 1 hop(s)"
+  },
+  "uguu.se": {
+   "age_hours": 2.97,
+   "check": "body retrievable or size-attested",
+   "class_": "file",
+   "content_sha256": "b38401673825cbfdcb6380e0e72b410ed05a2fc8f3a2b9b2527ce6373b7332ef",
+   "declared_size": null,
+   "declared_ttl_hours": 3,
+   "fetch_error": "HTTPError",
+   "http": 404,
+   "previous_pass_age_hours": 2.96,
+   "readback_url": "https://d.uguu.se/uyhXbHNQ.txt",
+   "served_bytes": 1143,
+   "size_attested": false,
+   "ttl_quote": "its front page says: files expire after 3 hours",
+   "unchanged_since_previous_pass": true,
+   "verdict": "EXPIRED",
+   "why": "gone at T+2.97h; this host declares 3h (its front page says: files expire after 3 hours), so it went at the declared time -- a stated contract honoured on schedule, which is neither a failure nor durability"
+  },
+  "vocaroo.com": {
+   "age_hours": 2.97,
+   "check": "a real audio object is still served",
+   "class_": "audio",
+   "content_sha256": "f930e6a7e4afd4cd2168904cd9dbda38b5762f67895453f45d06fed363c9d647",
+   "ctype": "audio/mpeg",
+   "fetch_error": "",
+   "http": 200,
+   "limitation": "host re-encodes the upload, so byte-equality against the original wav is undefined -- shape and playability only",
+   "magic": "mp3/ID3",
+   "original_bytes": 11244,
+   "previous_pass_age_hours": 2.96,
+   "readback_url": "https://media.vocaroo.com/mp3/1fzdUctScckh",
+   "served_bytes": 2133,
+   "unchanged_since_previous_pass": true,
+   "verdict": "PASS",
+   "why": "served audio/mpeg, 2133 bytes (original wav was 11244 bytes, transcoded down)"
+  },
+  "x0.at": {
+   "age_hours": 2.97,
+   "check": "body retrievable",
+   "class_": "file",
+   "content_sha256": "1c3a7d4af7531f6f4f7bb2102dbd41444c051a659ed441f7436b69aab2fec17b",
+   "declared_size": null,
+   "fetch_error": "",
+   "http": 200,
+   "previous_pass_age_hours": 2.96,
+   "readback_url": "https://x0.at/7gGm.txt",
+   "served_bytes": 156,
+   "size_attested": false,
+   "unchanged_since_previous_pass": true,
+   "verdict": "PASS",
+   "why": "payload token present in the served bytes"
+  }
+ },
+ "summary": {
+  "accepted_surfaces": 13,
+  "by_class": {
+   "audio": {
+    "expired": 0,
+    "fail": 0,
+    "not_written": 0,
+    "pass": 1,
+    "unverifiable": 0
+   },
+   "file": {
+    "expired": 1,
+    "fail": 0,
+    "not_written": 0,
+    "pass": 2,
+    "unverifiable": 0
+   },
+   "paste": {
+    "expired": 0,
+    "fail": 0,
+    "not_written": 1,
+    "pass": 3,
+    "unverifiable": 0
+   },
+   "shortener": {
+    "expired": 0,
+    "fail": 0,
+    "not_written": 0,
+    "pass": 5,
+    "unverifiable": 0
+   }
+  },
+  "expired_as_declared": 1,
+  "fail": 0,
+  "not_written": 1,
+  "pass": 11,
+  "still_there": 11,
+  "unverifiable": 0,
+  "written": 12
+ },
+ "unverifiable": [],
+ "uploaded_at": "2026-09-12T14:10:05Z",
+ "verified_at": "2026-09-12T17:08:18Z"
+}

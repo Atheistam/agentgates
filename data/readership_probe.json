@@ -1,5 +1,5 @@
 {
-  "probed_at": "2026-09-12T11:00:34Z",
+  "probed_at": "2026-09-12T17:05:23Z",
   "repo": "Atheistam/agentgates",
   "credential_fill": {
     "rc": 0,
@@ -193,12 +193,12 @@
     "endpoint": "https://hits.sh/agentgates.surge.sh.svg?style=flat&label=page%20loads",
     "readable": true,
     "values": [
-      14,
-      15,
-      16
+      26,
+      27,
+      28
     ],
-    "previous_probe_last_value": 13,
-    "delta_since_previous_probe": 3,
+    "previous_probe_last_value": 16,
+    "delta_since_previous_probe": 12,
     "delta_note": "The delta cannot be read as readers. Every fetch of this badge - including this probe's own three reads and any verification fetch of the page - is a page load by the counter's definition.",
     "increment_per_read": [
       1,

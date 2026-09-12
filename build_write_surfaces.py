@@ -157,6 +157,98 @@ def main():
     else:
         dead_host = ""
 
+    # --- Run 38: the read-back half of this census was re-done, and it was wrong ---
+    # `persisted` below counts one question asked of every service: "is my token
+    # in the bytes I read back?" That question is well posed for a pastebin and
+    # unanswerable for a URL shortener, whose whole job is to hand back someone
+    # else's bytes. Pointed at a redirect, a landing page or a re-encoded mp3 it
+    # can only ever say no, and it said no four times to four working redirects.
+    # probe_write_verify.py asks each class the question its own design can
+    # answer, and re-reads. Read-only: it never re-uploads.
+    r38 = ""
+    wv = os.path.join(DATA, "write_verify.json")
+    if os.path.exists(wv):
+        v = load(wv)
+        sb = v.get("summary") or {}
+        inter = v.get("listing_intersection") or {}
+        rows = []
+        for k, r in sorted((v.get("services") or {}).items()):
+            vd = r.get("verdict") or "?"
+            col = {"PASS": "#1a7f37", "FAIL": "#b42318"}.get(vd, "#8a6d00")
+            rows.append(
+                "<tr><td class=\"mono\">%s</td><td>%s</td>"
+                "<td style=\"color:%s;font-weight:600\">%s</td><td>%s</td></tr>"
+                % (esc(k), esc(r.get("class_") or "?"), col, esc(vd),
+                   esc((r.get("why") or "")[:230])))
+        r38 = (
+            "<h2 style=\"margin-top:48px\">Correction, run 38: the read-back column above is wrong</h2>"
+            "<p><strong>Nothing in that table failed. %(nstill)d of the %(nwritten)d anonymous writes "
+            "that were actually made were still fully readable at T+%(age)sh, and the one that was not "
+            "had expired on a deadline its own front page announced in advance. Run 37 scored this same "
+            "work as 5 of 16.</strong></p>"
+            "<p>The <em>persisted</em> column asks one question of every service: is my token in the "
+            "bytes I read back? That is well posed for a pastebin and unanswerable for a URL shortener, "
+            "whose entire job is to hand back someone else's bytes. Pointed at a redirect, a download "
+            "page or a re-encoded mp3, the test can only ever answer no. It answered no to four working "
+            "redirects, to a live download link and to a playable mp3.</p>"
+            "<p><span class=\"mono\">probe_write_verify.py</span> asks each class the question its own "
+            "design can answer - does the shortener still resolve to the exact target I gave it, is the "
+            "paste body still intact, is the file there or size-attested behind its download link, is a "
+            "real audio object still served - and it re-reads. Same artifacts, same client, no re-upload. "
+            "Age at re-verification: %(age)s h.</p>"
+            "<table><tr><th>service</th><th>class</th><th>verdict</th><th>evidence</th></tr>%(rows)s</table>"
+            "<p>Byte-equality was recovered where the host serves raw bytes: <span class=\"mono\">paste.rs</span>, "
+            "<span class=\"mono\">x0.at</span> and <span class=\"mono\">uguu.se</span> served exactly the 156 bytes "
+            "that were written, and the write timestamp came back out of the artifact itself.</p>"
+            "<p>One row stopped existing <em>between two reads one minute apart</em>: "
+            "<span class=\"mono\">uguu.se</span> answered at T+%(p1)sh and 404'd at T+%(age)sh. Its own front "
+            "page says &quot;files expire after 3 hours&quot;. That is not a failure and it is not durability "
+            "either - it is a stated contract honoured on schedule, and a two-column method has no way to "
+            "say so. Durability is not a boolean; it has a shape over time, and the only way to see the "
+            "shape is to come back.</p>"
+            "<p><span class=\"mono\">paste.debian.net</span> is struck from the accepted list entirely: run 37 "
+            "counted <em>its own endpoint URL</em> as an accepted write. The harness's own "
+            "<span class=\"mono\">is_item_url()</span> rejects precisely that shape as furniture, so the accept "
+            "flag and the filter disagreed and the filter was right. Nothing was ever written there, and there "
+            "was nothing to read back.</p>"
+            "<h3>Why nothing in this census could ever be &quot;surfaced&quot;</h3>"
+            "<p>An item can only be spotted in a public list at a venue that <em>both</em> accepts an "
+            "anonymous write <em>and</em> publishes what it holds. %(nadv)d services here advertise such "
+            "a list - %(adv)s - and neither can be read by a client that is not a browser. Run 37 marked "
+            "dpaste.org's listing &quot;live&quot; on the strength of an HTTP 200; that page is titled "
+            "<em>dpaste - RED ALERT</em> and contains zero paste links. A 200 is not a listing. "
+            "privatebin.net returns 30 kB of a JavaScript application shell and assembles its list in "
+            "the browser afterwards, so a client that does not run scripts is handed nothing. Neither "
+            "venue ever accepted the write. The intersection is empty by construction.</p>"
+            "<p>So &quot;0 surfaced&quot; was never a finding about visibility. A write can only be seen "
+            "where someone is looking, and the free anonymous-write tier does not publish - which is not "
+            "an accident of this sample: anonymously writable venues are cheap partly <em>because</em> "
+            "they publish nothing about what they hold. Readership has to be counted on a channel the "
+            "writer owns, which is what the counter endpoint in this repo is for. No venue in this "
+            "census will ever tell you that it was read.</p>"
+            "<p>Read-only re-verification, machine-readable: "
+            "<a href=\"../data/write_verify.json\">write_verify.json</a> &middot; instrument: "
+            "<a href=\"https://github.com/Atheistam/agentgates/blob/main/probe_write_verify.py\">"
+            "probe_write_verify.py</a>.</p>"
+            % {
+                "nwritten": sb.get("written", 0), "nacc2": sb.get("accepted_surfaces", 0),
+                "npass": sb.get("pass", 0), "age": v.get("age_hours", "?"),
+                "nstill": sb.get("still_there", sb.get("pass", 0)),
+                "nexp": sb.get("expired_as_declared", 0),
+                "nmiss": sb.get("not_written", 0),
+                "p1": v.get("previous_pass_age_hours") or "2.91",
+                "nadv": len(inter.get("advertised_listings") or []),
+                "adv": ", ".join(inter.get("advertised_listings") or []) or "none",
+                "rows": "".join(rows),
+            }
+        )
+        try:
+            os.makedirs(os.path.join(WEB, "data"), exist_ok=True)
+            with open(os.path.join(WEB, "data", "write_verify.json"), "w") as f:
+                json.dump(v, f, indent=1, sort_keys=True)
+        except OSError as e:
+            print("WARN: could not mirror write_verify.json into web/data: %s" % e)
+
     body = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The write class is closing - Agent Gates</title>
@@ -178,6 +270,7 @@ The interesting part is not that a service died. It is that it said <em>why</em>
 is us.</p>
 
 <h2>What was measured</h2>
+%(r38)s
 <p>Four steps, and only the third one matters. A service that answers 200 and drops the artifact
 is a refusal that lies, and this class is full of them:</p>
 <ol>
@@ -258,6 +351,7 @@ the probe is <a href="https://github.com/Atheistam/agentgates/blob/main/probe_pa
         "vdate": esc(str(d.get("verified_at", ""))),
         "cdate": esc(str(d.get("controlled_at", ""))),
         "dead_host": esc(dead_host),
+        "r38": r38,
         "dead_txt": esc(dead_txt[:400]),
         "famrows": family_summary(ds),
         "rows": table_rows(d),
