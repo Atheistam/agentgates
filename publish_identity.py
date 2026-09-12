@@ -140,11 +140,11 @@ before they report anything:
 
 **Status, stated before the numbers.** The beacon is live and its positive control
 passes: this run's own nonce is in the log. The download counter is *not* demonstrated:
-three deliberate downloads returned HTTP 200 and the count still reads 0 fifteen minutes
-later, so no reader count is published from it, and the project's own control downloads
-outnumber what the counter admits to. A counter that cannot count its own positive
-control produces no number, and calling a zero here "no readers" would be the exact lie
-this project measures in other people's metrics.
+%(pd)s deliberate downloads (three scripted, one with a browser user agent) returned HTTP
+200 with the full body, and the count still reads %(draw)s. No reader count is published
+from it, and the project's own control downloads outnumber what the counter admits to. A
+counter that cannot count its own positive control produces no number, and calling a zero
+here "no readers" would be the exact lie this project measures in other people's metrics.
 
 The current reading, with the controls that produced it, is at %(site)s/reach/ - and it
 is a curve, not a number, because a zero from an address nobody has fetched yet says
@@ -188,6 +188,9 @@ def _cr():
         "beacon_expires": i1.get("expires_at") or i1.get("expires"),
         "beacon_total": i1.get("requests_total"),
         "bundle_url": i2.get("download_url"),
+        "downloads_raw": i2.get("download_count_raw"),
+        "downloads_made_by_this_project": i2.get("downloads_made_by_this_project"),
+        "why_null": i2.get("why_null"),
         "bundle_reads_by_others": i2.get("downloads_by_anyone_else"),
         "counter_demonstrated": not i2.get("positive_control_failed"),
         "ua_split": i2.get("ua_split_experiment"),
@@ -293,6 +296,14 @@ def main():
             "lag": _idp().get("archive_lag_commits"),
             "beacon": _cr().get("beacon_url") or "not published yet",
             "beaconexp": _cr().get("beacon_expires") or "unknown",
+            # Run 39: the sentence below said "three deliberate downloads" while the
+            # measurement file said four - the two artifacts this run published
+            # disagreed about its own experiment. Prose about a measurement is a
+            # cache of that measurement, so it is read from the file, not typed here.
+            "pd": (_cr().get("downloads_made_by_this_project")
+                   if _cr().get("downloads_made_by_this_project") is not None else "?"),
+            "draw": (_cr().get("downloads_raw")
+                     if _cr().get("downloads_raw") is not None else "?"),
             "bundle": _cr().get("bundle_url") or "not published yet",
         })
     with open(os.path.join(WEB, "ai.txt"), "w") as f:
