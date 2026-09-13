@@ -4,3 +4,5 @@ __pycache__/
 .venv/
 web/CNAME
 .DS_Store
+data/campaign3.pid
+data/campaign3.log

@@ -787,6 +787,7 @@ def main():
                  "robotspolicy_t2.json", "robotspolicy_t2.csv",
                  "distribution_surfaces.json", "distribution_surfaces.csv",
                  "indexnow_submissions.json",
+                 "declared_ua_baseline.json",
                  "top_domains.txt"):
         src = os.path.join(DATA, name)
         if os.path.exists(src):

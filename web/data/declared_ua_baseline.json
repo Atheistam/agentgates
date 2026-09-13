@@ -1,0 +1,1308 @@
+{
+ "question": "what does the open web answer a declared agent, measured before and after a default changes",
+ "declared_user_agent": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; research bot; measures how the open web answers a declared agent; contact vagopopulo@gmail.com)",
+ "control_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+ "passes": [
+  {
+   "pass": "pre-default-20260913",
+   "probed_at": "2026-09-13T17:07:02Z",
+   "set": "first 40 domains of top_domains.txt",
+   "why": "a reading taken while the pre-2026-09-15 default still holds; the Cloudflare Agent lane is blocked by default from 2026-09-15 on ad-displaying pages for new and free-tier zones",
+   "declared_user_agent": "AgentGatesBot/0.1 (+https://agentgates.surge.sh; research bot; measures how the open web answers a declared agent; contact vagopopulo@gmail.com)",
+   "control_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+   "control_is_not_neutral": "the control differs from the declared agent in one thing only - the user agent string - and sends the same minimal header set. It is therefore not a browser: it is an undeclared client that is not pretending very hard. Where it is refused and the declared agent is served, the refusal is about the declaration and not about being a bot.",
+   "instrument": "v2. Pass 1 counted 'captcha' among the challenge markers and reported seven of forty hosts challenged; four of those answered 200 with a page whose signup furniture contains the word, so the marker was moved to a separately counted weak list. Pass 1 was discarded rather than published.",
+   "ad_marker_definition": [
+    "adsbygoogle",
+    "googlesyndication",
+    "doubleclick.net",
+    "googletag",
+    "prebid",
+    "advertisement",
+    "taboola",
+    "outbrain",
+    "criteo"
+   ],
+   "challenge_marker_definition": [
+    "just a moment",
+    "cf-chl",
+    "attention required",
+    "verify you are human",
+    "checking your browser",
+    "enable javascript and cookies to continue",
+    "ddos protection by"
+   ],
+   "method": "one request per host per user agent, sequential, 0.4 s apart, no retries, redirects followed, TLS verification disabled",
+   "hosts": {
+    "google.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.google.com/",
+      "redirected": true,
+      "seconds": 0.39,
+      "bytes": 85017,
+      "sha256_prefix": "3f972a7507ee58e8",
+      "server": "gws",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://www.google.com/",
+      "redirected": true,
+      "seconds": 0.48,
+      "bytes": 281496,
+      "sha256_prefix": "4591915fac403a56",
+      "server": "gws",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "cloudflare.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.cloudflare.com/",
+      "redirected": true,
+      "seconds": 0.16,
+      "bytes": 400000,
+      "sha256_prefix": "e0633262394089aa",
+      "server": "cloudflare",
+      "via_cf_ray": true,
+      "cf_mitigated": null,
+      "cloudflare_fronted": true,
+      "challenge_markers": [],
+      "weak_markers": [
+       "captcha",
+       "blocked"
+      ],
+      "ad_markers": [
+       "googletag"
+      ]
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://www.cloudflare.com/",
+      "redirected": true,
+      "seconds": 0.15,
+      "bytes": 400000,
+      "sha256_prefix": "e0633262394089aa",
+      "server": "cloudflare",
+      "via_cf_ray": true,
+      "cf_mitigated": null,
+      "cloudflare_fronted": true,
+      "challenge_markers": [],
+      "weak_markers": [
+       "captcha",
+       "blocked"
+      ],
+      "ad_markers": [
+       "googletag"
+      ]
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": true,
+     "ad_marked": true
+    },
+    "facebook.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.facebook.com/",
+      "redirected": true,
+      "seconds": 0.66,
+      "bytes": 400000,
+      "sha256_prefix": "d9f7cff41971b5fd",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [
+       "captcha",
+       "blocked"
+      ],
+      "ad_markers": [
+       "doubleclick.net"
+      ]
+     },
+     "control": {
+      "status": 400,
+      "final_url": "https://facebook.com/",
+      "redirected": false,
+      "seconds": 0.18,
+      "bytes": 1542,
+      "sha256_prefix": "17d52c51f1074dae",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "status differs: agent 200 vs control 400",
+     "cloudflare_fronted": false,
+     "ad_marked": true
+    },
+    "gstatic.com": {
+     "declared_agent": {
+      "status": 404,
+      "final_url": "https://gstatic.com/",
+      "redirected": false,
+      "seconds": 0.24,
+      "bytes": 1561,
+      "sha256_prefix": "23926e9185d8d43c",
+      "server": "sffe",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 404,
+      "final_url": "https://gstatic.com/",
+      "redirected": false,
+      "seconds": 0.24,
+      "bytes": 1561,
+      "sha256_prefix": "23926e9185d8d43c",
+      "server": "sffe",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "googleapis.com": {
+     "declared_agent": {
+      "status": 404,
+      "final_url": "https://googleapis.com/",
+      "redirected": false,
+      "seconds": 0.22,
+      "bytes": 1561,
+      "sha256_prefix": "23926e9185d8d43c",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 404,
+      "final_url": "https://googleapis.com/",
+      "redirected": false,
+      "seconds": 0.23,
+      "bytes": 1561,
+      "sha256_prefix": "23926e9185d8d43c",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "microsoft.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.microsoft.com/es-es",
+      "redirected": true,
+      "seconds": 0.31,
+      "bytes": 193771,
+      "sha256_prefix": "559ec10d09bb36c4",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://www.microsoft.com/",
+      "redirected": true,
+      "seconds": 0.16,
+      "bytes": 201253,
+      "sha256_prefix": "8a0c0ab641dfee0b",
+      "server": "AkamaiNetStorage",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [
+       "blocked"
+      ],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "amazonaws.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://aws.amazon.com:443/",
+      "redirected": true,
+      "seconds": 1.16,
+      "bytes": 400000,
+      "sha256_prefix": "84390470fd471439",
+      "server": "Server",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": [
+       "doubleclick.net"
+      ]
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://aws.amazon.com:443/",
+      "redirected": true,
+      "seconds": 0.96,
+      "bytes": 400000,
+      "sha256_prefix": "84390470fd471439",
+      "server": "Server",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": [
+       "doubleclick.net"
+      ]
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": true
+    },
+    "akamai.net": {
+     "declared_agent": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.02
+     },
+     "control": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "verdict": "unreadable (URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>)",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "youtube.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.youtube.com/",
+      "redirected": true,
+      "seconds": 0.42,
+      "bytes": 400000,
+      "sha256_prefix": "7a439b7a4adfbb1c",
+      "server": "ESF",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [
+       "blocked"
+      ],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://www.youtube.com/",
+      "redirected": true,
+      "seconds": 0.47,
+      "bytes": 400000,
+      "sha256_prefix": "adab2e6b61fa1387",
+      "server": "ESF",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [
+       "blocked"
+      ],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "apple.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.apple.com/",
+      "redirected": true,
+      "seconds": 0.33,
+      "bytes": 312779,
+      "sha256_prefix": "60fbc7795e3a8c49",
+      "server": "Apple",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://www.apple.com/",
+      "redirected": true,
+      "seconds": 0.24,
+      "bytes": 313400,
+      "sha256_prefix": "f39897eb6cabed45",
+      "server": "Apple",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "instagram.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.instagram.com/",
+      "redirected": true,
+      "seconds": 0.62,
+      "bytes": 400000,
+      "sha256_prefix": "0dbba11a3e8ca000",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [
+       "captcha"
+      ],
+      "ad_markers": [
+       "doubleclick.net"
+      ]
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://www.instagram.com/",
+      "redirected": true,
+      "seconds": 0.47,
+      "bytes": 400000,
+      "sha256_prefix": "344a7f7d4d92fea7",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [
+       "captcha"
+      ],
+      "ad_markers": [
+       "doubleclick.net"
+      ]
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": true
+    },
+    "mail.ru": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://account.mail.ru/login?autologin_exp=v22&autologin_project=home&errorCode=11300&errorText=invalid+user&page=https%3A%2F%2Fmail.ru%2F%3Fautologin%3D1789319242&state=878b0046076d4d9f9a149e9473e7a0d6",
+      "redirected": true,
+      "seconds": 1.07,
+      "bytes": 936,
+      "sha256_prefix": "86305506a409e8dc",
+      "server": "nginx",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://account.mail.ru/login?autologin_exp=v22&autologin_project=home&errorCode=11300&errorText=invalid+user&page=https%3A%2F%2Fmail.ru%2F%3Fautologin%3D1789319244&state=d1e4c4d472bf4892bbcd97a93b3723d1",
+      "redirected": true,
+      "seconds": 1.02,
+      "bytes": 936,
+      "sha256_prefix": "b3bd8a85ad90fbb7",
+      "server": "nginx",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "fbcdn.net": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.facebook.com/",
+      "redirected": true,
+      "seconds": 0.62,
+      "bytes": 400000,
+      "sha256_prefix": "30792c3b7fb5134d",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [
+       "captcha",
+       "blocked"
+      ],
+      "ad_markers": [
+       "doubleclick.net"
+      ]
+     },
+     "control": {
+      "status": 400,
+      "final_url": "https://fbcdn.net/",
+      "redirected": false,
+      "seconds": 0.26,
+      "bytes": 1542,
+      "sha256_prefix": "9fff5152561debc0",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "status differs: agent 200 vs control 400",
+     "cloudflare_fronted": false,
+     "ad_marked": true
+    },
+    "ezviz7.com": {
+     "declared_agent": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "control": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.03
+     },
+     "verdict": "unreadable (URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>)",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "twitter.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://x.com/",
+      "redirected": true,
+      "seconds": 0.45,
+      "bytes": 31087,
+      "sha256_prefix": "9a8d8e3d2a9650b6",
+      "server": "cloudflare envoy",
+      "via_cf_ray": true,
+      "cf_mitigated": null,
+      "cloudflare_fronted": true,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://x.com/",
+      "redirected": true,
+      "seconds": 0.55,
+      "bytes": 32902,
+      "sha256_prefix": "a728727774a6d911",
+      "server": "cloudflare envoy",
+      "via_cf_ray": true,
+      "cf_mitigated": null,
+      "cloudflare_fronted": true,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": true,
+     "ad_marked": false
+    },
+    "dzen.ru": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://sso.passport.yandex.ru/push?uuid=c1039ff7-ac38-4225-898c-d257e6c4c568&retpath=https%3A%2F%2Fdzen.ru%2F%3Fis_autologin_ya%3Dtrue",
+      "redirected": true,
+      "seconds": 0.8,
+      "bytes": 2886,
+      "sha256_prefix": "c56b68e1ae0e25f4",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://sso.passport.yandex.ru/push?uuid=e8e3da93-e33e-4382-bcf8-8ee9a66fbaa4&retpath=https%3A%2F%2Fdzen.ru%2F%3Fis_autologin_ya%3Dtrue",
+      "redirected": true,
+      "seconds": 0.71,
+      "bytes": 3043,
+      "sha256_prefix": "0a423a6007b0d4df",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "linkedin.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.linkedin.com/",
+      "redirected": true,
+      "seconds": 0.52,
+      "bytes": 141174,
+      "sha256_prefix": "0226a2fe99d93d47",
+      "server": "cloudflare",
+      "via_cf_ray": true,
+      "cf_mitigated": null,
+      "cloudflare_fronted": true,
+      "challenge_markers": [],
+      "weak_markers": [
+       "captcha"
+      ],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://www.linkedin.com/",
+      "redirected": true,
+      "seconds": 0.5,
+      "bytes": 142588,
+      "sha256_prefix": "debaed171238439b",
+      "server": "cloudflare",
+      "via_cf_ray": true,
+      "cf_mitigated": null,
+      "cloudflare_fronted": true,
+      "challenge_markers": [],
+      "weak_markers": [
+       "captcha"
+      ],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": true,
+     "ad_marked": false
+    },
+    "googlevideo.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.google.com/",
+      "redirected": true,
+      "seconds": 0.33,
+      "bytes": 85056,
+      "sha256_prefix": "1ee8609b02c2d909",
+      "server": "gws",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://www.google.com/",
+      "redirected": true,
+      "seconds": 0.44,
+      "bytes": 281205,
+      "sha256_prefix": "ea87b80807787f61",
+      "server": "gws",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "domaincontrol.com": {
+     "declared_agent": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 61] Connection refused>",
+      "seconds": 0.01
+     },
+     "control": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 61] Connection refused>",
+      "seconds": 0.01
+     },
+     "verdict": "unreadable (URLError: <urlopen error [Errno 61] Connection refused>)",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "office.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://m365.cloud.microsoft/",
+      "redirected": true,
+      "seconds": 0.59,
+      "bytes": 305943,
+      "sha256_prefix": "f68abafece210ebd",
+      "server": "Microsoft-HTTPAPI/2.0",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://m365.cloud.microsoft/",
+      "redirected": true,
+      "seconds": 0.51,
+      "bytes": 305221,
+      "sha256_prefix": "f68abafece210ebd",
+      "server": "Microsoft-HTTPAPI/2.0",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "googletagmanager.com": {
+     "declared_agent": {
+      "status": 404,
+      "final_url": "https://googletagmanager.com/",
+      "redirected": false,
+      "seconds": 0.19,
+      "bytes": 1561,
+      "sha256_prefix": "23926e9185d8d43c",
+      "server": "Google Tag Manager",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 404,
+      "final_url": "https://googletagmanager.com/",
+      "redirected": false,
+      "seconds": 0.18,
+      "bytes": 1561,
+      "sha256_prefix": "23926e9185d8d43c",
+      "server": "Google Tag Manager",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "live.com": {
+     "declared_agent": {
+      "status": 417,
+      "final_url": "https://live.com/",
+      "redirected": false,
+      "seconds": 0.23,
+      "bytes": 0,
+      "sha256_prefix": "e3b0c44298fc1c14",
+      "server": "Microsoft-HTTPAPI/2.0",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 417,
+      "final_url": "https://live.com/",
+      "redirected": false,
+      "seconds": 0.25,
+      "bytes": 0,
+      "sha256_prefix": "e3b0c44298fc1c14",
+      "server": "Microsoft-HTTPAPI/2.0",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "akamaiedge.net": {
+     "declared_agent": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "control": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "verdict": "unreadable (URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>)",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "hicloudcam.com": {
+     "declared_agent": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "control": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "verdict": "unreadable (URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>)",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "amazon.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.amazon.com/",
+      "redirected": true,
+      "seconds": 1.15,
+      "bytes": 400000,
+      "sha256_prefix": "d4f5a6b1f90177c0",
+      "server": "Server",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 202,
+      "final_url": "https://www.amazon.com/",
+      "redirected": true,
+      "seconds": 0.5,
+      "bytes": 2007,
+      "sha256_prefix": "8a807fac4a68a058",
+      "server": "CloudFront",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "status differs: agent 200 vs control 202",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "akadns.net": {
+     "declared_agent": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "control": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "verdict": "unreadable (URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>)",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "gtld-servers.net": {
+     "declared_agent": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "control": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "verdict": "unreadable (URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>)",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "azure.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://azure.microsoft.com/en-us",
+      "redirected": true,
+      "seconds": 0.6,
+      "bytes": 400000,
+      "sha256_prefix": "c63e02c7eddf7ee1",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://azure.microsoft.com/en-us",
+      "redirected": true,
+      "seconds": 17.7,
+      "bytes": 400000,
+      "sha256_prefix": "c63e02c7eddf7ee1",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "github.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://github.com/",
+      "redirected": false,
+      "seconds": 0.4,
+      "bytes": 400000,
+      "sha256_prefix": "2521dee6772e906c",
+      "server": "github.com",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [
+       "captcha"
+      ],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://github.com/",
+      "redirected": false,
+      "seconds": 0.39,
+      "bytes": 400000,
+      "sha256_prefix": "2521dee6772e906c",
+      "server": "github.com",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [
+       "captcha"
+      ],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "bing.com": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.bing.com:443/?toWww=1&redig=93E6375C01AF42D59F05D02618EC1666",
+      "redirected": true,
+      "seconds": 0.3,
+      "bytes": 65963,
+      "sha256_prefix": "6311831e71d26c49",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [
+       "blocked"
+      ],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://www.bing.com:443/?toWww=1&redig=8AD71DAA0A9845AC9F1CFBB68C920F85",
+      "redirected": true,
+      "seconds": 0.25,
+      "bytes": 68882,
+      "sha256_prefix": "8eb9d70b557e253f",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [
+       "blocked"
+      ],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "wikipedia.org": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.wikipedia.org/",
+      "redirected": true,
+      "seconds": 0.38,
+      "bytes": 119573,
+      "sha256_prefix": "ab84b066b39da701",
+      "server": "ATS/9.2.15",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://www.wikipedia.org/",
+      "redirected": true,
+      "seconds": 0.43,
+      "bytes": 119573,
+      "sha256_prefix": "ab84b066b39da701",
+      "server": "ATS/9.2.15",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "whatsapp.net": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.whatsapp.com/",
+      "redirected": true,
+      "seconds": 0.42,
+      "bytes": 276230,
+      "sha256_prefix": "1f082b9d1c5fd151",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [
+       "captcha"
+      ],
+      "ad_markers": [
+       "doubleclick.net"
+      ]
+     },
+     "control": {
+      "status": 400,
+      "final_url": "https://whatsapp.net/",
+      "redirected": false,
+      "seconds": 0.17,
+      "bytes": 6278,
+      "sha256_prefix": "c320532e19b76822",
+      "server": null,
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "status differs: agent 200 vs control 400",
+     "cloudflare_fronted": false,
+     "ad_marked": true
+    },
+    "apple-dns.net": {
+     "declared_agent": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "control": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "verdict": "unreadable (URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>)",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "appsflyersdk.com": {
+     "declared_agent": {
+      "status": 403,
+      "final_url": "https://appsflyersdk.com/",
+      "redirected": false,
+      "seconds": 0.11,
+      "bytes": 146,
+      "sha256_prefix": "95769eb326e23b8c",
+      "server": "CloudFront",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 403,
+      "final_url": "https://appsflyersdk.com/",
+      "redirected": false,
+      "seconds": 0.09,
+      "bytes": 146,
+      "sha256_prefix": "95769eb326e23b8c",
+      "server": "CloudFront",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "googleusercontent.com": {
+     "declared_agent": {
+      "status": 404,
+      "final_url": "https://googleusercontent.com/",
+      "redirected": false,
+      "seconds": 0.13,
+      "bytes": 1561,
+      "sha256_prefix": "23926e9185d8d43c",
+      "server": "sffe",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "control": {
+      "status": 404,
+      "final_url": "https://googleusercontent.com/",
+      "redirected": false,
+      "seconds": 0.14,
+      "bytes": 1561,
+      "sha256_prefix": "23926e9185d8d43c",
+      "server": "sffe",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": []
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "fastly.net": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://www.fastly.com/",
+      "redirected": true,
+      "seconds": 0.25,
+      "bytes": 222671,
+      "sha256_prefix": "fa8a7bb77c0c524d",
+      "server": "Artisanal bits",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": [
+       "googletag"
+      ]
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://www.fastly.com/",
+      "redirected": true,
+      "seconds": 0.22,
+      "bytes": 222671,
+      "sha256_prefix": "fa8a7bb77c0c524d",
+      "server": "Artisanal bits",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": [
+       "googletag"
+      ]
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": true
+    },
+    "doubleclick.net": {
+     "declared_agent": {
+      "status": 200,
+      "final_url": "https://marketingplatform.google.com/about/enterprise/",
+      "redirected": true,
+      "seconds": 0.3,
+      "bytes": 125285,
+      "sha256_prefix": "436bd1ca2e46b775",
+      "server": "sffe",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": [
+       "googletag"
+      ]
+     },
+     "control": {
+      "status": 200,
+      "final_url": "https://marketingplatform.google.com/about/enterprise/",
+      "redirected": true,
+      "seconds": 0.27,
+      "bytes": 125285,
+      "sha256_prefix": "132c7635dc954980",
+      "server": "sffe",
+      "via_cf_ray": false,
+      "cf_mitigated": null,
+      "cloudflare_fronted": false,
+      "challenge_markers": [],
+      "weak_markers": [],
+      "ad_markers": [
+       "googletag"
+      ]
+     },
+     "verdict": "both served",
+     "cloudflare_fronted": false,
+     "ad_marked": true
+    },
+    "aaplimg.com": {
+     "declared_agent": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "control": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "verdict": "unreadable (URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>)",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "microsoftonline.com": {
+     "declared_agent": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.02
+     },
+     "control": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.01
+     },
+     "verdict": "unreadable (URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>)",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    },
+    "office.net": {
+     "declared_agent": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.03
+     },
+     "control": {
+      "status": null,
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "seconds": 0.03
+     },
+     "verdict": "unreadable (URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>)",
+     "cloudflare_fronted": false,
+     "ad_marked": false
+    }
+   },
+   "summary": {
+    "hosts": 40,
+    "cloudflare_fronted": 3,
+    "ad_marked": 8,
+    "cloudflare_and_ad": 1,
+    "agent_status_by_code": {
+     "200": 23,
+     "404": 4,
+     "None": 11,
+     "417": 1,
+     "403": 1
+    },
+    "verdicts": {
+     "both served": 25,
+     "status differs: agent 200 vs control 400": 3,
+     "unreadable (URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>)": 10,
+     "unreadable (URLError: <urlopen error [Errno 61] Connection refused>)": 1,
+     "status differs: agent 200 vs control 202": 1
+    },
+    "agent_challenged": 0,
+    "control_challenged": 0,
+    "agent_weak_markers": 9,
+    "control_weak_markers": 7,
+    "readable": 29,
+    "unreadable": 11
+   }
+  }
+ ]
+}

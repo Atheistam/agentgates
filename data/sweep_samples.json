@@ -180,5 +180,228 @@
         "count": 12
       }
     ]
+  },
+  "selftest-run42": {
+    "campaign": "selftest-run42",
+    "started_at": "2026-09-13T17:02:08Z",
+    "ended_at": "2026-09-13T17:02:24Z",
+    "minutes": 0.25,
+    "poll_every": 5.0,
+    "download_every": 300.0,
+    "dry_run": true,
+    "rows": [
+      {
+        "at": "2026-09-13T17:02:09Z",
+        "count": 12,
+        "delta": null
+      }
+    ],
+    "downloads": [],
+    "polls": 3,
+    "beats": [
+      {
+        "at": "2026-09-13T17:02:09Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:02:14Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:02:19Z",
+        "count": 12
+      }
+    ],
+    "last_write_at": "2026-09-13T17:02:24Z",
+    "observed_span_s": 15,
+    "beacon": [
+      {
+        "at": "2026-09-13T17:02:09Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:02:14Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:02:20Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      }
+    ]
+  },
+  "campaign3-quiet": {
+    "campaign": "campaign3-quiet",
+    "started_at": "2026-09-13T17:03:29Z",
+    "ended_at": "2026-09-13T17:11:01Z",
+    "minutes": 100.0,
+    "poll_every": 30.0,
+    "download_every": 0.0,
+    "dry_run": false,
+    "rows": [
+      {
+        "at": "2026-09-13T17:03:29Z",
+        "count": 12,
+        "delta": null
+      }
+    ],
+    "downloads": [],
+    "polls": 16,
+    "beats": [
+      {
+        "at": "2026-09-13T17:03:29Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:04:00Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:04:30Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:05:00Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:05:30Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:06:00Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:06:30Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:07:00Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:07:31Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:08:01Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:08:31Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:09:01Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:09:31Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:10:01Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:10:31Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:11:01Z",
+        "count": 12
+      }
+    ],
+    "last_write_at": "2026-09-13T17:11:01Z",
+    "observed_span_s": 452,
+    "beacon": [
+      {
+        "at": "2026-09-13T17:04:00Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:05:00Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:06:01Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:07:01Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:08:01Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:09:01Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:10:02Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:11:02Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      }
+    ]
   }
 }

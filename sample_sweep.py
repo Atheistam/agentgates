@@ -50,6 +50,35 @@ def read_count(token):
     return None, "%s is not among the release's assets" % pc.ASSET_NAME
 
 
+def read_beacon():
+    """A second, independent channel read in the same window.
+
+    The release counter is one address; the beacon is another, and a reader who
+    fetches one need not fetch the other. Watched together, a flat download count
+    and a growing beacon log is a reader the first channel cannot see. The beacon
+    belongs to a provider that expires it (2026-09-19), so this is the one window
+    in which the two channels can be read side by side at all.
+    """
+    state = pc.load(pc.STORE, {})
+    ep, err = pc.ensure_endpoint(state)
+    if err or not ep:
+        return {"at": utc(), "error": err or "no endpoint"}
+    rows, err, total = pc.read_log_full(ep["uuid"])
+    if err:
+        return {"at": utc(), "error": err}
+    salt = state.get("salt")
+    by_class = {}
+    for r in rows:
+        try:
+            c = pc.classify(r, salt).get("class")
+        except Exception:
+            c = "unclassified"
+        by_class[c] = by_class.get(c, 0) + 1
+    return {"at": utc(), "requests": len(rows), "provider_total": total,
+            "by_class": by_class,
+            "not_this_project": sum(v for k, v in by_class.items() if k != "self")}
+
+
 def deliberate_download(token, label, count_before):
     """One download, with the moment taken from the clock beside the request.
 
@@ -206,7 +235,21 @@ def main():
     ap.add_argument("--label", default="campaign",
                     help="name this campaign; it becomes the key in data/sweep_samples.json")
     ap.add_argument("--dry-run", action="store_true",
-                    help="watch only: make no download and append nothing to the ledger")
+                    help="watch only: make no deliberate download. The campaign is still "
+                         "stored, because the point of a quiet baseline is exactly that no "
+                         "download of this project's is in the window.")
+    ap.add_argument("--checkpoint-every", type=int, default=10,
+                    help="write what has been seen so far every N polls (default 10). The "
+                         "stored campaign that motivated this ran nine of its hundred "
+                         "minutes: it was a child of the session that launched it, and when "
+                         "that session ended the instrument died with it. A campaign whose "
+                         "finding is an absence has to have written the absence down before "
+                         "anybody kills it. Set 1 to write every poll.")
+    ap.add_argument("--watch-beacon", action="store_true",
+                    help="on each checkpoint also read the readership beacon's request log, "
+                         "so the window carries two independent channels: a download count "
+                         "that must stay flat and a request log that would move for a reader "
+                         "who never downloads anything.")
     ap.add_argument("--resummarise", metavar="LABEL",
                     help="print the summary of a stored campaign again, without collecting "
                          "anything. Written when the first summary of a finished campaign was "
@@ -232,7 +275,8 @@ def main():
     campaign = {"campaign": args.label, "started_at": utc(), "ended_at": None,
                 "minutes": args.minutes, "poll_every": args.poll_every,
                 "download_every": args.download_every, "dry_run": bool(args.dry_run),
-                "rows": [], "downloads": []}
+                "rows": [], "downloads": [], "polls": 0, "beats": [],
+                "last_write_at": None, "observed_span_s": None}
     print("watching the counter for %s minutes, one read every %s s, %s"
           % (args.minutes, args.poll_every,
              "no downloads at all (quiet baseline)" if args.download_every <= 0
@@ -288,14 +332,23 @@ def main():
         # Checkpoint even when nothing happens. The change-triggered write above is enough
         # for a campaign that finds movement, and useless for a campaign whose finding is
         # that there was none: a quiet baseline that is killed before its deadline would
-        # leave behind exactly zero evidence of the quiet it observed. So every tenth poll
-        # writes what has been seen so far.
-        if campaign["polls"] % 10 == 0:
+        # leave behind exactly zero evidence of the quiet it observed.
+        if campaign["polls"] % max(1, args.checkpoint_every) == 0:
             campaign["ended_at"] = utc()
+            campaign["last_write_at"] = campaign["ended_at"]
+            campaign["observed_span_s"] = int(time.time() - started)
+            if args.watch_beacon:
+                b = read_beacon()
+                campaign.setdefault("beacon", []).append(b)
+                campaign["beacon"] = campaign["beacon"][-400:]
+                print("  beacon %s: %s requests, %s not this project's"
+                      % (b.get("at"), b.get("requests"), b.get("not_this_project")))
             _write(args.label, campaign)
         time.sleep(max(0.0, args.poll_every - (time.time() - cycle)))
 
     campaign["ended_at"] = utc()
+    campaign["last_write_at"] = campaign["ended_at"]
+    campaign["observed_span_s"] = int(time.time() - started)
     _write(args.label, campaign)
     print("")
     summarise(campaign)
