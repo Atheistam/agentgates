@@ -154,5 +154,23 @@
       5.5,
       11.4
     ]
+  },
+  {
+    "at": "2026-09-13T20:07:18Z",
+    "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+    "requests_any_client": 13,
+    "not_this_project": 0,
+    "browser_like_unverified": 0,
+    "with_a_referer": 0,
+    "release_downloads_raw": 12,
+    "release_downloads_outside": 0,
+    "release_downloads_outside_interval": [
+      0,
+      0
+    ],
+    "sweep_period_minutes": [
+      5.5,
+      11.4
+    ]
   }
 ]

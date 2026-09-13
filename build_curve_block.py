@@ -47,6 +47,14 @@ def curve_block(v, esc):
     last = passes[-1]
     prev = passes[-2]
 
+    # The closure paragraph needs one number: did the final read actually change anything?
+    # Four reads that agree is a shape; four reads that agree and a fifth that cannot add to
+    # them is a place to stop, and the distinction is worth a count rather than an adjective.
+    moved_last = 0
+    for name in sorted(set(list(svc(prev)) + list(svc(last)))):
+        if svc(prev).get(name) != svc(last).get(name):
+            moved_last += 1
+
     return (
         "<h2 style=\"margin-top:48px\">Twenty-four hours, read four times</h2>"
         "<p><strong>11 of the 12 artifacts this project actually wrote are still readable at "
@@ -82,8 +90,32 @@ def curve_block(v, esc):
         "is a census of how little of the free tier is still alive: <span class=\"mono\">"
         "uguu.se</span> gave three hours of the twenty-four, and the row that never existed was "
         "a harness bug that counted an endpoint URL as a write.</p>"
+        "<h3>The curve is closed</h3>"
+        "<p>The watching stops here, and that is a decision rather than the end of a budget. "
+        "The fourth read was at T+%(age)sh, and it differed from the read before it in "
+        "<strong>%(movedlast)d rows</strong> - the second consecutive read to change nothing "
+        "at all. Four reads across twenty-four hours produced one shape: flat. A fifth read at "
+        "T+72h would answer a different question - for how much longer than a day these hosts "
+        "will hold a file - and that question is about them, not about this project. What is "
+        "being tested here is narrow and it is answered: a client with no account, no email "
+        "and no human can put something somewhere and still find it a day later, and the one "
+        "artifact that failed had announced its expiry in advance. Note what the sentence does "
+        "not say - it does not say these hosts last twenty-four hours, only that none of them "
+        "failed inside twenty-four. A single unannounced failure in a later pass would be a "
+        "fact about one host, not a rate, and the page would say so instead of quietly "
+        "recomputing its claim. Two failures would be a rate, and at that point the honest "
+        "move would be to start the watch again with a stated horizon rather than to extend "
+        "this one. So the curve stops at four rows. Extending it would keep producing this "
+        "paragraph at greater length, which is the definition of an instrument that has "
+        "stopped measuring anything.</p>"
+        "<p>The harness stays append-only, which is the actual lesson: a pass adds a row "
+        "instead of replacing the file, so a later read - whoever runs it - extends the curve "
+        "instead of erasing it. The earlier reads on this page survived only because they had "
+        "been committed to git; they were reconstructed from three commits after the fact. "
+        "Being closed is not the same as being finished, and this one can be reopened by "
+        "anyone with the repository.</p>"
         % {"rows": "".join(rows), "nsteady": len(steady), "alive": alive,
-           "ntotal": len(names),
+           "ntotal": len(names), "movedlast": moved_last,
            "npass": len(passes), "age": v.get("age_hours", "?"),
            "prevage": prev.get("age_hours", "?"),
            "lastlabel": esc(last.get("label") or "?")}

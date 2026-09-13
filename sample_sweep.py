@@ -33,6 +33,10 @@ import probe_counter as pc
 
 SAMPLES = os.path.join(pc.DATA, "sweep_samples.json")
 
+# How many beats the fine-grained ring keeps. See _beat() for why this is a named constant
+# and why it is not the only place a beat is written any more.
+BEAT_RING = 400
+
 
 def utc():
     """The project's timestamp, and the only one any arithmetic is allowed to use."""
@@ -150,6 +154,33 @@ def summarise(campaign):
     print("reads %d, of which %d changed the count (%d errors), gaps recorded %d"
           % (campaign.get("polls", 0), len(rows),
              len(campaign["rows"]) - len(rows), len(gaps)))
+    # What the watch actually was, as opposed to what it was asked for. A quiet campaign's
+    # row list is one row long however long it watched, so its beats and its hour bins are
+    # the only places its duration exists. Both are printed here, together with the number
+    # of beats the ring threw away, so a truncated record says so out loud instead of
+    # reading like a short watch.
+    btotal = campaign.get("beats_total", len(campaign.get("beats") or []))
+    print("beats %d written; ring holds %d, dropped %d; first beat %s"
+          % (btotal, len(campaign.get("beats") or []), campaign.get("beats_dropped", 0),
+             campaign.get("first_beat") or "n/a"))
+    seen = campaign.get("counts_seen") or []
+    if seen:
+        print("distinct counts seen in the whole watch: %s" % seen)
+    bins = campaign.get("hours") or []
+    if bins:
+        print("hour bins (%d):" % len(bins))
+        for b in bins:
+            print("   %s  reads %-4d count %s -> %s  min %s  max %s  changes %d"
+                  % (b.get("hour"), b.get("polls"), b.get("count_open"),
+                     b.get("count_close"), b.get("count_min"), b.get("count_max"),
+                     b.get("count_change")))
+    if len(seen) == 1:
+        print("the number was read %d times and answered %s at every one of them: a flat "
+              "baseline, not a sample of one" % (btotal, seen[0]))
+    brep = campaign.get("beacon_total", len(campaign.get("beacon") or []))
+    if brep:
+        print("beacon reads %d (%d errored, %d dropped by the ring)"
+              % (brep, campaign.get("beacon_errors", 0), campaign.get("beacon_dropped", 0)))
     print("every sweep moment (gap to the previous one):")
     for r in rows:
         g = ("%7.1f s = %5.2f min" % (r["gap_s"], r["gap_s"] / 60.0)) if r.get("gap_s") else "first read"
@@ -219,6 +250,49 @@ def summarise(campaign):
     print("dry run: %s (no deliberate download was made)" % campaign["dry_run"])
 
 
+def _beat(campaign, count):
+    """One successful read, written into the campaign three ways.
+
+    The ring is what gives the recent window its 30-second resolution; the hour bin is what
+    gives the whole watch a duration a reader can hold in their head; the two counters are
+    what make the ring's loss visible instead of silent.
+
+    Run 43 found both halves of this. The beat used to be appended unconditionally, so a
+    window that spent an hour on 502s left a column of `count: null` beats that read like
+    readings of a null counter. And the ring was 400, which at one beat every 30 s is three
+    hours and twenty minutes - longer than any watch this project had run, and shorter than
+    the twenty-four hour one run 43 was about to launch. That campaign would have kept its
+    last 3.3 h and overwritten the other 20.7 without saying so, and for a quiet baseline
+    the beats ARE the evidence: it would have destroyed the finding and left a record that
+    looked complete. That is campaign2-quiet's failure in a different costume - there the
+    evidence was never written, here it would be written and then thrown away.
+    """
+    at = utc()
+    beats = campaign.setdefault("beats", [])
+    beats.append({"at": at, "count": count})
+    campaign["beats_total"] = campaign.get("beats_total", 0) + 1
+    campaign["beats_dropped"] = max(0, campaign["beats_total"] - BEAT_RING)
+    campaign["beats_held"] = min(campaign["beats_total"], BEAT_RING)
+    campaign["beats"] = beats[-BEAT_RING:]
+    if campaign.get("first_beat") is None:
+        campaign["first_beat"] = at
+    seen = campaign.setdefault("counts_seen", [])
+    if count not in seen:
+        seen.append(count)
+    hour = at[:13] + ":00Z"
+    bins = campaign.setdefault("hours", [])
+    if not bins or bins[-1]["hour"] != hour:
+        bins.append({"hour": hour, "opened_at": at, "polls": 0, "count_open": count,
+                     "count_change": 0})
+    b = bins[-1]
+    b["polls"] += 1
+    b["closed_at"] = at
+    b["count_close"] = count
+    b["count_min"] = min(b.get("count_min", count), count)
+    b["count_max"] = max(b.get("count_max", count), count)
+    return b
+
+
 def main():
     ap = argparse.ArgumentParser(description="Watch the release counter and time its sweeps.")
     ap.add_argument("--minutes", type=float, default=40.0,
@@ -276,6 +350,9 @@ def main():
                 "minutes": args.minutes, "poll_every": args.poll_every,
                 "download_every": args.download_every, "dry_run": bool(args.dry_run),
                 "rows": [], "downloads": [], "polls": 0, "beats": [],
+                "beats_total": 0, "beats_held": 0, "beats_dropped": 0, "first_beat": None,
+                "counts_seen": [], "hours": [],
+                "beacon": [], "beacon_total": 0, "beacon_dropped": 0, "beacon_errors": 0,
                 "last_write_at": None, "observed_span_s": None}
     print("watching the counter for %s minutes, one read every %s s, %s"
           % (args.minutes, args.poll_every,
@@ -306,29 +383,37 @@ def main():
         if err:
             campaign["rows"].append({"at": utc(), "error": err})
             print("  %s read failed: %s" % (utc(), err))
-        elif count != last_count:
-            row = {"at": utc(), "count": count,
-                   "delta": (count - last_count) if last_count is not None else None}
-            if last_change:
-                row["gap_s"] = (pc.iso_epoch(row["at"]) or 0) - (pc.iso_epoch(last_change) or 0)
-            campaign["rows"].append(row)
-            print("  %s count %s (+%s) after %s s"
-                  % (row["at"], count, row["delta"], row.get("gap_s", "?")))
-            last_count, last_change = count, row["at"]
-            # Written as it happens, not at the end. The first campaign held thirty minutes of
-            # observations in memory and would have lost all of them to a crash or a killed
-            # process - a watcher whose memory is only at its end is not a watcher.
-            campaign["ended_at"] = utc()
-            _write(args.label, campaign)
-        elif not campaign["rows"]:
-            campaign["rows"].append({"at": utc(), "count": count, "delta": None,
-                                     "gap_s": None})
-        # Every successful read leaves a beat. The row list only grows when the number
-        # moves, so a quiet campaign's rows say nothing about how long it watched. Ten
-        # beats of "count 12, unchanged" at known times is the evidence, and in twenty-four
-        # hours it is the only evidence there will be that the counter never moved.
-        campaign.setdefault("beats", []).append({"at": utc(), "count": count})
-        campaign["beats"] = campaign["beats"][-400:]
+            # A failed read is not a reading of anything. It goes into `rows` as the error
+            # it is and it leaves no beat: the older code beat here too, which put
+            # `count: null` into the beat series of every window that hit a 502 and made it
+            # look like a counter answering null.
+        else:
+            # The beat and its hour bin are written before anything is decided about the
+            # number, so that a change on the first read of a new hour has a bin to land in.
+            hour = _beat(campaign, count)
+            if count != last_count:
+                row = {"at": utc(), "count": count,
+                       "delta": (count - last_count) if last_count is not None else None}
+                if last_change:
+                    row["gap_s"] = (pc.iso_epoch(row["at"]) or 0) - (pc.iso_epoch(last_change) or 0)
+                campaign["rows"].append(row)
+                print("  %s count %s (+%s) after %s s"
+                      % (row["at"], count, row["delta"], row.get("gap_s", "?")))
+                last_count, last_change = count, row["at"]
+                # The first read of a campaign is not a movement: last_count is None and
+                # there was nothing for it to move from. Run 43's smoke test caught this
+                # counting that baseline row as a change, which would have put `changes 1`
+                # in the first hour bin of every campaign that ever sat still.
+                if row["delta"] is not None:
+                    hour["count_change"] += 1
+                # Written as it happens, not at the end. The first campaign held thirty minutes of
+                # observations in memory and would have lost all of them to a crash or a killed
+                # process - a watcher whose memory is only at its end is not a watcher.
+                campaign["ended_at"] = utc()
+                _write(args.label, campaign)
+            elif not campaign["rows"]:
+                campaign["rows"].append({"at": utc(), "count": count, "delta": None,
+                                         "gap_s": None})
         # Checkpoint even when nothing happens. The change-triggered write above is enough
         # for a campaign that finds movement, and useless for a campaign whose finding is
         # that there was none: a quiet baseline that is killed before its deadline would
@@ -340,7 +425,11 @@ def main():
             if args.watch_beacon:
                 b = read_beacon()
                 campaign.setdefault("beacon", []).append(b)
-                campaign["beacon"] = campaign["beacon"][-400:]
+                campaign["beacon_total"] = campaign.get("beacon_total", 0) + 1
+                if b.get("error"):
+                    campaign["beacon_errors"] = campaign.get("beacon_errors", 0) + 1
+                campaign["beacon_dropped"] = max(0, campaign["beacon_total"] - BEAT_RING)
+                campaign["beacon"] = campaign["beacon"][-BEAT_RING:]
                 print("  beacon %s: %s requests, %s not this project's"
                       % (b.get("at"), b.get("requests"), b.get("not_this_project")))
             _write(args.label, campaign)

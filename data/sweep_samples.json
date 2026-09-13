@@ -247,7 +247,7 @@
   "campaign3-quiet": {
     "campaign": "campaign3-quiet",
     "started_at": "2026-09-13T17:03:29Z",
-    "ended_at": "2026-09-13T17:11:01Z",
+    "ended_at": "2026-09-13T18:43:54Z",
     "minutes": 100.0,
     "poll_every": 30.0,
     "download_every": 0.0,
@@ -260,7 +260,7 @@
       }
     ],
     "downloads": [],
-    "polls": 16,
+    "polls": 200,
     "beats": [
       {
         "at": "2026-09-13T17:03:29Z",
@@ -325,10 +325,746 @@
       {
         "at": "2026-09-13T17:11:01Z",
         "count": 12
+      },
+      {
+        "at": "2026-09-13T17:11:32Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:12:02Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:12:32Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:13:02Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:13:32Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:14:02Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:14:32Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:15:03Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:15:33Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:16:03Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:16:33Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:17:03Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:17:33Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:18:03Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:18:33Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:19:04Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:19:34Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:20:04Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:20:34Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:21:04Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:21:34Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:22:04Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:22:34Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:23:04Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:23:35Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:24:05Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:24:35Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:25:05Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:25:35Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:26:05Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:26:35Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:27:05Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:27:36Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:28:06Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:28:36Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:29:06Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:29:36Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:30:06Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:30:36Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:31:07Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:31:37Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:32:07Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:32:37Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:33:07Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:33:37Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:34:07Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:34:38Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:35:08Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:35:38Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:36:08Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:36:38Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:37:08Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:37:38Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:38:08Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:38:39Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:39:09Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:39:39Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:40:09Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:40:39Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:41:09Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:41:39Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:42:09Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:42:39Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:43:10Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:43:40Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:44:10Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:44:40Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:45:10Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:45:40Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:46:10Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:46:40Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:47:11Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:47:41Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:48:11Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:48:41Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:49:11Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:49:41Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:50:11Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:50:41Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:51:12Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:51:42Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:52:12Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:52:42Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:53:12Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:53:42Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:54:12Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:54:42Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:55:13Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:55:43Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:56:13Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:56:43Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:57:13Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:57:43Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:58:13Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:58:43Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:59:14Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T17:59:44Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:00:14Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:00:44Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:01:14Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:01:44Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:02:14Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:02:44Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:03:14Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:03:45Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:04:15Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:04:45Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:05:15Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:05:45Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:06:15Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:06:45Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:07:15Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:07:46Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:08:16Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:08:46Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:09:16Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:09:46Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:10:16Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:10:46Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:11:16Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:11:47Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:12:17Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:12:47Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:13:17Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:13:47Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:14:17Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:14:47Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:15:18Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:15:48Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:16:18Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:16:48Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:17:18Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:17:48Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:18:18Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:18:49Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:19:19Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:19:49Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:20:19Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:20:49Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:21:19Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:21:49Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:22:19Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:22:50Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:23:20Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:23:50Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:24:20Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:24:50Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:25:20Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:25:50Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:26:20Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:26:51Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:27:21Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:27:51Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:28:21Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:28:51Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:29:21Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:29:51Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:30:21Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:30:52Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:31:22Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:31:52Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:32:22Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:32:52Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:33:22Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:33:52Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:34:22Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:34:53Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:35:23Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:35:53Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:36:23Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:36:53Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:37:23Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:37:53Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:38:23Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:38:53Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:39:24Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:39:54Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:40:24Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:40:54Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:41:24Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:41:54Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:42:24Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:42:54Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T18:43:25Z",
+        "count": 12
       }
     ],
-    "last_write_at": "2026-09-13T17:11:01Z",
-    "observed_span_s": 452,
+    "last_write_at": "2026-09-13T18:43:54Z",
+    "observed_span_s": 6025,
     "beacon": [
       {
         "at": "2026-09-13T17:04:00Z",
@@ -401,7 +1137,885 @@
           "self": 12
         },
         "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:12:02Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:13:02Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:14:03Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:15:03Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:16:03Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:17:03Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:18:04Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:19:04Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:20:04Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:21:04Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:22:05Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:23:05Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:24:05Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:25:05Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:26:05Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:27:06Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:28:06Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:29:06Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:30:07Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:31:07Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:32:07Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:33:07Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:34:08Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:35:08Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:36:08Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:37:09Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:38:09Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:39:09Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:40:09Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:41:10Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:42:10Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:43:10Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:44:10Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:45:10Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:46:11Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:47:11Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:48:11Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:49:11Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:50:12Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:51:12Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:52:12Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:53:13Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:54:13Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:55:13Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:56:13Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:57:13Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:58:14Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T17:59:14Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:00:14Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:01:14Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:02:15Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:03:15Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:04:15Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:05:15Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:06:16Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:07:16Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:08:16Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:09:16Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:10:17Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:11:17Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:12:17Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:13:17Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:14:18Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:15:18Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:16:18Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:17:19Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:18:19Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:19:19Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:20:19Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:21:20Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:22:20Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:23:20Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:24:20Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:25:21Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:26:21Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:27:21Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:28:21Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:29:22Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:30:22Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:31:22Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:32:22Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:33:23Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:34:23Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:35:23Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:36:23Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:37:23Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:38:24Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:39:24Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:40:24Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:41:24Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:42:25Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
+      },
+      {
+        "at": "2026-09-13T18:43:25Z",
+        "requests": 12,
+        "provider_total": 12,
+        "by_class": {
+          "self": 12
+        },
+        "not_this_project": 0
       }
     ]
+  },
+  "campaign4-long": {
+    "campaign": "campaign4-long",
+    "started_at": "2026-09-13T20:05:50Z",
+    "ended_at": "2026-09-13T20:05:50Z",
+    "minutes": 1440.0,
+    "poll_every": 30.0,
+    "download_every": 0.0,
+    "dry_run": false,
+    "rows": [
+      {
+        "at": "2026-09-13T20:05:50Z",
+        "count": 12,
+        "delta": null
+      }
+    ],
+    "downloads": [],
+    "polls": 1,
+    "beats": [
+      {
+        "at": "2026-09-13T20:05:50Z",
+        "count": 12
+      }
+    ],
+    "beats_total": 1,
+    "beats_held": 1,
+    "beats_dropped": 0,
+    "first_beat": "2026-09-13T20:05:50Z",
+    "counts_seen": [
+      12
+    ],
+    "hours": [
+      {
+        "hour": "2026-09-13T20:00Z",
+        "opened_at": "2026-09-13T20:05:50Z",
+        "polls": 1,
+        "count_open": 12,
+        "count_change": 0,
+        "closed_at": "2026-09-13T20:05:50Z",
+        "count_close": 12,
+        "count_min": 12,
+        "count_max": 12
+      }
+    ],
+    "beacon": [],
+    "beacon_total": 0,
+    "beacon_dropped": 0,
+    "beacon_errors": 0,
+    "last_write_at": null,
+    "observed_span_s": null
   }
 }

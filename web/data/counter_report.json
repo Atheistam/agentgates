@@ -1,7 +1,7 @@
 {
   "run": 40,
   "instrument": "probe_counter.py",
-  "probed_at": "2026-09-13T14:10:30Z",
+  "probed_at": "2026-09-13T20:07:18Z",
   "question": "Has any client other than this project ever fetched this project?",
   "instruments": {
     "I1_request_log": {
@@ -10,28 +10,28 @@
       "url": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
       "created_at": "2026-09-12 20:03:11",
       "expires_at": "2026-09-19 20:03:11",
-      "hours_left": 148.88,
+      "hours_left": 142.93,
       "reused_from_previous_run": true,
       "account_required": false,
       "name_it_honestly": "an address this project exclusively addresses on infrastructure it does not own, with a fuse the provider sets",
       "endpoints_retired": [],
-      "requests_rows_retrieved": 12,
-      "requests_provider_total": 12,
-      "requests_total": 12,
+      "requests_rows_retrieved": 13,
+      "requests_provider_total": 13,
+      "requests_total": 13,
       "new_since_previous_run": 1,
       "which_number_is_the_total": "requests_provider_total is the provider's own count; requests_rows_retrieved is what its cached list endpoint handed back within the poll window. When they disagree the smaller one is a cache artefact, not fewer requests.",
       "by_class": {
-        "self": 12
+        "self": 13
       },
       "distinct_clients": 2,
       "country_counts": {
-        "Spain": 12
+        "Spain": 13
       },
       "vendor_counts": {}
     },
     "I2_download_count": {
       "status": "live",
-      "status_of_the_counter": "the counter counts, but only at its own sweep, and the sweep is a few minutes wide: inside a 30 s polling window it still looks dead (control skipped by request: the count read here is 12, and the last deliberate download - this project's own positive control, made by an earlier execution of this instrument - was at 2026-09-13T11:43:46Z, so the counter has not been left untested, only untouched this time). Two reads fifteen minutes apart bounded the sweep at 5.5-11.4 minutes",
+      "status_of_the_counter": "the counter counts, but only at its own sweep, and the sweep is a few minutes wide: inside a 30 s polling window it still looks dead (instrument not demonstrated within the polling window: a download returned HTTP 200 and the count did not move). Two reads fifteen minutes apart bounded the sweep at 5.5-11.4 minutes",
       "positive_control_failed_within_polling_window": true,
       "positive_control_meaning": "a control that fails inside a 30 s window is not a failed counter, it is a counter whose sweep is wider than the window. Both readings are published; the number that matters is the one after the sweep.",
       "asset": "agentgates-dataset.json",
@@ -41,13 +41,15 @@
         "agentgates-dataset.json": 12,
         "agentgates-probe-browser.json": 1
       },
-      "downloads_made_by_this_project": 13,
+      "downloads_made_by_this_project": 14,
       "downloads_made_by_this_project_certainly_swept": {
         "agentgates-dataset.json": 12,
         "agentgates-probe-browser.json": 1
       },
       "deliberate_downloads_may_be_unswept": {},
-      "deliberate_downloads_certainly_unswept": {},
+      "deliberate_downloads_certainly_unswept": {
+        "agentgates-dataset.json": 1
+      },
       "sweep_period_minutes": [
         5.5,
         11.4
@@ -63,7 +65,9 @@
           "agentgates-probe-browser.json": 1
         },
         "in_doubt": {},
-        "excluded": {},
+        "excluded": {
+          "agentgates-dataset.json": 1
+        },
         "residue": {
           "agentgates-dataset.json": 0,
           "agentgates-probe-browser.json": 0
@@ -77,7 +81,7 @@
       "why_null": "a real zero: every count that the sweep has certainly passed belongs to a download this project made deliberately and logged, one count per download. Downloads younger than the shortest observed sweep (5.5 min) are excluded, not subtracted.",
       "interpretation": "per asset: counted minus this project's own deliberate downloads that the sweep has certainly passed. Only that difference is a reader, and while a download sits in the sweep window the difference is an interval rather than a number.",
       "ua_split_experiment": {
-        "age_of_the_download_hours": 18.03,
+        "age_of_the_download_hours": 23.98,
         "asset_browser": "agentgates-probe-browser.json",
         "asset_scripted": "agentgates-dataset.json",
         "browser_ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chr",
@@ -101,7 +105,7 @@
           "consequence": "the three candidate explanations - lags by hours, ignores scripts, is broken - are down to one. Note what the counts are made of: the scripted asset's count is moved by the positive control downloads of every run, so the split's real result is the browser arm, which moved once for its one download."
         },
         "scripted_ua": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
-        "settled_at": "2026-09-13T14:10:30Z",
+        "settled_at": "2026-09-13T20:07:18Z",
         "status": "moved: {\"agentgates-dataset.json\": 12, \"agentgates-probe-browser.json\": 1}"
       },
       "tag": "readership-bundle",
@@ -114,8 +118,8 @@
   },
   "controls": {
     "I1_positive": {
-      "fired": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe?src=positive-control&self=1&n=43c4563033d2&t=1789308630",
-      "nonce": "43c4563033d2",
+      "fired": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe?src=positive-control&self=1&n=7f0a72e4aa2f&t=1789330038",
+      "nonce": "7f0a72e4aa2f",
       "looked": 2,
       "seen": true,
       "latency_polls": 2,
@@ -136,15 +140,18 @@
     },
     "I2_positive": {
       "before": 12,
-      "attempted": false,
-      "mode": "skip",
+      "attempted": true,
+      "mode": "full",
+      "download_http": 200,
+      "downloaded_at": "2026-09-13T20:07:27Z",
       "after": 12,
+      "polls": 6,
       "moved": false,
-      "skipped": "no download this execution: the positive control for this cron run was made at 2026-09-13T11:43:46Z. Downloading again would move the count this instrument exists to attribute.",
-      "verdict": "control skipped by request: the count read here is 12, and the last deliberate download - this project's own positive control, made by an earlier execution of this instrument - was at 2026-09-13T11:43:46Z, so the counter has not been left untested, only untouched this time"
+      "verdict": "instrument not demonstrated within the polling window: a download returned HTTP 200 and the count did not move",
+      "open_question": "the download is real (HTTP 200) and the count has not acknowledged it. Registered for a delayed settlement: the next run re-reads the count and reports the latency, or reports the instrument as lossy."
     },
     "I2_ua_split": {
-      "age_of_the_download_hours": 18.03,
+      "age_of_the_download_hours": 23.98,
       "asset_browser": "agentgates-probe-browser.json",
       "asset_scripted": "agentgates-dataset.json",
       "browser_ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chr",
@@ -168,11 +175,28 @@
         "consequence": "the three candidate explanations - lags by hours, ignores scripts, is broken - are down to one. Note what the counts are made of: the scripted asset's count is moved by the positive control downloads of every run, so the split's real result is the browser arm, which moved once for its one download."
       },
       "scripted_ua": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
-      "settled_at": "2026-09-13T14:10:30Z",
+      "settled_at": "2026-09-13T20:07:18Z",
       "status": "moved: {\"agentgates-dataset.json\": 12, \"agentgates-probe-browser.json\": 1}"
     }
   },
   "log": [
+    {
+      "at": "2026-09-13 20:07:18",
+      "class": "self",
+      "matched": null,
+      "vendor": null,
+      "via": null,
+      "generic_beacon": null,
+      "user_agent": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
+      "referer": null,
+      "country": "Spain",
+      "client": "2f57b17a5389",
+      "bytes_query": {
+        "src": "positive-control",
+        "self": "1",
+        "n": "7f0a72e4aa2f"
+      }
+    },
     {
       "at": "2026-09-13 14:10:30",
       "class": "self",
@@ -385,8 +409,8 @@
   ],
   "salt_published": false,
   "reach": {
-    "requests_any_client": 12,
-    "self_inflicted": 12,
+    "requests_any_client": 13,
+    "self_inflicted": 13,
     "not_this_project": 0,
     "of_those_with_a_referer": 0,
     "could_be_a_person_unverified": 0,
@@ -557,6 +581,24 @@
       "at": "2026-09-13T14:10:30Z",
       "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
       "requests_any_client": 12,
+      "not_this_project": 0,
+      "browser_like_unverified": 0,
+      "with_a_referer": 0,
+      "release_downloads_raw": 12,
+      "release_downloads_outside": 0,
+      "release_downloads_outside_interval": [
+        0,
+        0
+      ],
+      "sweep_period_minutes": [
+        5.5,
+        11.4
+      ]
+    },
+    {
+      "at": "2026-09-13T20:07:18Z",
+      "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+      "requests_any_client": 13,
       "not_this_project": 0,
       "browser_like_unverified": 0,
       "with_a_referer": 0,

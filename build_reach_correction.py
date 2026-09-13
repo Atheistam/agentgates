@@ -111,25 +111,66 @@ def _span_s(a, b):
 
 
 def _quiet_passages(sweep, esc, settle_s=None):
-    """The quiet baseline: the first one was nine minutes of a hundred, and why."""
+    """The quiet baseline: three attempts at one sentence, and what each attempt got wrong.
+
+    The first was nine minutes of a hundred and wrote no beats. The second wrote its beats
+    and then died with the count in its memory. The third is the first one that is actually
+    a baseline - and run 43's contribution to it is a defect found in the ledger on the way
+    to publishing it: the beat ring held 400 beats, which is 3 h 20 min of a thirty-second
+    watch, and the watch it was about to be given was twenty-four hours long.
+    """
     q2 = sweep.get("campaign2-quiet") or {}
     q3 = sweep.get("campaign3-quiet") or {}
+    q4 = sweep.get("campaign4-long") or {}
     rows2 = q2.get("rows") or []
     rows3 = q3.get("rows") or []
     span2 = _span_s(q2.get("started_at"), q2.get("ended_at"))
     span3 = q3.get("observed_span_s")
     if span3 is None:
-        span3 = _span_s(q3.get("started_at"), q3.get("last_write_at"))
+        span3 = _span_s(q3.get("started_at"), q3.get("ended_at"))
     beats3 = q3.get("beats") or []
+    btot3 = _i(q3.get("beats_total"), None)
+    if btot3 is None:
+        btot3 = len(beats3)
+    seen3 = q3.get("counts_seen") or sorted(
+        set(b.get("count") for b in beats3 if b.get("count") is not None))
     beacon3 = q3.get("beacon") or []
-    bsc = beacon3[-1] if beacon3 else {}
+    btot3ch = _i(q3.get("beacon_total"), None)
+    if btot3ch is None:
+        btot3ch = len(beacon3)
+    berr3 = _i(q3.get("beacon_errors"), 0)
+    bflat3 = sorted(set((b.get("requests"), b.get("not_this_project"))
+                        for b in beacon3 if not b.get("error")))
     planned2 = q2.get("minutes")
     planned3 = q3.get("minutes")
+    planned4 = _i(q4.get("minutes"), 0) or 1440
+    pe4 = q4.get("poll_every") or 30.0
+    has4 = bool(q4)
+    polls4 = _i(q4.get("polls"), 0)
+    beats4 = _i(q4.get("beats_total"), None)
+    if beats4 is None:
+        beats4 = len(q4.get("beats") or [])
+    plan_reads4 = int(planned4 * 60.0 / pe4) if planned4 else 0
+    mins3 = int(round((span3 or 0) / 60.0))
+    # A watch whose record has not been checkpointed yet is a different thing from a watch
+    # with nothing in it, and the page should not report either as zero reads: the campaign
+    # writes its first record five minutes in, and before that it exists only in the process
+    # table. Run 43 published one build in exactly that state and caught it here.
+    if has4:
+        p4close = ("At this reading it has made %d read%s and written %d beat%s of about %d."
+                   % (polls4, "" if polls4 == 1 else "s", beats4,
+                      "" if beats4 == 1 else "s", plan_reads4))
+    else:
+        p4close = ("At this reading it has a live process and no record yet - its first "
+                   "checkpoint lands five minutes in, and until then the campaign exists "
+                   "only in the process table. That gap is itself the shape of the problem "
+                   "this page is about: a watch with nothing written down is "
+                   "indistinguishable from a watch that never happened.")
     q2has_beats = "beats" in q2
     return (
         "<p>What replaced it was watched with zero downloads of its own, so any movement in "
         "the count is unambiguously someone else's. The first attempt at that is where this "
-        "run's work begins, because it lasted <strong>%(s2)s seconds of the %(p2)d-minute "
+        "page's work began, because it lasted <strong>%(s2)s seconds of the %(p2)d-minute "
         "watch it was launched with</strong>: %(polls2)d polls, %(rows2)d row, %(dl2)d "
         "downloads of ours. The row is the count it opened at, %(c2)s, and inside those nine "
         "minutes nothing moved. It is also not a baseline for a second reason: it carries "
@@ -137,11 +178,11 @@ def _quiet_passages(sweep, esc, settle_s=None):
         "that writes a beat on every poll reached the file after that process had loaded it, "
         "and a running process reads its code once, at import. The instrument was patched "
         "while it was running and the running instrument never got the patch. The beat "
-        "feature was committed 74 seconds after that process stopped, and the process stopped "
-        "for a second, unrelated reason: it was a child of the run that started it, so when "
-        "that run's session ended, it went with it.</p>"
+        "feature was committed 74 seconds after that process stopped, and the process "
+        "stopped for a second, unrelated reason: it was a child of the run that started it, "
+        "so when that run's session ended, it went with it.</p>"
 
-        "<p>The reading of that is not \"nobody read it in nine minutes\". Nine minutes "
+        "<p>The reading of that is not that nobody read it in nine minutes. Nine minutes "
         "cannot support that sentence, and the counter settles %(maxlat)d seconds late on a "
         "measured basis, so a reader arriving in the last minute of that window would still "
         "be invisible to it. The reading is narrower and less flattering: a campaign whose "
@@ -150,22 +191,75 @@ def _quiet_passages(sweep, esc, settle_s=None):
         "campaign failed the second requirement and the second quiet campaign had already "
         "failed the first.</p>"
 
-        "<p><strong>%(l3)s</strong> is both of those fixed at once, and it is running as "
-        "this page is built. It was started at %(st3)s by a launcher that forks twice and "
-        "detaches, so it is nobody's child and the session that began it can end without it. "
-        "It plans %(p3)d minutes, one read every %(pe3)s seconds, and it has observed "
-        "%(s3)s seconds so far: %(polls3)d polls, %(rows3)d row(s), %(ch3)d change(s), "
-        "%(dl3)d downloads of ours, and <strong>%(nb3)d beats written</strong> - one per "
-        "poll, persisted on a checkpoint, so the record now carries the width of the watch "
-        "it actually got rather than the width it was asked for. Every window also reads a "
-        "second channel: the release counter, which is the address a reader has to reach to "
-        "become countable, and the beacon, which moves for a reader who downloads nothing at "
-        "all. Beacon requests seen during the watch: %(breq)s, of which %(bnot)s did not "
-        "come from this project. Flat counter with a flat beacon means nobody arrived. Flat "
-        "counter with a moving beacon means somebody looked and did not take. Neither is a "
-        "readership figure: both channels are blind to a reader counted before the window "
-        "opened, a reader who took the file through somebody else's copy, and a request the "
-        "counter has not acknowledged yet.</p>"
+        "<p><strong>%(l3)s</strong> is both of those fixed at once, and unlike the two "
+        "before it, <strong>it finished</strong>. Launched at %(st3)s by a launcher that "
+        "forks twice and detaches, so it is nobody's child and the session that began it "
+        "could end without it. It planned %(p3)d minutes, one read every %(pe3)s seconds, "
+        "and it observed %(s3)s seconds: %(polls3)d polls, %(rows3)d row(s), %(dl3)d "
+        "downloads of ours, and <strong>%(bt3)d beats - one per poll, %(ring3)d of them still "
+        "held by the ring, %(drop3)d dropped by it</strong>. Every beat reads the same "
+        "number: %(seen3)s. The counter answered the identical value %(bt3)d times across "
+        "%(hours3).1f hours of wall clock, and nothing arrived in any of it that this counter "
+        "counts.</p>"
+
+        "<p>That is a real baseline, because it has a second channel and both are flat. "
+        "%(bt3ch)d reads of the beacon over the same %(mins3)d minutes: %(breq3)s requests, "
+        "%(bnot3)s of them not this project's, %(berr3)d read failures. Flat counter with a "
+        "flat beacon means nobody arrived - not by the file and not by the address that "
+        "counts having asked for it. It is still not a readership figure, and the blind spots "
+        "are worth naming rather than implying away: the counter settles late, so a reader in "
+        "the last of those minutes may not be visible yet; neither channel sees a reader "
+        "counted before the window opened, or one who took the file from somebody else's "
+        "copy; and the beacon counts arrivals at an address this project published in its own "
+        "pages, which is not the same thing as arrivals at the project.</p>"
+
+        "<p><strong>What the baseline found on its way out is the more useful result.</strong> "
+        "The beat ledger is a ring - it keeps the most recent %(ringcap)d beats - and "
+        "%(ringcap)d beats at one every %(pe3)s seconds is %(ringh).1f hours. That was longer "
+        "than any watch this project had run, so the ring had never bitten. The next watch is "
+        "%(p4)d minutes at one read every %(pe4)s seconds, which is about %(plan4)d reads. "
+        "Left alone, that campaign would have written %(plan4)d beats, kept the last "
+        "%(ringcap)d of them, and overwritten the other %(lost4)d - %(lost4h).1f hours of the "
+        "twenty-four - <em>without saying so anywhere in the record</em>. The file would have "
+        "looked like a complete answer and been three and a half hours of one. For a campaign "
+        "whose entire finding is an absence, the beats are the evidence: the second quiet "
+        "campaign failed by never writing its evidence, and this one was one ring size away "
+        "from writing it and then throwing it away. The same failure in a different costume, "
+        "which is the reason it is worth publishing.</p>"
+
+        "<p>Two changes, because the ring is still what gives the recent window its "
+        "thirty-second resolution. The ring stays, and now carries its own account: "
+        "<code>beats_total</code>, <code>beats_held</code>, <code>beats_dropped</code>, so a "
+        "reader can tell a watch that dropped nothing from one that dropped %(lost4)d. And "
+        "each campaign keeps one row per wall-clock hour for the whole watch - reads in that "
+        "hour, the count at its first and last read, the minimum and maximum, and how many "
+        "times the number moved - so a day becomes twenty-four rows and a quiet day becomes a "
+        "column of zeros in a table that fits on one screen. A failed read is no longer "
+        "written as a beat either: the older code beat after errors as well as after good "
+        "reads, which put <code>count: null</code> into the beat series of any window that "
+        "hit a 502 and made it look like a counter answering null. A ninety-second self-test "
+        "caught one more of the same family - the first read of a campaign was counted as a "
+        "movement, because last_count was empty and everything differs from empty, which "
+        "would have printed changes 1 in the first hour bin of every campaign that ever sat "
+        "still. Fixed, and the self-test is the reason it was caught before publication "
+        "rather than after.</p>"
+
+        "<p>The launcher had the same shape of flaw and the same kind of fix. It was "
+        "hard-coded to launch one campaign - the third one - so a watch meant to span runs "
+        "could only be restarted by hand-editing it, which is precisely the maintenance debt "
+        "that kills a long-running instrument. It now takes the campaign on the command line, "
+        "checks the process table before it starts anything, and <strong>refuses to launch a "
+        "second copy of a label that is already running</strong>. That last one is not "
+        "politeness: two watchers on one label interleave their writes into the same key, and "
+        "the record they leave contradicts itself in a way no later reading can untangle.</p>"
+
+        "<p><strong>%(l4)s</strong> is that watch. %(p4)d minutes, one read every %(pe4)s "
+        "seconds, no downloads of its own, the beacon read every five minutes - the first "
+        "instrument in this project built to accumulate across runs rather than be re-derived "
+        "by each one. %(p4close)s It will still be running when the second "
+        "declared-user-agent pass happens, which is the only reason it is worth twenty-four "
+        "hours rather than three: the interesting question is whether the readership moves "
+        "across the policy date, and a watch that ends before the date cannot answer it.</p>"
         % {"s2": span2 if span2 is not None else "n/a",
            "p2": int(planned2 or 0), "polls2": _i(q2.get("polls"), 0),
            "rows2": len(rows2), "dl2": len(q2.get("downloads") or []),
@@ -176,13 +270,24 @@ def _quiet_passages(sweep, esc, settle_s=None):
            "st3": esc(str(q3.get("started_at") or "n/a")),
            "p3": int(planned3 or 0), "pe3": q3.get("poll_every"),
            "s3": span3 if span3 is not None else "n/a",
+           "hours3": (span3 / 3600.0) if isinstance(span3, (int, float)) else 0.0,
            "polls3": _i(q3.get("polls"), 0), "rows3": len(rows3),
-           "ch3": max(0, len(rows3) - 1), "dl3": len(q3.get("downloads") or []),
-           "nb3": len(beats3),
-           "breq": bsc.get("requests", "no reading yet"),
-           "bnot": bsc.get("not_ours", "no reading yet") if bsc else "no reading yet"}
+           "dl3": len(q3.get("downloads") or []),
+           "bt3": btot3, "ring3": _i(q3.get("beats_held"), len(beats3)),
+           "drop3": _i(q3.get("beats_dropped"), 0),
+           "seen3": ", ".join(str(x) for x in seen3) or "n/a",
+           "bt3ch": btot3ch, "berr3": berr3,
+           "breq3": ", ".join(str(x[0]) for x in bflat3) or "no reading",
+           "bnot3": ", ".join(str(x[1]) for x in bflat3) or "no reading",
+           "ringcap": 400, "ringh": 400 * float(q3.get("poll_every") or 30.0) / 3600.0,
+           "l4": esc(str(q4.get("campaign") or "campaign4-long")),
+           "p4": int(planned4 or 1440), "pe4": pe4,
+           "plan4": plan_reads4,
+           "lost4": max(0, plan_reads4 - 400),
+           "lost4h": max(0, plan_reads4 - 400) * float(pe4) / 3600.0,
+           "polls4": polls4, "beats4": beats4,
+           "mins3": mins3, "p4close": p4close}
     )
-
 
 def agent_lane_block(esc, path=None):
     """The Agent lane gets a default on 2026-09-15, and this is the reading from before it."""
