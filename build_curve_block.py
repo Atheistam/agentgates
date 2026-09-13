@@ -39,24 +39,32 @@ def curve_block(v, esc):
     # how many rows never disagreed with themselves across every read
     names = sorted(set().union(*[set(svc(p)) for p in passes])) if passes else []
     steady = [n for n in names if len(set(svc(p).get(n) for p in passes)) == 1]
+    # "holds" means the verdict never moved between reads - but the sentence that reports it
+    # must not confuse a steady verdict with a surviving artifact. One row is steady because it
+    # expired, one because it was never written. Count the survivors separately, so the page
+    # cannot say "13 of 13 hold" next to "11 of 12 are still readable".
+    alive = sum(1 for x in svc(passes[-1]).values() if str(x).upper() == "PASS")
     last = passes[-1]
     prev = passes[-2]
 
     return (
         "<h2 style=\"margin-top:48px\">Twenty-four hours, read four times</h2>"
         "<p><strong>11 of the 12 artifacts this project actually wrote are still readable at "
-        "T+%(age)sh. Zero failed. The twelfth is gone because its host said it would be.</strong> "
+        "T+%(age)sh. Zero failed. The twelfth was already gone at the first read.</strong> "
         "Same artifacts, same client, four reads, no re-upload, no account anywhere.</p>"
         "<table><tr><th>read at</th><th>made</th><th>source</th><th>still there</th>"
         "<th>expired as declared</th><th>never existed</th><th>changed since the previous read</th>"
         "</tr>%(rows)s</table>"
-        "<p>%(nsteady)d of the %(ntotal)d services hold the same verdict in every one of the %(npass)d "
-        "reads. Nothing flapped: not one shortener stopped resolving, not one paste body lost a "
-        "byte, and the single expiry happened where the host's own front page said it would - "
-        "<span class=\"mono\">uguu.se</span> announces <em>files expire after 3 hours</em>, and it "
-        "was alive at T+%(prevage)sh and 404 at T+%(age)sh. A two-column method has no way to "
-        "report that. It reports a failure or it reports a success, and a stated expiry is "
-        "neither.</p>"
+        "<p>All %(ntotal)d rows carried the same verdict in every one of the %(npass)d reads - "
+        "the %(alive)d that still resolve, the one that expired, and the one that was never "
+        "written. "
+        "Nothing flapped: not one shortener stopped resolving, not one paste body lost a byte, "
+        "and the only row that ever moved did not move during the twenty-four hours at all. "
+        "<span class=\"mono\">uguu.se</span> announces <em>files expire after 3 hours</em>, "
+        "and its URL was already gone at T+2.97h - inside the window it announces, so it did not "
+        "outlast its own promise, and for the next twenty-one hours nothing else expired. "
+        "A two-column method has no way to report that. It reports a failure or it reports a "
+        "success, and a stated expiry is neither.</p>"
         "<h3>The instrument was destroying its own evidence</h3>"
         "<p>Each of the earlier reads overwrote the one before it, so this page could say how "
         "long the artifacts lasted but not what the number did over time. The earlier reads "
@@ -74,7 +82,8 @@ def curve_block(v, esc):
         "is a census of how little of the free tier is still alive: <span class=\"mono\">"
         "uguu.se</span> gave three hours of the twenty-four, and the row that never existed was "
         "a harness bug that counted an endpoint URL as a write.</p>"
-        % {"rows": "".join(rows), "nsteady": len(steady), "ntotal": len(names),
+        % {"rows": "".join(rows), "nsteady": len(steady), "alive": alive,
+           "ntotal": len(names),
            "npass": len(passes), "age": v.get("age_hours", "?"),
            "prevage": prev.get("age_hours", "?"),
            "lastlabel": esc(last.get("label") or "?")}

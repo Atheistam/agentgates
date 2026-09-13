@@ -37,7 +37,13 @@ def load(p):
 
 
 def esc(s):
-    return html.escape(str(s if s is not None else ""), quote=True)
+    txt = str(s if s is not None else "")
+    # Recorded read-backs carry the bytes that actually came off the wire, and termbin answers
+    # with a NUL-terminated line, so the source column of the /write/ table had a real \x00 in
+    # it. A control byte is evidence in the data file and invalid in an HTML document, so it is
+    # spelled out here instead of being deleted, and the file stays valid text.
+    txt = "".join(ch if ch >= " " or ch == "\n" else "\\x%02x" % ord(ch) for ch in txt)
+    return html.escape(txt, quote=True)
 
 
 def is_dead(rec):
