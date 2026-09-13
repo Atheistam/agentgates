@@ -148,5 +148,37 @@
     ],
     "downloads": [],
     "polls": 10
+  },
+  "selftest-beats": {
+    "campaign": "selftest-beats",
+    "started_at": "2026-09-13T14:15:20Z",
+    "ended_at": "2026-09-13T14:15:35Z",
+    "minutes": 0.22,
+    "poll_every": 5.0,
+    "download_every": 0.0,
+    "dry_run": false,
+    "rows": [
+      {
+        "at": "2026-09-13T14:15:20Z",
+        "count": 12,
+        "delta": null
+      }
+    ],
+    "downloads": [],
+    "polls": 3,
+    "beats": [
+      {
+        "at": "2026-09-13T14:15:20Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T14:15:25Z",
+        "count": 12
+      },
+      {
+        "at": "2026-09-13T14:15:31Z",
+        "count": 12
+      }
+    ]
   }
 }

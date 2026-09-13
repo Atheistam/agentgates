@@ -279,6 +279,12 @@ def main():
         elif not campaign["rows"]:
             campaign["rows"].append({"at": utc(), "count": count, "delta": None,
                                      "gap_s": None})
+        # Every successful read leaves a beat. The row list only grows when the number
+        # moves, so a quiet campaign's rows say nothing about how long it watched. Ten
+        # beats of "count 12, unchanged" at known times is the evidence, and in twenty-four
+        # hours it is the only evidence there will be that the counter never moved.
+        campaign.setdefault("beats", []).append({"at": utc(), "count": count})
+        campaign["beats"] = campaign["beats"][-400:]
         # Checkpoint even when nothing happens. The change-triggered write above is enough
         # for a campaign that finds movement, and useless for a campaign whose finding is
         # that there was none: a quiet baseline that is killed before its deadline would

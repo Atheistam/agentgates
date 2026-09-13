@@ -92,7 +92,8 @@ def campaign_block(sweep, rep, esc):
         "since %(qstart)s: %(qpolls)d poll(s), %(qchanges)d change(s), %(qdl)d download(s) "
         "of ours. The first campaign only wrote when the number moved, so its quiet "
         "stretches left no record - a campaign whose finding is an absence has to write its "
-        "evidence while it is still nothing. The second one checkpoints on a timer.</p>"
+        "evidence while it is still nothing. The second one writes what it has seen every "
+        "tenth poll.</p>"
         % {"base": base_c, "end": end_c, "inc": increase, "own": own, "surp": surplus,
            "lat": ", ".join(str(x) for x in lat) or "none",
            "maxlat": lat[0] if lat else 0,
