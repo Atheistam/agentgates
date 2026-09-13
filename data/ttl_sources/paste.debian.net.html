@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Debian Pastezone</title>
+  <link rel="stylesheet" type="text/css" href="/pastebin.css" />
+</head>
+
+<body>
+
+	<center><a href="/"><img src="/images/debian.png" alt="" border="0" hspace="0" vspace="0" height="61" /></a></center><br />
+<div id="titlebar">Debian Pastezone</div>
+
+
+
+
+<div id="content">
+
+
+
+
+<h1>New paste:</h1>
+
+<noscript>
+    <style>
+        .news-section { order: 99 !important; margin-top: 20px; }
+        .news-block.collapsed .news-content { display: block !important; } /* force expand */
+        .toggle-icon { display: none; }
+    </style>
+</noscript>
+
+<div class="paste-layout-container">
+    <div class="news-section">
+        <div id="news-block" class="news-block collapsed">
+    <div class="news-header" onclick="toggleNews()">
+        <h3>Latest News</h3>
+        <span class="toggle-icon">▼</span>
+    </div>
+    <div class="news-content">
+        <p><strong>2026-01-05:</strong> Comprehensive Service Overhaul. We have modernized the backend using <strong>Mojolicious</strong> and integrated <strong>Debian/Salsa authentication</strong>. Authenticated users now enjoy relaxed rate limits and spam validation.</p>
+        <p>To enhance privacy, <strong>public indexing is disabled</strong> (all pastes are hidden by default) and the legacy <strong>XML-RPC API</strong> has been retired. We have also deployed <strong>iocaine</strong> to protect against AI scrapers. Please note that paste retention is now strictly capped at <strong>90 days</strong>. Finally, our development has moved to <strong><a href="https://salsa.debian.org/formorer/paste-pl">Salsa</a></strong>.</p>
+    </div>
+</div>
+
+<script>
+function toggleNews() {
+    var block = document.getElementById('news-block');
+    block.classList.toggle('collapsed');
+}
+</script>
+
+    </div>
+
+    <div class="form-section">
+        
+
+<b></b>
+
+<form name="editor" id="editor" method="post" action="./" enctype="multipart/form-data">
+<label for="poster" form="editor"><b>Name</b></label><br />
+<input type="text" maxlength="24" size="24" name="poster" id="poster" value="" />
+<br />
+<br /> <br />
+<label for="lang"><b>Language</b></label>
+<select name="lang" id="lang">
+	<option value="-1">text</option>
+			<option value="abap" >abap</option>
+			<option value="abnf" >abnf</option>
+			<option value="actionscript" >actionscript</option>
+			<option value="actionscript3" >actionscript3</option>
+			<option value="ada" >ada</option>
+			<option value="adl" >adl</option>
+			<option value="agda" >agda</option>
+			<option value="aheui" >aheui</option>
+			<option value="alloy" >alloy</option>
+			<option value="ambienttalk" >ambienttalk</option>
+			<option value="amdgpu" >amdgpu</option>
+			<option value="ampl" >ampl</option>
+			<option value="androidbp" >androidbp</option>
+			<option value="ansys" >ansys</option>
+			<option value="antlr" >antlr</option>
+			<option value="antlr-actionscript" >antlr-actionscript</option>
+			<option value="antlr-cpp" >antlr-cpp</option>
+			<option value="antlr-csharp" >antlr-csharp</option>
+			<option value="antlr-java" >antlr-java</option>
+			<option value="antlr-objc" >antlr-objc</option>
+			<option value="antlr-perl" >antlr-perl</option>
+			<option value="antlr-python" >antlr-python</option>
+			<option value="antlr-ruby" >antlr-ruby</option>
+			<option value="apacheconf" >apacheconf</option>
+			<option value="apl" >apl</option>
+			<option value="applescript" >applescript</option>
+			<option value="arduino" >arduino</option>
+			<option value="arrow" >arrow</option>
+			<option value="arturo" >arturo</option>
+			<option value="asc" >asc</option>
+			<option value="asn1" >asn1</option>
+			<option value="aspectj" >aspectj</option>
+			<option value="aspx-cs" >aspx-cs</option>
+			<option value="aspx-vb" >aspx-vb</option>
+			<option value="asymptote" >asymptote</option>
+			<option value="augeas" >augeas</option>
+			<option value="autohotkey" >autohotkey</option>
+			<option value="autoit" >autoit</option>
+			<option value="awk" >awk</option>
+			<option value="bare" >bare</option>
+			<option value="basemake" >basemake</option>
+			<option value="bash" >bash</option>
+			<option value="batch" >batch</option>
+			<option value="bbcbasic" >bbcbasic</option>
+			<option value="bbcode" >bbcode</option>
+			<option value="bc" >bc</option>
+			<option value="bdd" >bdd</option>
+			<option value="befunge" >befunge</option>
+			<option value="berry" >berry</option>
+			<option value="bibtex" >bibtex</option>
+			<option value="blitzbasic" >blitzbasic</option>
+			<option value="blitzmax" >blitzmax</option>
+			<option value="blueprint" >blueprint</option>
+			<option value="bnf" >bnf</option>
+			<option value="boa" >boa</option>
+			<option value="boo" >boo</option>
+			<option value="boogie" >boogie</option>
+			<option value="bqn" >bqn</option>
+			<option value="brainfuck" >brainfuck</option>
+			<option value="bst" >bst</option>
+			<option value="bugs" >bugs</option>
+			<option value="c" >c</option>
+			<option value="ca65" >ca65</option>
+			<option value="cadl" >cadl</option>
+			<option value="camkes" >camkes</option>
+			<option value="capdl" >capdl</option>
+			<option value="capnp" >capnp</option>
+			<option value="carbon" >carbon</option>
+			<option value="cbmbas" >cbmbas</option>
+			<option value="cddl" >cddl</option>
+			<option value="ceylon" >ceylon</option>
+			<option value="cfc" >cfc</option>
+			<option value="cfengine3" >cfengine3</option>
+			<option value="cfm" >cfm</option>
+			<option value="cfs" >cfs</option>
+			<option value="chaiscript" >chaiscript</option>
+			<option value="chapel" >chapel</option>
+			<option value="charmci" >charmci</option>
+			<option value="cheetah" >cheetah</option>
+			<option value="cirru" >cirru</option>
+			<option value="clay" >clay</option>
+			<option value="clean" >clean</option>
+			<option value="clojure" >clojure</option>
+			<option value="clojurescript" >clojurescript</option>
+			<option value="cmake" >cmake</option>
+			<option value="c-objdump" >c-objdump</option>
+			<option value="cobol" >cobol</option>
+			<option value="cobolfree" >cobolfree</option>
+			<option value="codeql" >codeql</option>
+			<option value="coffeescript" >coffeescript</option>
+			<option value="comal" >comal</option>
+			<option value="common-lisp" >common-lisp</option>
+			<option value="componentpascal" >componentpascal</option>
+			<option value="console" >console</option>
+			<option value="coq" >coq</option>
+			<option value="cplint" >cplint</option>
+			<option value="cpp" >cpp</option>
+			<option value="cpp-objdump" >cpp-objdump</option>
+			<option value="cpsa" >cpsa</option>
+			<option value="cr" >cr</option>
+			<option value="crmsh" >crmsh</option>
+			<option value="croc" >croc</option>
+			<option value="cryptol" >cryptol</option>
+			<option value="csharp" >csharp</option>
+			<option value="csound" >csound</option>
+			<option value="csound-document" >csound-document</option>
+			<option value="csound-score" >csound-score</option>
+			<option value="css" >css</option>
+			<option value="css+django" >css+django</option>
+			<option value="css+genshitext" >css+genshitext</option>
+			<option value="css+lasso" >css+lasso</option>
+			<option value="css+mako" >css+mako</option>
+			<option value="css+mozpreproc" >css+mozpreproc</option>
+			<option value="css+myghty" >css+myghty</option>
+			<option value="css+php" >css+php</option>
+			<option value="css+ruby" >css+ruby</option>
+			<option value="css+smarty" >css+smarty</option>
+			<option value="css+ul4" >css+ul4</option>
+			<option value="cuda" >cuda</option>
+			<option value="cypher" >cypher</option>
+			<option value="cython" >cython</option>
+			<option value="d" >d</option>
+			<option value="dart" >dart</option>
+			<option value="dasm16" >dasm16</option>
+			<option value="dax" >dax</option>
+			<option value="debcontrol" >debcontrol</option>
+			<option value="debian.sources" >debian.sources</option>
+			<option value="debsources" >debsources</option>
+			<option value="delphi" >delphi</option>
+			<option value="desktop" >desktop</option>
+			<option value="devicetree" >devicetree</option>
+			<option value="dg" >dg</option>
+			<option value="diff" >diff</option>
+			<option value="django" >django</option>
+			<option value="d-objdump" >d-objdump</option>
+			<option value="docker" >docker</option>
+			<option value="doscon" >doscon</option>
+			<option value="dpatch" >dpatch</option>
+			<option value="dtd" >dtd</option>
+			<option value="duel" >duel</option>
+			<option value="dylan" >dylan</option>
+			<option value="dylan-console" >dylan-console</option>
+			<option value="dylan-lid" >dylan-lid</option>
+			<option value="earl-grey" >earl-grey</option>
+			<option value="easytrieve" >easytrieve</option>
+			<option value="ebnf" >ebnf</option>
+			<option value="ec" >ec</option>
+			<option value="ecl" >ecl</option>
+			<option value="eiffel" >eiffel</option>
+			<option value="elixir" >elixir</option>
+			<option value="elm" >elm</option>
+			<option value="elpi" >elpi</option>
+			<option value="emacs-lisp" >emacs-lisp</option>
+			<option value="email" >email</option>
+			<option value="erb" >erb</option>
+			<option value="erl" >erl</option>
+			<option value="erlang" >erlang</option>
+			<option value="evoque" >evoque</option>
+			<option value="execline" >execline</option>
+			<option value="extempore" >extempore</option>
+			<option value="ezhil" >ezhil</option>
+			<option value="factor" >factor</option>
+			<option value="fan" >fan</option>
+			<option value="fancy" >fancy</option>
+			<option value="felix" >felix</option>
+			<option value="fennel" >fennel</option>
+			<option value="fift" >fift</option>
+			<option value="fish" >fish</option>
+			<option value="flatline" >flatline</option>
+			<option value="floscript" >floscript</option>
+			<option value="forth" >forth</option>
+			<option value="fortran" >fortran</option>
+			<option value="fortranfixed" >fortranfixed</option>
+			<option value="foxpro" >foxpro</option>
+			<option value="freefem" >freefem</option>
+			<option value="fsharp" >fsharp</option>
+			<option value="fstar" >fstar</option>
+			<option value="func" >func</option>
+			<option value="futhark" >futhark</option>
+			<option value="gap" >gap</option>
+			<option value="gap-console" >gap-console</option>
+			<option value="gas" >gas</option>
+			<option value="gcode" >gcode</option>
+			<option value="gdscript" >gdscript</option>
+			<option value="genshi" >genshi</option>
+			<option value="genshitext" >genshitext</option>
+			<option value="gherkin" >gherkin</option>
+			<option value="gleam" >gleam</option>
+			<option value="glsl" >glsl</option>
+			<option value="gnuplot" >gnuplot</option>
+			<option value="go" >go</option>
+			<option value="golo" >golo</option>
+			<option value="gooddata-cl" >gooddata-cl</option>
+			<option value="googlesql" >googlesql</option>
+			<option value="gosu" >gosu</option>
+			<option value="graphql" >graphql</option>
+			<option value="graphviz" >graphviz</option>
+			<option value="groff" >groff</option>
+			<option value="groovy" >groovy</option>
+			<option value="gsql" >gsql</option>
+			<option value="gst" >gst</option>
+			<option value="haml" >haml</option>
+			<option value="handlebars" >handlebars</option>
+			<option value="hare" >hare</option>
+			<option value="haskell" >haskell</option>
+			<option value="haxe" >haxe</option>
+			<option value="haxeml" >haxeml</option>
+			<option value="hexdump" >hexdump</option>
+			<option value="hlsl" >hlsl</option>
+			<option value="hsail" >hsail</option>
+			<option value="hspec" >hspec</option>
+			<option value="html" >html</option>
+			<option value="html+cheetah" >html+cheetah</option>
+			<option value="html+django" >html+django</option>
+			<option value="html+evoque" >html+evoque</option>
+			<option value="html+genshi" >html+genshi</option>
+			<option value="html+handlebars" >html+handlebars</option>
+			<option value="html+lasso" >html+lasso</option>
+			<option value="html+mako" >html+mako</option>
+			<option value="html+myghty" >html+myghty</option>
+			<option value="html+ng2" >html+ng2</option>
+			<option value="html+php" >html+php</option>
+			<option value="html+smarty" >html+smarty</option>
+			<option value="html+twig" >html+twig</option>
+			<option value="html+ul4" >html+ul4</option>
+			<option value="html+velocity" >html+velocity</option>
+			<option value="http" >http</option>
+			<option value="hybris" >hybris</option>
+			<option value="hylang" >hylang</option>
+			<option value="i6t" >i6t</option>
+			<option value="icon" >icon</option>
+			<option value="idl" >idl</option>
+			<option value="idris" >idris</option>
+			<option value="iex" >iex</option>
+			<option value="igor" >igor</option>
+			<option value="inform6" >inform6</option>
+			<option value="inform7" >inform7</option>
+			<option value="ini" >ini</option>
+			<option value="io" >io</option>
+			<option value="ioke" >ioke</option>
+			<option value="irc" >irc</option>
+			<option value="isabelle" >isabelle</option>
+			<option value="j" >j</option>
+			<option value="jags" >jags</option>
+			<option value="janet" >janet</option>
+			<option value="jasmin" >jasmin</option>
+			<option value="java" >java</option>
+			<option value="javascript" >javascript</option>
+			<option value="javascript+cheetah" >javascript+cheetah</option>
+			<option value="javascript+django" >javascript+django</option>
+			<option value="javascript+lasso" >javascript+lasso</option>
+			<option value="javascript+mako" >javascript+mako</option>
+			<option value="javascript+mozpreproc" >javascript+mozpreproc</option>
+			<option value="javascript+myghty" >javascript+myghty</option>
+			<option value="javascript+php" >javascript+php</option>
+			<option value="javascript+ruby" >javascript+ruby</option>
+			<option value="javascript+smarty" >javascript+smarty</option>
+			<option value="jcl" >jcl</option>
+			<option value="jlcon" >jlcon</option>
+			<option value="jmespath" >jmespath</option>
+			<option value="js+genshitext" >js+genshitext</option>
+			<option value="jsgf" >jsgf</option>
+			<option value="jslt" >jslt</option>
+			<option value="json" >json</option>
+			<option value="json5" >json5</option>
+			<option value="jsonld" >jsonld</option>
+			<option value="jsonnet" >jsonnet</option>
+			<option value="jsp" >jsp</option>
+			<option value="js+ul4" >js+ul4</option>
+			<option value="jsx" >jsx</option>
+			<option value="julia" >julia</option>
+			<option value="juttle" >juttle</option>
+			<option value="k" >k</option>
+			<option value="kal" >kal</option>
+			<option value="kconfig" >kconfig</option>
+			<option value="kmsg" >kmsg</option>
+			<option value="koka" >koka</option>
+			<option value="kotlin" >kotlin</option>
+			<option value="kql" >kql</option>
+			<option value="kuin" >kuin</option>
+			<option value="lasso" >lasso</option>
+			<option value="ldapconf" >ldapconf</option>
+			<option value="ldif" >ldif</option>
+			<option value="lean" >lean</option>
+			<option value="lean4" >lean4</option>
+			<option value="less" >less</option>
+			<option value="lighttpd" >lighttpd</option>
+			<option value="lilypond" >lilypond</option>
+			<option value="limbo" >limbo</option>
+			<option value="liquid" >liquid</option>
+			<option value="literate-agda" >literate-agda</option>
+			<option value="literate-cryptol" >literate-cryptol</option>
+			<option value="literate-haskell" >literate-haskell</option>
+			<option value="literate-idris" >literate-idris</option>
+			<option value="livescript" >livescript</option>
+			<option value="llvm" >llvm</option>
+			<option value="llvm-mir" >llvm-mir</option>
+			<option value="llvm-mir-body" >llvm-mir-body</option>
+			<option value="logos" >logos</option>
+			<option value="logtalk" >logtalk</option>
+			<option value="lsl" >lsl</option>
+			<option value="lua" >lua</option>
+			<option value="luau" >luau</option>
+			<option value="macaulay2" >macaulay2</option>
+			<option value="make" >make</option>
+			<option value="mako" >mako</option>
+			<option value="maple" >maple</option>
+			<option value="maql" >maql</option>
+			<option value="markdown" >markdown</option>
+			<option value="mask" >mask</option>
+			<option value="mason" >mason</option>
+			<option value="mathematica" >mathematica</option>
+			<option value="matlab" >matlab</option>
+			<option value="matlabsession" >matlabsession</option>
+			<option value="maxima" >maxima</option>
+			<option value="mcfunction" >mcfunction</option>
+			<option value="mcschema" >mcschema</option>
+			<option value="meson" >meson</option>
+			<option value="mime" >mime</option>
+			<option value="minid" >minid</option>
+			<option value="miniscript" >miniscript</option>
+			<option value="mips" >mips</option>
+			<option value="modelica" >modelica</option>
+			<option value="modula2" >modula2</option>
+			<option value="mojo" >mojo</option>
+			<option value="monkey" >monkey</option>
+			<option value="monte" >monte</option>
+			<option value="moocode" >moocode</option>
+			<option value="moonscript" >moonscript</option>
+			<option value="mosel" >mosel</option>
+			<option value="mozhashpreproc" >mozhashpreproc</option>
+			<option value="mozpercentpreproc" >mozpercentpreproc</option>
+			<option value="mql" >mql</option>
+			<option value="mscgen" >mscgen</option>
+			<option value="mupad" >mupad</option>
+			<option value="mxml" >mxml</option>
+			<option value="myghty" >myghty</option>
+			<option value="mysql" >mysql</option>
+			<option value="nasm" >nasm</option>
+			<option value="ncl" >ncl</option>
+			<option value="nemerle" >nemerle</option>
+			<option value="nesc" >nesc</option>
+			<option value="nestedtext" >nestedtext</option>
+			<option value="newlisp" >newlisp</option>
+			<option value="newspeak" >newspeak</option>
+			<option value="ng2" >ng2</option>
+			<option value="nginx" >nginx</option>
+			<option value="nimrod" >nimrod</option>
+			<option value="nit" >nit</option>
+			<option value="nixos" >nixos</option>
+			<option value="nodejsrepl" >nodejsrepl</option>
+			<option value="notmuch" >notmuch</option>
+			<option value="nsis" >nsis</option>
+			<option value="numba_ir" >numba_ir</option>
+			<option value="numpy" >numpy</option>
+			<option value="nusmv" >nusmv</option>
+			<option value="objdump" >objdump</option>
+			<option value="objdump-nasm" >objdump-nasm</option>
+			<option value="objective-c" >objective-c</option>
+			<option value="objective-c++" >objective-c++</option>
+			<option value="objective-j" >objective-j</option>
+			<option value="ocaml" >ocaml</option>
+			<option value="octave" >octave</option>
+			<option value="odin" >odin</option>
+			<option value="omg-idl" >omg-idl</option>
+			<option value="ooc" >ooc</option>
+			<option value="opa" >opa</option>
+			<option value="openedge" >openedge</option>
+			<option value="openscad" >openscad</option>
+			<option value="org" >org</option>
+			<option value="output" >output</option>
+			<option value="pacmanconf" >pacmanconf</option>
+			<option value="pan" >pan</option>
+			<option value="parasail" >parasail</option>
+			<option value="pawn" >pawn</option>
+			<option value="pddl" >pddl</option>
+			<option value="peg" >peg</option>
+			<option value="perl" >perl</option>
+			<option value="perl6" >perl6</option>
+			<option value="phix" >phix</option>
+			<option value="php" >php</option>
+			<option value="pig" >pig</option>
+			<option value="pike" >pike</option>
+			<option value="pkgconfig" >pkgconfig</option>
+			<option value="plpgsql" >plpgsql</option>
+			<option value="pointless" >pointless</option>
+			<option value="pony" >pony</option>
+			<option value="portugol" >portugol</option>
+			<option value="postgres-explain" >postgres-explain</option>
+			<option value="postgresql" >postgresql</option>
+			<option value="postscript" >postscript</option>
+			<option value="pot" >pot</option>
+			<option value="pov" >pov</option>
+			<option value="powershell" >powershell</option>
+			<option value="praat" >praat</option>
+			<option value="procfile" >procfile</option>
+			<option value="prolog" >prolog</option>
+			<option value="promela" >promela</option>
+			<option value="promql" >promql</option>
+			<option value="properties" >properties</option>
+			<option value="protobuf" >protobuf</option>
+			<option value="prql" >prql</option>
+			<option value="psql" >psql</option>
+			<option value="psysh" >psysh</option>
+			<option value="ptx" >ptx</option>
+			<option value="pug" >pug</option>
+			<option value="puppet" >puppet</option>
+			<option value="pwsh-session" >pwsh-session</option>
+			<option value="py2tb" >py2tb</option>
+			<option value="pycon" >pycon</option>
+			<option value="pypylog" >pypylog</option>
+			<option value="pytb" >pytb</option>
+			<option value="python" >python</option>
+			<option value="python2" >python2</option>
+			<option value="py+ul4" >py+ul4</option>
+			<option value="q" >q</option>
+			<option value="qbasic" >qbasic</option>
+			<option value="qlik" >qlik</option>
+			<option value="qml" >qml</option>
+			<option value="qvto" >qvto</option>
+			<option value="racket" >racket</option>
+			<option value="ragel" >ragel</option>
+			<option value="ragel-c" >ragel-c</option>
+			<option value="ragel-cpp" >ragel-cpp</option>
+			<option value="ragel-d" >ragel-d</option>
+			<option value="ragel-em" >ragel-em</option>
+			<option value="ragel-java" >ragel-java</option>
+			<option value="ragel-objc" >ragel-objc</option>
+			<option value="ragel-ruby" >ragel-ruby</option>
+			<option value="rbcon" >rbcon</option>
+			<option value="rconsole" >rconsole</option>
+			<option value="rd" >rd</option>
+			<option value="reasonml" >reasonml</option>
+			<option value="rebol" >rebol</option>
+			<option value="red" >red</option>
+			<option value="redcode" >redcode</option>
+			<option value="registry" >registry</option>
+			<option value="rego" >rego</option>
+			<option value="resourcebundle" >resourcebundle</option>
+			<option value="restructuredtext" >restructuredtext</option>
+			<option value="rexx" >rexx</option>
+			<option value="rhtml" >rhtml</option>
+			<option value="ride" >ride</option>
+			<option value="rita" >rita</option>
+			<option value="rng-compact" >rng-compact</option>
+			<option value="roboconf-graph" >roboconf-graph</option>
+			<option value="roboconf-instances" >roboconf-instances</option>
+			<option value="robotframework" >robotframework</option>
+			<option value="rql" >rql</option>
+			<option value="rsl" >rsl</option>
+			<option value="ruby" >ruby</option>
+			<option value="rust" >rust</option>
+			<option value="sarl" >sarl</option>
+			<option value="sas" >sas</option>
+			<option value="sass" >sass</option>
+			<option value="savi" >savi</option>
+			<option value="scala" >scala</option>
+			<option value="scaml" >scaml</option>
+			<option value="scdoc" >scdoc</option>
+			<option value="scheme" >scheme</option>
+			<option value="scilab" >scilab</option>
+			<option value="scss" >scss</option>
+			<option value="sed" >sed</option>
+			<option value="sgf" >sgf</option>
+			<option value="shen" >shen</option>
+			<option value="shexc" >shexc</option>
+			<option value="sieve" >sieve</option>
+			<option value="silver" >silver</option>
+			<option value="singularity" >singularity</option>
+			<option value="slash" >slash</option>
+			<option value="slim" >slim</option>
+			<option value="slurm" >slurm</option>
+			<option value="smali" >smali</option>
+			<option value="smalltalk" >smalltalk</option>
+			<option value="smarty" >smarty</option>
+			<option value="smithy" >smithy</option>
+			<option value="sml" >sml</option>
+			<option value="snbt" >snbt</option>
+			<option value="snobol" >snobol</option>
+			<option value="snowball" >snowball</option>
+			<option value="solidity" >solidity</option>
+			<option value="sophia" >sophia</option>
+			<option value="sp" >sp</option>
+			<option value="sparql" >sparql</option>
+			<option value="spec" >spec</option>
+			<option value="spice" >spice</option>
+			<option value="splus" >splus</option>
+			<option value="sql" >sql</option>
+			<option value="sqlite3" >sqlite3</option>
+			<option value="sql+jinja" >sql+jinja</option>
+			<option value="squidconf" >squidconf</option>
+			<option value="srcinfo" >srcinfo</option>
+			<option value="ssp" >ssp</option>
+			<option value="stan" >stan</option>
+			<option value="stata" >stata</option>
+			<option value="supercollider" >supercollider</option>
+			<option value="swift" >swift</option>
+			<option value="swig" >swig</option>
+			<option value="systemd" >systemd</option>
+			<option value="systemverilog" >systemverilog</option>
+			<option value="tablegen" >tablegen</option>
+			<option value="tact" >tact</option>
+			<option value="tads3" >tads3</option>
+			<option value="tal" >tal</option>
+			<option value="tap" >tap</option>
+			<option value="tasm" >tasm</option>
+			<option value="tcl" >tcl</option>
+			<option value="tcsh" >tcsh</option>
+			<option value="tcshcon" >tcshcon</option>
+			<option value="tea" >tea</option>
+			<option value="teal" >teal</option>
+			<option value="teratermmacro" >teratermmacro</option>
+			<option value="termcap" >termcap</option>
+			<option value="terminfo" >terminfo</option>
+			<option value="terraform" >terraform</option>
+			<option value="tex" >tex</option>
+			<option value="text" >text</option>
+			<option value="thrift" >thrift</option>
+			<option value="ti" >ti</option>
+			<option value="tid" >tid</option>
+			<option value="tlb" >tlb</option>
+			<option value="tls" >tls</option>
+			<option value="tnt" >tnt</option>
+			<option value="todotxt" >todotxt</option>
+			<option value="toml" >toml</option>
+			<option value="trac-wiki" >trac-wiki</option>
+			<option value="trafficscript" >trafficscript</option>
+			<option value="treetop" >treetop</option>
+			<option value="tsql" >tsql</option>
+			<option value="tsx" >tsx</option>
+			<option value="turtle" >turtle</option>
+			<option value="twig" >twig</option>
+			<option value="typescript" >typescript</option>
+			<option value="typoscript" >typoscript</option>
+			<option value="typoscriptcssdata" >typoscriptcssdata</option>
+			<option value="typoscripthtmldata" >typoscripthtmldata</option>
+			<option value="typst" >typst</option>
+			<option value="ucode" >ucode</option>
+			<option value="ul4" >ul4</option>
+			<option value="unicon" >unicon</option>
+			<option value="unixconfig" >unixconfig</option>
+			<option value="urbiscript" >urbiscript</option>
+			<option value="urlencoded" >urlencoded</option>
+			<option value="usd" >usd</option>
+			<option value="vala" >vala</option>
+			<option value="vb.net" >vb.net</option>
+			<option value="vbscript" >vbscript</option>
+			<option value="vcl" >vcl</option>
+			<option value="vclsnippets" >vclsnippets</option>
+			<option value="vctreestatus" >vctreestatus</option>
+			<option value="velocity" >velocity</option>
+			<option value="verifpal" >verifpal</option>
+			<option value="verilog" >verilog</option>
+			<option value="vgl" >vgl</option>
+			<option value="vhdl" >vhdl</option>
+			<option value="vim" >vim</option>
+			<option value="visualprolog" >visualprolog</option>
+			<option value="visualprologgrammar" >visualprologgrammar</option>
+			<option value="vue" >vue</option>
+			<option value="vyper" >vyper</option>
+			<option value="wast" >wast</option>
+			<option value="wdiff" >wdiff</option>
+			<option value="webidl" >webidl</option>
+			<option value="wgsl" >wgsl</option>
+			<option value="whiley" >whiley</option>
+			<option value="wikitext" >wikitext</option>
+			<option value="wowtoc" >wowtoc</option>
+			<option value="wren" >wren</option>
+			<option value="x10" >x10</option>
+			<option value="xml" >xml</option>
+			<option value="xml+cheetah" >xml+cheetah</option>
+			<option value="xml+django" >xml+django</option>
+			<option value="xml+evoque" >xml+evoque</option>
+			<option value="xml+lasso" >xml+lasso</option>
+			<option value="xml+mako" >xml+mako</option>
+			<option value="xml+myghty" >xml+myghty</option>
+			<option value="xml+php" >xml+php</option>
+			<option value="xml+ruby" >xml+ruby</option>
+			<option value="xml+smarty" >xml+smarty</option>
+			<option value="xml+ul4" >xml+ul4</option>
+			<option value="xml+velocity" >xml+velocity</option>
+			<option value="xorg.conf" >xorg.conf</option>
+			<option value="xpp" >xpp</option>
+			<option value="xquery" >xquery</option>
+			<option value="xslt" >xslt</option>
+			<option value="xtend" >xtend</option>
+			<option value="xul+mozpreproc" >xul+mozpreproc</option>
+			<option value="yaml" >yaml</option>
+			<option value="yaml+jinja" >yaml+jinja</option>
+			<option value="yang" >yang</option>
+			<option value="yara" >yara</option>
+			<option value="zeek" >zeek</option>
+			<option value="zephir" >zephir</option>
+			<option value="zig" >zig</option>
+			<option value="zone" >zone</option>
+	
+</select>
+<label for="expire"><b>Expiration</b></label>
+<select name="expire" id="expire">
+<option value="7776000">90d</option>
+<option value="259200">3d</option>
+<option value="86400" selected>24h</option>
+<option value="3600">1h</option>
+
+</select>
+<br />
+<br />
+<input type="checkbox" name="wrap" id="wrap" value=1 />
+<label for="wrap">Wrap text at 78 characters</label>
+<br />
+<br />
+<input type="hidden" name="private" value="1" />
+<p><em>New pastes are always hidden; share the hidden link to view.</em></p>
+<label for="code"><b>Code:</b> To ensure legibility, keep your code lines under 80 characters long.<br />
+Include comments to indicate what you need feedback on.</label><br />
+<textarea id="code" class="codeedit" name="code" cols="80" rows="10"></textarea>
+<br />
+<input type="file" name="upload" /><input type="submit" name="paste" value="Send"/>
+
+</form>
+    </div>
+</div>
+
+
+
+
+<div id="menu">
+
+<h1>Paste</h1>
+<div class="menu-group">
+    <a href="https://paste.debian.net">Make new paste</a>
+</div>
+
+
+    <h1>User</h1>
+    <div class="menu-group">
+    
+        <a href="https://paste.debian.net/auth/login">Login with Salsa</a>
+    
+    </div>
+
+
+
+
+<h1>Links</h1>
+<ul>
+<li><a href='http://www.debian.org'>Debian</a><br /></li>
+<li><a href='/about'>About</a><br /></li>
+<li><a href='/swagger-ui'>API Documentation</a><br /></li>
+</ul>
+<h1>Admin</h1>
+<a href='mailto:formorer@debian.org'>Alexander Wirt</a>
+
+
+
+
+
+<div class="version-tag">
+    Version: v0.8.2
+</div>
+
+
+</div>
+
+
+
+
+</div>
+</body>
+</html>
+
+
+
+
+
+

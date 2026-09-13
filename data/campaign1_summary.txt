@@ -1,0 +1,25 @@
+re-summarised from /Users/bolero/rogue-dev/agentgates/data/sweep_samples.json (nothing was collected, nothing was downloaded)
+campaign campaign1  2026-09-13T11:18:40Z -> 2026-09-13T11:48:46Z
+count 6 -> 11   change 5   own deliberate downloads 6
+increase minus own downloads: -1
+reads 60, of which 4 changed the count (0 errors), gaps recorded 3
+every sweep moment (gap to the previous one):
+   2026-09-13T11:18:41Z  count 6   first read
+   2026-09-13T11:29:12Z  count 7     631.0 s = 10.52 min
+   2026-09-13T11:34:13Z  count 9     301.0 s =  5.02 min
+   2026-09-13T11:44:16Z  count 11    603.0 s = 10.05 min
+observed sweep gaps (s): [301, 603, 631]
+sweep 2026-09-13T11:29:12Z carried 1 download(s) of this project's: the newest download available to it was 30 s old, so that one sat uncounted no longer than that
+sweep 2026-09-13T11:34:13Z carried 2 download(s) of this project's: the newest download available to it was 30 s old, so that one sat uncounted no longer than that
+sweep 2026-09-13T11:44:16Z carried 2 download(s) of this project's: the newest download available to it was 30 s old, so that one sat uncounted no longer than that
+   download 2026-09-13T11:18:40Z -> counted at 2026-09-13T11:29:12Z  (632 s = 10.5 min)
+   download 2026-09-13T11:23:41Z -> counted at 2026-09-13T11:34:13Z  (632 s = 10.5 min)
+   download 2026-09-13T11:28:42Z -> counted at 2026-09-13T11:34:13Z  (331 s = 5.5 min)
+   download 2026-09-13T11:33:43Z -> counted at 2026-09-13T11:44:16Z  (633 s = 10.6 min)
+   download 2026-09-13T11:38:44Z -> counted at 2026-09-13T11:44:16Z  (332 s = 5.5 min)
+   download 2026-09-13T11:43:46Z -> not counted at any of the 60 reads in this campaign
+longest wait this campaign can prove for a download of its own: 633 s = 10.6 min (a floor on how wide the sweep is, and no evidence at all about its period)
+in-window increase 5; this project's downloads made after the baseline read 5
+no surplus: every count the sweep moved inside this window is accounted for by a download this project made and logged. No stranger can be claimed here, and the fact that sweeps arrive carrying two downloads at once implies none - it implies a queue.
+uncounted at the campaign's last read: the download made at 2026-09-13T11:43:46Z (300 s before the campaign ended)
+dry run: False (no deliberate download was made)

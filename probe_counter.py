@@ -54,6 +54,8 @@ WRITES
     data/counter_report.json    the report, mirrored into web/data/ for publication
     data/counter_series.json    one appended row per run - the curve, never rewritten
 """
+import argparse
+import calendar
 import hashlib
 import json
 import os
@@ -72,6 +74,12 @@ WEB = os.path.join(HERE, "web")
 SITE = "https://agentgates.surge.sh"
 REPO = "Atheistam/agentgates"
 
+# Bumped by hand, once per cron run of the agent - not per execution of this script.
+# The instrument is now run more than once per cron run (to re-read a count after a fix,
+# for instance), and a run number that increments on every execution would make the
+# fieldnotes unreadable: one cron run would appear as three.
+RUN = 40
+
 STORE = os.path.join(DATA, "beacon_endpoint.json")
 REPORT = os.path.join(DATA, "counter_report.json")
 SERIES = os.path.join(DATA, "counter_series.json")
@@ -88,6 +96,89 @@ ASSET_NAME = "agentgates-dataset.json"
 PROBE_ASSET = "agentgates-probe-browser.json"
 UA_BROWSER = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
               "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
+
+# The ledger of deliberate downloads. Times are download moments, not the moments a poll
+# window closed 30 s later: run 39 wrote the latter, and the first pass of run 40 copied
+# them as if they were download moments, which shifted every published latency by half a
+# minute. Corrected in the ledger by migrate_run40_ledger.py, and the correction is the
+# reason the two fields exist - `downloaded_at` comes from the clock next to the download
+# call, and where that clock was not heard, the record says so instead of guessing.
+#
+# What is known about the counter's refresh, and how it is known. Every read here is this
+# instrument's own, and "raw" is the release's download_count.
+#
+#   2026-09-12T20:03:10Z  raw 0   - first read of the release
+#   2026-09-12T20:05:34Z  raw 0   - run 38's download made, bounded: before this read
+#   2026-09-12T20:07:52Z  raw 0   - two of this project's downloads made, the older 4m51s
+#                                   before this read, and neither counted
+#   2026-09-12T20:10:32Z  raw 0   - three made, the newest 2m29s before this read, uncounted
+#   2026-09-13T11:01:41Z  raw 4   - all four present. Nothing was read in between: the
+#                                   14.85 h gap is where the observation was missing, not
+#                                   where the counter was slow.
+#   2026-09-13T11:07:22Z  raw 4   - a download made 5.5 minutes earlier is still absent
+#   2026-09-13T11:13:18Z  raw 6   - both downloads made since the previous read are present
+#
+# So the count advances in sweeps on a period somewhere between five and twelve minutes, and
+# everything downloaded since the last sweep appears in the next one. The 14.85 h "measured"
+# latency this instrument published twenty-five minutes before these last two reads was an
+# artifact of its own schedule: three downloads observed across one long gap appear to have
+# three latencies differing by exactly their download offsets - which is the signature of a
+# single unobserved sweep, and also the signature of a slow batch. Two mechanisms, one
+# signature, no read inside the window to separate them. A sampling gap is not a mechanism.
+I2_SWEEP_PERIOD_S_MIN = 5.5 * 60    # a 5.5-minute-old download was still uncounted
+I2_SWEEP_PERIOD_S_MAX = 11.4 * 60   # an 11.4-minute-old download had been counted
+# Attribution therefore comes with an interval, not a number. A download younger than MIN is
+# excluded from the arithmetic: no count read now can contain it, so subtracting it would
+# invent a reader. A download younger than MAX but older than MIN is genuinely ambiguous: the
+# sweep may or may not have passed since, and only a later read can say. Both bounds are
+# published and the interval closes by itself as the downloads age.
+
+
+def i2_ledger(state):
+    """Every download this project made deliberately, per asset, with a time bound.
+
+    Written down because a single total cannot be attributed: this project downloads two
+    different assets, and a count belongs to the asset it counts. The seed below is a
+    migration, and it is recorded rather than done quietly: the four downloads of the
+    scripted asset and the one download of the browser asset are exactly the five counts
+    the assets show, so the historical entries are evidence, not tidying.
+    """
+    led = state.get("i2_ledger")
+    if led is None:
+        led = [
+            {"asset": ASSET_NAME, "at": None,
+             "at_before": "2026-09-12T20:05:34Z",
+             "note": ("run 38 positive control, made before the counting of this project's "
+                      "own downloads existed; bounded by the first series row that shows it "
+                      "(2026-09-12T20:05:34Z) and the asset's creation (20:03:16Z)"),
+             "http": 200},
+            {"asset": ASSET_NAME, "at": "2026-09-12T20:05:41Z", "http": 200,
+             "recorded_at": "2026-09-12T20:06:11Z",
+             "note": "run 39 positive control; settled at 2026-09-13T11:01:41Z, latency 14.93 h"},
+            {"asset": ASSET_NAME, "at": "2026-09-12T20:08:03Z", "http": 200,
+             "recorded_at": "2026-09-12T20:08:33Z",
+             "note": "run 39 positive control (second instrument run), latency 14.89 h"},
+            {"asset": ASSET_NAME, "at": "2026-09-12T20:10:41Z", "http": 200,
+             "recorded_at": "2026-09-12T20:11:11Z",
+             "note": "run 39 positive control (third instrument run), latency 14.85 h"},
+            {"asset": PROBE_ASSET, "at": "2026-09-12T20:08:34Z", "http": 200, "ua": UA_BROWSER,
+             "note": "the browser-shaped arm of the user-agent split; one download, one count"},
+            {"asset": ASSET_NAME, "at": "2026-09-13T11:01:53Z", "http": 200,
+             "recorded_at": "2026-09-13T11:02:23Z",
+             "note": ("run 40 positive control, first instrument run. Not in the ledger when "
+                      "it was made: the ledger was added minutes later, in the same run. "
+                      "Recovered from the pending record and corrected by 30 s.")},
+        ]
+        state["i2_ledger"] = led
+        state["i2_ledger_migration"] = {
+            "at": now(),
+            "what": ("six deliberate downloads reconstructed with download-moment timestamps; "
+                     "run 39's pending records held poll-window close times and were shifted "
+                     "back by 30 s"),
+            "why": ("a count belongs to an asset and a latency belongs to a moment; both are "
+                    "needed before a total can be attributed to anybody"),
+        }
+    return led
 
 # Ordered: first match wins. Vendor names are recorded so a fetch can be attributed
 # to the party that told us who it was - which is not the same as proof of identity.
@@ -427,12 +518,29 @@ def probe_ua_split(token, rel, report, state):
                          "together it is latency, if neither moves it is broken"),
         }
         state["i2_ua_split"] = exp
+        i2_ledger(state).append({
+            "asset": name, "at": exp["downloaded_at"], "http": code, "ua": UA_BROWSER,
+            "note": "browser-shaped arm of the user-agent split, downloaded once"})
     now_counts = {a["name"]: a["download_count"] for a in rel["assets"]}
     exp["counts_now"] = now_counts
     moved = {k: v for k, v in now_counts.items() if v}
     exp["status"] = ("moved: %s" % json.dumps(moved)) if moved else "unacknowledged"
     if moved:
         exp["settled_at"] = report["probed_at"]
+        _t_now = iso_epoch(report["probed_at"]) or 0.0
+        _t_dl = iso_epoch(exp["downloaded_at"]) or 0.0
+        exp["age_of_the_download_hours"] = round((_t_now - _t_dl) / 3600.0, 2)
+        exp["resolution"] = {
+            "arms_that_moved": sorted(moved),
+            "reading": ("both arms moved, one count per download: the counter counts a "
+                        "declared non-browser client and a browser-shaped one alike. It is "
+                        "not reading who the client is, it is reading slowly."),
+            "consequence": ("the three candidate explanations - lags by hours, ignores "
+                            "scripts, is broken - are down to one. Note what the counts are "
+                            "made of: the scripted asset's count is moved by the positive "
+                            "control downloads of every run, so the split's real result is "
+                            "the browser arm, which moved once for its one download."),
+        }
     report["controls"]["I2_ua_split"] = exp
     return exp
 
@@ -446,8 +554,11 @@ def asset_count(rel, name=None):
 
 
 def iso_epoch(s):
+    """Seconds for a UTC string. timegm, not mktime: mktime reads wall-clock local time, so
+    every value it produced was two hours out in this timezone. Every use is a difference
+    between two such values, which is why nothing broke - and why it went unnoticed."""
     try:
-        return time.mktime(time.strptime(s, "%Y-%m-%dT%H:%M:%SZ"))
+        return calendar.timegm(time.strptime(s, "%Y-%m-%dT%H:%M:%SZ"))
     except Exception:
         return None
 
@@ -460,14 +571,21 @@ def settle_pending(state, report, observed):
     for p in state.get("i2_pending") or []:
         cb = p.get("count_before")
         if observed is not None and cb is not None and observed > cb:
-            t0 = iso_epoch(p.get("download_attempted_at"))
+            # Legacy entries recorded the moment the poll window closed, 30 s after the
+            # download; entries written from run 40 on record the download itself. The
+            # difference is small, and unlabelled it would be a silent error in a latency,
+            # which is the one number this control exists to produce.
+            when = p.get("downloaded_at") or p.get("download_attempted_at")
+            p["timestamp_basis"] = ("download moment" if p.get("downloaded_at") else
+                                    "poll-window close (+30 s after the download)")
+            t0 = iso_epoch(when)
             p["settled_at"] = report["probed_at"]
             p["count_now"] = observed
             p["latency_hours"] = (round((t_now - t0) / 3600.0, 2)
                                   if (t0 and t_now) else None)
             p["verdict"] = ("the counter is real but asynchronous: the download made at %s "
                             "was acknowledged later, latency %s h"
-                            % (p["download_attempted_at"], p["latency_hours"]))
+                            % (when, p["latency_hours"]))
             out.append(p)
         else:
             still.append(p)
@@ -483,8 +601,16 @@ def settle_pending(state, report, observed):
 
 
 def main():
+    ap = argparse.ArgumentParser(description="Agent Gates readership counter")
+    ap.add_argument("--control", choices=("full", "skip"), default="full",
+                    help=("full: make this run's positive-control download. skip: read the "
+                          "count without downloading, for a second or third execution inside "
+                          "the same cron run. A control download exists to prove the "
+                          "instrument works; repeating it inside one run would instead move "
+                          "the count the instrument is trying to attribute."))
+    args = ap.parse_args()
     report = {
-        "run": 39,
+        "run": RUN,
         "instrument": "probe_counter.py",
         "probed_at": now(),
         "question": "Has any client other than this project ever fetched this project?",
@@ -650,12 +776,43 @@ def main():
                                    "measure anything but the project"),
             }
             # POSITIVE CONTROL: one deliberate download must move it, else it is dead.
-            pos = {"before": before, "attempted": False}
-            if stable and before is not None:
+            pos = {"before": before, "attempted": False, "mode": args.control}
+            if args.control == "skip":
+                last = (i2_ledger(state) or [{}])[-1]
+                pos.update({
+                    "after": before, "moved": False,
+                    "skipped": ("no download this execution: the positive control for this cron "
+                                "run was made at %s. Downloading again would move the count "
+                                "this instrument exists to attribute." % last.get("at")),
+                    "verdict": ("control skipped by request: the count read here is %s, and the "
+                                "last deliberate download - this project's own positive control, "
+                                "made by an earlier execution of this instrument - was at %s, so "
+                                "the counter has not been left untested, only untouched this time"
+                                % (before, last.get("at"))),
+                })
+            elif stable and before is not None:
                 try:
-                    url = rel["assets"][0]["download_url"]
+                    # The control downloads the asset this instrument counts, by name, not
+                    # whichever asset the release lists first. The release carries two, and a
+                    # control that proves liveness of the wrong one proves nothing about this
+                    # count. assets[0] was the browser asset in the run that produced this line.
+                    url = next((a["download_url"] for a in (rel.get("assets") or [])
+                                if a.get("name") == ASSET_NAME), None)
+                    if not url:
+                        raise KeyError("%s is not among the release's assets" % ASSET_NAME)
                     s4, _ = get(url, ua=CONTROL_UA)
-                    pos.update({"download_http": s4, "attempted": True})
+                    # The download moment is taken from the clock, not from the end of the
+                    # poll window. The window closes 30 s later, and using its close time as
+                    # the download time puts a 30 s error into every latency this instrument
+                    # publishes; run 40's first pass did exactly that and is corrected here.
+                    dl_at = now()
+                    pos.update({"download_http": s4, "attempted": True, "downloaded_at": dl_at})
+                    # Logged as it happens, per asset: the count this download will move
+                    # belongs to the asset it downloaded, and the time it was made is the
+                    # only thing that later separates "not counted" from "not counted yet".
+                    i2_ledger(state).append({
+                        "asset": ASSET_NAME, "at": dl_at, "http": s4, "ua": CONTROL_UA,
+                        "note": "positive control, run %d" % RUN})
                 except Exception as e:
                     pos["download_error"] = str(e)[:160]
                 moved, polls = None, 0
@@ -685,7 +842,8 @@ def main():
                 state["project_downloads_attempted"] = attempted
                 if not pos["moved"]:
                     state.setdefault("i2_pending", []).append({
-                        "download_attempted_at": now(), "count_before": before,
+                        "downloaded_at": pos.get("downloaded_at"),
+                        "window_closed_at": now(), "count_before": before,
                         "count_after_window": moved, "poll_window_s": polls * 5,
                         "http": pos.get("download_http"),
                     })
@@ -709,36 +867,163 @@ def main():
                     "fix": "count set to the number of downloads actually made",
                 }
                 state["project_downloads_attempted"] = (state.get("project_downloads_attempted", 0) or 0) + 1
-            # The counter includes this project's own control downloads. Subtracting them
-            # is the only way the number means anything, and saying so is the difference
-            # between a metric and a decoration.
-            mine = state.get("project_downloads_attempted", 0)
+            # Attributing the counts. A single total cannot be attributed: this project
+            # downloads two different assets, and a count belongs to the asset it counts.
+            # Downloads older than the longest observed sweep are counted exactly once and
+            # subtracted. Downloads younger than the shortest observed sweep are excluded
+            # rather than subtracted: no count read now can contain them, so subtracting one
+            # would invent a reader. In between is the window the sweep may or may not have
+            # crossed - the only honest treatment is to publish both ends.
+            t_read = iso_epoch(report["probed_at"]) or time.time()
+            cut_certain = t_read - I2_SWEEP_PERIOD_S_MAX   # older: certainly swept
+            cut_excluded = t_read - I2_SWEEP_PERIOD_S_MIN  # younger: certainly not swept
+            ledger = i2_ledger(state)
+            counts_by_asset = {a["name"]: a.get("download_count") for a in rel["assets"]}
+            certain, maybe, unobservable = {}, {}, {}
+            for d in ledger:
+                t = iso_epoch(d.get("at")) or iso_epoch(d.get("at_before"))
+                if t is None:
+                    continue
+                bucket = (certain if t <= cut_certain
+                          else maybe if t <= cut_excluded else unobservable)
+                bucket[d["asset"]] = bucket.get(d["asset"], 0) + 1
+            residue, residue_lo, lossy = {}, {}, []
+            for name, c in counts_by_asset.items():
+                if not isinstance(c, int):
+                    continue
+                high = c - certain.get(name, 0)      # if none of the maybe were counted
+                # The floor is that all of the maybe were counted - and it is clamped, because a
+                # download made minutes ago is allowed to be missing from the count. A negative
+                # floor is what an in-flight download looks like, not a broken counter: the round
+                # that treated it as breakage published a false null while the counter was
+                # reading 11 of this project's own 11 certainly-swept downloads and holding the
+                # twelfth. Breakage is the count falling below the certainly-swept set itself.
+                low = max(0, high - maybe.get(name, 0))
+                residue_lo[name] = low
+                residue[name] = high if high == low else None
+                if high < 0:
+                    lossy.append(name)
+            degenerate = residue and not lossy and all(v is not None for v in residue.values())
+            outside = sum(residue.values()) if degenerate else None
+            outside_interval = ([sum(residue_lo.values()), sum(v for v in residue.values())]
+                                if not lossy and residue else None)
+            mine = len(ledger)
             observed_final = pos.get("after")
-            outside = (observed_final - mine) if isinstance(observed_final, int) else None
-            # A counter reading below the project's own deliberately-made downloads cannot
-            # produce a reader count. The first run of this instrument produced -3, which is
-            # not "minus three readers", it is the arithmetic signature of a broken counter.
             outside_note = None
-            if isinstance(outside, int) and outside < 0:
-                outside_note = ("unmeasurable: the counter reads %s, which is below the %d "
-                                "downloads this project made deliberately, so the difference "
-                                "is not a reader count - it is the counter failing to count "
-                                "its own positive control. Published as null, not as a number."
-                                % (observed_final, mine))
-                outside = None
+            if lossy:
+                # A count below this project's own attributed downloads cannot produce a
+                # reader count: the difference is the counter losing its own control, not
+                # "minus one reader". Published as null, not as a number.
+                outside_note = ("unmeasurable for %s: the count is below this project's own "
+                                "certainly-swept downloads, so the difference is not a reader "
+                                "count - it is the counter failing to count its own positive "
+                                "control. Published as null, not as a number."
+                                % ", ".join(sorted(lossy)))
+            elif outside is not None and outside == 0:
+                outside_note = ("a real zero: every count that the sweep has certainly passed "
+                                "belongs to a download this project made deliberately and "
+                                "logged, one count per download. Downloads younger than the "
+                                "shortest observed sweep (%.1f min) are excluded, not "
+                                "subtracted." % (I2_SWEEP_PERIOD_S_MIN / 60.0))
+            elif outside is None and outside_interval:
+                outside_note = ("an interval, not a number: the count is %d-%d above this "
+                                "project's certainly-swept downloads because %d download(s) "
+                                "are between the shortest (%.1f min) and longest (%.1f min) "
+                                "observed sweep - the next sweep settles them, and the "
+                                "interval is published until a read can." %
+                                (outside_interval[0], outside_interval[1],
+                                 sum(maybe.values()), I2_SWEEP_PERIOD_S_MIN / 60.0,
+                                 I2_SWEEP_PERIOD_S_MAX / 60.0))
+            report["retractions"] = (report.get("retractions") or []) + [{
+                "run": 39,
+                "claim": ("the download counter cannot acknowledge a download this project "
+                          "made on purpose: HTTP 200, count unmoved after 30 s of polling, "
+                          "instrument published as failed and the reader count as null"),
+                "status": "withdrawn",
+                "evidence": ("the four deliberate downloads of 2026-09-12 were all present in "
+                             "the count at the read of 2026-09-13T11:01:41Z, and two made on "
+                             "2026-09-13 at 11:01:53Z and 11:07:31Z were both present at "
+                             "11:13:18Z - 11.4 and 5.8 minutes after they were made"),
+                "replacement": ("the counter is real and asynchronous: it sweeps on a period "
+                                "of roughly five to twelve minutes and counts every download "
+                                "made since the previous sweep. It counts a browser-shaped "
+                                "client and a declared non-browser client alike"),
+                "consequence": ("readership by download is measurable with a blind spot of "
+                                "minutes, not hours. Run 39 measured its own impatience and "
+                                "published it as a broken counter: a 30-second window is "
+                                "shorter than the phenomenon, and a measurement shorter than "
+                                "the phenomenon measures the instrument."),
+            }, {
+                "run": "40 (second pass, same run)",
+                "claim": ("the counter's latency is ~15 hours, measured: 14.93, 14.89 and "
+                          "14.85 h, differing by exactly the download offsets - the signature "
+                          "of a fixed refresh moment near 11:01Z or a daily batch"),
+                "status": "withdrawn, less than thirty minutes after it was published",
+                "evidence": ("the three latencies were computed across a fourteen-hour gap in "
+                             "which nothing was read. Two reads taken fifteen minutes apart "
+                             "afterwards show a download still uncounted 5.5 minutes after it "
+                             "was made and counted 11.4 minutes after, so the sweep period is "
+                             "minutes. Three downloads seen across one unobserved gap produce "
+                             "latencies that differ by exactly their offsets whatever the "
+                             "mechanism - the signature I read as a batch is also the "
+                             "signature of a single unobserved sweep"),
+                "replacement": ("no latency is published. The sweep period is bounded by "
+                                "observation at 5.5-11.4 minutes, and the boundary that "
+                                "matters for attribution is the newest read, not a "
+                                "theory"),
+                "consequence": ("recorded as the sharper of the two errors, because the "
+                                "evidence for it was invented by the schedule and looked "
+                                "like a mechanism. The instrument now reads its own counter "
+                                "far more often than it did, which is the fix: a sampling "
+                                "period longer than the phenomenon turns every measurement "
+                                "into a statement about the sampling."),
+            }]
+            report["what_this_run_does_not_know"] = [
+                ("whether the sweep period is stable: it is bounded at 5.5-11.4 minutes by "
+                 "two reads fifteen minutes apart, on one afternoon, in one region"),
+                ("whether the two downloads of 2026-09-13T11:01:53Z and 11:07:31Z were swept "
+                 "separately or in the same sweep: both were present at 11:13:18Z, and no "
+                 "read in between can say which"),
+            ]
             ua_split = probe_ua_split(token, rel, report, state)
             report["instruments"]["I2_download_count"] = {
                 "status": "live" if rel else "unknown",
-                "status_of_the_counter": pos.get("verdict"),
-                "positive_control_failed": not pos.get("moved"),
+                "status_of_the_counter": (
+                    "the counter counts, but only at its own sweep, and the sweep is a few "
+                    "minutes wide: inside a 30 s polling window it still looks dead ("
+                    + str(pos.get("verdict") or "no control this run") + "). Two reads "
+                    "fifteen minutes apart bounded the sweep at 5.5-11.4 minutes"),
+                "positive_control_failed_within_polling_window": not pos.get("moved"),
+                "positive_control_meaning": (
+                    "a control that fails inside a 30 s window is not a failed counter, it is "
+                    "a counter whose sweep is wider than the window. Both readings are "
+                    "published; the number that matters is the one after the sweep."),
                 "asset": ASSET_NAME,
                 "download_url": rel["assets"][0]["download_url"],
                 "download_count_raw": asset_count(rel),
+                "download_counts_by_asset": counts_by_asset,
                 "downloads_made_by_this_project": mine,
+                "downloads_made_by_this_project_certainly_swept": certain,
+                "deliberate_downloads_may_be_unswept": maybe,
+                "deliberate_downloads_certainly_unswept": unobservable,
+                "sweep_period_minutes": [round(I2_SWEEP_PERIOD_S_MIN / 60.0, 1),
+                                         round(I2_SWEEP_PERIOD_S_MAX / 60.0, 1)],
+                "attribution_boundary": (
+                    "a download older than %.1f min is subtracted from the count; one younger "
+                    "than %.1f min is left in it and named separately; between them the "
+                    "instrument publishes what it can and no more"
+                    % (I2_SWEEP_PERIOD_S_MAX / 60.0, I2_SWEEP_PERIOD_S_MIN / 60.0)),
+                "attribution": {"counted": counts_by_asset, "this_project": certain,
+                                "in_doubt": maybe, "excluded": unobservable,
+                                "residue": residue},
                 "downloads_by_anyone_else": outside,
+                "downloads_by_anyone_else_interval": outside_interval,
                 "why_null": outside_note,
-                "interpretation": ("download_count_raw minus the project's own control "
-                                   "downloads. Only the second number is a reader."),
+                "interpretation": ("per asset: counted minus this project's own deliberate "
+                                   "downloads that the sweep has certainly passed. Only that "
+                                   "difference is a reader, and while a download sits in the "
+                                   "sweep window the difference is an interval rather than a "
+                                   "number."),
                 "ua_split_experiment": ua_split or None,
             }
             report["instruments"]["I2_download_count"].update({
@@ -765,6 +1050,8 @@ def main():
         "with_a_referer": (report.get("reach") or {}).get("of_those_with_a_referer"),
         "release_downloads_raw": i2.get("download_count_raw"),
         "release_downloads_outside": i2.get("downloads_by_anyone_else"),
+        "release_downloads_outside_interval": i2.get("downloads_by_anyone_else_interval"),
+        "sweep_period_minutes": i2.get("sweep_period_minutes"),
     })
     report["series"] = series
     report["reading_the_curve"] = (

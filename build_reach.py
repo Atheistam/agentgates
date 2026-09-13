@@ -67,6 +67,7 @@ def honest(v, why=None):
 def main():
     rep = load("counter_report.json", {})
     series = load("counter_series.json", [])
+    sweep = load("sweep_samples.json", {})
     i1 = (rep.get("instruments") or {}).get("I1_request_log") or {}
     i2 = (rep.get("instruments") or {}).get("I2_download_count") or {}
     ctl = rep.get("controls") or {}
@@ -272,6 +273,11 @@ Back to <a href="../">the census</a> &middot; <a href="../findings/">the write-u
        HITS_BADGE, run_num())
     body = body.replace("{{API}}", "https://api.github.com/repos/%s/releases/tags/%s"
                         % (REPO, (i2.get("tag") or RELEASE_TAG)))
+    from build_reach_correction import campaign_block
+    camp = campaign_block(sweep, rep, esc)
+    if camp:
+        body = body.replace("<h2>What this shows and what it does not</h2>",
+                            camp + "<h2>What this shows and what it does not</h2>")
 
     page = ("<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\">"
             "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">"

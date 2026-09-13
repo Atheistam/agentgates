@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Temp.sh | Temporary File Upload</title>
+<meta charset="utf-8">
+<meta name="description" content="Temporary File Upload. 3 days. 4GB Size Limit. CLI and ShareX Support">
+<meta name="keywords" content="temp upload,free,file,upload,temporary,sharex,online,share,upload file,upload 4GB,upload 1GB">
+<style type=text/css>
+body{
+	margin:40px auto;
+	/* max-width:650px; */
+	line-height:1.4;
+	font-size:18px;
+	font-family: "Lucidia Console", monospace;
+	background-color: black;
+	color:white;
+	text-align:center;
+}
+a{color:grey}
+h1,h2,h3{line-height:1.2}
+pre{font-size: 12;line-height: 11px}
+</style>
+<!-- http://bettermotherfuckingwebsite.com -->
+</head>
+<body>
+<pre>
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+░╔═════════╗░╔═════════╗░╔═════════╗░╔═════════╗░░░░░╔═════════╗░╔══╗░░░╔══╗░
+░╚══╗   ╔══╝░║  ╔══════╝░║         ║░║   ╔══╗  ║░░░░░║  ╔══════╝░║  ║░░░║  ║░
+░░░░║   ║░░░░║  ╚════╗░░░║ ╔═╗ ╔═╗ ║░║   ╚══╝  ║░░░░░║  ╚══════╗░║  ╚═══╝  ║░
+░░░░║   ║░░░░║  ╔════╝░░░║ ║░║ ║░║ ║░║  ╔══════╝░░░░░╚══════╗  ║░║  ╔═══╗  ║░
+░░░░║   ║░░░░║  ╚══════╗░║ ║░║ ║░║ ║░║  ║░░░░░░░╔══╗░╔══════╝  ║░║  ║░░░║  ║░
+░░░░╚═══╝░░░░╚═════════╝░╚═╝░╚═╝░╚═╝░╚══╝░░░░░░░╚══╝░╚═════════╝░╚══╝░░░╚══╝░
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+</pre>
+<p><i>~everything is temporary~</i></p>
+
+<p>To upload: curl -F "file=@test.txt" https://temp.sh/upload</p>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    Select file to upload:
+    <input type="file" name="file" id="uploadfile">
+    <input type="submit" value="Upload!" name="submit">
+</form>
+<p>Files expire after 3 days</p>
+<p>Bash script for piping output/directly uploading: <a href="https://temp.sh/up.sh">https://temp.sh/up.sh</a></p>
+<p><a href="https://getsharex.com">ShareX config:</a> <a href="https://temp.sh/temp.sh.sxcu">https://temp.sh/temp.sh.sxcu</a></p>
+<h3>About</h3>
+<p>I just made this for quick and handy file and text sharing.</p>
+<p>Current file size limit is 4GB</p>
+<p>Inspired by <a href="https://transfer.sh">transfer.sh</a>, <a href="https://termbin.com">termbin.com</a> and <a href="http://pomf.se">pomf.se</a> (RIP)</p>
+<h3>Donate</h3>
+<p>Bitcoin: bc1qrfugegr75h8d0zlhvydwkky0ayus5jm3jkqd87</p>
+<p>Monero: 482eFZzxtHCWcBdZWU3fgWXEP6to6CZk589hHEF79vNM7pMpLW9sRjAZkP8xFwLFN7FLyyzSojC2geEPqtf3VhAWC9f3cJ1</p>
+<h3>Contact</h3>
+<p>temp@national.shitposting.agency</p>
+<p><a </a></p>
+<script>
+var banner = document.getElementsByTagName("pre")[0].innerHTML;
+var block_chars = ['▒','▓','█','▓','▒','░', ' ', '░'];
+var counter = 0;
+window.setInterval(function(){
+	var newchar = block_chars[counter];
+	document.getElementsByTagName("pre")[0].innerHTML = banner.replace(/[░▒▓]/g,newchar);
+	counter = (counter+1)%6;
+}, 2000);
+</script>
+</body>
+</html>

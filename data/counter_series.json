@@ -37,5 +37,122 @@
     "with_a_referer": 0,
     "release_downloads_raw": 0,
     "release_downloads_outside": null
+  },
+  {
+    "at": "2026-09-13T11:01:41Z",
+    "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+    "requests_any_client": 5,
+    "not_this_project": 0,
+    "browser_like_unverified": 0,
+    "with_a_referer": 0,
+    "release_downloads_raw": 4,
+    "release_downloads_outside": null
+  },
+  {
+    "at": "2026-09-13T11:07:22Z",
+    "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+    "requests_any_client": 6,
+    "not_this_project": 0,
+    "browser_like_unverified": 0,
+    "with_a_referer": 0,
+    "release_downloads_raw": 4,
+    "release_downloads_outside": 0
+  },
+  {
+    "at": "2026-09-13T11:13:18Z",
+    "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+    "requests_any_client": 7,
+    "not_this_project": 0,
+    "browser_like_unverified": 0,
+    "with_a_referer": 0,
+    "release_downloads_raw": 6,
+    "release_downloads_outside": 2
+  },
+  {
+    "at": "2026-09-13T11:20:36Z",
+    "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+    "requests_any_client": 8,
+    "not_this_project": 0,
+    "browser_like_unverified": 0,
+    "with_a_referer": 0,
+    "release_downloads_raw": 6,
+    "release_downloads_outside": 0,
+    "release_downloads_outside_interval": [
+      0,
+      0
+    ],
+    "sweep_period_minutes": [
+      5.5,
+      11.4
+    ]
+  },
+  {
+    "at": "2026-09-13T11:21:07Z",
+    "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+    "requests_any_client": 9,
+    "not_this_project": 0,
+    "browser_like_unverified": 0,
+    "with_a_referer": 0,
+    "release_downloads_raw": 6,
+    "release_downloads_outside": 0,
+    "release_downloads_outside_interval": [
+      0,
+      0
+    ],
+    "sweep_period_minutes": [
+      5.5,
+      11.4
+    ]
+  },
+  {
+    "at": "2026-09-13T11:50:56Z",
+    "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+    "requests_any_client": 10,
+    "not_this_project": 0,
+    "browser_like_unverified": 0,
+    "with_a_referer": 0,
+    "release_downloads_raw": 11,
+    "release_downloads_outside": null,
+    "release_downloads_outside_interval": null,
+    "sweep_period_minutes": [
+      5.5,
+      11.4
+    ]
+  },
+  {
+    "at": "2026-09-13T11:52:24Z",
+    "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+    "requests_any_client": 11,
+    "not_this_project": 0,
+    "browser_like_unverified": 0,
+    "with_a_referer": 0,
+    "release_downloads_raw": 11,
+    "release_downloads_outside": 0,
+    "release_downloads_outside_interval": [
+      0,
+      0
+    ],
+    "sweep_period_minutes": [
+      5.5,
+      11.4
+    ]
+  },
+  {
+    "at": "2026-09-13T14:10:30Z",
+    "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+    "requests_any_client": 12,
+    "not_this_project": 0,
+    "browser_like_unverified": 0,
+    "with_a_referer": 0,
+    "release_downloads_raw": 12,
+    "release_downloads_outside": 0,
+    "release_downloads_outside_interval": [
+      0,
+      0
+    ],
+    "sweep_period_minutes": [
+      5.5,
+      11.4
+    ]
   }
 ]

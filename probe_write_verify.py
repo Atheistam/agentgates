@@ -46,6 +46,8 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
+import argparse
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
 SRC = os.path.join(DATA, "paste_surfaces.json")
@@ -54,6 +56,7 @@ OUT = os.path.join(DATA, "write_verify.json")
 # The harness's own furniture filter, reused rather than re-derived: where run
 # 37's accept flag and run 37's own filter disagree, the filter is right.
 from probe_paste_surfaces import is_item_url  # noqa: E402
+from verify_curve import merge_passes  # noqa: E402
 
 SITE = "https://agentgates.surge.sh"
 UA = "agentgates-probe/1.0 (+%s; read-back pass, no account, no re-upload)" % SITE
@@ -300,7 +303,34 @@ def readback_urls(rec):
     return url, extra
 
 
-def main():
+RUN_NUMBER = 41
+
+# The argument parser is not decoration. Run 41 invoked this harness as
+# `python3 probe_write_verify.py --help`, the harness had no parser, so it ignored the
+# argument and ran a full pass - overwriting data/write_verify.json and the T+5.85 h re-read
+# inside it (recovered from git commit 1327a67). An instrument that does its side effect
+# when asked what it does is a trap, so it now has --help and --dry-run, and a pass appends
+# a row to a curve instead of replacing its predecessor.
+PASSES_NOTE = ("one row per re-read, earliest first. The top level of this file is always "
+               "the latest pass; this list is the curve. Before run 41 the curve did not "
+               "exist and each pass destroyed the one before it.")
+
+
+def parse_args(argv=None):
+    ap = argparse.ArgumentParser(
+        description=("Re-read every anonymous write this project has made and record which "
+                     "ones are still there. Read-only: no re-upload, no account."))
+    ap.add_argument("--dry-run", action="store_true",
+                    help="list what would be re-read; no network requests, nothing written")
+    ap.add_argument("--run", type=int, default=RUN_NUMBER,
+                    help="run number stamped into the output (default: %d)" % RUN_NUMBER)
+    ap.add_argument("--label", default=None,
+                    help="override this pass's label in the curve, e.g. 'T+24.0 h'")
+    return ap.parse_args(argv)
+
+
+def main(argv=None):
+    args = parse_args(argv)
     d = json.load(open(SRC))
     token = d.get("token") or ""
     uploaded = d.get("uploaded_at") or ""
@@ -321,6 +351,15 @@ def main():
     accepted = {k: v for k, v in d["services"].items() if v.get("accepted")}
     results = {}
     print("age since upload: %s h\n" % ("%.2f" % age if age is not None else "?"))
+
+    if args.dry_run:
+        print("dry run: %d accepted surfaces would be re-read; no network, nothing written\n"
+              % len(accepted))
+        for name, rec in sorted(accepted.items()):
+            url, extra = readback_urls(rec)
+            print("  %-18s %-9s %s%s" % (name, rec.get("family"), url,
+                                         (" +%d mirror(s)" % len(extra)) if extra else ""))
+        return 0
 
     for name, rec in sorted(accepted.items()):
         url, extra = readback_urls(rec)
@@ -433,12 +472,13 @@ def main():
     advertised = sorted(k for k, v in listing.items() if (v or {}).get("advertised"))
 
     out = {
-        "run": 38,
+        "run": args.run,
         "instrument": "probe_write_verify.py",
         "verified_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "age_hours": None if age is None else round(age, 2),
         "previous_pass_age_hours": prev_age,
         "uploaded_at": uploaded,
+        "invocation": (" ".join(sys.argv[1:]) if len(sys.argv) > 1 else "(no arguments)"),
         "read_only": "re-fetches only; no re-upload, safe to run on a schedule",
         "class_checks": {
             "shortener": "resolves to the exact submitted target",
@@ -466,7 +506,11 @@ def main():
                      "about venue shape, and the sentence was overclaiming."),
         },
         "services": results,
+        "passes_note": PASSES_NOTE,
     }
+    out["passes"] = merge_passes(prev, out,
+                                 source="run %d, %s" % (args.run, out["verified_at"]),
+                                 new_label=args.label)
     json.dump(out, open(OUT, "w"), indent=1, sort_keys=True)
 
     print("\npass %d / fail %d / expired-as-declared %d / unverifiable %d / not written %d  "

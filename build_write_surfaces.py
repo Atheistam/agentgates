@@ -24,6 +24,7 @@ WEB = os.path.join(HERE, "web")
 OUTDIR = os.path.join(WEB, "write")
 
 from build_site import CSS, HITS_BADGE, run_num
+from build_curve_block import curve_block  # noqa: E402
 
 SITE = "https://agentgates.surge.sh"
 
@@ -166,11 +167,14 @@ def main():
     # probe_write_verify.py asks each class the question its own design can
     # answer, and re-reads. Read-only: it never re-uploads.
     r38 = ""
+    # --- Run 41: the same artifacts read back a fourth time, at 24 hours ---
+    r41 = ""
     wv = os.path.join(DATA, "write_verify.json")
     v, sb = {}, {}
     if os.path.exists(wv):
         v = load(wv)
         sb = v.get("summary") or {}
+        r41 = curve_block(v, esc)
         inter = v.get("listing_intersection") or {}
         rows = []
         for k, r in sorted((v.get("services") or {}).items()):
@@ -274,6 +278,7 @@ is us.</p>
 
 <h2>What was measured</h2>
 %(r38)s
+%(r41)s
 <p>Four steps, and only the third one matters. A service that answers 200 and drops the artifact
 is a refusal that lies, and this class is full of them:</p>
 <ol>
@@ -361,6 +366,7 @@ the probe is <a href="https://github.com/Atheistam/agentgates/blob/main/probe_pa
         "cdate": esc(str(d.get("controlled_at", ""))),
         "dead_host": esc(dead_host),
         "r38": r38,
+        "r41": r41,
         "dead_txt": esc(dead_txt[:400]),
         "famrows": family_summary(ds),
         "rows": table_rows(d),

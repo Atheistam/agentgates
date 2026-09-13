@@ -1,0 +1,152 @@
+{
+  "smoke": {
+    "campaign": "smoke",
+    "started_at": "2026-09-13T11:17:09Z",
+    "ended_at": "2026-09-13T11:18:29Z",
+    "minutes": 1.2,
+    "poll_every": 20.0,
+    "download_every": 300.0,
+    "dry_run": true,
+    "rows": [
+      {
+        "at": "2026-09-13T11:17:09Z",
+        "count": 6,
+        "delta": null
+      }
+    ],
+    "downloads": []
+  },
+  "smoketest2": {
+    "campaign": "smoketest2",
+    "started_at": "2026-09-13T11:32:44Z",
+    "ended_at": "2026-09-13T11:33:45Z",
+    "minutes": 0.7,
+    "poll_every": 20.0,
+    "download_every": 300.0,
+    "dry_run": true,
+    "rows": [
+      {
+        "at": "2026-09-13T11:32:45Z",
+        "count": 7,
+        "delta": null
+      }
+    ],
+    "downloads": [],
+    "polls": 3
+  },
+  "campaign1": {
+    "campaign": "campaign1",
+    "started_at": "2026-09-13T11:18:40Z",
+    "ended_at": "2026-09-13T11:48:46Z",
+    "minutes": 30.0,
+    "poll_every": 30.0,
+    "download_every": 300.0,
+    "dry_run": false,
+    "rows": [
+      {
+        "at": "2026-09-13T11:18:41Z",
+        "count": 6,
+        "delta": null
+      },
+      {
+        "at": "2026-09-13T11:29:12Z",
+        "count": 7,
+        "delta": 1,
+        "gap_s": 631
+      },
+      {
+        "at": "2026-09-13T11:34:13Z",
+        "count": 9,
+        "delta": 2,
+        "gap_s": 301
+      },
+      {
+        "at": "2026-09-13T11:44:16Z",
+        "count": 11,
+        "delta": 2,
+        "gap_s": 603
+      }
+    ],
+    "downloads": [
+      {
+        "at": "2026-09-13T11:18:40Z",
+        "recorded_at": "2026-09-13T11:18:40Z",
+        "http": 200,
+        "count_before": null,
+        "count_after": 6
+      },
+      {
+        "at": "2026-09-13T11:23:41Z",
+        "recorded_at": "2026-09-13T11:23:42Z",
+        "http": 200,
+        "count_before": 6,
+        "count_after": 6
+      },
+      {
+        "at": "2026-09-13T11:28:42Z",
+        "recorded_at": "2026-09-13T11:28:43Z",
+        "http": 200,
+        "count_before": 6,
+        "count_after": 6
+      },
+      {
+        "at": "2026-09-13T11:33:43Z",
+        "recorded_at": "2026-09-13T11:33:44Z",
+        "http": 200,
+        "count_before": 7,
+        "count_after": 7
+      },
+      {
+        "at": "2026-09-13T11:38:44Z",
+        "recorded_at": "2026-09-13T11:38:45Z",
+        "http": 200,
+        "count_before": 9,
+        "count_after": 9
+      },
+      {
+        "at": "2026-09-13T11:43:46Z",
+        "recorded_at": "2026-09-13T11:43:46Z",
+        "http": 200,
+        "count_before": 9,
+        "count_after": 9
+      }
+    ],
+    "polls": 60
+  },
+  "selftest-run41": {
+    "campaign": "selftest-run41",
+    "started_at": "2026-09-13T14:03:02Z",
+    "ended_at": "2026-09-13T14:03:12Z",
+    "minutes": 0.09,
+    "poll_every": 5.0,
+    "download_every": 0.0,
+    "dry_run": false,
+    "rows": [
+      {
+        "at": "2026-09-13T14:03:02Z",
+        "count": 12,
+        "delta": null
+      }
+    ],
+    "downloads": [],
+    "polls": 2
+  },
+  "campaign2-quiet": {
+    "campaign": "campaign2-quiet",
+    "started_at": "2026-09-13T14:03:30Z",
+    "ended_at": "2026-09-13T14:12:31Z",
+    "minutes": 100.0,
+    "poll_every": 60.0,
+    "download_every": 0.0,
+    "dry_run": false,
+    "rows": [
+      {
+        "at": "2026-09-13T14:03:30Z",
+        "count": 12,
+        "delta": null
+      }
+    ],
+    "downloads": [],
+    "polls": 10
+  }
+}

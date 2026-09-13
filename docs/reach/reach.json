@@ -1,17 +1,17 @@
 {
  "page": "https://agentgates.surge.sh/reach/",
- "generated_at": "2026-09-12T20:10:32Z",
+ "generated_at": "2026-09-13T14:10:30Z",
  "question": "does anything read this, and can an agent measure it without counting its own probes",
  "instruments": {
   "beacon": {
    "url": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
    "owned_by": "the request-log provider, not this project",
    "expires_at": "2026-09-19 20:03:11",
-   "hours_left": 166.88,
-   "requests_total": 4,
+   "hours_left": 148.88,
+   "requests_total": 12,
    "requests_not_this_project": 0,
    "country_counts": {
-    "Spain": 4
+    "Spain": 12
    },
    "account_required": false,
    "positive_control": "instrument live: this run's own nonce is in the log",
@@ -20,29 +20,39 @@
   "bundle": {
    "url": "https://github.com/Atheistam/agentgates/releases/download/readership-bundle/agentgates-dataset.json",
    "owned_by": "GitHub, not this project",
-   "downloads_raw": 0,
-   "downloads_made_by_this_project": 4,
-   "downloads_by_anyone_else": null,
-   "why_null": "unmeasurable: the counter reads 0, which is below the 4 downloads this project made deliberately, so the difference is not a reader count - it is the counter failing to count its own positive control. Published as null, not as a number.",
+   "downloads_raw": 12,
+   "downloads_made_by_this_project": 13,
+   "downloads_by_anyone_else": 0,
+   "why_null": "a real zero: every count that the sweep has certainly passed belongs to a download this project made deliberately and logged, one count per download. Downloads younger than the shortest observed sweep (5.5 min) are excluded, not subtracted.",
    "negative_control": "poll-immune: 5 reads, one value",
-   "positive_control": "instrument not demonstrated within the polling window: a download returned HTTP 200 and the count did not move",
+   "positive_control": "control skipped by request: the count read here is 12, and the last deliberate download - this project's own positive control, made by an earlier execution of this instrument - was at 2026-09-13T11:43:46Z, so the counter has not been left untested, only untouched this time",
    "ua_split_experiment": {
-    "asset_scripted": "agentgates-dataset.json",
+    "age_of_the_download_hours": 18.03,
     "asset_browser": "agentgates-probe-browser.json",
-    "scripted_ua": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
+    "asset_scripted": "agentgates-dataset.json",
     "browser_ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chr",
-    "downloaded_at": "2026-09-12T20:08:34Z",
-    "download_http": 200,
     "counts_at_download": {
      "agentgates-dataset.json": 0,
      "agentgates-probe-browser.json": 0
     },
-    "question": "one deliberate download per asset, different User-Agent: if the counts diverge the counter reads the client, if they move together it is latency, if neither moves it is broken",
     "counts_now": {
-     "agentgates-dataset.json": 0,
-     "agentgates-probe-browser.json": 0
+     "agentgates-dataset.json": 12,
+     "agentgates-probe-browser.json": 1
     },
-    "status": "unacknowledged"
+    "download_http": 200,
+    "downloaded_at": "2026-09-12T20:08:34Z",
+    "question": "one deliberate download per asset, different User-Agent: if the counts diverge the counter reads the client, if they move together it is latency, if neither moves it is broken",
+    "resolution": {
+     "arms_that_moved": [
+      "agentgates-dataset.json",
+      "agentgates-probe-browser.json"
+     ],
+     "reading": "both arms moved, one count per download: the counter counts a declared non-browser client and a browser-shaped one alike. It is not reading who the client is, it is reading slowly.",
+     "consequence": "the three candidate explanations - lags by hours, ignores scripts, is broken - are down to one. Note what the counts are made of: the scripted asset's count is moved by the positive control downloads of every run, so the split's real result is the browser arm, which moved once for its one download."
+    },
+    "scripted_ua": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
+    "settled_at": "2026-09-13T14:10:30Z",
+    "status": "moved: {\"agentgates-dataset.json\": 12, \"agentgates-probe-browser.json\": 1}"
    }
   }
  },
@@ -85,9 +95,126 @@
    "with_a_referer": 0,
    "release_downloads_raw": 0,
    "release_downloads_outside": null
+  },
+  {
+   "at": "2026-09-13T11:01:41Z",
+   "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+   "requests_any_client": 5,
+   "not_this_project": 0,
+   "browser_like_unverified": 0,
+   "with_a_referer": 0,
+   "release_downloads_raw": 4,
+   "release_downloads_outside": null
+  },
+  {
+   "at": "2026-09-13T11:07:22Z",
+   "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+   "requests_any_client": 6,
+   "not_this_project": 0,
+   "browser_like_unverified": 0,
+   "with_a_referer": 0,
+   "release_downloads_raw": 4,
+   "release_downloads_outside": 0
+  },
+  {
+   "at": "2026-09-13T11:13:18Z",
+   "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+   "requests_any_client": 7,
+   "not_this_project": 0,
+   "browser_like_unverified": 0,
+   "with_a_referer": 0,
+   "release_downloads_raw": 6,
+   "release_downloads_outside": 2
+  },
+  {
+   "at": "2026-09-13T11:20:36Z",
+   "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+   "requests_any_client": 8,
+   "not_this_project": 0,
+   "browser_like_unverified": 0,
+   "with_a_referer": 0,
+   "release_downloads_raw": 6,
+   "release_downloads_outside": 0,
+   "release_downloads_outside_interval": [
+    0,
+    0
+   ],
+   "sweep_period_minutes": [
+    5.5,
+    11.4
+   ]
+  },
+  {
+   "at": "2026-09-13T11:21:07Z",
+   "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+   "requests_any_client": 9,
+   "not_this_project": 0,
+   "browser_like_unverified": 0,
+   "with_a_referer": 0,
+   "release_downloads_raw": 6,
+   "release_downloads_outside": 0,
+   "release_downloads_outside_interval": [
+    0,
+    0
+   ],
+   "sweep_period_minutes": [
+    5.5,
+    11.4
+   ]
+  },
+  {
+   "at": "2026-09-13T11:50:56Z",
+   "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+   "requests_any_client": 10,
+   "not_this_project": 0,
+   "browser_like_unverified": 0,
+   "with_a_referer": 0,
+   "release_downloads_raw": 11,
+   "release_downloads_outside": null,
+   "release_downloads_outside_interval": null,
+   "sweep_period_minutes": [
+    5.5,
+    11.4
+   ]
+  },
+  {
+   "at": "2026-09-13T11:52:24Z",
+   "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+   "requests_any_client": 11,
+   "not_this_project": 0,
+   "browser_like_unverified": 0,
+   "with_a_referer": 0,
+   "release_downloads_raw": 11,
+   "release_downloads_outside": 0,
+   "release_downloads_outside_interval": [
+    0,
+    0
+   ],
+   "sweep_period_minutes": [
+    5.5,
+    11.4
+   ]
+  },
+  {
+   "at": "2026-09-13T14:10:30Z",
+   "endpoint": "https://webhook.site/7409b089-26d8-47bb-bc06-c9de81deacbe",
+   "requests_any_client": 12,
+   "not_this_project": 0,
+   "browser_like_unverified": 0,
+   "with_a_referer": 0,
+   "release_downloads_raw": 12,
+   "release_downloads_outside": 0,
+   "release_downloads_outside_interval": [
+    0,
+    0
+   ],
+   "sweep_period_minutes": [
+    5.5,
+    11.4
+   ]
   }
  ],
- "curve_readings": 4,
+ "curve_readings": 12,
  "no_readership_figure_published": true,
  "why": "the beacon had never been published, so its zero was meaningless; the bundle counter did not acknowledge its own positive control, so it produced no number. Publishing either as a readership figure would be the error this project exists to measure."
 }

@@ -78,8 +78,8 @@ before they report anything:
 
 **Status, stated before the numbers.** The beacon is live and its positive control
 passes: this run's own nonce is in the log. The download counter is *not* demonstrated:
-4 deliberate downloads (three scripted, one with a browser user agent) returned HTTP
-200 with the full body, and the count still reads 0. No reader count is published
+13 deliberate downloads (three scripted, one with a browser user agent) returned HTTP
+200 with the full body, and the count still reads 12. No reader count is published
 from it, and the project's own control downloads outnumber what the counter admits to. A
 counter that cannot count its own positive control produces no number, and calling a zero
 here "no readers" would be the exact lie this project measures in other people's metrics.

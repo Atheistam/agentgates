@@ -1,0 +1,3573 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    
+<title>Rentry.co - Markdown Paste Service</title>
+<link rel="canonical" href="https://rentry.co/" />
+
+    
+    <meta name="description" content="Markdown paste service with preview, custom urls and editing. Fast, simple and free.">
+    <meta name="keywords" content="paste, markdown, publishing, markdown paste, markdown from command line">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:description" content="Markdown paste service with preview, custom urls and editing." />
+    <meta name="twitter:title" content="Rentry.co - Markdown Paste" />
+    <meta name="twitter:site" content="@rentry_co" />
+    <meta name="twitter:image" content="https://rentry.co/static/icons/512.png" />
+
+    <meta property="og:url" content="https://rentry.co/" />
+    <meta property="og:title" content="Rentry.co - Markdown Paste Service" />
+    <meta property="og:description" content="Markdown paste service with preview, custom urls and editing." />
+    <meta property="og:image" content="https://rentry.co/static/icons/270.png" />
+    <meta property="og:type" content="website" />
+
+    <meta name="55aa23220c56ab81b05294f8363b15f16d531e2b" content="55aa23220c56ab81b05294f8363b15f16d531e2b" />
+    
+    
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=1" />
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css?v=1784113405">
+    <link rel="manifest" href="/static/manifest.json?v=1784113404">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLFSDKZXET"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-LLFSDKZXET');
+    </script>
+
+    <!--<script>document.documentElement.classList.toggle("dark-mode", (localStorage.getItem("dark-mode") === null && window.matchMedia("(prefers-color-scheme: dark)").matches || localStorage.getItem("dark-mode") == "true"));</script>-->
+    <script>const script = document.createElement("script"); const hn = window.location.hostname === 'rentry.org' && 'rentry.org' || 'rentry.co'; script.defer = true; script.setAttribute('data-domain', hn + ',rentry'); document.head.appendChild(script);</script>
+
+    
+    
+</head>
+
+<body class="m-0 p-0 body">
+    
+    <div>
+
+
+    <div class="sub-body">
+        <div class="container container-smooth">
+            <div class="row no-gutters">
+                
+<div class="col-12" style="display: flex; min-height: 100vh; max-height: 100vh">
+    <form id="entry-form" class="long-words-overflow-y-testr" action="" method="post" style="display: flex; flex: 1 0; flex-direction: column;">
+        
+
+        
+        
+        
+        <input type="hidden" name="csrfmiddlewaretoken" value="48WwbjIlKoeN4pPEjwvaZpX5OjiCUeUTToZKBrhK9NXi0JKMph6QLIzW4tk8DGbg">
+<div role="tabpanel" class="my-2 flex-tab" style="display: flex; flex: 1 0; flex-direction: column;">
+    <div class="text-danger messages"></div>
+
+    <ul class="nav nav-tabs squared" id="textTab" role="tablist">
+        <li class="nav-item" style="background-color: #F3F4F6">
+            <a class="nav-link active squared text-muted px-3" id="text-tab" data-toggle="tab" href="#text" role="tab" aria-controls="text" aria-expanded="true">Text</a>
+        </li>
+
+        <li class="nav-item" style="background-color: #F3F4F6">
+            <a class="nav-link squared text-muted px-3" id="preview-tab" data-toggle="tab" href="#preview" role="tab" aria-controls="preview">Preview</a>
+        </li>
+
+        <li class="nav-item" style="background-color: #F3F4F6">
+            <a class="nav-link squared text-muted px-3" id="how-tab" data-toggle="tab" href="#how" role="tab" aria-controls="preview">How</a>
+        </li>
+    </ul>
+
+    <div class="markdownx" style="display: flex; flex: 1 0; min-height: 0;">
+
+        <div>
+            <div style="position: absolute; width: 100%; z-index: 1">
+                <div class="progress">
+                    <div class="bg-primary" id="progressBar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content long-words main-text-input" id="textTabContent" style="display: flex; flex: 1 0;">
+
+            <div role="tabpanel" class="tab-pane fade show active main-text-tab" id="text" aria-labelledby="text-tab" style="flex: 1 0;">
+                <textarea style="background-color: white; min-height: 100%; max-height: 100%; resize: none; max-width: 100%; min-width: 100%" class="squared markdownx-editor py-4 px-2 px-sm-4 " name="text" maxlength="200000" id="id_text" data-markdownx-upload-urls-path="/markdownx/upload/" data-markdownx-urls-path="/markdownx/markdownify/"></textarea>
+            </div>
+            
+            <div class="main-preview-tab tab-pane fade" id="preview" role="tabpanel" aria-labelledby="preview-tab" style="flex: 1 0; flex-direction: column; overflow-y: auto;">
+                <div class="long-words markdownx-preview preview-inner" id='preview-inner'></div>
+            </div>
+
+            <div class="tab-pane fade" id="how" role="tabpanel" aria-labelledby="how-tab" style="flex: 1 0; flex-direction: column; overflow-y: auto;">
+                <div class="long-words entry-text py-2 px-sm-4 how-inner" id="how-inner">
+                    <table class="ntable mtable cheatsheet">
+    <thead>
+        <tr class="text-center">
+            <th class="bg-transparent">What you type</th>
+            <th class="bg-transparent">What will be published</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                # Header 1<br>
+                ## Header 2<br><br>
+                <span class="text-muted">And so on up to 6.</span>
+            </td>
+            <td>
+                <p id="header-1" class="p-0 m-0 text-center h3">Header 1</p>
+                <p id="header-2" class="p-2 pt-3 m-0 h4">Header 2</p>
+                <p id="another-2" class="d-none">Another 2</p>
+                <p id="another-1" class="d-none">Another 1</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="text-muted">Return once starts a new line.<br>Return twice (blank line) starts a new paragraph.</span><br>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                *Italics*<br>
+                **Bold**<br>
+                ~~Strikeout~~<br>
+                ==Mark==<br>
+                %red% Colored Text %%<br>
+                %#ACBDEF% Colored Text Hex %%<br>
+                !>Spoiler<br><br>
+                <span class="text-muted"><a href="/rentry-text-colors" target="_blank">Color list (opens new page, save your work first!)</a></span>
+                
+            </td>
+            <td>
+                <i>Italics</i><br>
+                <b>Bold</b><br>
+                <del>Strikeout</del><br>
+                <mark>Mark</mark><br>
+                <span style="color:red">Colored Text</span><br>
+                <span style="color:#8b35c8">Colored Text Hex</span><br>
+                <span class="spoiler">Spoiler</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                !~ Simple Underlined Text ~!<br>
+                !~red; Underlined Text With Color ~!<br>
+                !~green;double; Underlined Text Plus Style ~!<br>
+                !~blue;default;line-through; Underlined Plus Type ~!<br>
+                !~orange;default;default;7; Underlined Text Plus Thickness ~!<br><br>
+
+                %violet% !~green; Combine With Text Color ~! %%<br>
+                !~violet; %green% Works The Other Way Too %% ~! <br><br>
+
+                <span class="text-muted">Underline tags can be given 4 options, separated by a semi-colon ;</span>
+                <ul class="text-muted">
+                    <li>color : default | color name | #hexcode</li>
+                    <li>style  : default | solid (default) | double | dotted | dashed | wavy</li>
+                    <li>type  : default | underline (default) | line-through | overline | both</li>
+                    <li>thickness : number from 1-10. Measured in pixels.</li>
+                </ul>
+            </td>
+            <td>
+                <span style="text-decoration:underline">Simple Underlined Text</span><br>
+                <span style="text-decoration-line:underline;text-decoration-color:red">Underlined Text With Color</span><br>
+                <span style="text-decoration-line:underline;text-decoration-color:green;text-decoration-style:double;">Underlined Text Plus Style</span><br>
+                <span style="text-decoration-line:underline;text-decoration-color:blue;text-decoration-line:line-through;">Underlined Plus Type</span><br>
+                <span style="text-decoration-line:underline;text-decoration-color:orange;text-decoration-thickness:7px;">Underlined Text Plus Thickness</span><br><br>
+                <span style="text-decoration-line:underline;text-decoration-color:green;color:violet">Combine With Text Color</span><br>
+                <span style="text-decoration-line:underline;text-decoration-color:violet;color:green">Works The Other Way Too</span><br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                -&gt; Centered text &lt;-<br>
+                -&gt; Right-aligned -&gt;<br><br>
+                <span class="text-muted">Also works for images and ### -&gt; Headers &lt;-</span>
+                <br>
+            </td>
+            <td>
+                <span class="md-center">Centered text</span>
+                <span class="md-right">Right-aligned</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                [TOC]<br><br>
+                <span class="text-muted">Generates Table of Contents from #&nbsp;Headers.<br>
+                    [TOC2] - From h2 to h6.<br>
+                    [TOC3] - From h3 to h6, and so on up to 6.
+                </span>
+            </td>
+            <td>
+                <div class="toc">
+                    <ol>
+                        <li><a href="#header-1">Header 1</a>
+                            <ol>
+                                <li><a href="#header-2">Header 2</a></li>
+                                <li><a href="#another-2">Another 2</a></li>
+                            </ol>
+                        </li>
+                        <li><a href="#another-1">Another 1</a></li>
+                    </ol>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                - Bulleted list item a<br>
+                - Bulleted list item b<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;- Nested item b1<br><br>
+                <span class="text-muted">Nested lists use 4 spaces or 1 tab.</span><br><br>
+                <span class="text-muted">An asterisk (*) can be used instead of a dash.</span>
+            </td>
+            <td>
+
+                <ul>
+                    <li class="mt-0">Bulleted list item a</li>
+                    <li>Bulleted list item b<ul>
+                            <li>Nested item b1</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                1. Numbered list item<br>
+                2. Numbered list item<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;1. Nested list item<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;2. Nested list item
+            </td>
+            <td>
+                <ol>
+                    <li class="mt-0">Numbered list item</li>
+                    <li>Numbered list item<ol>
+                            <li>Nested list item</li>
+                            <li>Nested list item</li>
+                        </ol>
+                    </li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                - [ ] Checkbox 1<br>
+                - [x] Checkbox 2<br>
+            </td>
+            <td>
+                <ul class="task-list">
+                    <li class="mt-0"><input type="checkbox" disabled> Checkbox 1</li>
+                    <li><input type="checkbox" disabled checked> Checkbox 2</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                [//]: (comment here)<br>
+            </td>
+            <td>
+                <p>Adding [//]: () to a line will comment it out, so that it does not appear when viewing the page.</p>
+            </td>
+        </tr>
+
+        
+        <tr>
+            <td>
+                &gt;&gt; How to use quotes in Markdown?<br>
+                &gt; Just prepend text with &gt;
+            </td>
+            <td>
+                <blockquote>
+                    <blockquote>
+                        <p>How to use quotes in Markdown?</p>
+                    </blockquote>
+                    <p>Just prepend text with &gt;</p>
+                </blockquote>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ``` python<br>
+                s = "Triple backticks ( ``` ) generate code block"<br>
+                print(s)<br>
+                ```<br><br>
+                <span class="text-muted">For the list of supported languages see <a href="/langs">the langs page</a>.</span>
+            </td>
+            <td>
+                <table class="highlighttable mt-0">
+                    <tbody>
+                        <tr>
+                            <td class="linenos border-0 p-0">
+                                <div class="linenodiv">
+                                    <pre><a href="#L-1-1">1</a><br><a href="#L-1-2">2</a></pre>
+                                </div>
+                            </td>
+                            <td class="code border-0 p-0">
+                                <div class="highlight">
+                                    <pre><span id="L-1-1"><a name="L-1-1"></a><span class="n">s</span> <span class="o">=</span><span class="s2">"Triple backticks ( ``` ) generate code block"</span></span><br><span id="L-1-2"><a name="L-1-2"></a><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></span></pre>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Single backtick generates `inline code`
+            </td>
+            <td>
+                Single backtick generates <code>inline code</code>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ***<br><br>
+                <span class="text-muted">Horizontal rule, &lt;hr&gt;</span>
+            </td>
+            <td>
+                <hr>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                \*not italics\*<br><br>
+                <span class="text-muted">To produce a literal asterisk or any symbol used in Markdown, use backslash to escape it.</span>
+            </td>
+            <td>
+                *not italics*
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class='p-0 text-reset' style="line-height: 1.5; font-size: 16px">
+Header | Header
+------ | ------
+Cell   | Cell
+Cell   | Cell</pre>
+                <br>
+                <span class="text-muted">Columns can be aligned to the right with <code>--:</code> and centered with <code>:--:</code>.</span><br><br>
+                <pre class='p-0 text-reset' style="line-height: 1.5; font-size: 16px">
+Center | Right
+:----: | ----:
+Cell   | Cell
+Cell   | Cell</pre>
+<br/>
+                <span class="text-muted">Adding \n triggers a newline within cells and headers</span><br><br>
+ <pre class='p-0 text-reset' style="line-height: 1.5; font-size: 16px">
+Header \n line2 | Header
+------ | ------
+Cell   | Cell \n line2 \n line3
+Cell   | Cell</pre>
+                <br>
+
+            </td>
+            <td>
+                <table class="ntable">
+                    <thead>
+                        <tr>
+                            <th>Header</th>
+                            <th>Header</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                        </tr>
+                        <tr>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br><br>
+                <table class="ntable">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">Center</th>
+                            <th style="text-align: right">Right</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center">Cell</td>
+                            <td style="text-align: right">Cell</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">Cell</td>
+                            <td style="text-align: right">Cell</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <br/>
+                <br/>
+                 <table class="ntable">
+                    <thead>
+                        <tr>
+                            <th>Header<br/>line2</th>
+                            <th>Header</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cell</td>
+                            <td>Cell<br>line2<br/>line3</td>
+                        </tr>
+                        <tr>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="text-reset p-0" style="line-height: 1.5; font-size: 16px; font-family: inherit; white-space: pre-wrap;">
+!!! note Admonition title
+    Admonition text</pre>
+                <br>
+                <span class="text-muted">Main types: <span class="text-primary">info</span>, <span class="text-success">note</span>, <span class="text-warning">warning</span>, <span class="text-danger">danger</span>.
+                    Defaults to warning.<br><br>
+                <span class="text-muted">Additional types: <span class="text-primary">greentext</span></span>
+                </span>
+                <pre class="text-reset p-0" style="line-height: 1.5; font-size: 16px; font-family: inherit; white-space: pre-wrap;">
+!!! info
+    Title or text can be skipped
+</pre>
+            </td>
+            <td>
+                <div class="admonition note">
+                    <p class="admonition-title">Admonition title</p>
+                    <p>Admonition text</p>
+                </div>
+                <div class="admonition info">
+                    <p>Title or text can be skipped</p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Autolinks:<br>
+                https://rentry.co/ or rentry.co
+            </td>
+            <td>
+                Autolinks:<br>
+                <a href="https://rentry.co/">https://rentry.co/</a> or <a href="http://rentry.co/">rentry.co</a><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Link description:<br>
+                [Markdown paste service](https://rentry.co)<br><br>
+                <span class="text-muted">Be sure to include the "http(s)://" part of the link.</span>
+            </td>
+            <td>
+                Link description:<br>
+                <a href="https://rentry.co">Markdown paste service</a><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ![Alt Tag](https://i.imgur.com/PYV4crq.png)<br><br>
+                ![Alt Tag](https://i.imgur.com/PYV4crq.png){100px:100px}<br><br>
+                ![Alt Tag](https://i.imgur.com/PYV4crq.png "Title")<br><br>
+                ![Alt Tag](https://i.imgur.com/PYV4crq.png#left)<br><br>
+                <span class="text-muted">Be sure to include direct link to the image.</span><br>
+                <span class="text-muted">Alt tag shows if image fails to load.</span><br>
+                <span class="text-muted">Title tag controls mouseover text separely from Alt.</span><br>
+                <span class="text-muted">Add #left or #right to the image to float it.</span><br>
+                <span class="text-muted">Image sizes can be given with the following units:</span>
+                <ul>
+                    <li>px : 0 - 4000</li>
+                    <li>% : 0 - 500 (note: percentage height often does not do anything)</li>
+                    <li>vw : 0 - 500 (percentage of the vertical size of the page)</li>
+                    <li>hw : 0 - 500 (percentage of the horizontal size of the page)</li>
+                    <li>no units: numbers used as pixels</li>
+                </ul>
+                <span class="text-muted">Note that this will only change the visual size of the image. A 4MB image at 50x50px will still slow down the page!</span><br><br>
+                Images can be links by wrapping them:<br>
+                [![Alt Tag](https://i.imgur.com/PYV4crq.png)](https://rentry.co)<br><br>
+                Create a Youtube image link by coping the part after v= into the static image link:<br>
+                [![Alt Tag](https://img.youtube.com/vi/<strong>xyz</strong>/hqdefault.jpg){300px:200px}](https://youtube.com/watch?v=<strong>xyz</strong>)
+                    
+                
+            </td>
+            <td>
+                <img alt="Alt Tag" title="Alt Tag" src="/static/raccoon.webp?v=2"><br><br>
+                <img alt="Alt Tag" title="Alt Tag" src="/static/raccoon.webp?v=2" width="100px" height="100px"><br><br>
+                <img alt="Alt Tag" title="Title" src="/static/raccoon.webp?v=2" width="100px" height="100px"><br><br>
+                <a href="https://rentry.co"><img alt="Alt Tag" title="Title" src="/static/raccoon.webp?v=2" width="100px" height="100px"></a><br><br>
+                <a href="https://youtube.com"><img alt="Alt Tag" title="Title" src="https://img.youtube.com" width="100px" height="100px"></a>
+            </td>
+        </tr>
+        <tr></tr>
+            <td>
+                Float Clear:<br>
+                <br>
+                !; <br><br>
+                <span class="text-muted">Makes all following content sit below a previous image float. Useful to fix broken layouts after adding a float. Make sure to leave an empty line above.</span>
+                
+            </td>
+            <td>
+                <br>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+        <fieldset>
+            <div class="text-danger messages float-right"></div>
+            <div class=" text-danger  messages float-right"></div>
+        </fieldset>
+        <div class="metadata-button-container">
+            <button type="button" class="active metadata-plus">+ Metadata</button>
+        </div>
+        <fieldset class="metadata-fieldset">
+            <input type="hidden" name="csrfmiddlewaretoken" value="48WwbjIlKoeN4pPEjwvaZpX5OjiCUeUTToZKBrhK9NXi0JKMph6QLIzW4tk8DGbg">
+<div role="tabpanel" class="my-2 flex-tab" style="display: flex; flex: 1 0; flex-direction: column; min-height: 15em">
+    <div class="text-danger messages"></div>
+
+    <ul class="nav nav-tabs squared" id="textTab" role="tablist">
+        <li class="nav-item" style="background-color: #F3F4F6">
+            <a class="nav-link active squared text-muted px-3" id="metadata-tab" data-toggle="tab" href="#metadata" role="tab" aria-controls="text" aria-expanded="true">Metadata</a>
+        </li>
+
+        <li class="nav-item" style="background-color: #F3F4F6">
+            <a class="nav-link squared text-muted px-3" id="example-tab" data-toggle="tab" href="#metadata-example" role="tab" aria-controls="preview">Example</a>
+        </li>
+
+        <li class="nav-item" style="background-color: #F3F4F6">
+            <a class="nav-link squared text-muted px-3" id="metadata-how-tab" data-toggle="tab" href="#metadata-how" role="tab" aria-controls="preview">How
+            </a>
+        </li>
+        <li class="metadata-button-container">
+            <button type="button" data-action="hide">- Metadata</button>
+        </li>
+    </ul>
+
+    <div class="markdownx-rem" style="display: flex; flex: 1 0; min-height: 0;">
+
+        <div>
+            <div style="position: absolute; width: 100%; z-index: 1">
+                <div class="progress">
+                    <div class="bg-primary" id="progressBar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content long-words" id="textTabContent" style="display: flex; flex: 1 0; min-height: 0;">
+
+            <div role="tabpanel" class="tab-pane fade show active metadata-container" id="metadata" aria-labelledby="text-tab" style="flex: 1 0;">
+                <textarea style="width:100%" class="squared markdownx-editor " name="metadata" maxlength="200000" id="metadata_text" data-markdownx-upload-urls-path="/markdownx/upload/" data-markdownx-urls-path="/markdownx/markdownify/"></textarea>
+            </div>
+
+            <div class="tab-pane fade" id="metadata-example" role="tabpanel" aria-labelledby="preview-tab" style="flex: 1 0; flex-direction: column; overflow-y: auto;">
+                <div class="long-words entry-text py-2 px-sm-4 metadata-container example-inner" id="how-inner">
+                    <div class= "example-container">
+
+    
+        
+            <br />
+        
+        PAGE_TITLE = Welcome to my Rentry!<br />
+        
+
+    
+        
+        PAGE_DESCRIPTION = My Rentry page and everything about me<br />
+        
+
+    
+        
+        PAGE_IMAGE = https://rentry.co/static/icons/512.png<br />
+        
+
+    
+        
+        PAGE_ICON = https://rentry.co/static/raccoon.webp<br />
+        
+
+    
+        
+            <br />
+        
+        SHARE_TITLE = Welcome to my Rentry!<br />
+        
+
+    
+        
+        SHARE_DESCRIPTION = My Rentry page and everything about me<br />
+        
+
+    
+        
+        SHARE_IMAGE = https://rentry.co/static/icons/512.png<br />
+        
+
+    
+        
+        SHARE_TWITTER_TITLE = Welcome to my Rentry!<br />
+        
+
+    
+        
+        SHARE_TWITTER_DESCRIPTION = My Rentry page and everything about me<br />
+        
+
+    
+        
+        SHARE_TWITTER_IMAGE = https://rentry.co/static/icons/512.png<br />
+        
+
+    
+        
+            <br />
+        
+        OPTION_DISABLE_VIEWS = true<br />
+        
+
+    
+        
+        OPTION_DISABLE_SEARCH_ENGINE = true<br />
+        
+
+    
+        
+        OPTION_USE_ORIGINAL_PUB_DATE = true<br />
+        
+
+    
+        
+            <br />
+        
+        ACCESS_RECOMMENDED_THEME = dark<br />
+        
+
+    
+        
+        ACCESS_EASY_READ = /example<br />
+        
+
+    
+        
+            <br />
+        
+        SECRET_VERIFY = Twitter: @... , email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5c3d3e3f1c38393a723f3331">[email&#160;protected]</a><br />
+        
+
+    
+        
+        SECRET_RAW_ACCESS_CODE = example<br />
+        
+
+    
+        
+        SECRET_EMAIL_ADDRESS = <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2f5c5a5f5f405d5b6f5d4a415b5d56014c40">[email&#160;protected]</a><br />
+        
+
+    
+        
+            <br />
+        
+        SAFETY_PAGE_WARNING = custom<br />
+        
+
+    
+        
+        SAFETY_PAGE_WARNING_DESCRIPTION = This page contains this and that. You have been warned!<br />
+        
+
+    
+        
+        SAFETY_MEDIA_BLUR = true<br />
+        
+
+    
+        
+        SAFETY_LINK_WARNING = adult<br />
+        
+
+    
+        
+        SAFETY_LINK_WARNING_DESCRIPTION = adult<br />
+        
+
+    
+        
+        SAFETY_PAGE_FLAG = adult<br />
+        
+
+    
+        
+            <br />
+        
+        CONTAINER_PADDING = 10px<br />
+        
+
+    
+        
+        CONTAINER_MAX_WIDTH = 600px<br />
+        
+
+    
+        
+        CONTAINER_INNER_FOREGROUND_COLOR = RGBA(123,123,123,0.2)<br />
+        
+
+    
+        
+        CONTAINER_INNER_BACKGROUND_COLOR = transparent<br />
+        
+
+    
+        
+        CONTAINER_INNER_BACKGROUND_IMAGE = https://rentry.co/static/icons/512.png<br />
+        
+
+    
+        
+        CONTAINER_INNER_BACKGROUND_IMAGE_REPEAT = no-repeat<br />
+        
+
+    
+        
+        CONTAINER_INNER_BACKGROUND_IMAGE_POSITION = center<br />
+        
+
+    
+        
+        CONTAINER_INNER_BACKGROUND_IMAGE_SIZE = contain<br />
+        
+
+    
+        
+        CONTAINER_OUTER_FOREGROUND_COLOR = pink<br />
+        
+
+    
+        
+        CONTAINER_OUTER_BACKGROUND_COLOR = purple<br />
+        
+
+    
+        
+        CONTAINER_OUTER_BACKGROUND_IMAGE = https://rentry.co/static/icons/512.png<br />
+        
+
+    
+        
+        CONTAINER_OUTER_BACKGROUND_IMAGE_REPEAT = no-repeat<br />
+        
+
+    
+        
+        CONTAINER_OUTER_BACKGROUND_IMAGE_POSITION = center<br />
+        
+
+    
+        
+        CONTAINER_OUTER_BACKGROUND_IMAGE_SIZE = cover<br />
+        
+
+    
+        
+        CONTAINER_BORDER_IMAGE = https://rentry.co/static/icons/512.png<br />
+        
+
+    
+        
+        CONTAINER_BORDER_IMAGE_SLICE = fill<br />
+        
+
+    
+        
+        CONTAINER_BORDER_IMAGE_WIDTH = 25px<br />
+        
+
+    
+        
+        CONTAINER_BORDER_IMAGE_OUTSET = 10px<br />
+        
+
+    
+        
+        CONTAINER_BORDER_IMAGE_REPEAT = stretch<br />
+        
+
+    
+        
+        CONTAINER_BORDER_COLOR = yellow<br />
+        
+
+    
+        
+        CONTAINER_BORDER_WIDTH = 20px<br />
+        
+
+    
+        
+        CONTAINER_BORDER_STYLE = dashed<br />
+        
+
+    
+        
+        CONTAINER_BORDER_RADIUS = 3px<br />
+        
+
+    
+        
+        CONTAINER_SHADOW_COLOR = orange<br />
+        
+
+    
+        
+        CONTAINER_SHADOW_OFFSET = 0px 3px<br />
+        
+
+    
+        
+        CONTAINER_SHADOW_SPREAD = 3px<br />
+        
+
+    
+        
+        CONTAINER_SHADOW_BLUR = 5px<br />
+        
+
+    
+        
+            <br />
+        
+        CONTENT_FONT = Caveat Edu_Australia_VIC_WA_NT_Hand_Dots<br />
+        
+
+    
+        
+        CONTENT_FONT_WEIGHT = 500<br />
+        
+
+    
+        
+        CONTENT_TEXT_DIRECTION = ltr<br />
+        
+
+    
+        
+        CONTENT_TEXT_SIZE = 16px 1rem 2.5rem 0 0 0 0 0 1rem 1.5rem 1rem 0.8rem<br />
+        
+
+    
+        
+        CONTENT_TEXT_ALIGN = justify<br />
+        
+
+    
+        
+        CONTENT_TEXT_SHADOW_COLOR = black<br />
+        
+
+    
+        
+        CONTENT_TEXT_SHADOW_OFFSET = 1px 1px<br />
+        
+
+    
+        
+        CONTENT_TEXT_SHADOW_BLUR = 4px<br />
+        
+
+    
+        
+        CONTENT_TEXT_COLOR = grey white<br />
+        
+
+    
+        
+        CONTENT_LINK_COLOR = blue aqua<br />
+        
+
+    
+        
+        CONTENT_BULLET_COLOR = green red<br />
+        
+
+    
+        
+        CONTENT_LINK_BEHAVIOR = same same<br />
+        
+
+    
+    <br /> <br />
+    <p>Standalone: <a href="/metadata-example">/metadata-example</a></p>
+</div>
+    
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="metadata-how" role="tabpanel" aria-labelledby="how-tab" style="flex: 1 0; flex-direction: column; overflow-y: auto;">
+                <div class="long-words entry-text py-2 px-sm-4 metadata-how-inner" id="how-inner">
+                    
+<div class= "how-container"></div>
+
+    <h2>Rentry Metadata Docs</h2>
+    <p>Metadata is Rentry's system that allows for full page customization while keeping its minimalistic style. It works by letting you add commands and values that each will modify the page in some way. See the Example tab for quick reference.</p>
+    <p>Each Option is part of a group that defines what it modifies. These groups are:</p>
+    <ul>
+        <li><strong>PAGE:</strong> Metadata for the web page, such as page title.</li>
+        <li><strong>SHARE:</strong> Metadata for the web page to be used as snippets by other websites, such as Twitter or Google.</li>
+        <li><strong>OPTION:</strong> Options that control how the page functions.</li>
+        <li><strong>ACCESS:</strong> Accesibility options or view preferences.</li>
+        <li><strong>SECRET:</strong> Options that allow you to store information that will not be readable by others.</li> 
+        <li><strong>SAFETY:</strong> Page blocking and warnings for sensitive content.</li> 
+        <li><strong>CONTAINER:</strong> Controls for the box surrounding the content on the page.</li>
+        <li><strong>CONTENT:</strong> Controls for the content itself.</li> 
+    </ul>
+    <p>Options always start with their respective group name, for example: SHARE_TITLE</p>
+    <p>Each Option may have a fixed list or range of Values, explained on this page. If you get it wrong, the error message should provide detailed feedback.</p>
+
+    <h3>General Use</h3>
+    <p>To list a metadata option, you must add it to a new line in the metadata box with the format: OPTION = value</p>
+    <p>A single Option can have multiple values, separated by spaces, that will control it in more detail or for different situations. For example, giving two values to CONTENT_TEXT_COLOR will set the color for light and then dark mode.</p>
+    <p>Value Mapping: Some Options with multiple values will behave slightly differently depending on how many values you give. For example, CONTAINER_PADDING can be given one, two, three or four values. Using fewer than 4 will re-use the same values again for different sides of the container. To describe this we will provide a value mapping for each Option and count, to show you what the behavior will be.
+        <br />If giving CONTAINER_PADDING 4 values, these will be applied in the following way:
+        <br />Top Right Bottom Left
+        <br />CONTAINER_PADDING = 5px 10px 20px 40px
+        <br />This is how it will be applied: top = 5px, right = 10px, bottom = 20px, left = 40px
+    </p>
+
+    <p>Value Lists: Other Options with multiple values will affect more things as values are added. For example, FONT_SIZE will change more types of content as more values are added.
+        <br />Within this helpsheet, we will list what each value does and in what order. Content font looks like this (commas just for clarity here, don't use them):
+        <br />CONTENT_FONT = base, p, h1, h2, h3, h4, h5, h6, li, link, quotes, code
+        <br />And as a real world example:
+        <br />CONTENT_FONT = 12px 1.5rem 5rem 4rem 3.5rem 3rem 2.8rem 2.5rem 1.5rem 1.5rem 2rem 1.3rem
+    </p>
+
+
+    <p>Units: Each Option has a set list of possible values that are then validated to ensure they are permitted. When these values are numbers they may be qualified by a unit, such as px: 4px. Each Option has a list of available units and a range of available values for each unit. This means that it might be possible to set as high as 1500px but only up to 100%.</p>
+    <p>Decimals: Some Values can be decimals and each have a limit to the amount of numbers allowed after the decimal place.</p>
+    <p>Require and Require one tell you when an Option must be paired with another Option. With Require, all listed Options must be present. With Require one, only one of them must be present.</p>
+
+    <h3>Validations</h3>
+    <p>Each Value submitted is validated according to an internal checking system that is re-used between different Options. This means that we can explain them here:</p>
+    <ul>
+        <li><strong>max_length:</strong> All Options have a max length. This is the total number of characters that can be submitted for this option.</li>
+        <li><strong>color_name:</strong> A color listed within this page (this is the same as the available colors for inline text color) <a href="/rentry-text-colors">/rentry-text-colors</a></li>
+        <li><strong>color_hex:</strong> A color defined as a hex (base16). These start with a # and have exactly 3, 6 or 8 letters or numbers afterwards, in the range 0-9 and A-F. When there are 3, the characters are repeated to make them 6 internally. When there are 8, the last two control transparency.
+        <br /> For example: #abc123
+        <br /><a href="https://get-color.com/transparent/" target="_blank">Color picker that supports transparency and outputs as a hex</a></li>
+        <li><strong>color_rgba:</strong> A color defined as a RGBA (red green blue alpha). These have the format RGBA(0, 0, 0, 1). Each of the first three numbers can be between 0 and 255. The fourth number can be a decimal between 0 and 1.
+            <br /> For example: RGBA(255, 0, 120, 0.9)
+            <br /><a href="https://rgbacolorpicker.com/" target="_blank">Color picker that outputs RGBA</a></li>
+        <li><strong>css_size:</strong> A number followed by one of the listed units, within the listed range. If no-unit, then this requires a bare number.</li>
+        <li><strong>whitelisted_string:</strong> One of the words listed.</li>
+        <li><strong>font_name:</strong> A name of a Google font, with all spaces replaced with underscores. <a href="https://fonts.google.com/">https://fonts.google.com/</a></li>
+        <li><strong>url:</strong> A link, optionally starting with https:// or http://, followed by any number of subdomains, a domain, a page location, a dot and a TLD.</li>
+        <li><strong>bool:</strong> true or false</li>
+        <li><strong>rentry_url:</strong> A full rentry URL or a /shorthand-url</li>
+        <li><strong>rentry_url_exists:</strong> A check to see if the entered URL ever existed</li>
+        <li><strong>rentry_url_enabled:</strong> A check to ensure the entered URL is currently active and not deleted or disabled.</li>
+    </ul>
+
+    <h3>Tips</h3>
+    <p>You may not list the same option more than once.</p>
+    <p>The metadata validator is ultra-strict, meaning you can only put in information that is permitted.</p>
+    <p>Most Options do not have default values. To use the default, just delete the Option.</p>
+
+    <h3>Metadata Options</h3>
+    <div class="metadata-options-container">
+        
+            
+                
+                <div class="metadata-group-container">
+                    <h4>GROUP: PAGE</h4>
+                    
+                        
+                    
+            
+
+                    <div class="metadata-option">
+                        <h5>PAGE_TITLE</h5>
+                        <p>Appears on the tab for this page&#x27;s window in the browser.</p>
+                        
+                        <p>Default Value: Taken from page content.</p>
+                        
+                        <p>Max Length: 60</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>PAGE_DESCRIPTION</h5>
+                        <p>Used by search engines and content snippets.</p>
+                        
+                        <p>Default Value: Taken from page content.</p>
+                        
+                        <p>Max Length: 160</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>PAGE_IMAGE</h5>
+                        <p>Used by search engines and content snippets. If we ever have internal page linking with previews, this is what will show.</p>
+                        
+                        <p>Default Value: Taken from page content.</p>
+                        
+                        <p>Max Length: 1000</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">url</span></p>
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>PAGE_ICON</h5>
+                        <p>Changes the icon that appears in the browser tab.</p>
+                        
+                        <p>Default Value: The standard Rentry icon shown on all pages</p>
+                        
+                        <p>Max Length: 1000</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">url</span></p>
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+                
+                <div class="metadata-group-container">
+                    <h4>GROUP: SHARE</h4>
+                    
+                        
+                    
+            
+
+                    <div class="metadata-option">
+                        <h5>SHARE_TITLE</h5>
+                        <p>Used by search engines and content snippets.</p>
+                        
+                        <p>Default Value: The value in PAGE_TITLE</p>
+                        
+                        <p>Max Length: 60</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>SHARE_DESCRIPTION</h5>
+                        <p>Used by search engines and content snippets. It&#x27;s unlikely to be necessary to set this as well as PAGE_DESCRIPTION.</p>
+                        
+                        <p>Default Value: The value in PAGE_DESCRIPTION</p>
+                        
+                        <p>Max Length: 160</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>SHARE_IMAGE</h5>
+                        <p>Used by search engines and content snippets.</p>
+                        
+                        <p>Default Value: The value in PAGE_IMAGE</p>
+                        
+                        <p>Max Length: 1000</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">url</span></p>
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>SHARE_TWITTER_TITLE</h5>
+                        <p>Used by Twitter and other Twitter compatible platforms as the title snippet of the link.</p>
+                        
+                        <p>Default Value: The value in SHARE_TITLE</p>
+                        
+                        <p>Max Length: 60</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>SHARE_TWITTER_DESCRIPTION</h5>
+                        <p>Used by Twitter and other Twitter compatible platforms as the description snippet of the link.</p>
+                        
+                        <p>Default Value: The value in SHARE_DESCRIPTION</p>
+                        
+                        <p>Max Length: 160</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>SHARE_TWITTER_IMAGE</h5>
+                        <p>This image will be used for Twitter and other Twitter compatible platforms when loading a preview of this page.</p>
+                        
+                        <p>Default Value: The value in SHARE_IMAGE</p>
+                        
+                        <p>Max Length: 1000</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">url</span></p>
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+                
+                <div class="metadata-group-container">
+                    <h4>GROUP: OPTION</h4>
+                    
+                        
+                    
+            
+
+                    <div class="metadata-option">
+                        <h5>OPTION_DISABLE_VIEWS</h5>
+                        <p>Disables the view counter and hides it. Existing view count will return when this is unset.</p>
+                        
+                        <p>Max Length: 5</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">bool</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>OPTION_DISABLE_SEARCH_ENGINE</h5>
+                        <p>Removes the URL from the sitemap and instructs crawling search engines to not index it. Note that it can take up to 2 months for Google to remove listings.</p>
+                        
+                        <p>Max Length: 5</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">bool</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>OPTION_USE_ORIGINAL_PUB_DATE</h5>
+                        <p>If a URL was deleted and re-created this forces it to show the date it was first published, rather than date of re-activation.</p>
+                        
+                        <p>Max Length: 5</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">bool</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+                
+                <div class="metadata-group-container">
+                    <h4>GROUP: ACCESS</h4>
+                    
+                        
+                    
+            
+
+                    <div class="metadata-option">
+                        <h5>ACCESS_RECOMMENDED_THEME</h5>
+                        <p>When a page does not look good in one of the viewing modes, this will auto switch the viewer to the listed mode.</p>
+                        
+                        <p>Max Length: 5</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>dark</li>
+                        
+                        <li>light</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>ACCESS_EASY_READ</h5>
+                        <p>Adds an e2r button next to the high contrast button that people can click on, which will link to the listed URL. Also, visiting /url/e2r will load the easy read version instead. While this is validated when saved, if the easy read version is removed afterwards, this setting will not update and the link will go to a 404.</p>
+                        
+                        <p>Max Length: 300</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">rentry_url</span><span class="validation-item">rentry_url_exists</span><span class="validation-item">rentry_url_enabled</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+                
+                <div class="metadata-group-container">
+                    <h4>GROUP: SECRET</h4>
+                    
+                        
+                            <p>Options for storing information that will not show after saving. Modify codes cannot make changes to Values in this group.</div>
+                        
+                    
+            
+
+                    <div class="metadata-option">
+                        <h5>SECRET_VERIFY</h5>
+                        <p>Specify one or more external accounts that you can later use to recover your page if you forget the edit code.</p>
+                        
+                        <p>Max Length: 3000</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>SECRET_RAW_ACCESS_CODE</h5>
+                        <p>A passcode that allows access to the raw version of this page, including through an automated script. You can also use this code as custom header rentry-auth, which will give access to the /raw/ version of any page. To get a code, please email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4c3f393c3c233e380c3e2922383e35622f23">[email&#160;protected]</a>.</p>
+                        
+                        <p>Max Length: 100</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">raw_access_code</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>SECRET_EMAIL_ADDRESS</h5>
+                        <p>Supply an email address to attach to this page, which we can then use to manually reset your edit code on request. In future updates this will be used for automated edit code resets.</p>
+                        
+                        <p>Max Length: 300</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">email</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+                
+                <div class="metadata-group-container">
+                    <h4>GROUP: SAFETY</h4>
+                    
+                        
+                    
+            
+
+                    <div class="metadata-option">
+                        <h5>SAFETY_PAGE_WARNING</h5>
+                        <p>Adds a warning popup to your page before allowing visitors to view.</p>
+                        
+                        <p>Max Length: 100</p>
+                        <p>Max Values Accepted: 4</p>
+                        
+                        <p>Validate All: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>adult</li>
+                        
+                        <li>sensitive</li>
+                        
+                        <li>epilepsy</li>
+                        
+                        <li>custom</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>SAFETY_PAGE_WARNING_DESCRIPTION</h5>
+                        <p>Provide your own text to the warning popup created by SAFETY_PAGE_WARNING</p>
+                        
+                        <p>Max Length: 240</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>SAFETY_MEDIA_BLUR</h5>
+                        <p>Blurs all images in your page and requires them to be clicked before showing. Allows you to display sensitive images that some viewers may prefer not to see</p>
+                        
+                        <p>Max Length: 5</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">bool</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>SAFETY_LINK_WARNING</h5>
+                        <p>Triggers a popup when clicking on a link within your content. Users will then have the option to cancel and remain on your page.</p>
+                        
+                        <p>Max Length: 100</p>
+                        <p>Max Values Accepted: 3</p>
+                        
+                        <p>Validate All: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>adult</li>
+                        
+                        <li>epilepsy</li>
+                        
+                        <li>sensitive</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>SAFETY_LINK_WARNING_DESCRIPTION</h5>
+                        <p>Provide your own text to the link warning popup.</p>
+                        
+                        <p>Max Length: 240</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>SAFETY_PAGE_FLAG</h5>
+                        <p>Creates a visual icon on your page to inform readers that a page contains certain material. Similar to SAFETY_PAGE_WARNING, except it does not trigger a popup. This metadata is best used to tell Rentry about the content, allowing automatic filtering based on a visitor&#x27;s country or a user&#x27;s preference.</p>
+                        
+                        <p>Max Length: 100</p>
+                        <p>Max Values Accepted: 3</p>
+                        
+                        <p>Validate All: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>adult</li>
+                        
+                        <li>epilepsy</li>
+                        
+                        <li>sensitive</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+                
+                <div class="metadata-group-container">
+                    <h4>GROUP: CONTAINER</h4>
+                    
+                        
+                    
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_PADDING</h5>
+                        <p>The internal spacing between the main container and the content.</p>
+                        
+                        <p>Default Value: 20px</p>
+                        
+                        <p>Max Length: 64</p>
+                        <p>Max Values Accepted: 4</p>
+                        
+                        <p>Validate All: <span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>px : 0 - 40 || Decimals: 0</li>
+                        
+                        <li>% : 0 - 25 || Decimals: 3</li>
+                        
+                        <li>vh : 0 - 15 || Decimals: 4</li>
+                        
+                        <li>hw : 0 - 20 || Decimals: 4</li>
+                        
+                        <li>rem : 0 - 7 || Decimals: 4</li>
+                        
+                        </ul>   
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All Sides</li>
+                        
+                        <li>TOP BOTTOM</li>
+                        
+                        <li>TOP LEFT+RIGHT BOTTOM</li>
+                        
+                        <li>TOP RIGHT BOTTOM LEFT</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_MAX_WIDTH</h5>
+                        <p>Limits and centers the content container&#x27;s width, which centers all content on larger screens, instead of it aligning left.</p>
+                        
+                        <p>Max Length: 16</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>px : 100 - 1600 || Decimals: 0</li>
+                        
+                        <li>% : 10 - 100 || Decimals: 3</li>
+                        
+                        <li>vh : 10 - 100 || Decimals: 4</li>
+                        
+                        <li>hw : 10 - 100 || Decimals: 4</li>
+                        
+                        <li>rem : 3 - 25 || Decimals: 4</li>
+                        
+                        </ul>   
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_INNER_FOREGROUND_COLOR</h5>
+                        <p>Sets the color of the inner foreground, which is best used as a semi transparent layer on top of the content. Giving a non transparent color here will block out all content. Recommended usage: set a color with around 0.2 transparency, which will give a slight tint to all content.</p>
+                        
+                        <p>Default Value: none</p>
+                        
+                        <p>Max Length: 32</p>
+                        <p>Max Values Accepted: 2</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">color_name</span><span class="validation-item">color_hex</span><span class="validation-item">color_rgba</span></p>
+                        
+                        
+                        
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All Modes</li>
+                        
+                        <li>Light Dark</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_INNER_BACKGROUND_COLOR</h5>
+                        <p>Sets the color of the inner background. Try to ensure that the text color has a high contrast with the background, so that it is still readable. Set to transparent if you are using a border image.</p>
+                        
+                        <p>Max Length: 32</p>
+                        <p>Max Values Accepted: 2</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">color_name</span><span class="validation-item">color_hex</span><span class="validation-item">color_rgba</span></p>
+                        
+                        
+                        
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All Modes</li>
+                        
+                        <li>Light Dark</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_INNER_BACKGROUND_IMAGE</h5>
+                        <p>Sets the background image used in the inner container, behind the content.</p>
+                        
+                        <p>Max Length: 1000</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">url</span></p>
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_INNER_BACKGROUND_IMAGE_REPEAT</h5>
+                        <p>Should the background image show one copy, or many, and how should these behave?</p>
+                        
+                        <p>Max Length: 16</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>no-repeat</li>
+                        
+                        <li>repeat-x</li>
+                        
+                        <li>repeat-y</li>
+                        
+                        <li>round</li>
+                        
+                        <li>space</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_INNER_BACKGROUND_IMAGE_POSITION</h5>
+                        <p>Controls the position of the inner background image.</p>
+                        
+                        <p>Max Length: 6</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>bottom</li>
+                        
+                        <li>center</li>
+                        
+                        <li>left</li>
+                        
+                        <li>right</li>
+                        
+                        <li>top</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_INNER_BACKGROUND_IMAGE_SIZE</h5>
+                        <p>Should the image stretch, or sit as large as possible without distorting? Cover = stretch.</p>
+                        
+                        <p>Max Length: 16</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">whitelisted_string</span><span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>px : 1 - 3000 || Decimals: 0</li>
+                        
+                        <li>% : 0.1 - 150 || Decimals: 3</li>
+                        
+                        <li>vh : 0.1 - 200 || Decimals: 4</li>
+                        
+                        <li>hw : 0.1 - 200 || Decimals: 4</li>
+                        
+                        <li>rem : 0.1 - 50 || Decimals: 4</li>
+                        
+                        </ul>   
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>contain</li>
+                        
+                        <li>cover</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_OUTER_FOREGROUND_COLOR</h5>
+                        <p>Set the colour for the foreground of the outer container, that will sit on top of everything else (inner container not included). If you want anything else to be visible here, you must use transparency.</p>
+                        
+                        <p>Max Length: 32</p>
+                        <p>Max Values Accepted: 2</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">color_name</span><span class="validation-item">color_hex</span><span class="validation-item">color_rgba</span></p>
+                        
+                        
+                        
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All Modes</li>
+                        
+                        <li>Light Dark</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_OUTER_BACKGROUND_COLOR</h5>
+                        <p>Set the colour for the very back of the outer container, that everything else will appear in front of. No need to use transparency here.</p>
+                        
+                        <p>Max Length: 32</p>
+                        <p>Max Values Accepted: 2</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">color_name</span><span class="validation-item">color_hex</span><span class="validation-item">color_rgba</span></p>
+                        
+                        
+                        
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All Modes</li>
+                        
+                        <li>Light Dark</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_OUTER_BACKGROUND_IMAGE</h5>
+                        <p>A link to an image to be used for the outer container&#x27;s background. This will set in front of the outer background color and underneath the inner background color.</p>
+                        
+                        <p>Max Length: 1000</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">url</span></p>
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_OUTER_BACKGROUND_IMAGE_REPEAT</h5>
+                        <p>Controls whether the outer background image should repeat or not.</p>
+                        
+                        <p>Max Length: 16</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>no-repeat</li>
+                        
+                        <li>repeat-x</li>
+                        
+                        <li>repeat-y</li>
+                        
+                        <li>round</li>
+                        
+                        <li>space</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_OUTER_BACKGROUND_IMAGE_POSITION</h5>
+                        <p>Controls the position of the outer background image.</p>
+                        
+                        <p>Max Length: 16</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>bottom</li>
+                        
+                        <li>center</li>
+                        
+                        <li>left</li>
+                        
+                        <li>right</li>
+                        
+                        <li>top</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_OUTER_BACKGROUND_IMAGE_SIZE</h5>
+                        <p>Controls whether the outer background image should stretch and how.</p>
+                        
+                        <p>Max Length: 16</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">whitelisted_string</span><span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>px : 1 - 3000 || Decimals: 0</li>
+                        
+                        <li>% : 0.1 - 150 || Decimals: 3</li>
+                        
+                        <li>vh : 0.1 - 200 || Decimals: 4</li>
+                        
+                        <li>hw : 0.1 - 200 || Decimals: 4</li>
+                        
+                        <li>rem : 0.1 - 50 || Decimals: 4</li>
+                        
+                        </ul>   
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>contain</li>
+                        
+                        <li>cover</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_BORDER_IMAGE</h5>
+                        <p>The location of the image, stored elsewhere.</p>
+                        
+                        <p>Max Length: 1000</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">url</span></p>
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_BORDER_IMAGE_SLICE</h5>
+                        <p>Controls how the border image should be cut up and displayed.</p>
+                        
+                        <p>Max Length: 64</p>
+                        <p>Max Values Accepted: 4</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">whitelisted_string</span><span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        <p>Requires: <span class="require-item">CONTAINER_BORDER_IMAGE</span><span class="require-item">CONTAINER_BORDER_IMAGE_WIDTH</span></p>
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>no-unit : 0 - 20 || Decimals: 0</li>
+                        
+                        <li>% : 0 - 100 || Decimals: 3</li>
+                        
+                        </ul>   
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>fill</li>
+                        
+                        </ul>   
+                        
+
+                        
+                        <p>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-slice">https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-slice</a></p>
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_BORDER_IMAGE_WIDTH</h5>
+                        <p>The width of the image used in the border.</p>
+                        
+                        <p>Max Length: 64</p>
+                        <p>Max Values Accepted: 4</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">whitelisted_string</span><span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        <p>Requires: <span class="require-item">CONTAINER_BORDER_IMAGE</span></p>
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>no-unit : 0 - 20 || Decimals: 0</li>
+                        
+                        <li>px : 0 - 30 || Decimals: 0</li>
+                        
+                        <li>% : 0 - 100 || Decimals: 3</li>
+                        
+                        </ul>   
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All sides</li>
+                        
+                        <li>TOP BOTTOM</li>
+                        
+                        <li>TOP LEFT+RIGHT BOTTOM</li>
+                        
+                        <li>TOP RIGHT BOTTOM LEFT</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>auto</li>
+                        
+                        </ul>   
+                        
+
+                        
+                        <p>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-width">https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-width</a></p>
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_BORDER_IMAGE_OUTSET</h5>
+                        <p>Controls where the border image appears in relation to the edges of the container. Higher values = further away.</p>
+                        
+                        <p>Max Length: 64</p>
+                        <p>Max Values Accepted: 4</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">whitelisted_string</span><span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        <p>Requires: <span class="require-item">CONTAINER_BORDER_IMAGE</span><span class="require-item">CONTAINER_BORDER_IMAGE_WIDTH</span></p>
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>no-unit : 0 - 20 || Decimals: 0</li>
+                        
+                        <li>px : 0 - 30 || Decimals: 0</li>
+                        
+                        </ul>   
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All sides</li>
+                        
+                        <li>TOP BOTTOM</li>
+                        
+                        <li>TOP LEFT+RIGHT BOTTOM</li>
+                        
+                        <li>TOP RIGHT BOTTOM LEFT</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>auto</li>
+                        
+                        </ul>   
+                        
+
+                        
+                        <p>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-outset">https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-outset</a></p>
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_BORDER_IMAGE_REPEAT</h5>
+                        <p>Whether the image repeats or not throughout the border, and how</p>
+                        
+                        <p>Max Length: 32</p>
+                        <p>Max Values Accepted: 2</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        <p>Requires: <span class="require-item">CONTAINER_BORDER_IMAGE</span><span class="require-item">CONTAINER_BORDER_IMAGE_WIDTH</span></p>
+                        
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All sides</li>
+                        
+                        <li>TOP+MIDDLE+BOTTOM LEFT+RIGHT</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>stretch</li>
+                        
+                        <li>repeat</li>
+                        
+                        <li>round</li>
+                        
+                        <li>space</li>
+                        
+                        </ul>   
+                        
+
+                        
+                        <p>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-repeat">https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-repeat</a></p>
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_BORDER_COLOR</h5>
+                        <p>The color of the border.</p>
+                        
+                        <p>Max Length: 120</p>
+                        <p>Max Values Accepted: 4</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">color_name</span><span class="validation-item">color_hex</span><span class="validation-item">color_rgba</span></p>
+                        
+                        
+                        
+                        <p>Requires: <span class="require-item">CONTAINER_BORDER_WIDTH</span><span class="require-item">CONTAINER_BORDER_STYLE</span></p>
+                        
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All sides</li>
+                        
+                        <li>TOP BOTTOM</li>
+                        
+                        <li>TOP LEFT+RIGHT BOTTOM</li>
+                        
+                        <li>TOP RIGHT BOTTOM LEFT</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_BORDER_WIDTH</h5>
+                        <p>The thickness of the border.</p>
+                        
+                        <p>Max Length: 64</p>
+                        <p>Max Values Accepted: 4</p>
+                        
+                        <p>Validate All: <span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        
+                        <p>Requires: <span class="require-item">CONTAINER_BORDER_STYLE</span></p>
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>px : 0 - 40 || Decimals: 0</li>
+                        
+                        <li>% : 0 - 15 || Decimals: 3</li>
+                        
+                        <li>vh : 0 - 5 || Decimals: 4</li>
+                        
+                        <li>hw : 0 - 5 || Decimals: 4</li>
+                        
+                        <li>rem : 0 - 4 || Decimals: 4</li>
+                        
+                        </ul>   
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All sides</li>
+                        
+                        <li>TOP BOTTOM</li>
+                        
+                        <li>TOP LEFT+RIGHT BOTTOM</li>
+                        
+                        <li>TOP RIGHT BOTTOM LEFT</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_BORDER_STYLE</h5>
+                        <p>The appearance style of the border.</p>
+                        
+                        <p>Max Length: 64</p>
+                        <p>Max Values Accepted: 4</p>
+                        
+                        <p>Validate All: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        
+                        <p>Requires: <span class="require-item">CONTAINER_BORDER_WIDTH</span></p>
+                        
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>dotted</li>
+                        
+                        <li>dashed</li>
+                        
+                        <li>solid</li>
+                        
+                        <li>double</li>
+                        
+                        <li>groove</li>
+                        
+                        <li>ridge</li>
+                        
+                        <li>inset</li>
+                        
+                        <li>outset</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_BORDER_RADIUS</h5>
+                        <p>Curves the sides of the container. This can be used without setting any borders at all.</p>
+                        
+                        <p>Max Length: 64</p>
+                        <p>Max Values Accepted: 4</p>
+                        
+                        <p>Validate All: <span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>px : 0 - 200 || Decimals: 0</li>
+                        
+                        <li>% : 0 - 50 || Decimals: 3</li>
+                        
+                        <li>vh : 0 - 40 || Decimals: 4</li>
+                        
+                        <li>hw : 0 - 40 || Decimals: 4</li>
+                        
+                        <li>rem : 0 - 30 || Decimals: 4</li>
+                        
+                        </ul>   
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All sides</li>
+                        
+                        <li>TOP BOTTOM</li>
+                        
+                        <li>TOP LEFT+RIGHT BOTTOM</li>
+                        
+                        <li>TOP RIGHT BOTTOM LEFT</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius">https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius</a></p>
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_SHADOW_COLOR</h5>
+                        <p>The color of the shadow.</p>
+                        
+                        <p>Max Length: 32</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">color_name</span><span class="validation-item">color_hex</span><span class="validation-item">color_rgba</span></p>
+                        
+                        
+                        <p>Requires One: <span class="require-item">CONTAINER_SHADOW_OFFSET</span><span class="require-item">CONTAINER_SHADOW_SPREAD</span><span class="require-item">CONTAINER_SHADOW_BLUR</span></p>
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_SHADOW_OFFSET</h5>
+                        <p>The amount the shadow offsets from the container, first along, then up/down</p>
+                        
+                        <p>Max Length: 32</p>
+                        <p>Max Values Accepted: 2</p>
+                        
+                        <p>Validate All: <span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        
+                        <p>Requires: <span class="require-item">CONTAINER_SHADOW_COLOR</span></p>
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>px : -15 - 15 || Decimals: 0</li>
+                        
+                        <li>% : -5 - 5 || Decimals: 3</li>
+                        
+                        <li>vh : -2 - 2 || Decimals: 4</li>
+                        
+                        <li>hw : -2 - 2 || Decimals: 4</li>
+                        
+                        <li>rem : -4 - 2 || Decimals: 4</li>
+                        
+                        </ul>   
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>Offset-X+Offset-Y</li>
+                        
+                        <li>Offset-X Offset-Y</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_SHADOW_SPREAD</h5>
+                        <p>The spread (thickness) of the shadow. Think of this like a border size that becomes a shadow with blur.</p>
+                        
+                        <p>Max Length: 12</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        
+                        <p>Requires: <span class="require-item">CONTAINER_SHADOW_COLOR</span></p>
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>px : 0 - 30 || Decimals: 0</li>
+                        
+                        <li>% : 0 - 10 || Decimals: 3</li>
+                        
+                        <li>vh : 0 - 5 || Decimals: 4</li>
+                        
+                        <li>hw : 0 - 5 || Decimals: 4</li>
+                        
+                        <li>rem : 0 - 3 || Decimals: 4</li>
+                        
+                        </ul>   
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTAINER_SHADOW_BLUR</h5>
+                        <p>The blurryness of the shadow. Recommended to make this a few px at least, or the shadow will look like a border.</p>
+                        
+                        <p>Max Length: 12</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        
+                        <p>Requires: <span class="require-item">CONTAINER_SHADOW_COLOR</span></p>
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>px : 0 - 30 || Decimals: 0</li>
+                        
+                        <li>% : 0 - 10 || Decimals: 3</li>
+                        
+                        <li>vh : 0 - 5 || Decimals: 4</li>
+                        
+                        <li>hw : 0 - 5 || Decimals: 4</li>
+                        
+                        <li>rem : 0 - 3 || Decimals: 4</li>
+                        
+                        </ul>   
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+                
+                <div class="metadata-group-container">
+                    <h4>GROUP: CONTENT</h4>
+                    
+                        
+                    
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTENT_FONT</h5>
+                        <p>Sets the font for the page content. Any font listed on Google fonts is permitted. Copy the font name from the title on the Google fonts page and if there are any spaces, switch them for underscores. For example: Comic Neue becomes Comic_Neue. </p>
+                        
+                        <p>Max Length: 1000</p>
+                        <p>Max Values Accepted: 2</p>
+                        
+                        <p>Validate All: <span class="validation-item">font_name</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>Font for all content</li>
+                        
+                        <li>Paragraph Headings</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Reference: <a href="https://fonts.google.com/">https://fonts.google.com/</a></p>
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTENT_FONT_WEIGHT</h5>
+                        <p>Sets the font weight (boldness) for the page content. If you use multiple fonts, this will apply to them in the same order. If a weight is not available from Google then your browser will try to adjust the weight itself, which may look odd!</p>
+                        
+                        <p>Max Length: 24</p>
+                        <p>Max Values Accepted: 2</p>
+                        
+                        <p>Validate All: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>Font for all content</li>
+                        
+                        <li>Paragraph Headings</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>bold</li>
+                        
+                        <li>bolder</li>
+                        
+                        <li>lighter</li>
+                        
+                        <li>normal</li>
+                        
+                        <li>100</li>
+                        
+                        <li>200</li>
+                        
+                        <li>300</li>
+                        
+                        <li>400</li>
+                        
+                        <li>500</li>
+                        
+                        <li>600</li>
+                        
+                        <li>700</li>
+                        
+                        <li>800</li>
+                        
+                        <li>900</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTENT_TEXT_DIRECTION</h5>
+                        <p>Setting to rtl switches the text mode to right to left, which is recommended if using a right to left language such as Arabic. If you use this with a left to right language like English it will cause odd behaviour, such as punctuation appearing at the beginning of a line.</p>
+                        
+                        <p>Max Length: 7</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>ltr</li>
+                        
+                        <li>rtl</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTENT_TEXT_SIZE</h5>
+                        <p>Sets the font size, either for the whole page, or for separate types of content depending on how many Values you supply.             &lt;br /&gt;The first Value, base, sets the root font size of the page, which you can then make use of by setting other Values as relative.             &lt;br /&gt;It is recommended to set the base as 16px and to use rem for all other values. This will mean that you can then adjust all font sizes by changing only the base value.             &lt;br /&gt;For example, you set the base as 16px, Heading1 as 2.5rem and Paragraph as 1rem. This then outputs Heading1 as 2.5x16=40px and Paragraph as 16x1 = 16px.             &lt;br /&gt;Later, you decide you want to font to be larger. So you change the base to 20px. Now, Heading1 will be 2.5x20=50px and Paragraph will be 20x1=20px             &lt;br /&gt;If you have all Values set, this will make it much easier to control!             </p>
+                        
+                        <p>Default Value: 16px 1rem 2.5rem 2rem 1.75rem 1.5rem 1.25rem 1rem 1rem 1rem 1rem 14px</p>
+                        
+                        <p>Max Length: 128</p>
+                        <p>Max Values Accepted: 12</p>
+                        
+                        <p>Validate All: <span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>no-unit : 0 - 0 || Decimals: 0</li>
+                        
+                        <li>px : 8 - 64 || Decimals: 0</li>
+                        
+                        <li>% : 10 - 500 || Decimals: 3</li>
+                        
+                        <li>vh : 2 - 10 || Decimals: 4</li>
+                        
+                        <li>hw : 2 - 10 || Decimals: 4</li>
+                        
+                        <li>rem : 0.3 - 8 || Decimals: 4</li>
+                        
+                        </ul>   
+                        
+
+                        
+
+                        
+                        <p>Value List:</p>
+                        <ol>
+                        
+                        <li>Base</li>
+                        
+                        <li>Paragraphs</li>
+                        
+                        <li># Header 1</li>
+                        
+                        <li>## Header 2</li>
+                        
+                        <li>### Header 3</li>
+                        
+                        <li>#### Header 4</li>
+                        
+                        <li>##### Header 5</li>
+                        
+                        <li>###### Header 6</li>
+                        
+                        <li>List item</li>
+                        
+                        <li>Link</li>
+                        
+                        <li>Quotes</li>
+                        
+                        <li>Code</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTENT_TEXT_ALIGN</h5>
+                        <p>Sets how text sits on the page, especially when there are multiple lines. Justify makes every line in a block of text take up the same width.</p>
+                        
+                        <p>Default Value: left</p>
+                        
+                        <p>Max Length: 7</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>right</li>
+                        
+                        <li>center</li>
+                        
+                        <li>justify</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTENT_TEXT_SHADOW_COLOR</h5>
+                        <p>Sets the color of text shadow.</p>
+                        
+                        <p>Max Length: 32</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">color_name</span><span class="validation-item">color_hex</span><span class="validation-item">color_rgba</span></p>
+                        
+                        
+                        
+                        <p>Requires: <span class="require-item">CONTENT_TEXT_SHADOW_OFFSET</span></p>
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTENT_TEXT_SHADOW_OFFSET</h5>
+                        <p>Sets the offset of text shadow.</p>
+                        
+                        <p>Max Length: 32</p>
+                        <p>Max Values Accepted: 2</p>
+                        
+                        <p>Validate All: <span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        
+                        <p>Requires: <span class="require-item">CONTENT_TEXT_SHADOW_COLOR</span></p>
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>px : -15 - 15 || Decimals: 0</li>
+                        
+                        <li>% : -5 - 5 || Decimals: 3</li>
+                        
+                        <li>vh : -2 - 2 || Decimals: 4</li>
+                        
+                        <li>hw : -2 - 2 || Decimals: 4</li>
+                        
+                        <li>rem : -2 - 2 || Decimals: 4</li>
+                        
+                        </ul>   
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>Offset-X+Offset-Y</li>
+                        
+                        <li>Offset-X Offset-Y</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTENT_TEXT_SHADOW_BLUR</h5>
+                        <p>Sets the blur of text shadow.</p>
+                        
+                        <p>Max Length: 12</p>
+                        <p>Max Values Accepted: 1</p>
+                        
+                        <p>Validate All: <span class="validation-item">css_size</span></p>
+                        
+                        
+                        
+                        
+                        <p>Requires: <span class="require-item">CONTENT_TEXT_SHADOW_COLOR</span><span class="require-item">CONTENT_TEXT_SHADOW_OFFSET</span></p>
+                        
+                        
+                        <p>Units and Ranges For css_size:</p>
+                        <ul>
+                        
+                        <li>px : 0 - 30 || Decimals: 0</li>
+                        
+                        <li>% : 0 - 10 || Decimals: 3</li>
+                        
+                        <li>vh : 0 - 5 || Decimals: 4</li>
+                        
+                        <li>hw : 0 - 5 || Decimals: 4</li>
+                        
+                        <li>rem : 0 - 3 || Decimals: 4</li>
+                        
+                        </ul>   
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTENT_TEXT_COLOR</h5>
+                        <p>Sets the base text color. Inline text colors will override this.</p>
+                        
+                        <p>Max Length: 128</p>
+                        <p>Max Values Accepted: 2</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">color_name</span><span class="validation-item">color_hex</span><span class="validation-item">color_rgba</span></p>
+                        
+                        
+                        
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All Modes</li>
+                        
+                        <li>Light Dark</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTENT_LINK_COLOR</h5>
+                        <p>Sets the base link color.</p>
+                        
+                        <p>Max Length: 16</p>
+                        <p>Max Values Accepted: 2</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">color_name</span><span class="validation-item">color_hex</span><span class="validation-item">color_rgba</span></p>
+                        
+                        
+                        
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All Modes</li>
+                        
+                        <li>Light Dark</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTENT_BULLET_COLOR</h5>
+                        <p>Sets the bullet color for lists.</p>
+                        
+                        <p>Max Length: 64</p>
+                        <p>Max Values Accepted: 2</p>
+                        
+                        
+                        <p>Validate One: <span class="validation-item">color_name</span><span class="validation-item">color_hex</span><span class="validation-item">color_rgba</span></p>
+                        
+                        
+                        
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All Modes</li>
+                        
+                        <li>Light Dark</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+
+                        
+                    </div>
+                
+
+        
+            
+
+                    <div class="metadata-option">
+                        <h5>CONTENT_LINK_BEHAVIOR</h5>
+                        <p>Sets whether links load in new pages, or on the same page. Internal links are Rentry URLs, external links are anything else.</p>
+                        
+                        <p>Default Value: same new</p>
+                        
+                        <p>Max Length: 32</p>
+                        <p>Max Values Accepted: 2</p>
+                        
+                        <p>Validate All: <span class="validation-item">whitelisted_string</span></p>
+                        
+                        
+                        
+                        
+                        
+
+                        
+                        <p>Value Mapping:</p>
+                        <ol>
+                        
+                        <li>All Links</li>
+                        
+                        <li>Internal External</li>
+                        
+                        </ol>   
+                        
+
+                        
+
+                        
+                        <p>Permitted whitelisted_string Values:</p>
+                        <ul>
+                        
+                        <li>same</li>
+                        
+                        <li>new</li>
+                        
+                        </ul>   
+                        
+
+                        
+                    </div>
+                
+
+        
+
+       
+            
+        
+
+        
+    </div>
+
+
+    <h3>Glossary</h3>
+    <p>Don't know what a term means? We'll list everything you need to know here.</p>
+    <ul>
+        <li><strong>Option:</strong> A metadata command, always in full capitals and with underscores for spaces, followed by the = sign. For example: PAGE_TITLE =</li>
+        <li><strong>Value:</strong> The information you would like to apply to an Option. This is put after the first = sign and must not break to a new line.</li>
+        <li><strong>Unit:</strong> The descriptor for a number. For example 2px means 2 pixels.</li>
+        <li><strong>Unit: Px (Pixels): </strong>The little square dots a screen is made of. A phone normally has about 350 across and 700 down. A desktop is normally 1200-1600 by 1000.</li>
+        <li><strong>Unit: %: </strong>The percent of the container, or of the thing it is subordinate to (such as when used as a font size unit). </li>
+        <li><strong>Unit: no-unit: </strong>When an option allows for a bare number, it will be listed as this (as when no-unit is not available, a bare number will be read as the default unit for that option). The default unit is always no-unit when this is available.</li>
+        <li><strong>Unit: hw (Horizontal Width): </strong> The percentage of the full width of the page for the device that is viewing. On desktop, changing the window size will affect this.</li>
+        <li><strong>Unit: vh (Vertical Height): </strong> The percentage of the full height of the page for the device that is viewing. On desktop, changing the window size will affect this.</li>
+        <li><strong>Unit: rem (Root EM): </strong> A relative value based on the root font size. Affected by the font itself as the value is taken from width of the font's capital M.</li>
+
+    </ul>
+
+    <p>Standalone: <a href="/metadata-how">/metadata-how</a></p>
+</div>
+                </div>
+            </div>
+
+        </div>
+      
+    </div>
+</div>
+
+        </fieldset>
+        <fieldset>
+            <div class="code-url row float-right no-gutters">
+                <div class="col-6 no-gutters">
+                    <div class="mr-1">
+                        <input autocapitalize="none" type="text" class="w-100 form-control squared float-left mb-2 " name="edit_code" id="id_edit_code" placeholder="Custom edit code" aria-label="Custom edit code" maxlength="100" value="">
+                    </div>
+                </div>
+                <div class="col-6 no-gutters">
+                    <div class="ml-1">
+                        <input autocapitalize="none" type="text" class="w-100 form-control squared float-right ml-2 mb-2 " name="url" id="id_url" placeholder="Custom url" aria-label="Custom url" maxlength="100" value="">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" id="submitButton" class="btn btn-light squared mr-2 mb-2 float-left" style="min-width: 2.8rem">Go</button>
+        </fieldset>
+        <div class="text-center w-100 mb-3">
+            <hr class="my-2 basement-hr">
+            <div class="bottom-links">
+    <div class="link-container">
+        <a class="mr-1" href="/">new</a>&middot;
+        <a class="mx-1" href="/what">what</a>&middot;
+        <a class="mx-1" href="/how">how</a>&middot;
+        <a class="mx-1" href="/langs">langs</a>&middot;
+        <a class="mx-1" href="/what#contacts">contacts</a>&middot;
+        
+        <a class="ml-1" href="/request-login">login</a>
+        
+    </div>
+    <div class="link-icon-container">
+        <span style="right: 0; bottom: -9px; background:transparent!important" class="position-absolute btn squared mr-2 mr-sm-0" id="darkModeBtn" title="Dark/light mode"></span>
+    </div>
+</div>
+
+            <h1 style="font-size: 11px" class="mb-0 mt-2 p-0 text-muted no-pointer font-weight-normal">Rentry.co - Markdown Paste Service</h1>
+        </div>
+    </form>
+</div>
+
+                
+                
+            </div>
+        </div>
+
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/static/js/jquery.min.js?v=1784113405"></script>
+        <script src="/static/js/custom-common.min.js?v=1784113405"></script>
+        <script src="/static/js/bootstrap.min.js?v=1784113405"></script>
+        
+<script src="/static/markdownx/markdownx.min.js?v=1784113405"></script>
+<script src="/static/codemirror/lib/codemirror.min.js?v=1784113404"></script>
+<script src="/static/codemirror/addon/mode/overlay.min.js?v=1784113404"></script>
+<script src="/static/codemirror/mode/markdown/markdown.min.js?v=1784113404"></script>
+<script src="/static/codemirror/mode/gfm/gfm.min.js?v=1784113404"></script>
+<script src="/static/js/custom.min.js?v=1784113405"></script>
+
+    </div>
+</div>
+</body>
+
+</html>
