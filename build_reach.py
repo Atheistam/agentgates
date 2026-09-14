@@ -349,6 +349,26 @@ Back to <a href="../">the census</a> &middot; <a href="../findings/">the write-u
     print("curve readings: %d | page: %s/reach/" % (stable, SITE))
     print("wrote %s" % os.path.join(OUT, "index.html"))
 
+    # The page cites its own data files, and run 45 found three of those links pointing
+    # at files that were never copied into web/ - they 404'd on both hosts for two runs.
+    # The page now ships what it cites, and verify_gates.py refuses a dead href.
+    import re as _re
+    import shutil
+    with open(os.path.join(OUT, "index.html"), encoding="utf-8") as f:
+        html = f.read()
+    cited = sorted({h for h in _re.findall(r'(?:href|src)="(data/[^"#?]+)"', html)})
+    shipped = 0
+    for href in cited:
+        src = os.path.join(HERE, href)
+        if not os.path.exists(src):
+            print("WARN: page cites %s but that file does not exist" % href)
+            continue
+        dst = os.path.join(OUT, href)
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        shutil.copyfile(src, dst)
+        shipped += 1
+    print("shipped %d of %d cited data file(s)" % (shipped, len(cited)))
+
 
 if __name__ == "__main__":
     main()

@@ -16,7 +16,9 @@ import base64
 import hashlib
 import json
 import os
+import re
 import sys
+import urllib.error
 import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -126,6 +128,55 @@ def main(argv=None):
             checks.append(("manifest built_at = %s (%.1f h old)" % (stamp, age), fresh))
             if not fresh:
                 failed += 1
+
+    # Two links on this page once pointed at files that were never copied into web/:
+    # a published 404 that survived two runs because nothing checked an href. This
+    # gate exists so a third one cannot. Local run checks the disk; --url checks the
+    # host, where a soft-404 would otherwise pass as content.
+    dead, links, pages = [], 0, 0
+    for root, _dirs, files in os.walk(WEB):
+        for fn in sorted(files):
+            if not fn.endswith(".html"):
+                continue
+            page = os.path.join(root, fn)
+            rel = os.path.relpath(page, WEB).replace(os.sep, "/")
+            try:
+                with open(page, encoding="utf-8", errors="replace") as f:
+                    body = f.read()
+            except Exception:
+                continue
+            pages += 1
+            for href in sorted(set(re.findall(r'(?:href|src)="([^"#?]+)"', body))):
+                if href.startswith(("http://", "https://", "//", "mailto:",
+                                    "data:", "javascript:")):
+                    continue
+                target = os.path.normpath(os.path.join(os.path.dirname(rel),
+                                                       href.lstrip("/")))
+                links += 1
+                if base:
+                    url = base + "/" + target.lstrip("/")
+                    try:
+                        req = urllib.request.Request(url, headers={"User-Agent": UA})
+                        with urllib.request.urlopen(req, timeout=15) as r:
+                            status = r.status
+                            head = r.read(300).lower()
+                        ok = status == 200 and not (target.endswith(".json")
+                                                    and head.lstrip().startswith(b"<"))
+                    except urllib.error.HTTPError as e:
+                        ok = False
+                        status = e.code
+                    except Exception as e:
+                        ok = False
+                        status = str(e)[:40]
+                    if not ok:
+                        dead.append("%s -> %s (%s)" % (rel, href, status))
+                elif not os.path.exists(os.path.join(WEB, target)):
+                    dead.append("%s -> %s (not on disk)" % (rel, href))
+    checks.append(("every relative href in %d page(s) resolves (%d link(s))"
+                   % (pages, links), not dead))
+    failed += 0 if not dead else 1
+    for d in dead[:6]:
+        checks.append(("dead link: %s" % d, False))
 
     if args.check_standards:
         # the same shape rules validate_census.py applies to the 500 domains

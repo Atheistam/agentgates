@@ -1,0 +1,450 @@
+{
+ "generated_at": "2026-09-14T11:07:34Z",
+ "rule": "a movement counts as a reader only if it is larger than the deliberate downloads this project made inside the same window; the ledger is the list of those downloads, because a campaign only knows about the downloads it scheduled itself",
+ "why_this_file_exists": "run 43 launched a quiet watch whose premise was that it makes no downloads of its own, and then made one from another code path 107 seconds later. The watch could not see it. A movement is now attributed against the ledger before it is called a reader.",
+ "ledger_readable": true,
+ "ledger_entries": 14,
+ "ledger": [
+  {
+   "at": null,
+   "note": "run 38 positive control, made before the counting of this project's own downloads existed; bounded by the first series row that shows it (2026-09-12T20:05:34Z) and the asset's creation (20:03:16Z)",
+   "ua": null,
+   "run_label_as_written": null,
+   "run_label_corrected": null
+  },
+  {
+   "at": "2026-09-12T20:05:41Z",
+   "note": "run 39 positive control; latency 14.93 h to the read at 2026-09-13T11:01:41Z",
+   "ua": null,
+   "run_label_as_written": null,
+   "run_label_corrected": null
+  },
+  {
+   "at": "2026-09-12T20:08:03Z",
+   "note": "run 39 positive control (second instrument run); latency 14.89 h",
+   "ua": null,
+   "run_label_as_written": null,
+   "run_label_corrected": null
+  },
+  {
+   "at": "2026-09-12T20:08:34Z",
+   "note": "the browser-shaped arm of the user-agent split; one download, one count",
+   "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+   "run_label_as_written": null,
+   "run_label_corrected": null
+  },
+  {
+   "at": "2026-09-12T20:10:41Z",
+   "note": "run 39 positive control (third instrument run); latency 14.85 h",
+   "ua": null,
+   "run_label_as_written": null,
+   "run_label_corrected": null
+  },
+  {
+   "at": "2026-09-13T11:01:53Z",
+   "note": "run 40 positive control, first instrument run. Not in the ledger when it was made: the ledger was added minutes later in the same run. Recovered from the pending record and corrected by 30 s.",
+   "ua": "agentgates-counter/1.0",
+   "run_label_as_written": null,
+   "run_label_corrected": null
+  },
+  {
+   "at": "2026-09-13T11:07:31Z",
+   "note": "positive control, this run",
+   "ua": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
+   "run_label_as_written": null,
+   "run_label_corrected": null
+  },
+  {
+   "at": "2026-09-13T11:18:40Z",
+   "note": "sweep campaign campaign1: deliberate download inside a watched window, count before None",
+   "ua": null,
+   "run_label_as_written": null,
+   "run_label_corrected": null
+  },
+  {
+   "at": "2026-09-13T11:23:41Z",
+   "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 6",
+   "ua": null,
+   "run_label_as_written": null,
+   "run_label_corrected": null
+  },
+  {
+   "at": "2026-09-13T11:28:42Z",
+   "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 6",
+   "ua": null,
+   "run_label_as_written": null,
+   "run_label_corrected": null
+  },
+  {
+   "at": "2026-09-13T11:33:43Z",
+   "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 7",
+   "ua": null,
+   "run_label_as_written": null,
+   "run_label_corrected": null
+  },
+  {
+   "at": "2026-09-13T11:38:44Z",
+   "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 9",
+   "ua": null,
+   "run_label_as_written": null,
+   "run_label_corrected": null
+  },
+  {
+   "at": "2026-09-13T11:43:46Z",
+   "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 9",
+   "ua": null,
+   "run_label_as_written": null,
+   "run_label_corrected": null
+  },
+  {
+   "at": "2026-09-13T20:07:27Z",
+   "note": "positive control, run 40",
+   "ua": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
+   "run_label_as_written": "run 40",
+   "run_label_corrected": "run 43"
+  }
+ ],
+ "pending_awaits_settlement": 1,
+ "campaigns": {
+  "campaign1": {
+   "campaign": "campaign1",
+   "started_at": "2026-09-13T11:18:40Z",
+   "read_at": "2026-09-14T11:07:34Z",
+   "still_running": false,
+   "planned_minutes": 30.0,
+   "poll_every_s": 30.0,
+   "polls": 60,
+   "opening_count": 6,
+   "closing_count": 11,
+   "increase": 5,
+   "movements": [
+    {
+     "at": "2026-09-13T11:29:12Z",
+     "count": 7,
+     "increase": 1,
+     "previous_read_at": "2026-09-13T11:28:42Z",
+     "previous_read_count": 6,
+     "ours": [
+      {
+       "at": "2026-09-13T11:18:40Z",
+       "note": "sweep campaign campaign1: deliberate download inside a watched window, count before None",
+       "ua": null
+      }
+     ],
+     "ours_in_window": 1,
+     "surplus": 0,
+     "verdict": "no reader: every unit of this increase is a download this project made on purpose",
+     "lag_bracket_s": [
+      [
+       602,
+       632
+      ]
+     ]
+    },
+    {
+     "at": "2026-09-13T11:34:13Z",
+     "count": 9,
+     "increase": 2,
+     "previous_read_at": "2026-09-13T11:33:43Z",
+     "previous_read_count": 7,
+     "ours": [
+      {
+       "at": "2026-09-13T11:23:41Z",
+       "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 6",
+       "ua": null
+      },
+      {
+       "at": "2026-09-13T11:28:42Z",
+       "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 6",
+       "ua": null
+      }
+     ],
+     "ours_in_window": 2,
+     "surplus": 0,
+     "verdict": "no reader: every unit of this increase is a download this project made on purpose",
+     "lag_bracket_s": [
+      [
+       602,
+       632
+      ],
+      [
+       301,
+       331
+      ]
+     ]
+    },
+    {
+     "at": "2026-09-13T11:44:16Z",
+     "count": 11,
+     "increase": 2,
+     "previous_read_at": "2026-09-13T11:43:46Z",
+     "previous_read_count": 9,
+     "ours": [
+      {
+       "at": "2026-09-13T11:33:43Z",
+       "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 7",
+       "ua": null
+      },
+      {
+       "at": "2026-09-13T11:38:44Z",
+       "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 9",
+       "ua": null
+      }
+     ],
+     "ours_in_window": 2,
+     "surplus": 0,
+     "verdict": "no reader: every unit of this increase is a download this project made on purpose",
+     "lag_bracket_s": [
+      [
+       603,
+       633
+      ],
+      [
+       302,
+       332
+      ]
+     ]
+    }
+   ],
+   "movements_n": 3,
+   "downloads_recorded_by_the_campaign": 6,
+   "downloads_in_the_ledger_inside_the_window": 6,
+   "ours_that_never_moved_the_count": [
+    {
+     "at": "2026-09-13T11:43:46Z",
+     "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 9"
+    }
+   ],
+   "readers_this_campaign_can_claim": 0,
+   "record_defect": null,
+   "lag_bracket_s": [
+    [
+     301,
+     331
+    ],
+    [
+     302,
+     332
+    ],
+    [
+     602,
+     632
+    ],
+    [
+     603,
+     633
+    ]
+   ],
+   "latency_note": "the campaign reads the counter every 30 s, so it knows the count was unchanged at the read before each movement and changed at it. That is a bracket on the counter's lag, and this watch is the first instrument here that reads through the lag instead of between it. An instrument that reads once an hour measures the hour, not the counter."
+  },
+  "campaign2-quiet": {
+   "campaign": "campaign2-quiet",
+   "started_at": "2026-09-13T14:03:30Z",
+   "read_at": "2026-09-14T11:07:34Z",
+   "still_running": false,
+   "planned_minutes": 100.0,
+   "poll_every_s": 60.0,
+   "polls": 10,
+   "opening_count": 12,
+   "closing_count": 12,
+   "increase": 0,
+   "movements": [],
+   "movements_n": 0,
+   "downloads_recorded_by_the_campaign": 0,
+   "downloads_in_the_ledger_inside_the_window": 0,
+   "ours_that_never_moved_the_count": [],
+   "readers_this_campaign_can_claim": 0,
+   "record_defect": null,
+   "lag_bracket_s": [],
+   "latency_note": "the campaign reads the counter every 60 s, so it knows the count was unchanged at the read before each movement and changed at it. That is a bracket on the counter's lag, and this watch is the first instrument here that reads through the lag instead of between it. An instrument that reads once an hour measures the hour, not the counter."
+  },
+  "campaign3-quiet": {
+   "campaign": "campaign3-quiet",
+   "started_at": "2026-09-13T17:03:29Z",
+   "read_at": "2026-09-14T11:07:34Z",
+   "still_running": false,
+   "planned_minutes": 100.0,
+   "poll_every_s": 30.0,
+   "polls": 200,
+   "opening_count": 12,
+   "closing_count": 12,
+   "increase": 0,
+   "movements": [],
+   "movements_n": 0,
+   "downloads_recorded_by_the_campaign": 0,
+   "downloads_in_the_ledger_inside_the_window": 0,
+   "ours_that_never_moved_the_count": [],
+   "readers_this_campaign_can_claim": 0,
+   "record_defect": null,
+   "lag_bracket_s": [],
+   "latency_note": "the campaign reads the counter every 30 s, so it knows the count was unchanged at the read before each movement and changed at it. That is a bracket on the counter's lag, and this watch is the first instrument here that reads through the lag instead of between it. An instrument that reads once an hour measures the hour, not the counter."
+  },
+  "campaign4-long": {
+   "campaign": "campaign4-long",
+   "started_at": "2026-09-13T20:05:50Z",
+   "read_at": "2026-09-14T11:07:34Z",
+   "still_running": true,
+   "planned_minutes": 1440.0,
+   "poll_every_s": 30.0,
+   "polls": 1790,
+   "opening_count": 12,
+   "closing_count": 13,
+   "increase": 1,
+   "movements": [
+    {
+     "at": "2026-09-13T20:17:53Z",
+     "count": 13,
+     "increase": 1,
+     "previous_read_at": "2026-09-13T20:17:23Z",
+     "previous_read_count": 12,
+     "ours": [
+      {
+       "at": "2026-09-13T20:07:27Z",
+       "note": "positive control, run 40",
+       "ua": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)"
+      }
+     ],
+     "ours_in_window": 1,
+     "surplus": 0,
+     "verdict": "no reader: every unit of this increase is a download this project made on purpose",
+     "lag_bracket_s": [
+      [
+       596,
+       626
+      ]
+     ]
+    }
+   ],
+   "movements_n": 1,
+   "downloads_recorded_by_the_campaign": 0,
+   "downloads_in_the_ledger_inside_the_window": 1,
+   "ours_that_never_moved_the_count": [],
+   "readers_this_campaign_can_claim": 0,
+   "record_defect": {
+    "campaign_recorded_as_its_own": 0,
+    "ledger_records_in_window": 1,
+    "why": "the campaign subtracts the downloads it scheduled itself. This campaign made none on purpose, and the project made 1 inside its window from another code path - an instrument test. Left unreconciled, the campaign's own arithmetic reads that movement as a reader."
+   },
+   "lag_bracket_s": [
+    [
+     596,
+     626
+    ]
+   ],
+   "latency_note": "the campaign reads the counter every 30 s, so it knows the count was unchanged at the read before each movement and changed at it. That is a bracket on the counter's lag, and this watch is the first instrument here that reads through the lag instead of between it. An instrument that reads once an hour measures the hour, not the counter."
+  },
+  "selftest-beats": {
+   "campaign": "selftest-beats",
+   "started_at": "2026-09-13T14:15:20Z",
+   "read_at": "2026-09-14T11:07:34Z",
+   "still_running": false,
+   "planned_minutes": 0.22,
+   "poll_every_s": 5.0,
+   "polls": 3,
+   "opening_count": 12,
+   "closing_count": 12,
+   "increase": 0,
+   "movements": [],
+   "movements_n": 0,
+   "downloads_recorded_by_the_campaign": 0,
+   "downloads_in_the_ledger_inside_the_window": 0,
+   "ours_that_never_moved_the_count": [],
+   "readers_this_campaign_can_claim": 0,
+   "record_defect": null,
+   "lag_bracket_s": [],
+   "latency_note": "the campaign reads the counter every 5 s, so it knows the count was unchanged at the read before each movement and changed at it. That is a bracket on the counter's lag, and this watch is the first instrument here that reads through the lag instead of between it. An instrument that reads once an hour measures the hour, not the counter."
+  },
+  "selftest-run41": {
+   "campaign": "selftest-run41",
+   "started_at": "2026-09-13T14:03:02Z",
+   "read_at": "2026-09-14T11:07:34Z",
+   "still_running": false,
+   "planned_minutes": 0.09,
+   "poll_every_s": 5.0,
+   "polls": 2,
+   "opening_count": 12,
+   "closing_count": 12,
+   "increase": 0,
+   "movements": [],
+   "movements_n": 0,
+   "downloads_recorded_by_the_campaign": 0,
+   "downloads_in_the_ledger_inside_the_window": 0,
+   "ours_that_never_moved_the_count": [],
+   "readers_this_campaign_can_claim": 0,
+   "record_defect": null,
+   "lag_bracket_s": [],
+   "latency_note": "the campaign reads the counter every 5 s, so it knows the count was unchanged at the read before each movement and changed at it. That is a bracket on the counter's lag, and this watch is the first instrument here that reads through the lag instead of between it. An instrument that reads once an hour measures the hour, not the counter."
+  },
+  "selftest-run42": {
+   "campaign": "selftest-run42",
+   "started_at": "2026-09-13T17:02:08Z",
+   "read_at": "2026-09-14T11:07:34Z",
+   "still_running": false,
+   "planned_minutes": 0.25,
+   "poll_every_s": 5.0,
+   "polls": 3,
+   "opening_count": 12,
+   "closing_count": 12,
+   "increase": 0,
+   "movements": [],
+   "movements_n": 0,
+   "downloads_recorded_by_the_campaign": 0,
+   "downloads_in_the_ledger_inside_the_window": 0,
+   "ours_that_never_moved_the_count": [],
+   "readers_this_campaign_can_claim": 0,
+   "record_defect": null,
+   "lag_bracket_s": [],
+   "latency_note": "the campaign reads the counter every 5 s, so it knows the count was unchanged at the read before each movement and changed at it. That is a bracket on the counter's lag, and this watch is the first instrument here that reads through the lag instead of between it. An instrument that reads once an hour measures the hour, not the counter."
+  },
+  "smoke": {
+   "campaign": "smoke",
+   "started_at": "2026-09-13T11:17:09Z",
+   "read_at": "2026-09-14T11:07:34Z",
+   "still_running": false,
+   "planned_minutes": 1.2,
+   "poll_every_s": 20.0,
+   "polls": null,
+   "opening_count": 6,
+   "closing_count": 6,
+   "increase": 0,
+   "movements": [],
+   "movements_n": 0,
+   "downloads_recorded_by_the_campaign": 0,
+   "downloads_in_the_ledger_inside_the_window": 0,
+   "ours_that_never_moved_the_count": [],
+   "readers_this_campaign_can_claim": 0,
+   "record_defect": null,
+   "lag_bracket_s": [],
+   "latency_note": "the campaign reads the counter every 20 s, so it knows the count was unchanged at the read before each movement and changed at it. That is a bracket on the counter's lag, and this watch is the first instrument here that reads through the lag instead of between it. An instrument that reads once an hour measures the hour, not the counter."
+  },
+  "smoketest2": {
+   "campaign": "smoketest2",
+   "started_at": "2026-09-13T11:32:44Z",
+   "read_at": "2026-09-14T11:07:34Z",
+   "still_running": false,
+   "planned_minutes": 0.7,
+   "poll_every_s": 20.0,
+   "polls": 3,
+   "opening_count": 7,
+   "closing_count": 7,
+   "increase": 0,
+   "movements": [],
+   "movements_n": 0,
+   "downloads_recorded_by_the_campaign": 0,
+   "downloads_in_the_ledger_inside_the_window": 1,
+   "ours_that_never_moved_the_count": [
+    {
+     "at": "2026-09-13T11:33:43Z",
+     "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 7"
+    }
+   ],
+   "readers_this_campaign_can_claim": 0,
+   "record_defect": null,
+   "lag_bracket_s": [],
+   "latency_note": "the campaign reads the counter every 20 s, so it knows the count was unchanged at the read before each movement and changed at it. That is a bracket on the counter's lag, and this watch is the first instrument here that reads through the lag instead of between it. An instrument that reads once an hour measures the hour, not the counter."
+  }
+ },
+ "movements_everywhere": 4,
+ "readers_any_campaign_can_claim": 0,
+ "reading": "Every movement this project has ever recorded is accounted for by a download it made on purpose: 4 movement(s), 0 reader(s). That is not a readership figure and is not published as one - it is the statement that the instruments have not yet seen a reader, and that the one movement that looked like a stranger was ours."
+}
