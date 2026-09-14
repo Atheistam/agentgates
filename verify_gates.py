@@ -134,6 +134,7 @@ def main(argv=None):
     # gate exists so a third one cannot. Local run checks the disk; --url checks the
     # host, where a soft-404 would otherwise pass as content.
     dead, links, pages = [], 0, 0
+    MIRROR = {".well-known/" + KEYNAME: "agent-key.jwks"}
     for root, _dirs, files in os.walk(WEB):
         for fn in sorted(files):
             if not fn.endswith(".html"):
@@ -168,6 +169,20 @@ def main(argv=None):
                     except Exception as e:
                         ok = False
                         status = str(e)[:40]
+                    if not ok and target in MIRROR:
+                        # surge.sh will not serve a dot-directory, which is exactly why
+                        # publish_identity.py writes this plain-path mirror. A link to the
+                        # canonical location is satisfied by the mirror.
+                        try:
+                            req = urllib.request.Request(base + "/" + MIRROR[target],
+                                                         headers={"User-Agent": UA})
+                            with urllib.request.urlopen(req, timeout=15) as r:
+                                ok = r.status == 200
+                            if ok:
+                                status = "via " + MIRROR[target]
+                        except Exception as e2:
+                            ok = False
+                            status = "mirror %s: %s" % (MIRROR[target], str(e2)[:60])
                     if not ok:
                         dead.append("%s -> %s (%s)" % (rel, href, status))
                 elif not os.path.exists(os.path.join(WEB, target)):
