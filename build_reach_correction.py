@@ -393,3 +393,130 @@ def agent_lane_block(esc, path=None):
            "unread_ex": esc(", ".join(unread[:4]) or "none"),
            "ncross": len(refused_control), "cross": cross}
     )
+
+
+def attribution_block(esc, path=None):
+    """Attribution by ledger, and the one increment even the ledger cannot explain.
+
+    The rule this project now uses: an increase in the download count is a reader only if
+    it is larger than the number of downloads this project made on purpose inside the same
+    window - and the authority on those downloads is the ledger, not the campaign's own
+    record. A campaign can subtract only the downloads it scheduled itself; a control
+    download made from another code path is invisible to it, and invisible downloads turn
+    into readers. That is not hypothetical: it is how the quiet watch was lost.
+    """
+    import json as _json
+    import os as _os
+
+    here = _os.path.dirname(_os.path.abspath(__file__))
+    path = path or _os.path.join(here, "data", "movement_attribution.json")
+    try:
+        with open(path) as fh:
+            a = _json.load(fh)
+    except Exception:
+        return ""
+    camps = a.get("campaigns") or {}
+    if not camps:
+        return ""
+
+    rows = []
+    for label in ("campaign4-long", "campaign1"):
+        c = camps.get(label) or {}
+        if not c.get("movements_n"):
+            continue
+        lag = c.get("lag_bracket_s") or []
+        lag_txt = "n/a"
+        if lag:
+            lo = min(x[0] for x in lag)
+            hi = max(x[1] for x in lag)
+            lag_txt = "%d-%d s" % (lo, hi)
+        rows.append(
+            "<tr><td><code>%(lab)s</code></td><td>%(mov)d</td><td>+%(inc)d</td>"
+            "<td>%(led)d</td><td><strong>%(read)d</strong></td><td>%(lag)s</td></tr>"
+            % {"lab": esc(label), "mov": _i(c.get("movements_n")), "inc": _i(c.get("increase")),
+               "led": _i(c.get("downloads_in_the_ledger_inside_the_window")),
+               "read": _i(c.get("readers_this_campaign_can_claim")), "lag": esc(lag_txt)})
+
+    # The increment no record explains: a rise between two series readings with no
+    # deliberate download of ours anywhere in the interval.
+    led = a.get("ledger") or []
+    unexp = None
+    try:
+        with open(_os.path.join(here, "data", "counter_series.json")) as fh:
+            readings = [(r.get("at"), _i(r.get("release_downloads_raw")))
+                        for r in _json.load(fh)]
+        readings = [x for x in readings if x[0] and x[1] is not None]
+        for (t1, v1), (t2, v2) in zip(readings, readings[1:]):
+            if v2 <= v1 or [e for e in led if e.get("at") and t1 <= e["at"] <= t2]:
+                continue
+            unexp = (t1, v1, t2, v2, v2 - v1)
+            break
+    except Exception:
+        pass
+
+    unexp_txt = ("none - every increase so far has a download of ours inside its "
+                 "interval.")
+    if unexp:
+        unexp_txt = (
+            "one. The count read <strong>%(v1)d</strong> at %(t1)s and "
+            "<strong>%(v2)d</strong> at %(t2)s, an increase of %(inc)d inside "
+            "%(mins)d minutes, and this project made <strong>zero</strong> deliberate "
+            "downloads anywhere in that interval. It is either one of our own downloads "
+            "settling late - the sixth of campaign1 was still absent 8m38s after it was "
+            "made, and appeared somewhere in this gap - or it is one reader. The record "
+            "cannot say which, and it never will, because nobody was reading the count "
+            "between those two moments. That is the whole argument for a watch that polls "
+            "every 30 seconds: an instrument that reads once an hour measures the hour, "
+            "not the counter."
+            % {"v1": unexp[1], "t1": esc(unexp[0]), "v2": unexp[3], "t2": esc(unexp[2]),
+               "inc": _i(unexp[4], 0),
+               "mins": int(_span_s(unexp[0], unexp[2]) or 0) // 60})
+
+    return (
+        "<h2>Attribution now reads the ledger, and the first thing it caught was our "
+        "own watch</h2>"
+        "<p>A quiet watch is supposed to be the clean case: it makes no downloads of its "
+        "own, so any increase in the count belongs to somebody else. campaign4-long was "
+        "launched on that premise at 20:05:50Z - and 107 seconds later the run that "
+        "launched it made a positive control download of its own, from a different code "
+        "path. The watch could not see it, because a watch subtracts only the downloads "
+        "it scheduled itself. Its record says <strong>0</strong> downloads of ours; the "
+        "ledger says <strong>1</strong>. It has one movement, +1, at 20:17:53Z, and that "
+        "movement is that download: the readers it can claim are <strong>0</strong>. "
+        "Without the ledger this page would have called it a reader - the third time in "
+        "this project that a download of our own, made where the instrument was not "
+        "looking, turned into a stranger. The previous two were caught after publication. "
+        "This one was caught before, and only because a separate record exists that no "
+        "campaign is allowed to keep on its behalf.</p>"
+        "<table><tr><th>watch</th><th>movements</th><th>increase</th>"
+        "<th>our downloads, from the ledger</th><th>readers it can claim</th>"
+        "<th>settlement bracket</th></tr>%(rows)s</table>"
+        "<p><strong>The one increase that is not attributed:</strong> %(unexp)s</p>"
+        "<p><strong>An uncomfortable property of the counter itself:</strong> campaign1 "
+        "made six deliberate downloads within 25 minutes of the start of a 30-minute watch, "
+        "and the count rose by five, so one of "
+        "ours had still not moved the number when the watch ended - and the count did rise "
+        "once, later, in an interval where we downloaded nothing, which is the increment "
+        "discussed above. That cuts against this project, not for it: a count that can miss "
+        "one of our downloads for hours can miss a reader's, so <em>the count did not "
+        "move</em> is a weaker statement than it looks, and every \"no readers\" figure on "
+        "this page is a floor on readership, never a ceiling. It is also why the watch "
+        "subtracts downloads from a ledger written at the moment of the download, instead "
+        "of trusting the counter to confirm that a download happened.</p>"
+        "<p><strong>How late the counter settles, measured only on deliberate downloads of "
+        "ours:</strong> held for more than <strong>8m38s</strong> (download 11:43:46Z, "
+        "count still unchanged at the read of 11:52:24Z) and released within "
+        "<strong>10m26s</strong> (download 20:07:27Z, present by the read of 20:17:53Z). "
+        "The ~15-hour latency once published on this page was withdrawn by run 40, twenty "
+        "minutes after it went up: three latencies that differ by exactly the offset "
+        "between the downloads are the arithmetic of one read, not a property of the "
+        "counter. This run replaces the 5.5-minute floor with 8m38s - a <em>larger</em> "
+        "blind spot, which is the direction that costs this project the most, and the "
+        "reason the watch now polls through the lag rather than once after it.</p>"
+        "<p class=\"note\">Ledger, rule and per-movement brackets: "
+        "<a href=\"data/movement_attribution.json\">movement_attribution.json</a>. A "
+        "defect fixed this run: the ledger's run label was hardcoded at 40, so the entry "
+        "made by run 43 still says <em>run 40</em> - a stale label on the one entry that "
+        "decided a movement.</p>"
+        % {"rows": "".join(rows), "unexp": unexp_txt}
+    )

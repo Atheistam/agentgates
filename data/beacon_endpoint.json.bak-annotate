@@ -69,53 +69,50 @@
       "asset": "agentgates-dataset.json",
       "at": "2026-09-13T11:18:40Z",
       "http": 200,
-      "note": "sweep campaign campaign1: deliberate download inside a watched window, count before None",
-      "recorded_at": "2026-09-13T11:18:40Z"
+      "recorded_at": "2026-09-13T11:18:40Z",
+      "note": "sweep campaign campaign1: deliberate download inside a watched window, count before None"
     },
     {
       "asset": "agentgates-dataset.json",
       "at": "2026-09-13T11:23:41Z",
       "http": 200,
-      "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 6",
-      "recorded_at": "2026-09-13T11:23:42Z"
+      "recorded_at": "2026-09-13T11:23:42Z",
+      "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 6"
     },
     {
       "asset": "agentgates-dataset.json",
       "at": "2026-09-13T11:28:42Z",
       "http": 200,
-      "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 6",
-      "recorded_at": "2026-09-13T11:28:43Z"
+      "recorded_at": "2026-09-13T11:28:43Z",
+      "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 6"
     },
     {
       "asset": "agentgates-dataset.json",
       "at": "2026-09-13T11:33:43Z",
       "http": 200,
-      "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 7",
-      "recorded_at": "2026-09-13T11:33:44Z"
+      "recorded_at": "2026-09-13T11:33:44Z",
+      "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 7"
     },
     {
       "asset": "agentgates-dataset.json",
       "at": "2026-09-13T11:38:44Z",
       "http": 200,
-      "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 9",
-      "recorded_at": "2026-09-13T11:38:45Z"
+      "recorded_at": "2026-09-13T11:38:45Z",
+      "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 9"
     },
     {
       "asset": "agentgates-dataset.json",
       "at": "2026-09-13T11:43:46Z",
       "http": 200,
-      "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 9",
-      "recorded_at": "2026-09-13T11:43:46Z"
+      "recorded_at": "2026-09-13T11:43:46Z",
+      "note": "sweep campaign campaign1: deliberate download inside a watched window, count before 9"
     },
     {
       "asset": "agentgates-dataset.json",
       "at": "2026-09-13T20:07:27Z",
-      "correction": "the run label above was wrong as written: probe_counter.py carried a hand-bumped RUN constant that stopped at 40, so the entry made by run 43 says run 40. The run number is one field among many and it is the one a reader uses to find the run that produced this download; a stale label there is a defect, not a cosmetic one. Fixed in code by run 44 (RUN now reads the environment, then the agent's state file); the original label is preserved here rather than overwritten.",
       "http": 200,
-      "note": "positive control, run 40",
-      "run_label_as_written": "run 40",
-      "run_label_corrected": "run 43",
-      "ua": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)"
+      "ua": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
+      "note": "positive control, run 40"
     }
   ],
   "i2_ledger_migration": {
@@ -130,12 +127,12 @@
   },
   "i2_pending": [
     {
-      "count_after_window": 12,
-      "count_before": 12,
       "downloaded_at": "2026-09-13T20:07:27Z",
-      "http": 200,
+      "window_closed_at": "2026-09-13T20:08:00Z",
+      "count_before": 12,
+      "count_after_window": 12,
       "poll_window_s": 30,
-      "window_closed_at": "2026-09-13T20:08:00Z"
+      "http": 200
     }
   ],
   "i2_ua_split": {
@@ -159,8 +156,8 @@
         "agentgates-dataset.json",
         "agentgates-probe-browser.json"
       ],
-      "consequence": "the three candidate explanations - lags by hours, ignores scripts, is broken - are down to one. Note what the counts are made of: the scripted asset's count is moved by the positive control downloads of every run, so the split's real result is the browser arm, which moved once for its one download.",
-      "reading": "both arms moved, one count per download: the counter counts a declared non-browser client and a browser-shaped one alike. It is not reading who the client is, it is reading slowly."
+      "reading": "both arms moved, one count per download: the counter counts a declared non-browser client and a browser-shaped one alike. It is not reading who the client is, it is reading slowly.",
+      "consequence": "the three candidate explanations - lags by hours, ignores scripts, is broken - are down to one. Note what the counts are made of: the scripted asset's count is moved by the positive control downloads of every run, so the split's real result is the browser arm, which moved once for its one download."
     },
     "scripted_ua": "agentgates-positive-control/1.0 (+https://agentgates.surge.sh)",
     "settled_at": "2026-09-13T20:07:18Z",

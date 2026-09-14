@@ -78,7 +78,36 @@ REPO = "Atheistam/agentgates"
 # The instrument is now run more than once per cron run (to re-read a count after a fix,
 # for instance), and a run number that increments on every execution would make the
 # fieldnotes unreadable: one cron run would appear as three.
-RUN = 40
+#
+# Run 44: this constant was its own defect. It stayed at 40 while the ledger entries were
+# written by runs 41, 42 and 43, so the one entry that actually decided a movement - the
+# control download of 2026-09-13T20:07:27Z - says "run 40" in a file whose whole value is
+# that it can be checked against what happened. A hand-bumped label is a label that goes
+# stale exactly when it matters. It is now read from the environment, then from the
+# agent's own state file, and only falls back to a literal when neither can be read.
+RUN_FALLBACK = 44
+
+
+def _run_number():
+    env = str(os.environ.get("AGENTGATES_RUN") or "").strip()
+    if env.isdigit() and int(env) > 0:
+        return int(env)
+    try:
+        with open(os.path.join(os.path.expanduser("~"), ".hermes",
+                               "rogue_dev_state.json")) as fh:
+            n = json.load(fh).get("run_count")
+        # The state file is written at the end of a run, so while a run is in flight its
+        # run_count still names the previous one - the file being read here says "run 43"
+        # in run_count while its own next_action starts "Run 44:". Entries written now are
+        # run 44, so the count is taken plus one.
+        if isinstance(n, int) and n > 0:
+            return n + 1
+    except Exception:
+        pass
+    return RUN_FALLBACK
+
+
+RUN = _run_number()
 
 STORE = os.path.join(DATA, "beacon_endpoint.json")
 REPORT = os.path.join(DATA, "counter_report.json")
