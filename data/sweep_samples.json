@@ -1971,7 +1971,7 @@
   "campaign4-long": {
     "campaign": "campaign4-long",
     "started_at": "2026-09-13T20:05:50Z",
-    "ended_at": "2026-09-14T11:03:57Z",
+    "ended_at": "2026-09-14T11:08:58Z",
     "minutes": 1440.0,
     "poll_every": 30.0,
     "download_every": 0.0,
@@ -1990,48 +1990,8 @@
       }
     ],
     "downloads": [],
-    "polls": 1790,
+    "polls": 1800,
     "beats": [
-      {
-        "at": "2026-09-14T07:43:38Z",
-        "count": 13
-      },
-      {
-        "at": "2026-09-14T07:44:08Z",
-        "count": 13
-      },
-      {
-        "at": "2026-09-14T07:44:39Z",
-        "count": 13
-      },
-      {
-        "at": "2026-09-14T07:45:09Z",
-        "count": 13
-      },
-      {
-        "at": "2026-09-14T07:45:39Z",
-        "count": 13
-      },
-      {
-        "at": "2026-09-14T07:46:09Z",
-        "count": 13
-      },
-      {
-        "at": "2026-09-14T07:46:39Z",
-        "count": 13
-      },
-      {
-        "at": "2026-09-14T07:47:09Z",
-        "count": 13
-      },
-      {
-        "at": "2026-09-14T07:47:39Z",
-        "count": 13
-      },
-      {
-        "at": "2026-09-14T07:48:10Z",
-        "count": 13
-      },
       {
         "at": "2026-09-14T07:48:40Z",
         "count": 13
@@ -3591,11 +3551,51 @@
       {
         "at": "2026-09-14T11:03:57Z",
         "count": 13
+      },
+      {
+        "at": "2026-09-14T11:04:27Z",
+        "count": 13
+      },
+      {
+        "at": "2026-09-14T11:04:57Z",
+        "count": 13
+      },
+      {
+        "at": "2026-09-14T11:05:27Z",
+        "count": 13
+      },
+      {
+        "at": "2026-09-14T11:05:57Z",
+        "count": 13
+      },
+      {
+        "at": "2026-09-14T11:06:27Z",
+        "count": 13
+      },
+      {
+        "at": "2026-09-14T11:06:57Z",
+        "count": 13
+      },
+      {
+        "at": "2026-09-14T11:07:27Z",
+        "count": 13
+      },
+      {
+        "at": "2026-09-14T11:07:57Z",
+        "count": 13
+      },
+      {
+        "at": "2026-09-14T11:08:27Z",
+        "count": 13
+      },
+      {
+        "at": "2026-09-14T11:08:58Z",
+        "count": 13
       }
     ],
-    "beats_total": 1790,
+    "beats_total": 1800,
     "beats_held": 400,
-    "beats_dropped": 1390,
+    "beats_dropped": 1400,
     "first_beat": "2026-09-13T20:05:50Z",
     "counts_seen": [
       12,
@@ -3770,10 +3770,10 @@
       {
         "hour": "2026-09-14T11:00Z",
         "opened_at": "2026-09-14T11:00:26Z",
-        "polls": 8,
+        "polls": 18,
         "count_open": 13,
         "count_change": 0,
-        "closed_at": "2026-09-14T11:03:57Z",
+        "closed_at": "2026-09-14T11:08:58Z",
         "count_close": 13,
         "count_min": 13,
         "count_max": 13
@@ -5390,12 +5390,21 @@
           "self": 13
         },
         "not_this_project": 0
+      },
+      {
+        "at": "2026-09-14T11:09:09Z",
+        "requests": 13,
+        "provider_total": 13,
+        "by_class": {
+          "self": 13
+        },
+        "not_this_project": 0
       }
     ],
-    "beacon_total": 179,
+    "beacon_total": 180,
     "beacon_dropped": 0,
     "beacon_errors": 0,
-    "last_write_at": "2026-09-14T11:03:57Z",
-    "observed_span_s": 53886
+    "last_write_at": "2026-09-14T11:08:58Z",
+    "observed_span_s": 54188
   }
 }
