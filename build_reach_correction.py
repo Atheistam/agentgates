@@ -472,17 +472,40 @@ def attribution_block(esc, path=None):
                "inc": _i(unexp[4], 0),
                "mins": int(_span_s(unexp[0], unexp[2]) or 0) // 60})
 
+    # The paragraph below used to state the offset between the watch's launch and the control
+    # download as a hand-entered "107 seconds". It is 97. A page whose whole subject is which
+    # numbers can be trusted cannot carry a number nobody can trace, so it now renders from
+    # the record: the campaign's start, the ledger entry inside its window, the movement.
+    q4 = camps.get("campaign4-long") or {}
+    q4_movs = q4.get("movements") or []
+    _m0 = q4_movs[0] if q4_movs else {}
+    _ours = (_m0.get("ours") or [{}])
+    own_at = (_ours[0] or {}).get("at") if _ours else None
+    own_delay = _span_s(q4.get("started_at"), own_at) if own_at else None
+    if own_delay is None:
+        own_delay = "unknown"
+    q4_ctx = {"q4_start": esc(q4.get("started_at") or "an unrecorded time"),
+              "own_delay": own_delay,
+              "mov_at": esc(_m0.get("at") or "an unrecorded moment"),
+              "movn": _i(q4.get("movements_n")),
+              "q4_inc": _i(_m0.get("increase") or q4.get("increase")),
+              "q4_rec": _i(q4.get("downloads_recorded_by_the_campaign")),
+              "q4_led": _i(q4.get("downloads_in_the_ledger_inside_the_window")),
+              "q4_read": _i(q4.get("readers_this_campaign_can_claim"))}
+
     return (
         "<h2>Attribution now reads the ledger, and the first thing it caught was our "
         "own watch</h2>"
         "<p>A quiet watch is supposed to be the clean case: it makes no downloads of its "
         "own, so any increase in the count belongs to somebody else. campaign4-long was "
-        "launched on that premise at 20:05:50Z - and 107 seconds later the run that "
-        "launched it made a positive control download of its own, from a different code "
-        "path. The watch could not see it, because a watch subtracts only the downloads "
-        "it scheduled itself. Its record says <strong>0</strong> downloads of ours; the "
-        "ledger says <strong>1</strong>. It has one movement, +1, at 20:17:53Z, and that "
-        "movement is that download: the readers it can claim are <strong>0</strong>. "
+        "launched on that premise at %(q4_start)s - and %(own_delay)s seconds later the "
+        "run that launched it made a positive control download of its own, from a "
+        "different code path. The watch could not see it, because a watch subtracts only "
+        "the downloads it scheduled itself. Its record says "
+        "<strong>%(q4_rec)d</strong> downloads of ours; the ledger says "
+        "<strong>%(q4_led)d</strong>. It has %(movn)d movement, +%(q4_inc)d, at %(mov_at)s, "
+        "and that movement is that download: the readers it can claim are "
+        "<strong>%(q4_read)d</strong>. "
         "Without the ledger this page would have called it a reader - the third time in "
         "this project that a download of our own, made where the instrument was not "
         "looking, turned into a stranger. The previous two were caught after publication. "
@@ -514,9 +537,15 @@ def attribution_block(esc, path=None):
         "blind spot, which is the direction that costs this project the most, and the "
         "reason the watch now polls through the lag rather than once after it.</p>"
         "<p class=\"note\">Ledger, rule and per-movement brackets: "
-        "<a href=\"data/movement_attribution.json\">movement_attribution.json</a>. A "
-        "defect fixed this run: the ledger's run label was hardcoded at 40, so the entry "
-        "made by run 43 still says <em>run 40</em> - a stale label on the one entry that "
-        "decided a movement.</p>"
-        % {"rows": "".join(rows), "unexp": unexp_txt}
+        "<a href=\"data/movement_attribution.json\">movement_attribution.json</a>. Two "
+        "defects fixed this run, and one still open. Fixed: the ledger's run label was "
+        "hardcoded at 40, so the entry made by run 43 still says <em>run 40</em> - a stale "
+        "label on the one entry that decided a movement; and this paragraph first went up "
+        "claiming the control download came <em>107</em> seconds after the watch launched, "
+        "because that number was typed by hand. It is <strong>97</strong> seconds, and the "
+        "figure now renders from the campaign's start and the ledger entry inside it. Still "
+        "open: the two settlement figures in the latency paragraph below (8m38s, 10m26s) are "
+        "still hand-entered from the brackets rather than derived from them. Recorded here "
+        "rather than left for a reader to find.</p>"
+        % dict(q4_ctx, rows="".join(rows), unexp=unexp_txt)
     )
