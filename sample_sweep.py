@@ -353,7 +353,18 @@ def main():
                 "beats_total": 0, "beats_held": 0, "beats_dropped": 0, "first_beat": None,
                 "counts_seen": [], "hours": [],
                 "beacon": [], "beacon_total": 0, "beacon_dropped": 0, "beacon_errors": 0,
-                "last_write_at": None, "observed_span_s": None}
+                "last_write_at": None, "observed_span_s": None,
+                # `ended_at` is written at every checkpoint, so on a campaign that is still
+                # watching it is the time of the last write and not an end. Run 45's audit
+                # read the record the way a stranger would and concluded that campaign4-long
+                # had run 17.9 hours of a 24-hour watch, because nothing in the file said
+                # whether the campaign was still watching or had died. This field says which
+                # of the two the timestamp is.
+                "ended_at_kind": None,
+                # The most recent successful read. The read before a movement is the whole
+                # of the bracket, and the beat ring that used to be its only home trims old
+                # reads away: campaign4-long wrote 2140 reads and threw away 1740 of them.
+                "last_read_at": None}
     print("watching the counter for %s minutes, one read every %s s, %s"
           % (args.minutes, args.poll_every,
              "no downloads at all (quiet baseline)" if args.download_every <= 0
@@ -365,10 +376,12 @@ def main():
     next_download = started
     last_count = None
     last_change = None
+    last_read_at = None
     campaign["polls"] = 0
 
     while time.time() < deadline:
         cycle = time.time()
+        read_at = None
         campaign["polls"] += 1
         # The number is read first and the download made second, in that order, every
         # cycle. The first campaign learned this the hard way: it downloaded before it had
@@ -388,17 +401,33 @@ def main():
             # `count: null` into the beat series of every window that hit a 502 and made it
             # look like a counter answering null.
         else:
+            read_at = utc()
             # The beat and its hour bin are written before anything is decided about the
             # number, so that a change on the first read of a new hour has a bin to land in.
             hour = _beat(campaign, count)
             if count != last_count:
-                row = {"at": utc(), "count": count,
-                       "delta": (count - last_count) if last_count is not None else None}
+                # The comparison on the line above is against the previous read, held in
+                # memory, and not against the series this campaign kept. That is why trimming
+                # old beats cannot cost a movement - and it is also why the bracket has to be
+                # written down here: the read named below was the one value in the whole
+                # campaign that lived nowhere else.
+                row = {"at": read_at, "count": count,
+                       "delta": (count - last_count) if last_count is not None else None,
+                       "prev_read_at": last_read_at}
                 if last_change:
                     row["gap_s"] = (pc.iso_epoch(row["at"]) or 0) - (pc.iso_epoch(last_change) or 0)
+                if last_read_at:
+                    row["bracket_s"] = ((pc.iso_epoch(read_at) or 0)
+                                        - (pc.iso_epoch(last_read_at) or 0))
                 campaign["rows"].append(row)
-                print("  %s count %s (+%s) after %s s"
-                      % (row["at"], count, row["delta"], row.get("gap_s", "?")))
+                if last_count is None:
+                    print("  %s first read: count %s (this is the baseline, not a movement)"
+                          % (row["at"], count))
+                else:
+                    print("  %s count %s (+%s): previous read %s, bracket %s s, %s s since the "
+                          "previous change"
+                          % (row["at"], count, row["delta"], row.get("prev_read_at", "?"),
+                             row.get("bracket_s", "?"), row.get("gap_s", "?")))
                 last_count, last_change = count, row["at"]
                 # The first read of a campaign is not a movement: last_count is None and
                 # there was nothing for it to move from. Run 43's smoke test caught this
@@ -410,10 +439,19 @@ def main():
                 # observations in memory and would have lost all of them to a crash or a killed
                 # process - a watcher whose memory is only at its end is not a watcher.
                 campaign["ended_at"] = utc()
+                campaign["last_write_at"] = campaign["ended_at"]
+                campaign["ended_at_kind"] = "checkpoint, campaign still watching"
+                campaign["last_read_at"] = last_read_at
                 _write(args.label, campaign)
             elif not campaign["rows"]:
                 campaign["rows"].append({"at": utc(), "count": count, "delta": None,
                                          "gap_s": None})
+        # Every successful read moves the bracket's near edge, whether or not it found a
+        # change: a read that found no change is still the read before the next one. A failed
+        # read is not a read and leaves this alone, so the edge never names a moment when the
+        # counter did not answer.
+        if not err and read_at:
+            last_read_at = read_at
         # Checkpoint even when nothing happens. The change-triggered write above is enough
         # for a campaign that finds movement, and useless for a campaign whose finding is
         # that there was none: a quiet baseline that is killed before its deadline would
@@ -421,6 +459,8 @@ def main():
         if campaign["polls"] % max(1, args.checkpoint_every) == 0:
             campaign["ended_at"] = utc()
             campaign["last_write_at"] = campaign["ended_at"]
+            campaign["ended_at_kind"] = "checkpoint, campaign still watching"
+            campaign["last_read_at"] = last_read_at
             campaign["observed_span_s"] = int(time.time() - started)
             if args.watch_beacon:
                 b = read_beacon()
@@ -437,6 +477,8 @@ def main():
 
     campaign["ended_at"] = utc()
     campaign["last_write_at"] = campaign["ended_at"]
+    campaign["ended_at_kind"] = "final write, the watch reached its deadline"
+    campaign["last_read_at"] = last_read_at
     campaign["observed_span_s"] = int(time.time() - started)
     _write(args.label, campaign)
     print("")

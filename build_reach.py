@@ -274,7 +274,9 @@ Back to <a href="../">the census</a> &middot; <a href="../findings/">the write-u
     body = body.replace("{{API}}", "https://api.github.com/repos/%s/releases/tags/%s"
                         % (REPO, (i2.get("tag") or RELEASE_TAG)))
     from build_reach_correction import campaign_block, agent_lane_block, attribution_block
-    camp = campaign_block(sweep, rep, esc) + attribution_block(esc) + agent_lane_block(esc)
+    from build_record_audit import record_audit_block
+    camp = (campaign_block(sweep, rep, esc) + attribution_block(esc) + agent_lane_block(esc)
+            + record_audit_block(esc))
     if camp:
         body = body.replace("<h2>What this shows and what it does not</h2>",
                             camp + "<h2>What this shows and what it does not</h2>")

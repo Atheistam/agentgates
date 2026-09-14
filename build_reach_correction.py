@@ -13,6 +13,49 @@ def _i(x, d=None):
     return x if isinstance(x, int) else d
 
 
+def _dur(seconds):
+    """A settlement interval, written the way the page has always written them."""
+    if seconds is None:
+        return "?"
+    s = int(seconds)
+    if s < 3600:
+        return "%dm%ds" % (s // 60, s % 60)
+    return "%dh%dm" % (s // 3600, (s % 3600) // 60)
+
+
+def settlement():
+    """The two settlement intervals, read out of the audit instead of typed into the prose.
+
+    Run 44 published these two numbers and recorded, in the same paragraph, that they were
+    entered by hand - the one place on the page where a figure came from a person rather than
+    from the record. That is the defect this project exists to complain about, so this closes
+    it: both figures, both timestamps and both directions come from
+    data/retained_record_audit.json, which derives them from the campaign records and the
+    counter's own series. If the audit changes, the sentence changes with it.
+    """
+    import json
+    import os
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data",
+                        "retained_record_audit.json")
+    try:
+        with open(path) as f:
+            st = json.load(f).get("settlement") or {}
+    except Exception:
+        st = {}
+    floor, ceil = st.get("floor") or {}, st.get("ceiling") or {}
+    return {
+        "floor_text": _dur(floor.get("latency_s")),
+        "floor_s": floor.get("latency_s"),
+        "floor_download_at": floor.get("download_at"),
+        "floor_read_at": floor.get("read_at"),
+        "floor_read_showed": floor.get("read_showed"),
+        "ceiling_text": _dur(ceil.get("latency_s")),
+        "ceiling_s": ceil.get("latency_s"),
+        "ceiling_download_at": ceil.get("download_at"),
+        "ceiling_read_at": ceil.get("read_at"),
+    }
+
+
 def _fifo_latencies(downloads, rows):
     """Pair each increase with the download that caused it, oldest first.
 
@@ -462,7 +505,7 @@ def attribution_block(esc, path=None):
             "<strong>%(v2)d</strong> at %(t2)s, an increase of %(inc)d inside "
             "%(mins)d minutes, and this project made <strong>zero</strong> deliberate "
             "downloads anywhere in that interval. It is either one of our own downloads "
-            "settling late - the sixth of campaign1 was still absent 8m38s after it was "
+            "settling late - the sixth of campaign1 was still absent %(floor_text)s after it was "
             "made, and appeared somewhere in this gap - or it is one reader. The record "
             "cannot say which, and it never will, because nobody was reading the count "
             "between those two moments. That is the whole argument for a watch that polls "
@@ -470,6 +513,7 @@ def attribution_block(esc, path=None):
             "not the counter."
             % {"v1": unexp[1], "t1": esc(unexp[0]), "v2": unexp[3], "t2": esc(unexp[2]),
                "inc": _i(unexp[4], 0),
+               "floor_text": settlement()["floor_text"],
                "mins": int(_span_s(unexp[0], unexp[2]) or 0) // 60})
 
     # The paragraph below used to state the offset between the watch's launch and the control
@@ -527,15 +571,19 @@ def attribution_block(esc, path=None):
         "subtracts downloads from a ledger written at the moment of the download, instead "
         "of trusting the counter to confirm that a download happened.</p>"
         "<p><strong>How late the counter settles, measured only on deliberate downloads of "
-        "ours:</strong> held for more than <strong>8m38s</strong> (download 11:43:46Z, "
-        "count still unchanged at the read of 11:52:24Z) and released within "
-        "<strong>10m26s</strong> (download 20:07:27Z, present by the read of 20:17:53Z). "
+        "ours:</strong> held for more than <strong>%(floor_text)s</strong> (download "
+        "%(floor_download_at)s, count still reading %(floor_read_showed)s at "
+        "%(floor_read_at)s) and released within <strong>%(ceiling_text)s</strong> (download "
+        "%(ceiling_download_at)s, present by the read of %(ceiling_read_at)s). "
         "The ~15-hour latency once published on this page was withdrawn by run 40, twenty "
         "minutes after it went up: three latencies that differ by exactly the offset "
         "between the downloads are the arithmetic of one read, not a property of the "
-        "counter. This run replaces the 5.5-minute floor with 8m38s - a <em>larger</em> "
+        "counter. Run 44 replaced the 5.5-minute floor with %(floor_text)s - a <em>larger</em> "
         "blind spot, which is the direction that costs this project the most, and the "
-        "reason the watch now polls through the lag rather than once after it.</p>"
+        "reason the watch now polls through the lag rather than once after it. Run 45 renders "
+        "both figures from "
+        "<a href=\"data/retained_record_audit.json\">retained_record_audit.json</a>, because "
+        "run 44 published them typed by hand and said so in the note below.</p>"
         "<p class=\"note\">Ledger, rule and per-movement brackets: "
         "<a href=\"data/movement_attribution.json\">movement_attribution.json</a>. Two "
         "defects fixed this run, and one still open. Fixed: the ledger's run label was "
@@ -543,9 +591,10 @@ def attribution_block(esc, path=None):
         "label on the one entry that decided a movement; and this paragraph first went up "
         "claiming the control download came <em>107</em> seconds after the watch launched, "
         "because that number was typed by hand. It is <strong>97</strong> seconds, and the "
-        "figure now renders from the campaign's start and the ledger entry inside it. Still "
-        "open: the two settlement figures in the latency paragraph below (8m38s, 10m26s) are "
-        "still hand-entered from the brackets rather than derived from them. Recorded here "
-        "rather than left for a reader to find.</p>"
-        % dict(q4_ctx, rows="".join(rows), unexp=unexp_txt)
+        "figure now renders from the campaign's start and the ledger entry inside it. Closed "
+        "by run 45: the two settlement figures in the latency paragraph above "
+        "(%(floor_text)s, %(ceiling_text)s) were hand-entered when run 44 wrote this note, and "
+        "now render from the same audit that carries their timestamps - so the sentence and "
+        "the record cannot drift apart again.</p>"
+        % dict(q4_ctx, rows="".join(rows), unexp=unexp_txt, **settlement())
     )

@@ -1,0 +1,216 @@
+{
+  "generated_at": "2026-09-14T14:03:06Z",
+  "run": 45,
+  "written_by": "audit_retained_record.py",
+  "question": "what can a reader holding only the written record prove about what these campaigns found",
+  "writes_to_the_campaign_record": false,
+  "duration": [
+    {
+      "campaign": "campaign1",
+      "declared_s": 1800,
+      "declared_h": 0.5,
+      "started_at": "2026-09-13T11:18:40Z",
+      "ended_at": "2026-09-13T11:48:46Z",
+      "last_write_at": null,
+      "observed_span_s": 1806,
+      "observed_span_h": 0.5,
+      "duration_from_ended_at_s": 1806,
+      "ended_at_kind": "final write",
+      "still_running": false,
+      "stranger_would_conclude_h": 0.5,
+      "record_says_h": 0.5
+    },
+    {
+      "campaign": "campaign2-quiet",
+      "declared_s": 6000,
+      "declared_h": 1.67,
+      "started_at": "2026-09-13T14:03:30Z",
+      "ended_at": "2026-09-13T14:12:31Z",
+      "last_write_at": null,
+      "observed_span_s": 541,
+      "observed_span_h": 0.15,
+      "duration_from_ended_at_s": 541,
+      "ended_at_kind": "last checkpoint, campaign still running",
+      "still_running": true,
+      "stranger_would_conclude_h": 0.15,
+      "record_says_h": 1.67
+    },
+    {
+      "campaign": "campaign3-quiet",
+      "declared_s": 6000,
+      "declared_h": 1.67,
+      "started_at": "2026-09-13T17:03:29Z",
+      "ended_at": "2026-09-13T18:43:54Z",
+      "last_write_at": "2026-09-13T18:43:54Z",
+      "observed_span_s": 6025,
+      "observed_span_h": 1.67,
+      "duration_from_ended_at_s": 6025,
+      "ended_at_kind": "final write",
+      "still_running": false,
+      "stranger_would_conclude_h": 1.67,
+      "record_says_h": 1.67
+    },
+    {
+      "campaign": "campaign4-long",
+      "declared_s": 86400,
+      "declared_h": 24.0,
+      "started_at": "2026-09-13T20:05:50Z",
+      "ended_at": "2026-09-14T13:59:40Z",
+      "last_write_at": "2026-09-14T13:59:40Z",
+      "observed_span_s": 64429,
+      "observed_span_h": 17.9,
+      "duration_from_ended_at_s": 64430,
+      "ended_at_kind": "last checkpoint, campaign still running",
+      "still_running": true,
+      "stranger_would_conclude_h": 17.9,
+      "record_says_h": 24.0
+    },
+    {
+      "campaign": "selftest-beats",
+      "declared_s": 13,
+      "declared_h": 0.0,
+      "started_at": "2026-09-13T14:15:20Z",
+      "ended_at": "2026-09-13T14:15:35Z",
+      "last_write_at": null,
+      "observed_span_s": 15,
+      "observed_span_h": 0.0,
+      "duration_from_ended_at_s": 15,
+      "ended_at_kind": "final write",
+      "still_running": false,
+      "stranger_would_conclude_h": 0.0,
+      "record_says_h": 0.0
+    },
+    {
+      "campaign": "selftest-run41",
+      "declared_s": 5,
+      "declared_h": 0.0,
+      "started_at": "2026-09-13T14:03:02Z",
+      "ended_at": "2026-09-13T14:03:12Z",
+      "last_write_at": null,
+      "observed_span_s": 10,
+      "observed_span_h": 0.0,
+      "duration_from_ended_at_s": 10,
+      "ended_at_kind": "final write",
+      "still_running": false,
+      "stranger_would_conclude_h": 0.0,
+      "record_says_h": 0.0
+    },
+    {
+      "campaign": "selftest-run42",
+      "declared_s": 15,
+      "declared_h": 0.0,
+      "started_at": "2026-09-13T17:02:08Z",
+      "ended_at": "2026-09-13T17:02:24Z",
+      "last_write_at": "2026-09-13T17:02:24Z",
+      "observed_span_s": 15,
+      "observed_span_h": 0.0,
+      "duration_from_ended_at_s": 16,
+      "ended_at_kind": "final write",
+      "still_running": false,
+      "stranger_would_conclude_h": 0.0,
+      "record_says_h": 0.0
+    },
+    {
+      "campaign": "smoke",
+      "declared_s": 72,
+      "declared_h": 0.02,
+      "started_at": "2026-09-13T11:17:09Z",
+      "ended_at": "2026-09-13T11:18:29Z",
+      "last_write_at": null,
+      "observed_span_s": 80,
+      "observed_span_h": 0.02,
+      "duration_from_ended_at_s": 80,
+      "ended_at_kind": "final write",
+      "still_running": false,
+      "stranger_would_conclude_h": 0.02,
+      "record_says_h": 0.02
+    },
+    {
+      "campaign": "smoketest2",
+      "declared_s": 42,
+      "declared_h": 0.01,
+      "started_at": "2026-09-13T11:32:44Z",
+      "ended_at": "2026-09-13T11:33:45Z",
+      "last_write_at": null,
+      "observed_span_s": 61,
+      "observed_span_h": 0.02,
+      "duration_from_ended_at_s": 61,
+      "ended_at_kind": "final write",
+      "still_running": false,
+      "stranger_would_conclude_h": 0.02,
+      "record_says_h": 0.01
+    }
+  ],
+  "bracket": {
+    "marker_every_polls": 10,
+    "markers": 214,
+    "spacing_s_per_poll": {
+      "min": 29.0,
+      "median": 30.1,
+      "max": 31.2,
+      "mean": 30.122
+    },
+    "bracket_s": 30.2,
+    "movements": [
+      {
+        "at": "2026-09-13T20:17:53Z",
+        "count": 13,
+        "delta": 1,
+        "gap_s_as_stored": 723,
+        "gap_s_means": "seconds since the previous change, not since the previous read; it is the waiting time, not the sweep time",
+        "previous_read_at": "2026-09-13T20:17:22Z",
+        "bracket_s": [
+          30.2
+        ],
+        "residual_s": 0.0,
+        "polls_after_marker": 5,
+        "nearest_marker_at": "2026-09-13T20:15:22Z"
+      }
+    ],
+    "grid_deviation_s_per_10_polls": 2.2
+  },
+  "ring": {
+    "polls": 2140,
+    "beats_total": 2140,
+    "beats_held": 400,
+    "beats_dropped": 1740,
+    "pct_of_reads_lost_to_the_ring": 81.3,
+    "movements_recorded": 1,
+    "movements_lost": 0,
+    "why_no_movement_can_be_lost": "the comparison is `count != last_count` against the previous read held in memory (sample_sweep.py, the branch that appends a change row), and the ring is trimmed only after the beat for the current read has been written - so trimming cannot remove the value the next comparison uses",
+    "what_the_loss_did_cost": "the previous read's timestamp. The retained beats are the only place a read was written down until this campaign's beacon channel was read back",
+    "monotonicity_observations": 610,
+    "monotonicity_decreases": 0,
+    "first_decrease": null
+  },
+  "beacon_channel": {
+    "entries": 214,
+    "entries_dropped": 0,
+    "first_at": "2026-09-13T20:10:21Z",
+    "last_at": "2026-09-14T13:59:41Z",
+    "span_h": 17.82,
+    "requests_values": [
+      13
+    ],
+    "not_this_project_values": [
+      0
+    ],
+    "reading": "every one of the channel's readings, across its whole span, carries the same request count and zero requests that are not this project's"
+  },
+  "settlement": {
+    "floor": {
+      "download_at": "2026-09-13T11:43:46Z",
+      "read_at": "2026-09-13T11:52:24Z",
+      "read_showed": 11,
+      "latency_s": 518,
+      "why_it_is_a_floor": "the count had still not moved at that read, so the download was outstanding for at least this long"
+    },
+    "ceiling": {
+      "download_at": "2026-09-13T20:07:27Z",
+      "read_at": "2026-09-13T20:17:53Z",
+      "latency_s": 626,
+      "bracket_lo_s": 596,
+      "why_it_is_a_ceiling": "that read is the first one that showed the increase, so the release happened at or before it"
+    }
+  }
+}

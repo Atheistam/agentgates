@@ -1,33 +1,33 @@
 id,name,category,host,gate,outcome,http_status,waf,robots_status,robots_disallows_path,ai_agent_disallows_path,challenge_detected,phone_signal,captcha_signal,email_signal,oauth_available,ai_agents_named,checked_at
-hn,Hacker News,news/community,news.ycombinator.com,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-12T17:09:59Z
-github,GitHub,code hosting,github.com,waf-challenge,BLOCKED,403,datadome,200,False,True,True,False,True,False,False,anthropic-ai;bytespider;claudebot;gptbot;oai-searchbot;perplexitybot,2026-09-12T17:09:59Z
-gitlab,GitLab,code hosting,gitlab.com,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-12T17:09:59Z
-bsky,Bluesky,social,bsky.app,open,REACHABLE,200,,200,False,False,False,False,False,False,False,,2026-09-12T17:09:59Z
-mastodon_social,Mastodon (mastodon.social),social/fediverse,mastodon.social,email,REACHABLE,200,,200,False,True,False,False,False,True,False,gptbot,2026-09-12T17:10:01Z
-reddit,Reddit,social,www.reddit.com,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-12T17:10:02Z
-lemmy_ml,Lemmy (lemmy.ml),social/fediverse,lemmy.ml,captcha,BLOCKED,200,,200,False,False,False,False,True,True,False,,2026-09-12T17:10:02Z
-discourse,Discourse (meta),forum,meta.discourse.org,open,REACHABLE,200,,200,False,False,False,False,False,False,False,,2026-09-12T17:10:02Z
-x,X,social,x.com,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,facebookbot;google-extended;meta-externalagent,2026-09-12T17:10:04Z
-lobsters,Lobsters,news/community,lobste.rs,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-12T17:10:04Z
-tildes,Tildes,news/community,tildes.net,open,REACHABLE,200,,200,False,True,False,False,False,False,False,gptbot,2026-09-12T17:10:04Z
-devto,dev.to,publishing,dev.to,email,REACHABLE,200,,200,False,False,False,False,False,True,True,,2026-09-12T17:10:06Z
-medium,Medium,publishing,medium.com,robots-disallow,BLOCKED,,,200,True,True,False,False,False,False,False,amazonbot;applebot-extended;bytespider;claudebot;facebookbot;gptbot;meta-externalagent,2026-09-12T17:10:06Z
-substack,Substack,publishing,substack.com,waf-challenge,BLOCKED,200,cloudflare,200,False,False,True,True,True,True,False,,2026-09-12T17:10:07Z
-producthunt,Product Hunt,launch platform,www.producthunt.com,phone,BLOCKED,200,cloudflare,200,False,False,False,True,True,True,False,,2026-09-12T17:10:07Z
-stackoverflow,Stack Overflow,Q&A,stackoverflow.com,waf-challenge,BLOCKED,403,cloudflare,418,False,False,True,False,False,False,False,,2026-09-12T17:10:08Z
-wikipedia,Wikipedia,reference,en.wikipedia.org,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-12T17:10:09Z
-craigslist,Craigslist,classifieds,accounts.craigslist.org,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-12T17:10:09Z
-ebay,eBay,commerce,signup.ebay.com,robots-disallow,BLOCKED,,,200,True,True,False,False,False,False,False,amazonbot;anthropic-ai;bytespider;ccbot;claudebot;perplexitybot,2026-09-12T17:10:10Z
-stripe,Stripe,payments,dashboard.stripe.com,phone,BLOCKED,200,fastly,200,False,False,False,True,True,True,False,,2026-09-12T17:10:10Z
-vercel,Vercel,hosting,vercel.com,email,REACHABLE,200,,200,False,False,False,False,False,True,True,,2026-09-12T17:10:11Z
-netlify,Netlify,hosting,app.netlify.com,captcha,BLOCKED,200,,200,False,False,False,False,True,False,False,,2026-09-12T17:10:12Z
-railway,Railway,hosting,railway.app,email,REACHABLE,200,,200,False,False,False,False,False,True,True,,2026-09-12T17:10:12Z
-npm,npm,package registry,www.npmjs.com,waf-challenge,BLOCKED,403,cloudflare,403,False,False,True,False,False,False,False,,2026-09-12T17:10:13Z
-openai_platform,OpenAI Platform,AI API,platform.openai.com,waf-challenge,BLOCKED,403,cloudflare,200,False,False,True,False,False,False,False,,2026-09-12T17:10:13Z
-keyid,KeyID.ai,agent identity,keyid.ai,phone,BLOCKED,200,,200,False,False,False,True,False,True,False,,2026-09-12T17:10:15Z
-cloudflare,Cloudflare,infrastructure,dash.cloudflare.com,waf-challenge,BLOCKED,403,cloudflare,200,False,False,True,True,False,False,False,,2026-09-12T17:10:15Z
-huggingface,Hugging Face,AI platform,huggingface.co,open,REACHABLE,202,,200,False,False,False,False,False,False,False,,2026-09-12T17:10:16Z
-arxiv,arXiv,preprints,arxiv.org,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-12T17:10:16Z
-wallapop,Wallapop,classifieds,es.wallapop.com,robots-disallow,BLOCKED,,,200,True,True,False,False,False,False,False,ccbot;petalbot,2026-09-12T17:10:17Z
-leboncoin,Leboncoin,classifieds,www.leboncoin.fr,waf-challenge,BLOCKED,403,datadome,200,False,True,True,False,True,False,False,anthropic-ai;applebot-extended;bytespider;ccbot;chatgpt-user;claudebot;google-extended;gptbot;oai-searchbot;perplexitybot,2026-09-12T17:10:18Z
-nostr_njump,Nostr (njump gateway),social/decentralised,njump.me,waf-challenge,BLOCKED,200,cloudflare,200,False,True,True,False,False,True,False,amazonbot;meta-externalagent;petalbot,2026-09-12T17:10:18Z
+hn,Hacker News,news/community,news.ycombinator.com,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-14T14:09:04Z
+github,GitHub,code hosting,github.com,waf-challenge,BLOCKED,403,datadome,200,False,True,True,False,True,False,False,anthropic-ai;bytespider;claudebot;gptbot;oai-searchbot;perplexitybot,2026-09-14T14:09:04Z
+gitlab,GitLab,code hosting,gitlab.com,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-14T14:09:04Z
+bsky,Bluesky,social,bsky.app,open,REACHABLE,200,,200,False,False,False,False,False,False,False,,2026-09-14T14:09:04Z
+mastodon_social,Mastodon (mastodon.social),social/fediverse,mastodon.social,email,REACHABLE,200,,200,False,True,False,False,False,True,False,gptbot,2026-09-14T14:09:06Z
+reddit,Reddit,social,www.reddit.com,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-14T14:09:06Z
+lemmy_ml,Lemmy (lemmy.ml),social/fediverse,lemmy.ml,captcha,BLOCKED,200,,200,False,False,False,False,True,True,False,,2026-09-14T14:09:07Z
+discourse,Discourse (meta),forum,meta.discourse.org,open,REACHABLE,200,,200,False,False,False,False,False,False,False,,2026-09-14T14:09:07Z
+x,X,social,x.com,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,facebookbot;google-extended;meta-externalagent,2026-09-14T14:09:09Z
+lobsters,Lobsters,news/community,lobste.rs,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-14T14:09:09Z
+tildes,Tildes,news/community,tildes.net,open,REACHABLE,200,,200,False,True,False,False,False,False,False,gptbot,2026-09-14T14:09:09Z
+devto,dev.to,publishing,dev.to,email,REACHABLE,200,,200,False,False,False,False,False,True,True,,2026-09-14T14:09:10Z
+medium,Medium,publishing,medium.com,robots-disallow,BLOCKED,,,200,True,True,False,False,False,False,False,amazonbot;applebot-extended;bytespider;claudebot;facebookbot;gptbot;meta-externalagent,2026-09-14T14:09:10Z
+substack,Substack,publishing,substack.com,waf-challenge,BLOCKED,200,cloudflare,200,False,False,True,True,True,True,False,,2026-09-14T14:09:11Z
+producthunt,Product Hunt,launch platform,www.producthunt.com,phone,BLOCKED,200,cloudflare,200,False,False,False,True,True,True,False,,2026-09-14T14:09:12Z
+stackoverflow,Stack Overflow,Q&A,stackoverflow.com,waf-challenge,BLOCKED,403,cloudflare,418,False,False,True,False,False,False,False,,2026-09-14T14:09:13Z
+wikipedia,Wikipedia,reference,en.wikipedia.org,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-14T14:09:13Z
+craigslist,Craigslist,classifieds,accounts.craigslist.org,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-14T14:09:13Z
+ebay,eBay,commerce,signup.ebay.com,robots-disallow,BLOCKED,,,200,True,True,False,False,False,False,False,amazonbot;anthropic-ai;bytespider;ccbot;claudebot;perplexitybot,2026-09-14T14:09:14Z
+stripe,Stripe,payments,dashboard.stripe.com,phone,BLOCKED,200,fastly,200,False,False,False,True,True,True,False,,2026-09-14T14:09:15Z
+vercel,Vercel,hosting,vercel.com,email,REACHABLE,200,,200,False,False,False,False,False,True,True,,2026-09-14T14:09:15Z
+netlify,Netlify,hosting,app.netlify.com,captcha,BLOCKED,200,,200,False,False,False,False,True,False,False,,2026-09-14T14:09:16Z
+railway,Railway,hosting,railway.app,email,REACHABLE,200,,200,False,False,False,False,False,True,True,,2026-09-14T14:09:17Z
+npm,npm,package registry,www.npmjs.com,waf-challenge,BLOCKED,403,cloudflare,403,False,False,True,False,False,False,False,,2026-09-14T14:09:18Z
+openai_platform,OpenAI Platform,AI API,platform.openai.com,waf-challenge,BLOCKED,403,cloudflare,200,False,False,True,False,False,False,False,,2026-09-14T14:09:18Z
+keyid,KeyID.ai,agent identity,keyid.ai,phone,BLOCKED,200,,200,False,False,False,True,False,True,False,,2026-09-14T14:09:18Z
+cloudflare,Cloudflare,infrastructure,dash.cloudflare.com,waf-challenge,BLOCKED,403,cloudflare,200,False,False,True,False,False,False,False,,2026-09-14T14:09:20Z
+huggingface,Hugging Face,AI platform,huggingface.co,open,REACHABLE,202,,200,False,False,False,False,False,False,False,,2026-09-14T14:09:20Z
+arxiv,arXiv,preprints,arxiv.org,robots-disallow,BLOCKED,,,200,True,False,False,False,False,False,False,,2026-09-14T14:09:20Z
+wallapop,Wallapop,classifieds,es.wallapop.com,robots-disallow,BLOCKED,,,200,True,True,False,False,False,False,False,ccbot;petalbot,2026-09-14T14:09:20Z
+leboncoin,Leboncoin,classifieds,www.leboncoin.fr,waf-challenge,BLOCKED,403,datadome,200,False,True,True,False,True,False,False,anthropic-ai;applebot-extended;bytespider;ccbot;chatgpt-user;claudebot;google-extended;gptbot;oai-searchbot;perplexitybot,2026-09-14T14:09:22Z
+nostr_njump,Nostr (njump gateway),social/decentralised,njump.me,waf-challenge,BLOCKED,200,cloudflare,200,False,True,True,False,False,True,False,amazonbot;meta-externalagent;petalbot,2026-09-14T14:09:22Z
